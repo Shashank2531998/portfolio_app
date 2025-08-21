@@ -81,12 +81,14 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32">
+          <div className="space-y-20 md:space-y-28 lg:space-y-32">
             <ExperienceSection />
             <EducationSection />
             <SkillsSection />
             <ProjectsSection />
             <ContactSection />
+          </div>
         </div>
       </main>
       <Footer />
@@ -299,5 +301,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
