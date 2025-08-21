@@ -304,7 +304,7 @@ function TimelineItem({ item, index, type, detailsHeading, isEducation = false }
       </div>
 
       {/* ---MOBILE VIEW--- */}
-      <div className="flex md:hidden w-full items-start">
+      <div className="flex md:hidden w-full items-center">
          <TimelineGraphic item={item} />
          <div className="w-8 flex-shrink-0" />
          <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation}/>
@@ -349,16 +349,14 @@ function TimelineGraphic({ item }: { item: any }) {
     return (
         <div className="relative w-16 flex-shrink-0 flex justify-center">
             <div className="w-0.5 h-full bg-border" />
-            <div className="absolute top-1/2 -translate-y-1/2 bg-secondary p-1.5 rounded-full ring-8 ring-background">
-                <Image
-                    src={item.logoUrl}
-                    alt={`${item.company} logo`}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                    data-ai-hint="company logo"
-                />
-            </div>
+            <Image
+                src={item.logoUrl}
+                alt={`${item.company} logo`}
+                width={48}
+                height={48}
+                className="rounded-full absolute top-1/2 -translate-y-1/2"
+                data-ai-hint="company logo"
+            />
         </div>
     )
 }
@@ -666,3 +664,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
