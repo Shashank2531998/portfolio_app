@@ -165,7 +165,7 @@ const NeuralNetworkCanvas: React.FC = () => {
           y: edge.from.y,
           progress: 0,
           edge: edge,
-          speed: 0.05 + Math.random() * 0.05,
+          speed: 0.02 + Math.random() * 0.02,
           isComplete: false,
         });
       }
