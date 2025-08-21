@@ -1,6 +1,7 @@
+
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 
 interface Node {
   id: number;
@@ -41,17 +42,32 @@ const NeuralNetworkCanvas: React.FC = () => {
     accent: "hsl(240 4.8% 95.9%)",
   });
 
-  useEffect(() => {
+  const getThemeColors = useCallback(() => {
+    if (typeof window === 'undefined') return;
     const style = getComputedStyle(document.body);
     const primaryHSL = style.getPropertyValue('--primary').trim();
     const backgroundHSL = style.getPropertyValue('--background').trim();
     const accentHSL = style.getPropertyValue('--accent').trim();
 
     setThemeColors({
-      primary: primaryHSL ? `hsl(${primaryHSL})` : "#000",
-      background: backgroundHSL ? `hsl(${backgroundHSL})` : "#fff",
-      accent: accentHSL ? `hsl(${accentHSL})` : "#f0f0f0",
+      primary: `hsl(${primaryHSL})`,
+      background: `hsl(${backgroundHSL})`,
+      accent: `hsl(${accentHSL})`,
     });
+  }, []);
+
+  useEffect(() => {
+    getThemeColors();
+    
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class' || mutation.attributeName === 'style') {
+          getThemeColors();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
 
     const handleMouseMove = (e: MouseEvent) => {
         const canvas = canvasRef.current;
@@ -66,9 +82,11 @@ const NeuralNetworkCanvas: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
+        observer.disconnect();
         window.removeEventListener('mousemove', handleMouseMove);
     }
-  }, []);
+  }, [getThemeColors]);
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -83,10 +101,11 @@ const NeuralNetworkCanvas: React.FC = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
 
-      canvas.width = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
+      const { offsetWidth, offsetHeight } = parent;
+      canvas.width = offsetWidth;
+      canvas.height = offsetHeight;
 
-      const horizontalPadding = canvas.width * 0.05;
+      const horizontalPadding = canvas.width * 0.1; // 90% width
       const drawingWidth = canvas.width - (2 * horizontalPadding);
 
       const nodes: Node[] = [];
@@ -119,19 +138,21 @@ const NeuralNetworkCanvas: React.FC = () => {
       particlesRef.current = [];
       activeEdges.current.clear();
     };
-
-    window.addEventListener("resize", initializeNetwork);
+    
+    // Run once on mount and then on resize
     initializeNetwork();
+    const handleResize = () => initializeNetwork();
+    window.addEventListener("resize", handleResize);
+
     
     let lastTime = 0;
     const maxParticles = 300;
 
     const draw = (time: number) => {
-      if (!ctx || !canvas) return;
+      if (!ctx || !canvas || canvas.width === 0) return;
       let deltaTime = time - lastTime;
       lastTime = time;
 
-      // Cap deltaTime to prevent huge jumps when tab is inactive
       deltaTime = Math.min(deltaTime, 50);
 
       ctx.fillStyle = themeColors.background;
@@ -142,7 +163,6 @@ const NeuralNetworkCanvas: React.FC = () => {
       const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
       const [h, s, l] = primaryMatch ? [primaryMatch[1], primaryMatch[2], primaryMatch[3]] : [240, 5.9, 10];
 
-      // Update and draw edges
       edges.forEach(edge => {
         const distToMouse = Math.min(
             Math.hypot(mousePos.current.x - edge.from.x, mousePos.current.y - edge.from.y),
@@ -155,14 +175,13 @@ const NeuralNetworkCanvas: React.FC = () => {
         ctx.moveTo(edge.from.x, edge.from.y);
         ctx.lineTo(edge.to.x, edge.to.y);
         ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
-        ctx.lineWidth = 0.7;
+        ctx.lineWidth = 0.5;
         ctx.stroke();
       });
 
-      // Spawn new particles
       if (particlesRef.current.length < maxParticles && Math.random() < 0.5) {
         const edge = edges[Math.floor(Math.random() * edges.length)];
-        if (!activeEdges.current.has(edge.id)) {
+        if (edge && !activeEdges.current.has(edge.id)) {
             activeEdges.current.add(edge.id);
             particlesRef.current.push({
               id: `${edge.id}-${Date.now()}`,
@@ -170,15 +189,14 @@ const NeuralNetworkCanvas: React.FC = () => {
               y: edge.from.y,
               progress: 0,
               edge: edge,
-              speed: (0.0001 + Math.random() * 0.0001),
+              speed: 0.0001 + Math.random() * 0.0001,
               isComplete: false,
             });
         }
       }
 
-      // Update and draw particles & lighted edges
-      particlesRef.current.forEach((p, index) => {
-        p.progress += p.speed * (deltaTime / 16.67);
+      particlesRef.current.forEach((p) => {
+        p.progress += p.speed * (deltaTime || 0);
         if (p.progress >= 1) {
           p.isComplete = true;
           activeEdges.current.delete(p.edge.id);
@@ -187,49 +205,44 @@ const NeuralNetworkCanvas: React.FC = () => {
         p.y = p.edge.from.y + (p.edge.to.y - p.edge.from.y) * p.progress;
 
         const opacity = Math.sin(p.progress * Math.PI);
-        
         const lightPosition = Math.max(0, Math.min(1, p.progress));
         
-        // Draw lighted edge
         const gradient = ctx.createLinearGradient(p.edge.from.x, p.edge.from.y, p.edge.to.x, p.edge.to.y);
         const lightWidth = 0.1;
 
-        gradient.addColorStop(Math.max(0, Math.min(1, lightPosition - lightWidth)), `hsla(${h}, ${s}%, ${l}%, 0)`);
+        gradient.addColorStop(Math.max(0, lightPosition - lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
         gradient.addColorStop(lightPosition, `hsla(${h}, ${s}%, 90%, ${opacity})`);
-        gradient.addColorStop(Math.min(1, Math.max(0, lightPosition + lightWidth)), `hsla(${h}, ${s}%, ${l}%, 0)`);
+        gradient.addColorStop(Math.min(1, lightPosition + lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
 
         ctx.beginPath();
         ctx.moveTo(p.edge.from.x, p.edge.from.y);
         ctx.lineTo(p.edge.to.x, p.edge.to.y);
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1.2;
         ctx.stroke();
 
-        // Draw particle
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
+        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${h}, ${s}%, 90%, ${opacity * 0.8})`;
         ctx.fill();
       });
       
       particlesRef.current = particlesRef.current.filter(p => !p.isComplete);
 
-
-      // Update and draw nodes
       nodes.forEach(node => {
         const distToMouse = Math.hypot(mousePos.current.x - node.x, mousePos.current.y - node.y);
         const maxDist = 150;
         const pulseFactor = 1 + 1.5 * (1 - Math.min(distToMouse, maxDist) / maxDist);
         node.radius = node.baseRadius * pulseFactor;
 
-        const glowOpacity = Math.max(0.1, 1 * (1 - Math.min(distToMouse, maxDist) / maxDist));
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 2);
-        gradient.addColorStop(0, `hsla(${h}, ${s}%, ${l}%, ${glowOpacity})`);
+        const glowOpacity = Math.max(0, 1 * (1 - Math.min(distToMouse, maxDist) / maxDist));
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 3);
+        gradient.addColorStop(0, `hsla(${h}, ${s}%, ${l}%, ${glowOpacity * 0.5})`);
         gradient.addColorStop(1, "transparent");
         
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius * 2, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, node.radius * 3, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.fillStyle = themeColors.primary;
@@ -244,14 +257,16 @@ const NeuralNetworkCanvas: React.FC = () => {
     animationFrameId.current = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener("resize", initializeNetwork);
+      window.removeEventListener("resize", handleResize);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [themeColors]);
+  }, [themeColors, getThemeColors]);
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
 };
 
 export default NeuralNetworkCanvas;
+
+    
