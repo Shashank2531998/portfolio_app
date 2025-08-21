@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity, List } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity, List, User } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -189,6 +189,7 @@ export default function Home() {
         <HeroSection />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20 md:space-y-24 lg:space-y-28">
+            <AboutSection />
             <ExperienceSection />
             <EducationSection />
             <SkillsSection />
@@ -246,6 +247,21 @@ function HeroSection() {
         </div>
     </section>
   );
+}
+
+function AboutSection() {
+    return (
+        <section id="about">
+            <div className="space-y-4 mb-8">
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <User /> About Me
+                </h2>
+                <p className="text-muted-foreground md:text-lg leading-relaxed max-w-4xl">
+                    I am a results-driven Software Engineer with a passion for developing innovative software solutions. With a strong foundation in computer science principles and a keen eye for detail, I specialize in building scalable, high-performance web applications. I thrive in collaborative environments and am dedicated to continuous learning and improvement. My goal is to leverage my skills to create technology that makes a meaningful impact.
+                </p>
+            </div>
+        </section>
+    );
 }
 
 function getDuration(dateString: string) {
@@ -575,5 +591,7 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
