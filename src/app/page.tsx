@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen } from 'lucide-react';
+import { Github, Linkedin, Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -287,7 +287,7 @@ function TimelineItem({ item, index, type, detailsHeading, isEducation = false }
   return (
     <div className="flex items-center w-full">
       {/* ---DESKTOP VIEW--- */}
-      <div className="hidden md:flex w-full items-start">
+      <div className="hidden md:flex w-full items-center">
         {isLeft ? (
           <>
             <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation} />
@@ -304,8 +304,9 @@ function TimelineItem({ item, index, type, detailsHeading, isEducation = false }
       </div>
 
       {/* ---MOBILE VIEW--- */}
-      <div className="flex md:hidden w-full pl-8 pr-4">
+      <div className="flex md:hidden w-full">
          <TimelineGraphic item={item} />
+         <div className="w-8 flex-shrink-0" />
          <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation}/>
       </div>
     </div>
