@@ -13,21 +13,20 @@ const NeuralNetworkCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
   const [themeColors, setThemeColors] = useState({
-    primary: "#00f6ff",
-    background: "#0a0a0a",
+    primary: "hsl(240 5.9% 10%)",
+    background: "hsl(240 10% 99%)",
   });
 
-  // Set theme colors dynamically (optional)
+  // Set theme colors dynamically
   useEffect(() => {
-    // Reading HSL value and using it directly.
     const style = getComputedStyle(document.body);
+    // HSL values are read from the CSS variables.
     const primaryHSL = style.getPropertyValue('--primary').trim();
     const backgroundHSL = style.getPropertyValue('--background').trim();
     
-    // Convert HSL string to a usable color format if needed, but for canvas it's often fine.
-    // Ensure fallback if CSS variables are not available.
-    const primaryColor = primaryHSL ? `hsl(${primaryHSL})` : "#00f6ff";
-    const backgroundColor = backgroundHSL ? `hsl(${backgroundHSL})` : "#0a0a0a";
+    // Construct HSL color strings.
+    const primaryColor = primaryHSL ? `hsl(${primaryHSL})` : "#000";
+    const backgroundColor = backgroundHSL ? `hsl(${backgroundHSL})` : "#fff";
 
     setThemeColors({ primary: primaryColor, background: backgroundColor });
   }, []);
@@ -92,7 +91,7 @@ const NeuralNetworkCanvas: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = themeColors.primary;
+        ctx.fillStyle = gradient;
         ctx.fill();
 
         // Draw fading edges
@@ -105,7 +104,14 @@ const NeuralNetworkCanvas: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(otherNode.x, otherNode.y);
-            ctx.strokeStyle = `rgba(0, 246, 255, ${1 - dist / 120})`; // fade with distance
+            // To create the line gradient, we need to know the primary color's HSL components
+            const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
+            if(primaryMatch) {
+              const [h, s, l] = [primaryMatch[1], primaryMatch[2], primaryMatch[3]];
+              ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, ${1 - dist / 120})`;
+            } else {
+               ctx.strokeStyle = `rgba(0, 0, 0, ${1 - dist / 120})`; // fallback
+            }
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
