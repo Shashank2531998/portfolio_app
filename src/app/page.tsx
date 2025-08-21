@@ -1,34 +1,65 @@
 
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Building } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
 import NeuralNetworkCanvas from "@/components/neural-network-canvas";
 import { InteractiveBlurOverlay } from "@/components/interactive-blur-overlay";
+import { ExperienceModal } from "@/components/experience-modal";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 
 const experienceData = [
   {
     role: "Senior Software Engineer",
     company: "FutureTech Solutions",
     date: "2021 - Present",
-    description: "Leading the development of scalable web applications using Next.js and TypeScript. Mentoring junior developers and improving code quality across the team."
+    description: "Leading the development of scalable web applications using Next.js and TypeScript. Mentoring junior developers and improving code quality across the team.",
+    logoUrl: "https://placehold.co/48x48.png",
+    images: [
+      "https://placehold.co/1200x800.png",
+      "https://placehold.co/1200x800.png",
+      "https://placehold.co/1200x800.png",
+    ],
+    details: [
+      "Architected and led the development of a multi-tenant SaaS platform from scratch, resulting in a 40% increase in developer productivity.",
+      "Implemented a comprehensive CI/CD pipeline using GitHub Actions, reducing deployment time by 75%.",
+      "Mentored a team of 5 junior developers, fostering a culture of collaboration and continuous learning.",
+      "Optimized application performance by implementing server-side rendering and code-splitting, improving load times by 60%.",
+    ]
   },
   {
     role: "Software Developer",
     company: "Innovate Co.",
     date: "2019 - 2021",
-    description: "Developed and maintained client-side features for various projects using React and Redux. Collaborated with designers to create responsive user interfaces."
+    description: "Developed and maintained client-side features for various projects using React and Redux. Collaborated with designers to create responsive user interfaces.",
+    logoUrl: "https://placehold.co/48x48.png",
+    details: [
+      "Developed responsive user interfaces for a high-traffic e-commerce website using React and Redux.",
+      "Collaborated with the design team to implement pixel-perfect UIs, improving user engagement by 25%.",
+      "Wrote and maintained unit tests using Jest and React Testing Library, ensuring code quality and stability."
+    ]
   },
   {
     role: "Junior Web Developer",
     company: "WebCrafters Inc.",
     date: "2018 - 2019",
-    description: "Assisted in building and testing websites for small to medium-sized businesses. Gained foundational experience in HTML, CSS, and JavaScript."
+    description: "Assisted in building and testing websites for small to medium-sized businesses. Gained foundational experience in HTML, CSS, and JavaScript.",
+    logoUrl: "https://placehold.co/48x48.png",
+    images: [
+      "https://placehold.co/1200x800.png"
+    ],
+    details: [
+      "Built and styled web pages using HTML, CSS, and JavaScript for various client projects.",
+      "Conducted cross-browser compatibility testing to ensure a consistent user experience.",
+      "Gained hands-on experience with version control using Git."
+    ]
   },
 ];
 
@@ -148,41 +179,46 @@ function ExperienceSection() {
           <Briefcase /> Work Experience
         </h2>
         <p className="text-muted-foreground md:text-lg leading-relaxed">
-          My professional journey.
+          My professional journey. Click on an entry to see more details.
         </p>
       </div>
       <div className="relative">
         <div className="absolute left-6 top-2 h-full w-0.5 bg-border -translate-x-1/2" />
         <div className="space-y-8">
           {experienceData.map((item, index) => (
-            <div key={index} className="relative group flex items-start gap-x-6">
-              <div className="absolute left-6 top-2 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
-                 <Image
-                    src="https://placehold.co/48x48.png"
-                    alt={`${item.company} logo`}
-                    width={48}
-                    height={48}
-                    className="rounded-full transition-all duration-300 group-hover:scale-110"
-                    data-ai-hint="company logo"
-                  />
+            <Dialog key={index}>
+              <div className="relative group flex items-start gap-x-6">
+                <div className="absolute left-6 top-2 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
+                   <Image
+                      src={item.logoUrl}
+                      alt={`${item.company} logo`}
+                      width={48}
+                      height={48}
+                      className="rounded-full transition-all duration-300 group-hover:scale-110"
+                      data-ai-hint="company logo"
+                    />
+                </div>
+                <div className="flex-grow ml-20">
+                  <DialogTrigger asChild>
+                    <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
+                      <CardHeader>
+                        <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                            <p className="font-medium text-primary mt-1">{item.company}</p>
+                            <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                </div>
               </div>
-              <div className="flex-grow ml-20">
-                <Card className="transition-all duration-300 group-hover:shadow-lg">
-                  <CardHeader>
-                    <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                      <div>
-                        <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                        <p className="font-medium text-primary mt-1">{item.company}</p>
-                        <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+              <ExperienceModal {...item} />
+            </Dialog>
           ))}
         </div>
       </div>
@@ -279,13 +315,13 @@ function ProjectsSection() {
                   {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
                 </div>
               </CardContent>
-              <CardFooter className="p-4 pt-0">
+              <CardDescription className="p-4 pt-0">
                 <Button asChild variant="outline" size="sm" className="w-full">
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2" /> View Code
                   </a>
                 </Button>
-              </CardFooter>
+              </CardDescription>
             </Card>
         ))}
       </div>
