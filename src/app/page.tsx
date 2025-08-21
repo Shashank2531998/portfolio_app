@@ -15,6 +15,7 @@ import { InteractiveBlurOverlay } from "@/components/interactive-blur-overlay";
 import { ExperienceModal } from "@/components/experience-modal";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
+import { TypewriterEffect } from "@/components/typewriter-effect";
 
 const experienceData = [
   {
@@ -221,6 +222,8 @@ export default function Home() {
 }
 
 function HeroSection() {
+    const taglines = ["AI Enthusiast.", "Full-Stack Developer.", "Problem Solver."];
+
     return (
     <section id="home" className="relative group min-h-screen flex items-center justify-center text-center overflow-hidden py-20 md:py-32">
         <div className="absolute inset-0 z-0">
@@ -241,9 +244,9 @@ function HeroSection() {
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground font-headline">
               Shashank
             </h1>
-            <h2 className="text-2xl font-semibold text-primary font-code">
-              Software Engineer
-            </h2>
+            <div className="h-10">
+                <TypewriterEffect taglines={taglines} />
+            </div>
             <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
               I'm a passionate software engineer specializing in building modern, responsive, and scalable web applications.
             </p>
