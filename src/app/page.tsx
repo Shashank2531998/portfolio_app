@@ -111,10 +111,10 @@ const projectsData = [
 ];
 
 const skillsData = {
-  "Programming Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
+  "Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
   "Machine Learning & AI": ["PyTorch", "OpenCV", "ROS2"],
   "Web Development": ["Django/DRF (Proficient)", "React", "Redux", "Angular"],
-  "Tools & Monitoring": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
+  "Dev Tools": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
 };
 
 
@@ -317,10 +317,10 @@ function EducationSection() {
 }
 
 const skillIcons: { [key: string]: React.ElementType } = {
-  "Programming Languages & Databases": Database,
+  "Languages & Databases": Database,
   "Machine Learning & AI": BrainCircuit,
   "Web Development": Globe,
-  "Tools & Monitoring": Wrench,
+  "Dev Tools": Wrench,
 };
 
 function SkillsSection() {
