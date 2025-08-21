@@ -57,16 +57,17 @@ export function Header() {
       isScrolled ? "border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "border-transparent bg-background"
     )}>
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
-          <Code className="h-6 w-6 text-primary" />
-          <span className="font-headline">Shashank</span>
-        </Link>
-        
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
+            <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
+              <Code className="h-6 w-6 text-primary" />
+              <span className="font-headline">Shashank</span>
+            </Link>
             <nav className="hidden md:flex items-center gap-6">
                 <NavContent />
             </nav>
-
+        </div>
+        
+        <div className="flex items-center gap-4">
             {/* Mobile Nav */}
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
