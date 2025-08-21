@@ -12,6 +12,7 @@ interface Node {
 }
 
 interface Edge {
+  id: string;
   from: Node;
   to: Node;
 }
@@ -32,6 +33,7 @@ const NeuralNetworkCanvas: React.FC = () => {
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameId = useRef<number>();
   const mousePos = useRef({ x: -9999, y: -9999 });
+  const activeEdges = useRef(new Set<string>());
 
   const [themeColors, setThemeColors] = useState({
     primary: "hsl(240 5.9% 10%)",
@@ -108,13 +110,14 @@ const NeuralNetworkCanvas: React.FC = () => {
         if (fromNode.layer < layerCount - 1) {
           nodes.forEach(toNode => {
             if (toNode.layer === fromNode.layer + 1) {
-              edges.push({ from: fromNode, to: toNode });
+              edges.push({ id: `${fromNode.id}-${toNode.id}`, from: fromNode, to: toNode });
             }
           });
         }
       }
       networkRef.current = { nodes, edges };
       particlesRef.current = [];
+      activeEdges.current.clear();
     };
 
     window.addEventListener("resize", initializeNetwork);
@@ -159,32 +162,36 @@ const NeuralNetworkCanvas: React.FC = () => {
       // Spawn new particles
       if (particlesRef.current.length < maxParticles && Math.random() < 0.5) {
         const edge = edges[Math.floor(Math.random() * edges.length)];
-        particlesRef.current.push({
-          id: `${edge.from.id}-${edge.to.id}-${Date.now()}`,
-          x: edge.from.x,
-          y: edge.from.y,
-          progress: 0,
-          edge: edge,
-          speed: 0.001 + Math.random() * 0.001,
-          isComplete: false,
-        });
+        if (!activeEdges.current.has(edge.id)) {
+            activeEdges.current.add(edge.id);
+            particlesRef.current.push({
+              id: `${edge.id}-${Date.now()}`,
+              x: edge.from.x,
+              y: edge.from.y,
+              progress: 0,
+              edge: edge,
+              speed: (0.00005 + Math.random() * 0.00005),
+              isComplete: false,
+            });
+        }
       }
 
       // Update and draw particles & lighted edges
-      particlesRef.current = particlesRef.current.filter(p => !p.isComplete);
-      particlesRef.current.forEach(p => {
+      particlesRef.current.forEach((p, index) => {
         p.progress += p.speed * (deltaTime / 16.67);
         if (p.progress >= 1) {
           p.isComplete = true;
+          activeEdges.current.delete(p.edge.id);
         }
         p.x = p.edge.from.x + (p.edge.to.x - p.edge.from.x) * p.progress;
         p.y = p.edge.from.y + (p.edge.to.y - p.edge.from.y) * p.progress;
 
         const opacity = Math.sin(p.progress * Math.PI);
-
+        
+        const lightPosition = Math.max(0, Math.min(1, p.progress));
+        
         // Draw lighted edge
         const gradient = ctx.createLinearGradient(p.edge.from.x, p.edge.from.y, p.edge.to.x, p.edge.to.y);
-        const lightPosition = Math.max(0, Math.min(1, p.progress));
         const lightWidth = 0.1;
 
         gradient.addColorStop(Math.max(0, lightPosition - lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
@@ -204,6 +211,9 @@ const NeuralNetworkCanvas: React.FC = () => {
         ctx.fillStyle = `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
         ctx.fill();
       });
+      
+      particlesRef.current = particlesRef.current.filter(p => !p.isComplete);
+
 
       // Update and draw nodes
       nodes.forEach(node => {
