@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from "next/image";
@@ -131,7 +130,8 @@ const skillsData = {
 
 const achievementsData = [
     {
-        title: "First Place, National Hackathon 2023",
+        title: "First Place, National Hackathon",
+        date: "2023",
         description: "Led a team to victory by developing an innovative solution for urban mobility.",
         details: [
             "Developed a real-time transit tracking application using React Native and Firebase.",
@@ -142,6 +142,7 @@ const achievementsData = [
     },
     {
         title: "Published Research Paper on AI Ethics",
+        date: "2022",
         description: "Co-authored a paper on the ethical implications of autonomous decision-making systems.",
         details: [
             "Conducted extensive literature reviews on AI ethics and algorithmic bias.",
@@ -151,6 +152,7 @@ const achievementsData = [
     },
      {
         title: "Top-Rated Mentor at Innovate Co.",
+        date: "2021",
         description: "Recognized for providing exceptional guidance and support to junior developers.",
         details: [
             "Mentored three junior developers, helping them onboard and grow their technical skills.",
@@ -456,7 +458,10 @@ function AchievementsSection() {
                         <DialogTrigger asChild>
                             <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                 <CardHeader>
+                                  <div className="flex justify-between items-start">
                                     <CardTitle className="text-lg">{achievement.title}</CardTitle>
+                                    <span className="text-sm text-muted-foreground font-semibold">{achievement.date}</span>
+                                  </div>
                                     <CardDescription>{achievement.description}</CardDescription>
                                 </CardHeader>
                             </Card>
@@ -517,3 +522,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
