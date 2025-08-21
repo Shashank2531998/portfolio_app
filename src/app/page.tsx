@@ -110,9 +110,10 @@ const projectsData = [
 ];
 
 const skillsData = {
-  "Frontend": ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Redux"],
-  "Backend": ["Node.js", "Express", "Python", "Flask", "Firebase", "MongoDB", "SQL"],
-  "Tools & DevOps": ["Git", "GitHub", "Docker", "Vercel", "AWS", "CI/CD"],
+  "Programming Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
+  "Machine Learning & AI": ["PyTorch", "OpenCV", "ROS2"],
+  "Web Development": ["Django/DRF (Proficient)", "React", "Redux", "Angular"],
+  "Tools & Monitoring": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
 };
 
 
