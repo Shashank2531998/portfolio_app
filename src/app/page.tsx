@@ -368,9 +368,9 @@ function TimelineGraphic({ item }: { item: any }) {
 
 function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 md:py-32 bg-secondary">
+    <section id="experience" className="py-16 md:py-24 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-16 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Briefcase /> Work Experience
           </h2>
@@ -380,7 +380,7 @@ function ExperienceSection() {
         </div>
         <div className="relative">
           <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-16">
+          <div className="space-y-8">
             {experienceData.map((item, index) => (
               <TimelineItem 
                 key={index} 
@@ -399,9 +399,9 @@ function ExperienceSection() {
 
 function EducationSection() {
   return (
-    <section id="education" className="py-20 md:py-32">
+    <section id="education" className="py-16 md:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-16 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <GraduationCap /> Education
           </h2>
@@ -411,7 +411,7 @@ function EducationSection() {
         </div>
         <div className="relative">
            <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-16">
+          <div className="space-y-8">
             {educationData.map((item, index) => (
                <TimelineItem 
                 key={index} 
@@ -668,7 +668,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
-
-    
