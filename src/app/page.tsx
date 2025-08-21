@@ -349,14 +349,16 @@ function TimelineGraphic({ item }: { item: any }) {
         <div className="w-16 flex-shrink-0 flex justify-center">
             <div className="w-0.5 h-full bg-border relative">
                 <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-secondary p-1 rounded-full ring-8 ring-background">
-                    <Image
-                      src={item.logoUrl}
-                      alt={`${item.company} logo`}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                      data-ai-hint="company logo"
-                    />
+                    {item.logoUrl && (
+                        <Image
+                            src={item.logoUrl}
+                            alt={`${item.company} logo`}
+                            width={40}
+                            height={40}
+                            className="rounded-full"
+                            data-ai-hint="company logo"
+                        />
+                    )}
                 </div>
             </div>
         </div>
@@ -532,10 +534,10 @@ function AchievementsSection() {
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                     <CardHeader>
-                                      <div className="flex justify-between items-start gap-4">
-                                        <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                                        <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{achievement.date}</span>
-                                      </div>
+                                        <div className="flex justify-between items-start gap-4">
+                                            <CardTitle className="text-lg">{achievement.title}</CardTitle>
+                                            <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{achievement.date}</span>
+                                        </div>
                                         <CardDescription className="pt-1">{achievement.description}</CardDescription>
                                     </CardHeader>
                                 </Card>
@@ -666,5 +668,7 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
