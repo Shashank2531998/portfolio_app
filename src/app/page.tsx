@@ -203,9 +203,9 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
+        <AboutSection />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20 md:space-y-24 lg:space-y-28">
-            <AboutSection />
+          <div className="space-y-20 md:space-y-24 lg:space-y-28 py-20 md:py-24 lg:py-28">
             <ExperienceSection />
             <EducationSection />
             <SkillsSection />
@@ -268,8 +268,9 @@ function HeroSection() {
 
 function AboutSection() {
     return (
-        <section id="about">
-            <div className="space-y-4 mb-8">
+        <section id="about" className="py-20 md:py-24 lg:py-28">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="space-y-4">
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
                     <User /> About Me
                 </h2>
@@ -277,6 +278,7 @@ function AboutSection() {
                     I am a results-driven Software Engineer with a passion for developing innovative software solutions. With a strong foundation in computer science principles and a keen eye for detail, I specialize in building scalable, high-performance web applications. I thrive in collaborative environments and am dedicated to continuous learning and improvement. My goal is to leverage my skills to create technology that makes a meaningful impact.
                 </p>
             </div>
+          </div>
         </section>
     );
 }
