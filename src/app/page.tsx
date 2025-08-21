@@ -1,10 +1,9 @@
 
-
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity, List } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -166,15 +165,18 @@ const achievementsData = [
 const extracurricularData = [
     {
         title: "Coding Club President",
-        description: "Organized weekly workshops, coding competitions, and guest speaker events for over 100 members.",
+        description: "Organized weekly workshops, coding competitions, and guest speaker events.",
+        details: ["Led a team of 10 students to manage club activities for over 100 members.", "Increased club membership by 40% through targeted outreach and engaging events."],
     },
     {
         title: "Hackathon Volunteer",
         description: "Mentored participants and assisted with logistics at the annual university hackathon.",
+        details: ["Provided technical guidance to 5+ teams on topics ranging from web development to machine learning.", "Assisted event organizers with setup, registration, and troubleshooting to ensure a smooth experience."],
     },
     {
         title: "Open Source Contributor",
         description: "Contributed to several open-source projects on GitHub, focusing on documentation and bug fixes.",
+        details: ["Submitted pull requests to popular libraries like `react` and `tailwindcss`.", "Improved documentation clarity by adding code examples and tutorials."]
     },
 ];
 
@@ -501,23 +503,31 @@ function ExtracurricularSection() {
         <section id="extracurricular">
             <div className="space-y-4 mb-8">
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-                    <Activity /> Extracurricular Activities
+                    <List /> Extracurricular Activities
                 </h2>
                 <p className="text-muted-foreground md:text-lg">
-                    My involvement in activities outside of work and academics.
+                    My involvement in activities outside of work and academics. Click on an entry to see more.
                 </p>
             </div>
-            <Card>
-                <CardContent className="p-6 space-y-4">
-                    {extracurricularData.map((activity, index) => (
-                        <div key={index}>
-                            <h3 className="font-semibold text-foreground">{activity.title}</h3>
-                            <p className="text-muted-foreground text-sm">{activity.description}</p>
-                            {index < extracurricularData.length - 1 && <Separator className="mt-4" />}
-                        </div>
-                    ))}
-                </CardContent>
-            </Card>
+            <div className="space-y-4">
+                {extracurricularData.map((activity, index) => (
+                    <Dialog key={index}>
+                        <DialogTrigger asChild>
+                            <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
+                                <CardContent className="p-4">
+                                    <h3 className="font-semibold text-foreground">{activity.title}</h3>
+                                    <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
+                                </CardContent>
+                            </Card>
+                        </DialogTrigger>
+                         <ExperienceModal
+                            title={activity.title}
+                            subtitle="Extracurricular Activity"
+                            details={activity.details}
+                        />
+                    </Dialog>
+                ))}
+            </div>
         </section>
     );
 }
@@ -565,3 +575,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
