@@ -417,8 +417,9 @@ function ContactSection() {
           Have a project in mind, or just want to say hello? Reach out via email, find me on social media, or send me a message using the form.
         </p>
       </div>
-      <div className="max-w-4xl grid md:grid-cols-2 gap-8 items-start">
+      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-start">
         <div className="space-y-6">
+          <h3 className="text-xl font-semibold font-headline text-primary">Get in Touch</h3>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <Mail className="w-5 h-5 text-primary" />
@@ -439,5 +440,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
