@@ -181,6 +181,26 @@ function HeroSection() {
   );
 }
 
+function getDuration(dateString: string) {
+    const [start, end] = dateString.split(' - ');
+    const startDate = new Date(parseInt(start), 0);
+    const endDate = end.toLowerCase() === 'present' ? new Date() : new Date(parseInt(end), 11);
+    
+    let years = endDate.getFullYear() - startDate.getFullYear();
+    let months = endDate.getMonth() - startDate.getMonth();
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+    
+    if (months > 0) {
+        return `${years > 0 ? `${years} yr ` : ''}${months} mos`;
+    } else {
+        return `${years} yr${years > 1 ? 's' : ''}`;
+    }
+}
+
 function ExperienceSection() {
   return (
     <section id="experience">
@@ -216,7 +236,9 @@ function ExperienceSection() {
                           <div>
                             <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
                             <p className="font-medium text-primary mt-1">{item.company}</p>
-                            <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
+                            <p className="font-semibold text-sm text-muted-foreground mt-1">
+                              {item.date} &middot; <span className="font-normal">{getDuration(item.date)}</span>
+                            </p>
                           </div>
                         </div>
                       </CardHeader>
@@ -401,3 +423,6 @@ function ContactSection() {
     </section>
   );
 }
+
+
+    
