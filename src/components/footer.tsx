@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Code, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ export function Footer() {
 
   return (
     <footer className="border-t mt-12">
-      <div className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 py-8 md:px-6 text-center">
+      <div className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 py-12 md:px-6 text-center">
         <p className="text-sm text-muted-foreground">
           &copy; {currentYear} Shashank. All rights reserved.
         </p>
@@ -18,3 +19,5 @@ export function Footer() {
     </footer>
   );
 }
+
+    

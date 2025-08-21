@@ -249,7 +249,7 @@ function HeroSection() {
             <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
               I'm a passionate software engineer specializing in building modern, responsive, and scalable web applications.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg">
                 <a href="#contact">
                   Contact Me <Mail className="ml-2" />
@@ -268,9 +268,9 @@ function HeroSection() {
 
 function AboutSection() {
     return (
-        <section id="about" className="py-20 md:py-24 lg:py-28 bg-secondary">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-                <div className="text-center space-y-4 max-w-4xl">
+        <section id="about" className="py-20 md:py-32">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center space-y-4 max-w-4xl mx-auto">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
                         <User /> About Me
                     </h2>
@@ -305,9 +305,9 @@ function getDuration(dateString: string) {
 
 function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 md:py-24 lg:py-28">
+    <section id="experience" className="py-20 md:py-32 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Briefcase /> Work Experience
           </h2>
@@ -315,13 +315,13 @@ function ExperienceSection() {
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
+        <div className="relative max-w-3xl mx-auto">
           <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-8">
+          <div className="space-y-10">
             {experienceData.map((item, index) => (
               <Dialog key={index}>
-                <div className="relative group flex items-start gap-x-6">
-                   <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
+                <div className="relative group flex items-start gap-x-8">
+                   <div className="absolute left-6 top-6 size-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
                       <Image
                         src={item.logoUrl}
                         alt={`${item.company} logo`}
@@ -331,7 +331,7 @@ function ExperienceSection() {
                         data-ai-hint="company logo"
                       />
                   </div>
-                  <div className="flex-grow ml-20">
+                  <div className="flex-grow pl-16">
                     <DialogTrigger asChild>
                       <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
                         <CardHeader>
@@ -365,9 +365,9 @@ function ExperienceSection() {
 
 function EducationSection() {
   return (
-    <section id="education" className="py-20 md:py-24 lg:py-28 bg-secondary">
+    <section id="education" className="py-20 md:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <GraduationCap /> Education
           </h2>
@@ -375,13 +375,13 @@ function EducationSection() {
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
+        <div className="relative max-w-3xl mx-auto">
           <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-8">
+          <div className="space-y-10">
             {educationData.map((item, index) => (
               <Dialog key={index}>
-                <div className="relative group flex items-start gap-x-6">
-                  <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-background flex items-center justify-center ring-8 ring-secondary -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
+                <div className="relative group flex items-start gap-x-8">
+                  <div className="absolute left-6 top-6 size-12 rounded-full bg-background flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
                      <Image
                         src={item.logoUrl}
                         alt={`${item.company} logo`}
@@ -391,7 +391,7 @@ function EducationSection() {
                         data-ai-hint="university building"
                       />
                   </div>
-                  <div className="flex-grow ml-20">
+                  <div className="flex-grow pl-16">
                     <DialogTrigger asChild>
                       <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
                         <CardHeader>
@@ -429,9 +429,9 @@ const skillIcons: { [key: string]: React.ElementType } = {
 
 function SkillsSection() {
   return (
-    <section id="skills" className="py-20 md:py-24 lg:py-28">
+    <section id="skills" className="py-20 md:py-32 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Layers /> Skills
           </h2>
@@ -439,7 +439,7 @@ function SkillsSection() {
             Technologies and tools I work with.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
           {Object.entries(skillsData).map(([category, skills]) => {
             const Icon = skillIcons[category] || Code;
             return (
@@ -465,9 +465,9 @@ function SkillsSection() {
 
 function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 md:py-24 lg:py-28 bg-secondary">
+    <section id="projects" className="py-20 md:py-32">
        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
               <FolderKanban /> Projects
           </h2>
@@ -475,15 +475,17 @@ function ProjectsSection() {
             A selection of projects that showcase my skills.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {projectsData.map((project) => (
             <Dialog key={project.title}>
               <DialogTrigger asChild>
                 <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
-                  <CardContent className="p-4 flex-1">
-                    <h3 className="text-lg font-bold font-headline">{project.title}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                  <CardHeader>
+                    <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
+                    <CardDescription className="pt-1">{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
                       {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
                     </div>
                   </CardContent>
@@ -507,9 +509,9 @@ function ProjectsSection() {
 
 function AchievementsSection() {
     return (
-        <section id="achievements" className="py-20 md:py-24 lg:py-28">
+        <section id="achievements" className="py-20 md:py-32 bg-secondary">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="space-y-4 mb-8 text-center">
+                <div className="space-y-4 mb-12 text-center">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
                         <Award /> Achievements
                     </h2>
@@ -517,17 +519,17 @@ function AchievementsSection() {
                         My key accomplishments and recognitions.
                     </p>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-4 max-w-3xl mx-auto">
                     {achievementsData.map((achievement, index) => (
                         <Dialog key={index}>
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                     <CardHeader>
-                                      <div className="flex justify-between items-start">
+                                      <div className="flex justify-between items-start gap-4">
                                         <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                                        <span className="text-sm text-muted-foreground font-semibold">{achievement.date}</span>
+                                        <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{achievement.date}</span>
                                       </div>
-                                        <CardDescription>{achievement.description}</CardDescription>
+                                        <CardDescription className="pt-1">{achievement.description}</CardDescription>
                                     </CardHeader>
                                 </Card>
                             </DialogTrigger>
@@ -547,9 +549,9 @@ function AchievementsSection() {
 
 function ExtracurricularSection() {
     return (
-        <section id="extracurricular" className="py-20 md:py-24 lg:py-28 bg-secondary">
+        <section id="extracurricular" className="py-20 md:py-32">
              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="space-y-4 mb-8 text-center">
+                <div className="space-y-4 mb-12 text-center">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
                         <List /> Extracurricular Activities
                     </h2>
@@ -557,13 +559,14 @@ function ExtracurricularSection() {
                         My involvement in activities outside of work and academics. Click on an entry to see more.
                     </p>
                 </div>
-                <Card>
+                <Card className="max-w-3xl mx-auto">
                     <CardContent className="p-2">
                         {extracurricularData.map((activity, index) => (
                             <Dialog key={index}>
                                 <DialogTrigger asChild>
-                                    <div className="p-4 rounded-md transition-all duration-200 hover:bg-background/50 cursor-pointer">
-                                        <p className="text-muted-foreground">{activity.description}</p>
+                                    <div className="p-4 rounded-md transition-all duration-200 hover:bg-muted/50 cursor-pointer">
+                                        <h3 className="font-semibold text-foreground">{activity.title}</h3>
+                                        <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
                                     </div>
                                 </DialogTrigger>
                                 <ExperienceModal
@@ -582,9 +585,9 @@ function ExtracurricularSection() {
 
 function HobbiesSection() {
   return (
-    <section id="hobbies" className="py-20 md:py-24 lg:py-28">
+    <section id="hobbies" className="py-20 md:py-32 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Heart /> Hobbies
           </h2>
@@ -592,7 +595,7 @@ function HobbiesSection() {
             A few things I enjoy doing in my free time.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
           {hobbiesData.map((hobby) => {
             const Icon = hobby.icon;
             return (
@@ -616,9 +619,9 @@ function HobbiesSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="py-20 md:py-24 lg:py-28 bg-secondary">
+    <section id="contact" className="py-20 md:py-32">
        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
+        <div className="space-y-4 mb-12 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Mail /> Contact
           </h2>
@@ -646,11 +649,8 @@ function ContactSection() {
                     </div>
                   </div>
               </div>
-               <div className="relative">
-                  <Separator orientation="vertical" className="absolute left-0 top-0 h-full hidden md:block" />
-                  <div className="p-8">
-                      <ContactForm />
-                  </div>
+               <div className="p-8 md:border-l">
+                  <ContactForm />
               </div>
             </div>
           </CardContent>
@@ -659,9 +659,5 @@ function ContactSection() {
     </section>
   );
 }
-
-    
-
-    
 
     
