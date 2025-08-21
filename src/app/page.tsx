@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2 } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -287,7 +287,7 @@ function TimelineItem({ item, index, type, detailsHeading, isEducation = false }
   return (
     <div className="flex items-center w-full">
       {/* ---DESKTOP VIEW--- */}
-      <div className="hidden md:flex w-full items-start">
+      <div className="hidden md:flex w-full items-center">
         {isLeft ? (
           <>
             <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation} />
@@ -319,7 +319,7 @@ function TimelineCard({ item, detailsHeading, isEducation }: { item: any, detail
             <Dialog>
                 <DialogTrigger asChild>
                     <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full">
-                        <CardHeader>
+                        <CardHeader className="p-4">
                             <div className="flex justify-between items-start">
                                 <div className="flex-grow">
                                     <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
@@ -328,7 +328,7 @@ function TimelineCard({ item, detailsHeading, isEducation }: { item: any, detail
                                 <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{item.date}</p>
                             </div>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="p-4 pt-0">
                             <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
                         </CardContent>
                     </Card>
@@ -349,17 +349,15 @@ function TimelineGraphic({ item }: { item: any }) {
     return (
         <div className="relative w-16 flex-shrink-0 flex justify-center">
             <div className="w-0.5 h-full bg-border" />
-            <div className="absolute top-8 left-1/2 -translate-x-1/2 bg-secondary p-1 rounded-full ring-8 ring-background">
-                {item.logoUrl && (
-                    <Image
-                        src={item.logoUrl}
-                        alt={`${item.company} logo`}
-                        width={40}
-                        height={40}
-                        className="rounded-full"
-                        data-ai-hint="company logo"
-                    />
-                )}
+            <div className="absolute top-1/2 -translate-y-1/2 bg-secondary p-1.5 rounded-full ring-8 ring-background">
+                <Image
+                    src={item.logoUrl}
+                    alt={`${item.company} logo`}
+                    width={48}
+                    height={48}
+                    className="rounded-full"
+                    data-ai-hint="company logo"
+                />
             </div>
         </div>
     )
@@ -370,7 +368,7 @@ function ExperienceSection() {
   return (
     <section id="experience" className="py-12 md:py-20 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-16 text-center">
+        <div className="space-y-4 mb-8 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Briefcase /> Work Experience
           </h2>
@@ -380,7 +378,7 @@ function ExperienceSection() {
         </div>
         <div className="relative">
           <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-16">
+          <div className="space-y-4">
             {experienceData.map((item, index) => (
               <TimelineItem 
                 key={index} 
@@ -401,7 +399,7 @@ function EducationSection() {
   return (
     <section id="education" className="py-12 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-16 text-center">
+        <div className="space-y-4 mb-8 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <GraduationCap /> Education
           </h2>
@@ -411,7 +409,7 @@ function EducationSection() {
         </div>
         <div className="relative">
            <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-16">
+          <div className="space-y-4">
             {educationData.map((item, index) => (
                <TimelineItem 
                 key={index} 
