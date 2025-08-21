@@ -109,7 +109,7 @@ const NeuralNetworkCanvas: React.FC = () => {
       ctx.fillStyle = themeColors.background;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      const totalAnimationDuration = 2000; // Total duration in ms
+      const totalAnimationDuration = 4000; // Total duration in ms
 
       // ---- Update animation state ----
       const progress = Math.min(elapsedTime / totalAnimationDuration, 1);
