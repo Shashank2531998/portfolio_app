@@ -152,21 +152,21 @@ function ExperienceSection() {
         </p>
       </div>
       <div className="relative">
-        <div className="absolute left-5 top-2 h-full w-0.5 bg-border -translate-x-1/2" />
+        <div className="absolute left-12 top-2 h-full w-0.5 bg-border -translate-x-1/2" />
         <div className="space-y-12">
           {experienceData.map((item, index) => (
             <div key={index} className="relative group flex items-start gap-x-6">
-              <div className="absolute left-5 top-2 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2">
+              <div className="absolute left-12 top-2 h-24 w-24 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2">
                  <Image
-                    src="https://placehold.co/180x180.png"
+                    src="https://placehold.co/96x96.png"
                     alt={`${item.company} logo`}
-                    width={180}
-                    height={180}
+                    width={96}
+                    height={96}
                     className="rounded-full"
                     data-ai-hint="company logo"
                   />
               </div>
-              <div className="flex-grow ml-20">
+              <div className="flex-grow ml-32">
                 <Card className="transition-all duration-300 group-hover:shadow-lg">
                   <CardHeader>
                     <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
