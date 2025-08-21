@@ -88,18 +88,35 @@ const projectsData = [
     description: "A comprehensive project management tool designed to streamline team workflows. Features include task tracking, real-time collaboration, and reporting.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase"],
     githubUrl: "https://github.com",
+    details: [
+        "Developed a real-time collaborative text editor using WebSockets.",
+        "Integrated with Firebase for authentication and database services.",
+        "Implemented a drag-and-drop interface for task management."
+    ],
+    images: [
+        "https://placehold.co/1200x800.png",
+    ],
   },
   {
     title: "E-commerce Platform",
     description: "A fully-featured e-commerce site with a custom CMS for product management. Integrated with Stripe for secure payments.",
     tags: ["React", "Node.js", "Express", "MongoDB"],
     githubUrl: "https://github.com",
+    details: [
+        "Built a RESTful API with Node.js and Express for the backend.",
+        "Designed and implemented a MongoDB schema for products and users.",
+        "Integrated Stripe for secure payment processing."
+    ],
   },
   {
     title: "AI Content Generator",
     description: "A web application that leverages generative AI to create marketing copy and blog posts. Built with Python, Flask, and the OpenAI API.",
     tags: ["Python", "Flask", "AI", "React"],
-    githubUrl: "https://github.com",
+    details: [
+        "Developed a Flask backend to handle AI content generation requests.",
+        "Utilized the OpenAI API to generate high-quality text content.",
+        "Created a user-friendly React interface for interacting with the AI."
+    ],
   },
 ];
 
@@ -244,7 +261,7 @@ function ExperienceSection() {
                   </DialogTrigger>
                 </div>
               </div>
-              <ExperienceModal {...item} />
+              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} />
             </Dialog>
           ))}
         </div>
@@ -300,7 +317,7 @@ function EducationSection() {
                   </DialogTrigger>
                 </div>
               </div>
-              <ExperienceModal {...item} />
+              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} />
             </Dialog>
           ))}
         </div>
@@ -363,22 +380,26 @@ function ProjectsSection() {
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectsData.map((project) => (
-            <Card key={project.title} className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <CardContent className="p-4 flex-1">
-                <h3 className="text-lg font-bold font-headline">{project.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
-                </div>
-              </CardContent>
-              <CardDescription className="p-4 pt-0">
-                <Button asChild variant="outline" size="sm" className="w-full">
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2" /> View Code
-                  </a>
-                </Button>
-              </CardDescription>
-            </Card>
+          <Dialog key={project.title}>
+            <DialogTrigger asChild>
+              <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+                <CardContent className="p-4 flex-1">
+                  <h3 className="text-lg font-bold font-headline">{project.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
+                  </div>
+                </CardContent>
+              </Card>
+            </DialogTrigger>
+            <ExperienceModal 
+              title={project.title} 
+              subtitle={project.tags.join(' • ')} 
+              images={project.images} 
+              details={project.details}
+              githubUrl={project.githubUrl}
+            />
+          </Dialog>
         ))}
       </div>
     </section>

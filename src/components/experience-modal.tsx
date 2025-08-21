@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogFooter,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -15,22 +16,24 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Github } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface ExperienceModalProps {
-  role: string;
-  company: string;
+  title: string;
+  subtitle: string;
   images?: string[];
   details: string[];
+  githubUrl?: string;
 }
 
-export function ExperienceModal({ role, company, images, details }: ExperienceModalProps) {
+export function ExperienceModal({ title, subtitle, images, details, githubUrl }: ExperienceModalProps) {
   return (
     <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
       <DialogHeader className="flex-shrink-0">
-        <DialogTitle className="text-2xl font-headline">{role}</DialogTitle>
+        <DialogTitle className="text-2xl font-headline">{title}</DialogTitle>
         <DialogDescription className="text-lg font-medium text-primary">
-          {company}
+          {subtitle}
         </DialogDescription>
       </DialogHeader>
       <div className="flex-grow overflow-y-auto pr-4 -mr-4 space-y-6">
@@ -45,7 +48,7 @@ export function ExperienceModal({ role, company, images, details }: ExperienceMo
               {images.map((src, index) => (
                 <CarouselItem key={index}>
                   <div className="aspect-video relative rounded-lg overflow-hidden">
-                    <Image src={src} alt={`${company} work showcase ${index + 1}`} layout="fill" objectFit="cover" data-ai-hint="office workspace" />
+                    <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} layout="fill" objectFit="cover" data-ai-hint="office workspace" />
                   </div>
                 </CarouselItem>
               ))}
@@ -66,6 +69,17 @@ export function ExperienceModal({ role, company, images, details }: ExperienceMo
           </ul>
         </div>
       </div>
+       {githubUrl && (
+        <DialogFooter className="flex-shrink-0 pt-4">
+          <Button asChild>
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+              <Github className="mr-2" /> View Code
+            </a>
+          </Button>
+        </DialogFooter>
+      )}
     </DialogContent>
   );
 }
+
+    
