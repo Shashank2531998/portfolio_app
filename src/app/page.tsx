@@ -8,6 +8,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
 import NeuralNetworkCanvas from "@/components/neural-network-canvas";
+import { InteractiveBlurOverlay } from "@/components/interactive-blur-overlay";
 
 const experienceData = [
   {
@@ -92,11 +93,11 @@ export default function Home() {
 }
 
 function HeroSection() {
-  return (
+    return (
     <section id="home" className="relative group min-h-screen flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
              <NeuralNetworkCanvas />
-            <div className="absolute inset-0 bg-background/60 backdrop-blur-sm transition-all duration-300 group-hover:backdrop-blur-none"></div>
+             <InteractiveBlurOverlay />
         </div>
         <div className="relative z-10 space-y-4 px-4">
             <div className="mx-auto mb-8">
