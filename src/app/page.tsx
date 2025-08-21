@@ -281,31 +281,94 @@ function AboutSection() {
     );
 }
 
-function getDuration(dateString: string) {
-    const [start, end] = dateString.split(' - ');
-    const startDate = new Date(parseInt(start), 0);
-    const endDate = end.toLowerCase() === 'present' ? new Date() : new Date(parseInt(end), 11);
-    
-    let years = endDate.getFullYear() - startDate.getFullYear();
-    let months = endDate.getMonth() - startDate.getMonth();
+function TimelineItem({ item, index, type, detailsHeading, isEducation = false }: { item: any; index: number; type: string; detailsHeading: string, isEducation?: boolean }) {
+  const isLeft = index % 2 === 0;
 
-    if (months < 0) {
-        years--;
-        months += 12;
-    }
-    
-    if (months > 0) {
-        return `(${years > 0 ? `${years} yr ` : ''}${months} mos)`;
-    } else {
-        return `(${years} yr${years > 1 ? 's' : ''})`;
-    }
+  return (
+    <div className="flex items-center w-full">
+      {/* ---DESKTOP VIEW--- */}
+      <div className="hidden md:flex w-full">
+        {isLeft ? (
+          <>
+            <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation} />
+            <TimelineGraphic item={item} />
+            <div className="w-1/2" />
+          </>
+        ) : (
+          <>
+            <div className="w-1/2" />
+            <TimelineGraphic item={item} />
+            <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation} />
+          </>
+        )}
+      </div>
+
+      {/* ---MOBILE VIEW--- */}
+      <div className="flex md:hidden w-full pl-8 pr-4">
+         <TimelineGraphic item={item} />
+         <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation}/>
+      </div>
+    </div>
+  );
 }
+
+function TimelineCard({ item, detailsHeading, isEducation }: { item: any, detailsHeading: string, isEducation: boolean }) {
+    return (
+        <div className="w-full md:w-1/2 px-4">
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full">
+                        <CardHeader>
+                            <div className="flex justify-between items-start">
+                                <div className="flex-grow">
+                                    <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                                    <p className="font-medium text-primary mt-1">{item.company}</p>
+                                </div>
+                                <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{item.date}</p>
+                            </div>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                        </CardContent>
+                    </Card>
+                </DialogTrigger>
+                <ExperienceModal 
+                    title={item.role} 
+                    subtitle={item.company} 
+                    images={item.images} 
+                    details={item.details} 
+                    detailsHeading={detailsHeading}
+                />
+            </Dialog>
+        </div>
+    )
+}
+
+function TimelineGraphic({ item }: { item: any }) {
+    return (
+        <div className="w-16 flex-shrink-0 flex justify-center">
+            <div className="w-0.5 h-full bg-border relative">
+                <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-secondary p-1 rounded-full ring-8 ring-background">
+                    <Image
+                      src={item.logoUrl}
+                      alt={`${item.company} logo`}
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                      data-ai-hint="company logo"
+                    />
+                </div>
+            </div>
+        </div>
+    )
+}
+
 
 function ExperienceSection() {
   return (
     <section id="experience" className="py-20 md:py-32 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-12 text-center">
+        <div className="space-y-4 mb-16 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Briefcase /> Work Experience
           </h2>
@@ -313,37 +376,17 @@ function ExperienceSection() {
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-12">
+        <div className="relative">
+          <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-16">
             {experienceData.map((item, index) => (
-              <Dialog key={index}>
-                <DialogTrigger asChild>
-                  <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer max-w-2xl mx-auto">
-                    <CardHeader className="text-center">
-                       <div className="mx-auto bg-secondary p-2 rounded-full ring-8 ring-background mb-4">
-                          <Image
-                            src={item.logoUrl}
-                            alt={`${item.company} logo`}
-                            width={48}
-                            height={48}
-                            className="rounded-full"
-                            data-ai-hint="company logo"
-                          />
-                      </div>
-                      <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                      <p className="font-medium text-primary mt-1">{item.company}</p>
-                      <p className="font-semibold text-sm text-muted-foreground mt-1">
-                        {item.date} <span className="font-normal">{getDuration(item.date)}</span>
-                      </p>
-                    </CardHeader>
-                    <CardContent className="text-center">
-                      <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Contributions" />
-              </Dialog>
+              <TimelineItem 
+                key={index} 
+                item={item} 
+                index={index} 
+                type="experience"
+                detailsHeading="Key Contributions" 
+              />
             ))}
           </div>
         </div>
@@ -352,12 +395,11 @@ function ExperienceSection() {
   );
 }
 
-
 function EducationSection() {
   return (
     <section id="education" className="py-20 md:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-12 text-center">
+        <div className="space-y-4 mb-16 text-center">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <GraduationCap /> Education
           </h2>
@@ -365,35 +407,18 @@ function EducationSection() {
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-3xl mx-auto">
-           <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-12">
+        <div className="relative">
+           <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-16">
             {educationData.map((item, index) => (
-              <Dialog key={index}>
-                  <DialogTrigger asChild>
-                      <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer max-w-2xl mx-auto">
-                        <CardHeader className="text-center">
-                           <div className="mx-auto bg-secondary p-2 rounded-full ring-8 ring-background mb-4">
-                              <Image
-                                src={item.logoUrl}
-                                alt={`${item.company} logo`}
-                                width={48}
-                                height={48}
-                                className="rounded-full"
-                                data-ai-hint="university building"
-                              />
-                          </div>
-                          <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                          <p className="font-medium text-primary mt-1">{item.company}</p>
-                          <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
-                        </CardHeader>
-                        <CardContent className="text-center">
-                          <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-                        </CardContent>
-                      </Card>
-                    </DialogTrigger>
-                <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Coursework & Activities" />
-              </Dialog>
+               <TimelineItem 
+                key={index} 
+                item={item} 
+                index={index} 
+                type="education"
+                isEducation={true}
+                detailsHeading="Key Coursework & Activities" 
+              />
             ))}
           </div>
         </div>
@@ -641,3 +666,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
