@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
@@ -81,8 +81,8 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
-          <div className="space-y-16 md:space-y-20 lg:space-y-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-20 md:space-y-24 lg:space-y-28">
             <ExperienceSection />
             <EducationSection />
             <SkillsSection />
@@ -151,15 +151,22 @@ function ExperienceSection() {
           My professional journey.
         </p>
       </div>
-      <div className="relative border-l border-secondary/50 ml-3 space-y-12">
+      <div className="space-y-6">
         {experienceData.map((item, index) => (
-          <div key={index} className="relative group pl-8">
-            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
-            <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-            <h3 className="text-lg font-semibold text-foreground mt-1">{item.role}</h3>
-            <p className="font-medium text-primary">{item.company}</p>
-            <p className="mt-2 text-base text-muted-foreground leading-relaxed">{item.description}</p>
-          </div>
+          <Card key={index} className="transition-all duration-300 hover:shadow-lg">
+            <CardHeader>
+              <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                  <p className="font-medium text-primary">{item.company}</p>
+                </div>
+                <p className="font-semibold text-sm text-muted-foreground sm:text-right">{item.date}</p>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>
