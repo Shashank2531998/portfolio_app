@@ -326,7 +326,7 @@ function SkillsSection() {
           Technologies and tools I work with.
         </p>
       </div>
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         {Object.entries(skillsData).map(([category, skills]) => (
           <Card key={category}>
             <CardHeader>
@@ -424,6 +424,3 @@ function ContactSection() {
     </section>
   );
 }
-
-
-    
