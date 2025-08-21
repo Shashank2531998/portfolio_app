@@ -11,7 +11,7 @@ interface Node {
 
 const NeuralNetworkCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [nodes, setNodes] = useState<Node[]>([]);
+  const nodesRef = useRef<Node[]>([]);
   const [themeColors, setThemeColors] = useState({
     primary: "#00f6ff",
     background: "#0a0a0a",
@@ -19,10 +19,16 @@ const NeuralNetworkCanvas: React.FC = () => {
 
   // Set theme colors dynamically (optional)
   useEffect(() => {
-    const style = getComputedStyle(document.body);
     // Reading HSL value and using it directly.
-    const primaryColor = `hsl(${style.getPropertyValue('--primary')})`;
-    const backgroundColor = `hsl(${style.getPropertyValue('--background')})`;
+    const style = getComputedStyle(document.body);
+    const primaryHSL = style.getPropertyValue('--primary').trim();
+    const backgroundHSL = style.getPropertyValue('--background').trim();
+    
+    // Convert HSL string to a usable color format if needed, but for canvas it's often fine.
+    // Ensure fallback if CSS variables are not available.
+    const primaryColor = primaryHSL ? `hsl(${primaryHSL})` : "#00f6ff";
+    const backgroundColor = backgroundHSL ? `hsl(${backgroundHSL})` : "#0a0a0a";
+
     setThemeColors({ primary: primaryColor, background: backgroundColor });
   }, []);
 
@@ -39,23 +45,27 @@ const NeuralNetworkCanvas: React.FC = () => {
       if (parent) {
         canvas.width = parent.offsetWidth;
         canvas.height = parent.offsetHeight;
+        // Re-initialize nodes on resize
+        initializeNodes();
       }
     };
+    
+    const initializeNodes = () => {
+        const numNodes = Math.floor(canvas.width / 40);
+        const newNodes: Node[] = [];
+        for (let i = 0; i < numNodes; i++) {
+          newNodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.6,
+            vy: (Math.random() - 0.5) * 0.6,
+          });
+        }
+        nodesRef.current = newNodes;
+    };
+
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
-
-    // Initialize nodes
-    const numNodes = Math.floor(canvas.width / 40);
-    const newNodes: Node[] = [];
-    for (let i = 0; i < numNodes; i++) {
-      newNodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-      });
-    }
-    const nodesRef = { current: newNodes };
 
 
     let animationFrameId: number;
@@ -82,7 +92,7 @@ const NeuralNetworkCanvas: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
+        ctx.fillStyle = themeColors.primary;
         ctx.fill();
 
         // Draw fading edges
@@ -90,7 +100,7 @@ const NeuralNetworkCanvas: React.FC = () => {
           const otherNode = nodesRef.current[j];
           const dx = node.x - otherNode.x;
           const dy = node.y - otherNode.y;
-          const dist = Math.sqrt(dx * dx * dy * dy);
+          const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
