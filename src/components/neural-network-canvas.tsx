@@ -59,16 +59,18 @@ const NeuralNetworkCanvas: React.FC = () => {
       
       canvas.width = parent.offsetWidth;
       canvas.height = parent.offsetHeight;
+      
+      const horizontalPadding = canvas.width * 0.1; // 10% padding on each side
+      const drawingWidth = canvas.width - (2 * horizontalPadding);
 
       const nodes: Node[] = [];
       const edges: Edge[] = [];
       const layerCount = layerDefs.length;
       
-      // Adjust layer spacing to start from the very left edge
-      const layerSpacing = canvas.width / (layerCount - 1);
+      const layerSpacing = drawingWidth / (layerCount - 1);
 
       layerDefs.forEach((nodeCount, layerIndex) => {
-        const x = layerSpacing * layerIndex;
+        const x = horizontalPadding + (layerSpacing * layerIndex);
         const nodeSpacing = canvas.height / (nodeCount + 1);
         for (let i = 0; i < nodeCount; i++) {
           const y = nodeSpacing * (i + 1);
