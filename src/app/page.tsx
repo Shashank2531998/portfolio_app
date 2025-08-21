@@ -153,7 +153,7 @@ function ExperienceSection() {
       </div>
       <div className="relative">
         <div className="absolute left-12 top-2 h-full w-0.5 bg-border -translate-x-1/2" />
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experienceData.map((item, index) => (
             <div key={index} className="relative group flex items-start gap-x-6">
               <div className="absolute left-12 top-2 h-24 w-24 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2">
