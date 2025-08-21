@@ -270,16 +270,6 @@ function AboutSection() {
     return (
         <section id="about" className="py-20 md:py-24 lg:py-28 bg-secondary">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-                <div className="mb-12">
-                     <Image
-                        src="https://placehold.co/180x180.png"
-                        alt="Shashank's Portrait"
-                        width={240}
-                        height={240}
-                        className="rounded-full aspect-square object-cover border-4 border-background shadow-lg"
-                        data-ai-hint="professional portrait"
-                    />
-                </div>
                 <div className="text-center space-y-4 max-w-4xl">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
                         <User /> About Me
@@ -669,6 +659,8 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
 
