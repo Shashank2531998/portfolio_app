@@ -1,9 +1,10 @@
 
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -157,8 +158,23 @@ const achievementsData = [
         details: [
             "Mentored three junior developers, helping them onboard and grow their technical skills.",
             "Received the 'Mentor of the Year' award based on peer nominations and feedback.",
-            "Led workshops on clean code practices and effective debugging techniques.",
+            "Led workshops on clean code practices and an effective debugging techniques.",
         ],
+    },
+];
+
+const extracurricularData = [
+    {
+        title: "Coding Club President",
+        description: "Organized weekly workshops, coding competitions, and guest speaker events for over 100 members.",
+    },
+    {
+        title: "Hackathon Volunteer",
+        description: "Mentored participants and assisted with logistics at the annual university hackathon.",
+    },
+    {
+        title: "Open Source Contributor",
+        description: "Contributed to several open-source projects on GitHub, focusing on documentation and bug fixes.",
     },
 ];
 
@@ -175,6 +191,7 @@ export default function Home() {
             <SkillsSection />
             <ProjectsSection />
             <AchievementsSection />
+            <ExtracurricularSection />
             <ContactSection />
           </div>
         </div>
@@ -479,6 +496,32 @@ function AchievementsSection() {
     );
 }
 
+function ExtracurricularSection() {
+    return (
+        <section id="extracurricular">
+            <div className="space-y-4 mb-8">
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <Activity /> Extracurricular Activities
+                </h2>
+                <p className="text-muted-foreground md:text-lg">
+                    My involvement in activities outside of work and academics.
+                </p>
+            </div>
+            <Card>
+                <CardContent className="p-6 space-y-4">
+                    {extracurricularData.map((activity, index) => (
+                        <div key={index}>
+                            <h3 className="font-semibold text-foreground">{activity.title}</h3>
+                            <p className="text-muted-foreground text-sm">{activity.description}</p>
+                            {index < extracurricularData.length - 1 && <Separator className="mt-4" />}
+                        </div>
+                    ))}
+                </CardContent>
+            </Card>
+        </section>
+    );
+}
+
 function ContactSection() {
   return (
     <section id="contact">
@@ -522,5 +565,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
