@@ -30,6 +30,7 @@ interface ExperienceModalProps {
 }
 
 export function ExperienceModal({ title, subtitle, images, details, githubUrl, detailsHeading }: ExperienceModalProps) {
+  const isProjectModal = !!githubUrl;
   return (
     <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
       <DialogHeader className="flex-shrink-0">
@@ -37,7 +38,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
             {title || 'Details'}
         </DialogTitle>
         {subtitle && (
-          <DialogDescription className="text-lg font-medium text-primary">
+          <DialogDescription className={isProjectModal ? "text-sm text-muted-foreground" : "text-lg font-medium text-primary"}>
             {subtitle}
           </DialogDescription>
         )}

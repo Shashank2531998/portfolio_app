@@ -657,5 +657,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
