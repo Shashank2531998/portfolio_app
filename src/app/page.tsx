@@ -165,14 +165,17 @@ const achievementsData = [
 
 const extracurricularData = [
     {
+        title: "President, University Coding Club",
         description: "Organized weekly workshops, coding competitions, and guest speaker events.",
         details: ["Led a team of 10 students to manage club activities for over 100 members.", "Increased club membership by 40% through targeted outreach and engaging events."],
     },
     {
+        title: "Hackathon Volunteer & Mentor",
         description: "Mentored participants and assisted with logistics at the annual university hackathon.",
         details: ["Provided technical guidance to 5+ teams on topics ranging from web development to machine learning.", "Assisted event organizers with setup, registration, and troubleshooting to ensure a smooth experience."],
     },
     {
+        title: "Open Source Contributor",
         description: "Contributed to several open-source projects on GitHub, focusing on documentation and bug fixes.",
         details: ["Submitted pull requests to popular libraries like `react` and `tailwindcss`.", "Improved documentation clarity by adding code examples and tutorials."]
     },
@@ -204,18 +207,16 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <AboutSection />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20 md:space-y-24 lg:space-y-28 py-20 md:py-24 lg:py-28">
-            <ExperienceSection />
-            <EducationSection />
-            <SkillsSection />
-            <ProjectsSection />
-            <AchievementsSection />
-            <ExtracurricularSection />
-            <HobbiesSection />
-            <ContactSection />
-          </div>
-        </div>
+        
+        <ExperienceSection />
+        <EducationSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <AchievementsSection />
+        <ExtracurricularSection />
+        <HobbiesSection />
+        <ContactSection />
+
       </main>
       <Footer />
     </div>
@@ -303,55 +304,57 @@ function getDuration(dateString: string) {
 
 function ExperienceSection() {
   return (
-    <section id="experience">
-      <div className="space-y-4 mb-8">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-          <Briefcase /> Work Experience
-        </h2>
-        <p className="text-muted-foreground md:text-lg leading-relaxed">
-          My professional journey. Click on an entry to see more details.
-        </p>
-      </div>
-      <div className="relative">
-        <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
-        <div className="space-y-8">
-          {experienceData.map((item, index) => (
-            <Dialog key={index}>
-              <div className="relative group flex items-start gap-x-6">
-                 <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
-                    <Image
-                      src={item.logoUrl}
-                      alt={`${item.company} logo`}
-                      width={48}
-                      height={48}
-                      className="rounded-full transition-all duration-300 group-hover:scale-110"
-                      data-ai-hint="company logo"
-                    />
-                </div>
-                <div className="flex-grow ml-20">
-                  <DialogTrigger asChild>
-                    <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
-                      <CardHeader>
-                        <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                          <div>
-                            <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                            <p className="font-medium text-primary mt-1">{item.company}</p>
-                            <p className="font-semibold text-sm text-muted-foreground mt-1">
-                              {item.date} <span className="font-normal">{getDuration(item.date)}</span>
-                            </p>
+    <section id="experience" className="py-20 md:py-24 lg:py-28">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-4 mb-8">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+            <Briefcase /> Work Experience
+          </h2>
+          <p className="text-muted-foreground md:text-lg leading-relaxed">
+            My professional journey. Click on an entry to see more details.
+          </p>
+        </div>
+        <div className="relative">
+          <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-8">
+            {experienceData.map((item, index) => (
+              <Dialog key={index}>
+                <div className="relative group flex items-start gap-x-6">
+                   <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
+                      <Image
+                        src={item.logoUrl}
+                        alt={`${item.company} logo`}
+                        width={48}
+                        height={48}
+                        className="rounded-full transition-all duration-300 group-hover:scale-110"
+                        data-ai-hint="company logo"
+                      />
+                  </div>
+                  <div className="flex-grow ml-20">
+                    <DialogTrigger asChild>
+                      <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
+                        <CardHeader>
+                          <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
+                            <div>
+                              <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                              <p className="font-medium text-primary mt-1">{item.company}</p>
+                              <p className="font-semibold text-sm text-muted-foreground mt-1">
+                                {item.date} <span className="font-normal">{getDuration(item.date)}</span>
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  </DialogTrigger>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                        </CardContent>
+                      </Card>
+                    </DialogTrigger>
+                  </div>
                 </div>
-              </div>
-              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Contributions" />
-            </Dialog>
-          ))}
+                <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Contributions" />
+              </Dialog>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -361,53 +364,55 @@ function ExperienceSection() {
 
 function EducationSection() {
   return (
-    <section id="education">
-      <div className="space-y-4 mb-8">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-          <GraduationCap /> Education
-        </h2>
-        <p className="text-muted-foreground md:text-lg leading-relaxed">
-          My academic background. Click on an entry to see more details.
-        </p>
-      </div>
-      <div className="relative">
-        <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
-        <div className="space-y-8">
-          {educationData.map((item, index) => (
-            <Dialog key={index}>
-              <div className="relative group flex items-start gap-x-6">
-                <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
-                   <Image
-                      src={item.logoUrl}
-                      alt={`${item.company} logo`}
-                      width={48}
-                      height={48}
-                      className="rounded-full transition-all duration-300 group-hover:scale-110"
-                      data-ai-hint="university building"
-                    />
-                </div>
-                <div className="flex-grow ml-20">
-                  <DialogTrigger asChild>
-                    <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
-                      <CardHeader>
-                        <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                          <div>
-                            <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                            <p className="font-medium text-primary mt-1">{item.company}</p>
-                            <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
+    <section id="education" className="py-20 md:py-24 lg:py-28 bg-secondary">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-4 mb-8">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+            <GraduationCap /> Education
+          </h2>
+          <p className="text-muted-foreground md:text-lg leading-relaxed">
+            My academic background. Click on an entry to see more details.
+          </p>
+        </div>
+        <div className="relative">
+          <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-8">
+            {educationData.map((item, index) => (
+              <Dialog key={index}>
+                <div className="relative group flex items-start gap-x-6">
+                  <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-background flex items-center justify-center ring-8 ring-secondary -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
+                     <Image
+                        src={item.logoUrl}
+                        alt={`${item.company} logo`}
+                        width={48}
+                        height={48}
+                        className="rounded-full transition-all duration-300 group-hover:scale-110"
+                        data-ai-hint="university building"
+                      />
+                  </div>
+                  <div className="flex-grow ml-20">
+                    <DialogTrigger asChild>
+                      <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
+                        <CardHeader>
+                          <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
+                            <div>
+                              <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                              <p className="font-medium text-primary mt-1">{item.company}</p>
+                              <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
+                            </div>
                           </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  </DialogTrigger>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                        </CardContent>
+                      </Card>
+                    </DialogTrigger>
+                  </div>
                 </div>
-              </div>
-              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Coursework & Activities" />
-            </Dialog>
-          ))}
+                <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Coursework & Activities" />
+              </Dialog>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -423,33 +428,35 @@ const skillIcons: { [key: string]: React.ElementType } = {
 
 function SkillsSection() {
   return (
-    <section id="skills">
-      <div className="space-y-4 mb-8">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-          <Layers /> Skills
-        </h2>
-        <p className="text-muted-foreground md:text-lg">
-          Technologies and tools I work with.
-        </p>
-      </div>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {Object.entries(skillsData).map(([category, skills]) => {
-          const Icon = skillIcons[category] || Code;
-          return (
-            <Card key={category}>
-              <CardHeader>
-                <CardTitle className="text-primary flex items-center gap-3 font-headline"><Icon /> {category}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="font-code">{skill}</Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+    <section id="skills" className="py-20 md:py-24 lg:py-28">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-4 mb-8">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+            <Layers /> Skills
+          </h2>
+          <p className="text-muted-foreground md:text-lg">
+            Technologies and tools I work with.
+          </p>
+        </div>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {Object.entries(skillsData).map(([category, skills]) => {
+            const Icon = skillIcons[category] || Code;
+            return (
+              <Card key={category}>
+                <CardHeader>
+                  <CardTitle className="text-primary flex items-center gap-3 font-headline"><Icon /> {category}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill) => (
+                      <Badge key={skill} variant="secondary" className="font-code">{skill}</Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -457,39 +464,41 @@ function SkillsSection() {
 
 function ProjectsSection() {
   return (
-    <section id="projects">
-      <div className="space-y-4 mb-8">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-            <FolderKanban /> Projects
-        </h2>
-        <p className="text-muted-foreground md:text-lg">
-          A selection of projects that showcase my skills.
-        </p>
-      </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projectsData.map((project) => (
-          <Dialog key={project.title}>
-            <DialogTrigger asChild>
-              <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
-                <CardContent className="p-4 flex-1">
-                  <h3 className="text-lg font-bold font-headline">{project.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
-                  </div>
-                </CardContent>
-              </Card>
-            </DialogTrigger>
-            <ExperienceModal 
-              title={project.title} 
-              subtitle={project.tags.join(' • ')} 
-              images={project.images} 
-              details={project.details}
-              githubUrl={project.githubUrl}
-              detailsHeading="Key Features"
-            />
-          </Dialog>
-        ))}
+    <section id="projects" className="py-20 md:py-24 lg:py-28 bg-secondary">
+       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-4 mb-8">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+              <FolderKanban /> Projects
+          </h2>
+          <p className="text-muted-foreground md:text-lg">
+            A selection of projects that showcase my skills.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projectsData.map((project) => (
+            <Dialog key={project.title}>
+              <DialogTrigger asChild>
+                <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+                  <CardContent className="p-4 flex-1">
+                    <h3 className="text-lg font-bold font-headline">{project.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
+                    </div>
+                  </CardContent>
+                </Card>
+              </DialogTrigger>
+              <ExperienceModal 
+                title={project.title} 
+                subtitle={project.tags.join(' • ')} 
+                images={project.images} 
+                details={project.details}
+                githubUrl={project.githubUrl}
+                detailsHeading="Key Features"
+              />
+            </Dialog>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -497,37 +506,39 @@ function ProjectsSection() {
 
 function AchievementsSection() {
     return (
-        <section id="achievements">
-            <div className="space-y-4 mb-8">
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-                    <Award /> Achievements
-                </h2>
-                <p className="text-muted-foreground md:text-lg">
-                    My key accomplishments and recognitions.
-                </p>
-            </div>
-            <div className="space-y-4">
-                {achievementsData.map((achievement, index) => (
-                    <Dialog key={index}>
-                        <DialogTrigger asChild>
-                            <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
-                                <CardHeader>
-                                  <div className="flex justify-between items-start">
-                                    <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                                    <span className="text-sm text-muted-foreground font-semibold">{achievement.date}</span>
-                                  </div>
-                                    <CardDescription>{achievement.description}</CardDescription>
-                                </CardHeader>
-                            </Card>
-                        </DialogTrigger>
-                        <ExperienceModal
-                            title={achievement.title}
-                            subtitle="Achievement"
-                            images={achievement.images}
-                            details={achievement.details}
-                        />
-                    </Dialog>
-                ))}
+        <section id="achievements" className="py-20 md:py-24 lg:py-28">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="space-y-4 mb-8">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                        <Award /> Achievements
+                    </h2>
+                    <p className="text-muted-foreground md:text-lg">
+                        My key accomplishments and recognitions.
+                    </p>
+                </div>
+                <div className="space-y-4">
+                    {achievementsData.map((achievement, index) => (
+                        <Dialog key={index}>
+                            <DialogTrigger asChild>
+                                <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
+                                    <CardHeader>
+                                      <div className="flex justify-between items-start">
+                                        <CardTitle className="text-lg">{achievement.title}</CardTitle>
+                                        <span className="text-sm text-muted-foreground font-semibold">{achievement.date}</span>
+                                      </div>
+                                        <CardDescription>{achievement.description}</CardDescription>
+                                    </CardHeader>
+                                </Card>
+                            </DialogTrigger>
+                            <ExperienceModal
+                                title={achievement.title}
+                                subtitle="Achievement"
+                                images={achievement.images}
+                                details={achievement.details}
+                            />
+                        </Dialog>
+                    ))}
+                </div>
             </div>
         </section>
     );
@@ -535,62 +546,67 @@ function AchievementsSection() {
 
 function ExtracurricularSection() {
     return (
-        <section id="extracurricular">
-            <div className="space-y-4 mb-8">
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-                    <List /> Extracurricular Activities
-                </h2>
-                <p className="text-muted-foreground md:text-lg">
-                    My involvement in activities outside of work and academics. Click on an entry to see more.
-                </p>
+        <section id="extracurricular" className="py-20 md:py-24 lg:py-28 bg-secondary">
+             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="space-y-4 mb-8">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                        <List /> Extracurricular Activities
+                    </h2>
+                    <p className="text-muted-foreground md:text-lg">
+                        My involvement in activities outside of work and academics. Click on an entry to see more.
+                    </p>
+                </div>
+                <Card>
+                    <CardContent className="p-2">
+                        {extracurricularData.map((activity, index) => (
+                            <Dialog key={index}>
+                                <DialogTrigger asChild>
+                                    <div className="p-4 rounded-md transition-all duration-200 hover:bg-background/50 cursor-pointer">
+                                        <p className="text-muted-foreground">{activity.description}</p>
+                                    </div>
+                                </DialogTrigger>
+                                <ExperienceModal
+                                    title={activity.title}
+                                    details={activity.details}
+                                />
+                                {index < extracurricularData.length - 1 && <Separator />}
+                            </Dialog>
+                        ))}
+                    </CardContent>
+                </Card>
             </div>
-            <Card>
-                <CardContent className="p-2">
-                    {extracurricularData.map((activity, index) => (
-                        <Dialog key={index}>
-                            <DialogTrigger asChild>
-                                <div className="p-4 rounded-md transition-all duration-200 hover:bg-secondary cursor-pointer">
-                                    <p className="text-muted-foreground text-sm">{activity.description}</p>
-                                </div>
-                            </DialogTrigger>
-                            <ExperienceModal
-                                details={activity.details}
-                            />
-                            {index < extracurricularData.length - 1 && <Separator />}
-                        </Dialog>
-                    ))}
-                </CardContent>
-            </Card>
         </section>
     );
 }
 
 function HobbiesSection() {
   return (
-    <section id="hobbies">
-      <div className="space-y-4 mb-8">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-          <Heart /> Hobbies
-        </h2>
-        <p className="text-muted-foreground md:text-lg">
-          A few things I enjoy doing in my free time.
-        </p>
-      </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {hobbiesData.map((hobby) => {
-          const Icon = hobby.icon;
-          return (
-            <Card key={hobby.title}>
-              <CardHeader className="flex flex-row items-center gap-4">
-                <Icon className="w-8 h-8 text-primary" />
-                <CardTitle className="font-headline">{hobby.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{hobby.description}</p>
-              </CardContent>
-            </Card>
-          );
-        })}
+    <section id="hobbies" className="py-20 md:py-24 lg:py-28">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-4 mb-8">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+            <Heart /> Hobbies
+          </h2>
+          <p className="text-muted-foreground md:text-lg">
+            A few things I enjoy doing in my free time.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {hobbiesData.map((hobby) => {
+            const Icon = hobby.icon;
+            return (
+              <Card key={hobby.title}>
+                <CardHeader className="flex flex-row items-center gap-4">
+                  <Icon className="w-8 h-8 text-primary" />
+                  <CardTitle className="font-headline">{hobby.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{hobby.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -599,44 +615,46 @@ function HobbiesSection() {
 
 function ContactSection() {
   return (
-    <section id="contact">
-      <div className="space-y-4 mb-8 text-center">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
-          <Mail /> Contact
-        </h2>
-        <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-          Have a project in mind, or just want to say hello? Reach out via email, find me on social media, or send me a message using the form.
-        </p>
+    <section id="contact" className="py-20 md:py-24 lg:py-28 bg-secondary">
+       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-4 mb-8 text-center">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+            <Mail /> Contact
+          </h2>
+          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+            Have a project in mind, or just want to say hello? Reach out via email, find me on social media, or send me a message using the form.
+          </p>
+        </div>
+        <Card className="max-w-4xl mx-auto">
+          <CardContent className="p-0">
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 space-y-6">
+                 <h3 className="text-xl font-semibold font-headline text-primary">Get in Touch</h3>
+                 <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                      <Mail className="w-5 h-5 text-primary" />
+                      <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Github className="w-5 h-5 text-primary" />
+                      <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">github.com</a>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Linkedin className="w-5 h-5 text-primary" />
+                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">linkedin.com</a>
+                    </div>
+                  </div>
+              </div>
+               <div className="relative">
+                  <Separator orientation="vertical" className="absolute left-0 top-0 h-full hidden md:block" />
+                  <div className="p-8">
+                      <ContactForm />
+                  </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-      <Card className="max-w-4xl mx-auto">
-        <CardContent className="p-0">
-          <div className="grid md:grid-cols-2">
-            <div className="p-8 space-y-6">
-               <h3 className="text-xl font-semibold font-headline text-primary">Get in Touch</h3>
-               <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <Mail className="w-5 h-5 text-primary" />
-                    <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Github className="w-5 h-5 text-primary" />
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">github.com</a>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Linkedin className="w-5 h-5 text-primary" />
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">linkedin.com</a>
-                  </div>
-                </div>
-            </div>
-             <div className="relative">
-                <Separator orientation="vertical" className="absolute left-0 top-0 h-full hidden md:block" />
-                <div className="p-8">
-                    <ContactForm />
-                </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </section>
   );
 }
