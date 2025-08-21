@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -129,6 +129,36 @@ const skillsData = {
   "Dev Tools": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
 };
 
+const achievementsData = [
+    {
+        title: "First Place, National Hackathon 2023",
+        description: "Led a team to victory by developing an innovative solution for urban mobility.",
+        details: [
+            "Developed a real-time transit tracking application using React Native and Firebase.",
+            "Designed and presented the winning pitch to a panel of industry judges.",
+            "Awarded for outstanding innovation, technical execution, and user experience.",
+        ],
+        images: ["https://placehold.co/1200x800.png"]
+    },
+    {
+        title: "Published Research Paper on AI Ethics",
+        description: "Co-authored a paper on the ethical implications of autonomous decision-making systems.",
+        details: [
+            "Conducted extensive literature reviews on AI ethics and algorithmic bias.",
+            "Collaborated with university professors to analyze and synthesize research findings.",
+            "Paper was accepted and published in the Journal of AI and Society.",
+        ],
+    },
+     {
+        title: "Top-Rated Mentor at Innovate Co.",
+        description: "Recognized for providing exceptional guidance and support to junior developers.",
+        details: [
+            "Mentored three junior developers, helping them onboard and grow their technical skills.",
+            "Received the 'Mentor of the Year' award based on peer nominations and feedback.",
+            "Led workshops on clean code practices and effective debugging techniques.",
+        ],
+    },
+];
 
 export default function Home() {
   return (
@@ -142,6 +172,7 @@ export default function Home() {
             <EducationSection />
             <SkillsSection />
             <ProjectsSection />
+            <AchievementsSection />
             <ContactSection />
           </div>
         </div>
@@ -406,6 +437,41 @@ function ProjectsSection() {
       </div>
     </section>
   );
+}
+
+function AchievementsSection() {
+    return (
+        <section id="achievements">
+            <div className="space-y-4 mb-8">
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <Award /> Achievements
+                </h2>
+                <p className="text-muted-foreground md:text-lg">
+                    My key accomplishments and recognitions.
+                </p>
+            </div>
+            <div className="space-y-4">
+                {achievementsData.map((achievement, index) => (
+                    <Dialog key={index}>
+                        <DialogTrigger asChild>
+                            <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
+                                <CardHeader>
+                                    <CardTitle className="text-lg">{achievement.title}</CardTitle>
+                                    <CardDescription>{achievement.description}</CardDescription>
+                                </CardHeader>
+                            </Card>
+                        </DialogTrigger>
+                        <ExperienceModal
+                            title={achievement.title}
+                            subtitle="Achievement"
+                            images={achievement.images}
+                            details={achievement.details}
+                        />
+                    </Dialog>
+                ))}
+            </div>
+        </section>
+    );
 }
 
 function ContactSection() {
