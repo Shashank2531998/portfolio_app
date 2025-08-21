@@ -156,19 +156,13 @@ function ExperienceSection() {
         <div className="space-y-12">
           {experienceData.map((item, index) => (
             <div key={index} className="relative group flex gap-x-6 items-start">
-              <div className="flex-shrink-0 flex flex-col items-center">
-                <div className="absolute left-0 top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
-                <div className="w-24 text-right pr-6">
-                  <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-                </div>
-              </div>
-              <Card className="transition-all duration-300 hover:shadow-lg flex-grow">
+              <div className="absolute left-0 top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+              <Card className="transition-all duration-300 hover:shadow-lg flex-grow ml-12">
                 <CardHeader>
-                  <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                    <div>
-                      <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                      <p className="font-medium text-primary">{item.company}</p>
-                    </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                    <p className="font-medium text-primary mt-1">{item.company}</p>
+                    <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
                   </div>
                 </CardHeader>
                 <CardContent>
