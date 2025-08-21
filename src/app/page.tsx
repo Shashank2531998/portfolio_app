@@ -65,10 +65,20 @@ const experienceData = [
 
 const educationData = [
   {
-    institution: "University of Technology",
-    degree: "B.S. in Computer Science",
+    role: "B.S. in Computer Science",
+    company: "University of Technology",
     date: "2014 - 2018",
-    description: "Graduated with honors, focusing on software development and artificial intelligence. Active member of the coding club."
+    description: "Graduated with honors, focusing on software development and artificial intelligence.",
+    logoUrl: "https://placehold.co/48x48.png",
+    details: [
+        "Specialized in Software Engineering and Artificial Intelligence tracks.",
+        "Key coursework: Data Structures, Algorithms, Machine Learning, Web Development.",
+        "President of the university coding club, organizing weekly workshops and competitions.",
+        "Completed a final year project on a real-time collaborative code editor.",
+    ],
+    images: [
+      "https://placehold.co/1200x800.png",
+    ],
   }
 ];
 
@@ -183,13 +193,13 @@ function ExperienceSection() {
         </p>
       </div>
       <div className="relative">
-        <div className="absolute left-6 top-2 h-full w-0.5 bg-border -translate-x-1/2" />
+        <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
         <div className="space-y-8">
           {experienceData.map((item, index) => (
             <Dialog key={index}>
               <div className="relative group flex items-start gap-x-6">
-                <div className="absolute left-6 top-2 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
-                   <Image
+                 <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
+                    <Image
                       src={item.logoUrl}
                       alt={`${item.company} logo`}
                       width={48}
@@ -235,19 +245,48 @@ function EducationSection() {
           <GraduationCap /> Education
         </h2>
         <p className="text-muted-foreground md:text-lg leading-relaxed">
-          My academic background.
+          My academic background. Click on an entry to see more details.
         </p>
       </div>
-      <div className="relative border-l border-secondary/50 ml-3 space-y-12">
-        {educationData.map((item, index) => (
-          <div key={index} className="relative group pl-8">
-            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125 ring-4 ring-background" />
-            <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-            <h3 className="text-lg font-semibold text-foreground mt-1">{item.degree}</h3>
-            <p className="font-medium text-primary">{item.institution}</p>
-            <p className="mt-2 text-base text-muted-foreground leading-relaxed">{item.description}</p>
-          </div>
-        ))}
+      <div className="relative">
+        <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
+        <div className="space-y-8">
+          {educationData.map((item, index) => (
+            <Dialog key={index}>
+              <div className="relative group flex items-start gap-x-6">
+                <div className="absolute left-6 top-6 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
+                   <Image
+                      src={item.logoUrl}
+                      alt={`${item.company} logo`}
+                      width={48}
+                      height={48}
+                      className="rounded-full transition-all duration-300 group-hover:scale-110"
+                      data-ai-hint="university building"
+                    />
+                </div>
+                <div className="flex-grow ml-20">
+                  <DialogTrigger asChild>
+                    <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
+                      <CardHeader>
+                        <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                            <p className="font-medium text-primary mt-1">{item.company}</p>
+                            <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                </div>
+              </div>
+              <ExperienceModal {...item} />
+            </Dialog>
+          ))}
+        </div>
       </div>
     </section>
   );
