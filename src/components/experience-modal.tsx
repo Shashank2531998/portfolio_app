@@ -30,16 +30,16 @@ interface ExperienceModalProps {
 export function ExperienceModal({ title, subtitle, images, details, githubUrl }: ExperienceModalProps) {
   return (
     <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
-      {title && (
-        <DialogHeader className="flex-shrink-0">
-          <DialogTitle className="text-2xl font-headline">{title}</DialogTitle>
-          {subtitle && (
-            <DialogDescription className="text-lg font-medium text-primary">
-              {subtitle}
-            </DialogDescription>
-          )}
-        </DialogHeader>
-      )}
+      <DialogHeader className="flex-shrink-0">
+        <DialogTitle className={!title ? 'sr-only' : 'text-2xl font-headline'}>
+            {title || 'Details'}
+        </DialogTitle>
+        {subtitle && (
+          <DialogDescription className="text-lg font-medium text-primary">
+            {subtitle}
+          </DialogDescription>
+        )}
+      </DialogHeader>
       <div className="flex-grow overflow-y-auto pr-4 -mr-4 space-y-6">
         {images && images.length > 0 && (
           <Carousel
@@ -85,5 +85,3 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl }:
     </DialogContent>
   );
 }
-
-    
