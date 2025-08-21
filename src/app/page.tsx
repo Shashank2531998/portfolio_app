@@ -106,7 +106,7 @@ function HeroSection() {
         <div className="relative z-10 space-y-4 px-4">
             <div className="mx-auto mb-8">
                 <Image
-                    src="https://placehold.co/500x500.png"
+                    src="https://placehold.co/180x180.png"
                     alt="Shashank's Portrait"
                     width={180}
                     height={180}
@@ -158,10 +158,10 @@ function ExperienceSection() {
             <div key={index} className="relative group flex items-start gap-x-6">
               <div className="absolute left-5 top-2 h-12 w-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2">
                  <Image
-                    src="https://placehold.co/50x50.png"
+                    src="https://placehold.co/180x180.png"
                     alt={`${item.company} logo`}
-                    width={50}
-                    height={50}
+                    width={180}
+                    height={180}
                     className="rounded-full"
                     data-ai-hint="company logo"
                   />
