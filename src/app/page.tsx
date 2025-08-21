@@ -141,23 +141,23 @@ function ExperienceSection() {
     <section id="experience">
       <div className="space-y-4 mb-12">
         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Experience</h2>
-        <p className="text-muted-foreground md:text-lg">
+        <p className="text-muted-foreground md:text-lg leading-relaxed">
           My professional journey and educational background.
         </p>
       </div>
-      <div className="grid gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
           <h3 className="text-2xl font-semibold font-headline flex items-center gap-3 mb-8 text-primary">
             <Briefcase /> Work Experience
           </h3>
-          <div className="relative border-l-2 border-secondary ml-3 pl-8 space-y-12">
+          <div className="relative border-l-2 border-secondary/50 ml-3 pl-8 space-y-12">
             {experienceData.map((item, index) => (
-              <div key={index} className="relative">
-                <div className="absolute -left-[38px] top-1 h-3 w-3 rounded-full bg-primary" />
+              <div key={index} className="relative group">
+                <div className="absolute -left-[38px] top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
                 <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-                <h4 className="text-xl font-bold text-foreground">{item.role}</h4>
+                <h4 className="text-lg font-semibold text-foreground mt-1">{item.role}</h4>
                 <p className="font-medium text-primary">{item.company}</p>
-                <p className="mt-2 text-muted-foreground">{item.description}</p>
+                <p className="mt-2 text-base text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -166,14 +166,14 @@ function ExperienceSection() {
           <h3 className="text-2xl font-semibold font-headline flex items-center gap-3 mb-8 text-primary">
             <GraduationCap /> Education
           </h3>
-          <div className="relative border-l-2 border-secondary ml-3 pl-8 space-y-12">
+          <div className="relative border-l-2 border-secondary/50 ml-3 pl-8 space-y-12">
             {educationData.map((item, index) => (
-              <div key={index} className="relative">
-                <div className="absolute -left-[38px] top-1 h-3 w-3 rounded-full bg-primary" />
+              <div key={index} className="relative group">
+                <div className="absolute -left-[38px] top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
                 <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-                <h4 className="text-xl font-bold text-foreground">{item.degree}</h4>
+                <h4 className="text-lg font-semibold text-foreground mt-1">{item.degree}</h4>
                 <p className="font-medium text-primary">{item.institution}</p>
-                <p className="mt-2 text-muted-foreground">{item.description}</p>
+                <p className="mt-2 text-base text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
