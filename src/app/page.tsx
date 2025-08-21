@@ -76,12 +76,14 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="flex-1">
         <HeroSection />
-        <ExperienceSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactSection />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <ExperienceSection />
+            <SkillsSection />
+            <ProjectsSection />
+            <ContactSection />
+        </div>
       </main>
       <Footer />
     </div>
@@ -90,19 +92,38 @@ export default function Home() {
 
 function HeroSection() {
   return (
-    <section id="home" className="min-h-screen flex items-center">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-16 items-center w-full">
-          <div className="space-y-4">
+    <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+             <Image
+              src="https://placehold.co/1920x1080.png"
+              alt="Background"
+              fill
+              className="object-cover"
+              data-ai-hint="abstract geometric background"
+            />
+            <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
+        </div>
+        <div className="relative z-10 space-y-4 px-4">
+            <div className="mx-auto mb-8">
+                <Image
+                    src="https://placehold.co/500x500.png"
+                    alt="Shashank's Portrait"
+                    width={180}
+                    height={180}
+                    className="rounded-full aspect-square object-cover border-4 border-secondary shadow-lg mx-auto"
+                    data-ai-hint="professional portrait"
+                />
+            </div>
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground font-headline">
               Shashank
             </h1>
             <h2 className="text-2xl font-semibold text-primary font-code">
               Software Engineer
             </h2>
-            <p className="max-w-[600px] text-muted-foreground md:text-xl">
+            <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
               I'm a passionate software engineer specializing in building modern, responsive, and scalable web applications.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
                 <a href="#contact">
                   Contact Me <Mail className="ml-2" />
@@ -114,17 +135,6 @@ function HeroSection() {
                 </a>
               </Button>
             </div>
-          </div>
-          <div className="flex justify-center">
-            <Image
-              src="https://placehold.co/500x500.png"
-              alt="Shashank's Portrait"
-              width={400}
-              height={400}
-              className="rounded-full aspect-square object-cover border-4 border-secondary shadow-lg"
-              data-ai-hint="professional portrait"
-            />
-          </div>
         </div>
     </section>
   );
