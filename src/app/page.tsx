@@ -81,8 +81,8 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32">
-          <div className="space-y-20 md:space-y-28 lg:space-y-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+          <div className="space-y-16 md:space-y-20 lg:space-y-24">
             <ExperienceSection />
             <EducationSection />
             <SkillsSection />
@@ -143,7 +143,7 @@ function HeroSection() {
 function ExperienceSection() {
   return (
     <section id="experience">
-      <div className="space-y-4 mb-12">
+      <div className="space-y-4 mb-8">
         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
           <Briefcase /> Work Experience
         </h2>
@@ -169,7 +169,7 @@ function ExperienceSection() {
 function EducationSection() {
   return (
     <section id="education">
-      <div className="space-y-4 mb-12">
+      <div className="space-y-4 mb-8">
         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
           <GraduationCap /> Education
         </h2>
@@ -195,7 +195,7 @@ function EducationSection() {
 function SkillsSection() {
   return (
     <section id="skills">
-      <div className="space-y-4 mb-12">
+      <div className="space-y-4 mb-8">
         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
           <Layers /> Skills
         </h2>
@@ -226,7 +226,7 @@ function SkillsSection() {
 function ProjectsSection() {
   return (
     <section id="projects">
-      <div className="space-y-4 mb-12">
+      <div className="space-y-4 mb-8">
         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
             <FolderKanban /> Projects
         </h2>
@@ -271,7 +271,7 @@ function ProjectsSection() {
 function ContactSection() {
   return (
     <section id="contact">
-      <div className="space-y-4 mb-12">
+      <div className="space-y-4 mb-8">
         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
           <Mail /> Contact
         </h2>
