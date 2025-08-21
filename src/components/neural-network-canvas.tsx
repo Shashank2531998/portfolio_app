@@ -125,8 +125,11 @@ const NeuralNetworkCanvas: React.FC = () => {
 
     const draw = (time: number) => {
       if (!ctx || !canvas) return;
-      const deltaTime = time - lastTime;
+      let deltaTime = time - lastTime;
       lastTime = time;
+
+      // Cap deltaTime to prevent huge jumps when tab is inactive
+      deltaTime = Math.min(deltaTime, 50);
 
       ctx.fillStyle = themeColors.background;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -181,7 +184,7 @@ const NeuralNetworkCanvas: React.FC = () => {
 
         // Draw lighted edge
         const gradient = ctx.createLinearGradient(p.edge.from.x, p.edge.from.y, p.edge.to.x, p.edge.to.y);
-        const lightPosition = p.progress;
+        const lightPosition = Math.max(0, Math.min(1, p.progress));
         const lightWidth = 0.1;
 
         gradient.addColorStop(Math.max(0, lightPosition - lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
