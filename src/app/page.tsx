@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Building } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -151,26 +151,34 @@ function ExperienceSection() {
           My professional journey.
         </p>
       </div>
-      <div className="relative border-l border-secondary/50 ml-3 space-y-12">
-        {experienceData.map((item, index) => (
-          <div key={index} className="relative group pl-8">
-            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
-            <Card className="transition-all duration-300 hover:shadow-lg">
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                    <p className="font-medium text-primary">{item.company}</p>
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-secondary/50 ml-6" />
+        <div className="space-y-12">
+          {experienceData.map((item, index) => (
+            <div key={index} className="relative group grid md:grid-cols-[1fr_2fr] gap-x-8">
+              <div className="md:text-right md:pr-8">
+                  <div className="flex items-center gap-4">
+                      <div className="hidden md:block w-12 h-12 rounded-full bg-secondary flex-shrink-0 flex items-center justify-center">
+                           <Building className="w-6 h-6 text-muted-foreground" />
+                      </div>
+                      <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
                   </div>
-                  <p className="font-semibold text-sm text-muted-foreground sm:text-right">{item.date}</p>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-              </CardContent>
-            </Card>
-          </div>
-        ))}
+              </div>
+              <div>
+                <div className="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+                <Card className="transition-all duration-300 hover:shadow-lg">
+                  <CardHeader>
+                      <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                      <p className="font-medium text-primary">{item.company}</p>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -190,7 +198,7 @@ function EducationSection() {
       <div className="relative border-l border-secondary/50 ml-3 space-y-12">
         {educationData.map((item, index) => (
           <div key={index} className="relative group pl-8">
-            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+            <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
             <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
             <h3 className="text-lg font-semibold text-foreground mt-1">{item.degree}</h3>
             <p className="font-medium text-primary">{item.institution}</p>
