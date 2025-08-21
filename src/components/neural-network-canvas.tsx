@@ -167,7 +167,7 @@ const NeuralNetworkCanvas: React.FC = () => {
         });
       }
 
-      // Update and draw particles
+      // Update and draw particles & lighted edges
       particlesRef.current = particlesRef.current.filter(p => !p.isComplete);
       particlesRef.current.forEach(p => {
         p.progress += p.speed * (deltaTime / 16.67);
@@ -178,6 +178,24 @@ const NeuralNetworkCanvas: React.FC = () => {
         p.y = p.edge.from.y + (p.edge.to.y - p.edge.from.y) * p.progress;
 
         const opacity = Math.sin(p.progress * Math.PI);
+
+        // Draw lighted edge
+        const gradient = ctx.createLinearGradient(p.edge.from.x, p.edge.from.y, p.edge.to.x, p.edge.to.y);
+        const lightPosition = p.progress;
+        const lightWidth = 0.1;
+
+        gradient.addColorStop(Math.max(0, lightPosition - lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
+        gradient.addColorStop(lightPosition, `hsla(${h}, ${s}%, 90%, ${opacity})`);
+        gradient.addColorStop(Math.min(1, lightPosition + lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
+
+        ctx.beginPath();
+        ctx.moveTo(p.edge.from.x, p.edge.from.y);
+        ctx.lineTo(p.edge.to.x, p.edge.to.y);
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
