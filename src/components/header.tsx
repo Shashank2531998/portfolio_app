@@ -70,42 +70,47 @@ export function Header() {
       isScrolled ? "border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "border-transparent bg-background"
     )}>
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground mr-6">
-          <Code className="h-6 w-6 text-primary" />
-          <span className="font-headline">Shashank</span>
-        </Link>
-        
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <NavContent />
-        </nav>
-        <div className="hidden md:flex items-center ml-auto">
-            <SocialLinks />
+        <div className="flex items-center gap-6">
+          <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
+            <Code className="h-6 w-6 text-primary" />
+            <span className="font-headline">Shashank</span>
+          </Link>
+          
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+              <NavContent />
+          </nav>
         </div>
-
-        {/* Mobile Nav */}
-        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="ml-auto shrink-0 md:hidden">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left">
-            <div className="p-6">
-                 <Link href="#home" className="flex items-center gap-2 font-bold text-xl text-foreground" onClick={closeMenu}>
-                    <Code className="h-7 w-7 text-primary" />
-                    <span className="font-headline">Shashank</span>
-                </Link>
-            </div>
-            <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
-                <NavContent />
-            </nav>
-            <div className="p-6 pt-0">
+        
+        <div className="flex items-center gap-4">
+            <div className="hidden md:flex">
                 <SocialLinks />
             </div>
-          </SheetContent>
-        </Sheet>
+
+            {/* Mobile Nav */}
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="shrink-0 md:hidden">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <div className="p-6">
+                     <Link href="#home" className="flex items-center gap-2 font-bold text-xl text-foreground" onClick={closeMenu}>
+                        <Code className="h-7 w-7 text-primary" />
+                        <span className="font-headline">Shashank</span>
+                    </Link>
+                </div>
+                <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
+                    <NavContent />
+                </nav>
+                <div className="p-6 pt-0">
+                    <SocialLinks />
+                </div>
+              </SheetContent>
+            </Sheet>
+        </div>
       </div>
     </header>
   );
