@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from "next/image";
@@ -270,26 +269,24 @@ function HeroSection() {
 function AboutSection() {
     return (
         <section id="about" className="py-20 md:py-24 lg:py-28 bg-secondary">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid md:grid-cols-3 gap-12 items-center">
-                    <div className="md:col-span-1 flex justify-center md:justify-start">
-                         <Image
-                            src="https://placehold.co/180x180.png"
-                            alt="Shashank's Portrait"
-                            width={240}
-                            height={240}
-                            className="rounded-full aspect-square object-cover border-4 border-background shadow-lg"
-                            data-ai-hint="professional portrait"
-                        />
-                    </div>
-                    <div className="md:col-span-2 space-y-4">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-                            <User /> About Me
-                        </h2>
-                        <p className="text-muted-foreground md:text-lg leading-relaxed">
-                            I am a results-driven Software Engineer with a passion for developing innovative software solutions. With a strong foundation in computer science principles and a keen eye for detail, I specialize in building scalable, high-performance web applications. I thrive in collaborative environments and am dedicated to continuous learning and improvement. My goal is to leverage my skills to create technology that makes a meaningful impact.
-                        </p>
-                    </div>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+                <div className="mb-12">
+                     <Image
+                        src="https://placehold.co/180x180.png"
+                        alt="Shashank's Portrait"
+                        width={240}
+                        height={240}
+                        className="rounded-full aspect-square object-cover border-4 border-background shadow-lg"
+                        data-ai-hint="professional portrait"
+                    />
+                </div>
+                <div className="text-center space-y-4 max-w-4xl">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+                        <User /> About Me
+                    </h2>
+                    <p className="text-muted-foreground md:text-lg leading-relaxed">
+                        I am a results-driven Software Engineer with a passion for developing innovative software solutions. With a strong foundation in computer science principles and a keen eye for detail, I specialize in building scalable, high-performance web applications. I thrive in collaborative environments and am dedicated to continuous learning and improvement. My goal is to leverage my skills to create technology that makes a meaningful impact.
+                    </p>
                 </div>
             </div>
         </section>
@@ -320,11 +317,11 @@ function ExperienceSection() {
   return (
     <section id="experience" className="py-20 md:py-24 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+        <div className="space-y-4 mb-8 text-center">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Briefcase /> Work Experience
           </h2>
-          <p className="text-muted-foreground md:text-lg leading-relaxed">
+          <p className="text-muted-foreground md:text-lg leading-relaxed max-w-2xl mx-auto">
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
@@ -380,11 +377,11 @@ function EducationSection() {
   return (
     <section id="education" className="py-20 md:py-24 lg:py-28 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+        <div className="space-y-4 mb-8 text-center">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <GraduationCap /> Education
           </h2>
-          <p className="text-muted-foreground md:text-lg leading-relaxed">
+          <p className="text-muted-foreground md:text-lg leading-relaxed max-w-2xl mx-auto">
             My academic background. Click on an entry to see more details.
           </p>
         </div>
@@ -444,11 +441,11 @@ function SkillsSection() {
   return (
     <section id="skills" className="py-20 md:py-24 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+        <div className="space-y-4 mb-8 text-center">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Layers /> Skills
           </h2>
-          <p className="text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
             Technologies and tools I work with.
           </p>
         </div>
@@ -480,11 +477,11 @@ function ProjectsSection() {
   return (
     <section id="projects" className="py-20 md:py-24 lg:py-28 bg-secondary">
        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+        <div className="space-y-4 mb-8 text-center">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
               <FolderKanban /> Projects
           </h2>
-          <p className="text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
             A selection of projects that showcase my skills.
           </p>
         </div>
@@ -522,11 +519,11 @@ function AchievementsSection() {
     return (
         <section id="achievements" className="py-20 md:py-24 lg:py-28">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="space-y-4 mb-8">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                <div className="space-y-4 mb-8 text-center">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
                         <Award /> Achievements
                     </h2>
-                    <p className="text-muted-foreground md:text-lg">
+                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
                         My key accomplishments and recognitions.
                     </p>
                 </div>
@@ -562,11 +559,11 @@ function ExtracurricularSection() {
     return (
         <section id="extracurricular" className="py-20 md:py-24 lg:py-28 bg-secondary">
              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="space-y-4 mb-8">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                <div className="space-y-4 mb-8 text-center">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
                         <List /> Extracurricular Activities
                     </h2>
-                    <p className="text-muted-foreground md:text-lg">
+                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
                         My involvement in activities outside of work and academics. Click on an entry to see more.
                     </p>
                 </div>
@@ -597,11 +594,11 @@ function HobbiesSection() {
   return (
     <section id="hobbies" className="py-20 md:py-24 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+        <div className="space-y-4 mb-8 text-center">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
             <Heart /> Hobbies
           </h2>
-          <p className="text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
             A few things I enjoy doing in my free time.
           </p>
         </div>
@@ -672,5 +669,7 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
