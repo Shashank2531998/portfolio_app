@@ -63,7 +63,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="bg-background/80 backdrop-blur-sm border-primary/20">
+    <Card className="bg-background/80 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 font-headline"><Mail className="w-6 h-6 text-primary"/> Send a message</CardTitle>
       </CardHeader>

@@ -32,7 +32,7 @@ export function Header() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-card/80 backdrop-blur-sm border-b border-primary/20 shadow-md' : 'bg-card'}`}>
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm border-b shadow-sm' : ''}`}>
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-primary">
           <Code className="h-6 w-6" />
@@ -53,7 +53,7 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-card">
+            <SheetContent side="left" className="bg-background">
               <div className="flex flex-col p-6">
                 <div className="flex items-center justify-between">
                    <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-primary" onClick={closeMenu}>

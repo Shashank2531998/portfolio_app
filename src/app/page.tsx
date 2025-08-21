@@ -90,11 +90,11 @@ export default function Home() {
 
 function HeroSection() {
   return (
-    <section id="home" className="bg-card">
+    <section id="home" className="bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-16 items-center">
           <div className="space-y-4">
-            <Badge variant="outline" className="text-sm border-primary/50 text-primary">Shashank - Software Engineer</Badge>
+            <Badge variant="outline" className="text-sm border-primary/50 text-primary-foreground bg-primary">Shashank - Software Engineer</Badge>
             <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
               Crafting Digital Experiences
             </h1>
@@ -135,7 +135,7 @@ function ExperienceSection() {
     <section id="experience">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center space-y-4">
-           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary">My Journey</h2>
+           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">My Journey</h2>
           <p className="text-muted-foreground md:text-xl">
             A timeline of my professional experience and educational background.
           </p>
@@ -151,7 +151,7 @@ function ExperienceSection() {
                   <div className="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-primary" />
                   <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
                   <h4 className="text-xl font-bold font-headline text-foreground">{item.role}</h4>
-                  <p className="font-medium text-primary">{item.company}</p>
+                  <p className="font-medium text-primary-foreground bg-primary/90 px-2 py-1 rounded-md inline-block">{item.company}</p>
                   <p className="mt-2 text-muted-foreground">{item.description}</p>
                 </div>
               ))}
@@ -167,7 +167,7 @@ function ExperienceSection() {
                   <div className="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-primary" />
                   <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
                   <h4 className="text-xl font-bold font-headline text-foreground">{item.degree}</h4>
-                  <p className="font-medium text-primary">{item.institution}</p>
+                  <p className="font-medium text-primary-foreground bg-primary/90 px-2 py-1 rounded-md inline-block">{item.institution}</p>
                   <p className="mt-2 text-muted-foreground">{item.description}</p>
                 </div>
               ))}
@@ -181,17 +181,17 @@ function ExperienceSection() {
 
 function SkillsSection() {
   return (
-    <section id="skills" className="bg-card">
+    <section id="skills" className="bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center space-y-4">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary">Skills & Expertise</h2>
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">Skills & Expertise</h2>
           <p className="text-muted-foreground md:text-xl">
             Here's a look at the technologies I work with. I'm always eager to learn more.
           </p>
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {Object.entries(skillsData).map(([category, skills]) => (
-            <Card key={category} className="bg-background/80 backdrop-blur-sm border-primary/20">
+            <Card key={category} className="bg-background/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-primary flex items-center gap-2 font-headline"><Code className="w-6 h-6"/> {category}</CardTitle>
               </CardHeader>
@@ -215,14 +215,14 @@ function ProjectsSection() {
     <section id="projects">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center space-y-4">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary">Featured Projects</h2>
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">Featured Projects</h2>
           <p className="text-muted-foreground md:text-xl">
             A selection of projects that showcase my skills and passion for development.
           </p>
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projectsData.map((project) => (
-            <Card key={project.title} className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card border-primary/20">
+            <Card key={project.title} className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card">
               <CardHeader className="p-0">
                 <Image
                   src={project.imageUrl}
@@ -257,10 +257,10 @@ function ProjectsSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="bg-card">
+    <section id="contact" className="bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center space-y-4">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary">Get In Touch</h2>
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">Get In Touch</h2>
           <p className="text-muted-foreground md:text-xl">
             Have a project in mind, or just want to say hello? Feel free to reach out.
           </p>
