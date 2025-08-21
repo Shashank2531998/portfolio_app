@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from "next/image";
@@ -87,24 +86,18 @@ const projectsData = [
   {
     title: "Project Nova",
     description: "A comprehensive project management tool designed to streamline team workflows. Features include task tracking, real-time collaboration, and reporting.",
-    imageUrl: "https://placehold.co/600x400.png",
-    imageHint: "dashboard analytics",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase"],
     githubUrl: "https://github.com",
   },
   {
     title: "E-commerce Platform",
     description: "A fully-featured e-commerce site with a custom CMS for product management. Integrated with Stripe for secure payments.",
-    imageUrl: "https://placehold.co/600x400.png",
-    imageHint: "online shopping",
     tags: ["React", "Node.js", "Express", "MongoDB"],
     githubUrl: "https://github.com",
   },
   {
     title: "AI Content Generator",
     description: "A web application that leverages generative AI to create marketing copy and blog posts. Built with Python, Flask, and the OpenAI API.",
-    imageUrl: "https://placehold.co/600x400.png",
-    imageHint: "artificial intelligence",
     tags: ["Python", "Flask", "AI", "React"],
     githubUrl: "https://github.com",
   },
@@ -371,16 +364,6 @@ function ProjectsSection() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectsData.map((project) => (
             <Card key={project.title} className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <CardHeader className="p-0">
-                <Image
-                  src={project.imageUrl}
-                  alt={project.title}
-                  width={600}
-                  height={340}
-                  className="w-full h-auto aspect-video object-cover"
-                  data-ai-hint={project.imageHint}
-                />
-              </CardHeader>
               <CardContent className="p-4 flex-1">
                 <h3 className="text-lg font-bold font-headline">{project.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
@@ -435,3 +418,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
