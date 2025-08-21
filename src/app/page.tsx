@@ -272,7 +272,7 @@ function AboutSection() {
         <section id="about" className="py-20 md:py-24 lg:py-28 bg-secondary">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-3 gap-12 items-center">
-                    <div className="md:col-span-1 flex justify-center">
+                    <div className="md:col-span-1 flex justify-center md:justify-start">
                          <Image
                             src="https://placehold.co/180x180.png"
                             alt="Shashank's Portrait"
@@ -672,3 +672,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
