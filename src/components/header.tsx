@@ -1,8 +1,7 @@
-
 "use client";
 
 import Link from "next/link";
-import { Code, Home, User, Briefcase, Star, Mail, Github, Linkedin, Twitter, Menu, X } from "lucide-react";
+import { Code, Github, Linkedin, Menu, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import * as React from "react";
@@ -30,21 +29,23 @@ export function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  const navContent = (
+  const NavContent = () => (
     <>
-      <nav className="flex flex-col md:flex-row items-center gap-6 text-sm font-medium">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="text-muted-foreground transition-colors hover:text-foreground"
-            onClick={closeMenu}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
-      <div className="flex items-center gap-2 mt-4 md:mt-0 md:ml-auto">
+      {navLinks.map((link) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          className="text-muted-foreground transition-colors hover:text-foreground"
+          onClick={closeMenu}
+        >
+          {link.label}
+        </Link>
+      ))}
+    </>
+  );
+
+  const SocialLinks = () => (
+     <div className="flex items-center gap-2">
         <Button asChild variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <Github />
@@ -61,7 +62,6 @@ export function Header() {
           </a>
         </Button>
       </div>
-    </>
   );
 
   return (
@@ -76,8 +76,11 @@ export function Header() {
         </Link>
         
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center w-full">
-            {navContent}
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <NavContent />
+        </nav>
+        <div className="hidden md:flex items-center ml-auto">
+            <SocialLinks />
         </div>
 
         {/* Mobile Nav */}
@@ -95,8 +98,11 @@ export function Header() {
                     <span className="font-headline">Shashank</span>
                 </Link>
             </div>
-            <div className="flex flex-col p-6 pt-0">
-                {navContent}
+            <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
+                <NavContent />
+            </nav>
+            <div className="p-6 pt-0">
+                <SocialLinks />
             </div>
           </SheetContent>
         </Sheet>
