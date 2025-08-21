@@ -1,9 +1,10 @@
 
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -196,9 +197,9 @@ function getDuration(dateString: string) {
     }
     
     if (months > 0) {
-        return `${years > 0 ? `${years} yr ` : ''}${months} mos`;
+        return `(${years > 0 ? `${years} yr ` : ''}${months} mos)`;
     } else {
-        return `${years} yr${years > 1 ? 's' : ''}`;
+        return `(${years} yr${years > 1 ? 's' : ''})`;
     }
 }
 
@@ -238,7 +239,7 @@ function ExperienceSection() {
                             <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
                             <p className="font-medium text-primary mt-1">{item.company}</p>
                             <p className="font-semibold text-sm text-muted-foreground mt-1">
-                              {item.date} &middot; <span className="font-normal">{getDuration(item.date)}</span>
+                              {item.date} <span className="font-normal">{getDuration(item.date)}</span>
                             </p>
                           </div>
                         </div>
@@ -315,6 +316,13 @@ function EducationSection() {
   );
 }
 
+const skillIcons: { [key: string]: React.ElementType } = {
+  "Programming Languages & Databases": Database,
+  "Machine Learning & AI": BrainCircuit,
+  "Web Development": Globe,
+  "Tools & Monitoring": Wrench,
+};
+
 function SkillsSection() {
   return (
     <section id="skills">
@@ -327,20 +335,23 @@ function SkillsSection() {
         </p>
       </div>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {Object.entries(skillsData).map(([category, skills]) => (
-          <Card key={category}>
-            <CardHeader>
-              <CardTitle className="text-primary flex items-center gap-3 font-headline"><Code /> {category}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="font-code">{skill}</Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        {Object.entries(skillsData).map(([category, skills]) => {
+          const Icon = skillIcons[category] || Code;
+          return (
+            <Card key={category}>
+              <CardHeader>
+                <CardTitle className="text-primary flex items-center gap-3 font-headline"><Icon /> {category}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((skill) => (
+                    <Badge key={skill} variant="secondary" className="font-code">{skill}</Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </section>
   );
