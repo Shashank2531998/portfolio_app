@@ -18,9 +18,7 @@ const NeuralNetworkCanvas: React.FC = () => {
   const networkRef = useRef<{ nodes: Node[], edges: Edge[] }>({ nodes: [], edges: [] });
   const animationStateRef = useRef({
     startTime: 0,
-    drawnLayers: -1,
     drawnEdges: 0,
-    phase: 'nodes' // 'nodes' -> 'edges'
   });
 
   const [themeColors, setThemeColors] = useState({
@@ -92,9 +90,7 @@ const NeuralNetworkCanvas: React.FC = () => {
       networkRef.current = { nodes, edges };
       animationStateRef.current = {
         startTime: performance.now(),
-        drawnLayers: -1,
         drawnEdges: 0,
-        phase: 'nodes'
       };
     };
 
@@ -106,46 +102,35 @@ const NeuralNetworkCanvas: React.FC = () => {
     const draw = () => {
       if (!ctx || !canvas) return;
 
-      const { nodes, edges } = networkRef.current;
+      const { edges } = networkRef.current;
       const animState = animationStateRef.current;
       const elapsedTime = performance.now() - animState.startTime;
 
       ctx.fillStyle = themeColors.background;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      const nodeAnimationDuration = 500; // ms to draw all nodes
-      const edgeAnimationDuration = 1500; // ms to draw all edges
-      const layerDelay = nodeAnimationDuration / layerDefs.length;
+      const totalAnimationDuration = 2000; // Total duration in ms
 
       // ---- Update animation state ----
-      if (animState.phase === 'nodes') {
-        const currentLayer = Math.floor(elapsedTime / layerDelay) -1;
-        if(currentLayer > animState.drawnLayers) {
-            animState.drawnLayers = currentLayer;
-        }
-        if (elapsedTime >= nodeAnimationDuration) {
-            animState.phase = 'edges';
-            animState.drawnLayers = layerDefs.length;
-            animState.startTime = performance.now(); // Reset start time for edge animation
-        }
-      } else if (animState.phase === 'edges') {
-        const progress = Math.min((performance.now() - animState.startTime) / edgeAnimationDuration, 1);
-        animState.drawnEdges = Math.floor(progress * edges.length);
-      }
+      const progress = Math.min(elapsedTime / totalAnimationDuration, 1);
+      animState.drawnEdges = Math.floor(progress * edges.length);
       
       // ---- Drawing ----
-      const drawnNodes = nodes.filter(n => n.layer <= animState.drawnLayers);
+      const drawnNodes = new Set<Node>();
       
-      // Draw edges first
+      // Draw edges
       ctx.lineWidth = 0.7;
       for(let i = 0; i < animState.drawnEdges; i++) {
           const edge = edges[i];
+          drawnNodes.add(edge.from);
+          drawnNodes.add(edge.to);
+
           const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
           if(primaryMatch) {
             const [h, s, l] = [primaryMatch[1], primaryMatch[2], primaryMatch[3]];
-            ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, 0.2)`;
+            ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, 0.4)`;
           } else {
-             ctx.strokeStyle = `rgba(0,0,0, 0.2)`;
+             ctx.strokeStyle = `rgba(0,0,0, 0.4)`;
           }
           
           ctx.beginPath();
@@ -156,15 +141,11 @@ const NeuralNetworkCanvas: React.FC = () => {
 
       // Draw nodes
       drawnNodes.forEach(node => {
-        const isLastLayerNode = node.layer === animState.drawnLayers;
-        const timeSinceLayerStart = elapsedTime - (node.layer * layerDelay);
-        const fadeInProgress = isLastLayerNode ? Math.min(timeSinceLayerStart / (layerDelay * 0.8), 1) : 1;
-
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 4 * fadeInProgress, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, 4, 0, Math.PI * 2);
         
         // Gradient for glow
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8 * fadeInProgress);
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8);
         const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
         let colorForGradient = themeColors.primary;
         if (primaryMatch) {
@@ -179,14 +160,14 @@ const NeuralNetworkCanvas: React.FC = () => {
         
         // Solid core
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 2 * fadeInProgress, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
         ctx.fillStyle = themeColors.primary;
-        ctx.globalAlpha = fadeInProgress;
         ctx.fill();
-        ctx.globalAlpha = 1;
       });
-
-      animationFrameId = requestAnimationFrame(draw);
+      
+      if(progress < 1) {
+        animationFrameId = requestAnimationFrame(draw);
+      }
     };
 
     draw();
