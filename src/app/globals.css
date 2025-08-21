@@ -60,6 +60,6 @@
     @apply bg-background text-foreground;
   }
   section {
-    @apply w-full py-20 md:py-28 lg:py-32;
+    @apply w-full;
   }
 }
