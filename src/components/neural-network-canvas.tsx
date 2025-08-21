@@ -84,7 +84,7 @@ const NeuralNetworkCanvas: React.FC = () => {
       canvas.width = parent.offsetWidth;
       canvas.height = parent.offsetHeight;
 
-      const horizontalPadding = canvas.width * 0.05;
+      const horizontalPadding = 0;
       const drawingWidth = canvas.width - (2 * horizontalPadding);
 
       const nodes: Node[] = [];
@@ -165,7 +165,7 @@ const NeuralNetworkCanvas: React.FC = () => {
           y: edge.from.y,
           progress: 0,
           edge: edge,
-          speed: 0.02 + Math.random() * 0.02,
+          speed: 0.001 + Math.random() * 0.001,
           isComplete: false,
         });
       }
