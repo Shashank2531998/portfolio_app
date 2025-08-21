@@ -63,6 +63,8 @@ const NeuralNetworkCanvas: React.FC = () => {
       const nodes: Node[] = [];
       const edges: Edge[] = [];
       const layerCount = layerDefs.length;
+      
+      // Adjust layer spacing to start from the very left edge
       const layerSpacing = canvas.width / (layerCount - 1);
 
       layerDefs.forEach((nodeCount, layerIndex) => {
