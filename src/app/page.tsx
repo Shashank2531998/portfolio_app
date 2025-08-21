@@ -268,17 +268,15 @@ function HeroSection() {
 
 function AboutSection() {
     return (
-        <section id="about" className="py-20 md:py-24 lg:py-28">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-4">
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+        <section id="about" className="py-20 md:py-24 lg:py-28 bg-secondary px-4 sm:px-6 lg:px-8">
+            <div className="space-y-4 max-w-4xl mx-auto text-center">
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
                     <User /> About Me
                 </h2>
-                <p className="text-muted-foreground md:text-lg leading-relaxed max-w-4xl">
+                <p className="text-muted-foreground md:text-lg leading-relaxed">
                     I am a results-driven Software Engineer with a passion for developing innovative software solutions. With a strong foundation in computer science principles and a keen eye for detail, I specialize in building scalable, high-performance web applications. I thrive in collaborative environments and am dedicated to continuous learning and improvement. My goal is to leverage my skills to create technology that makes a meaningful impact.
                 </p>
             </div>
-          </div>
         </section>
     );
 }
