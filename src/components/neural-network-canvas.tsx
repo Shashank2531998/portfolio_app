@@ -5,30 +5,43 @@ import React, { useRef, useEffect, useState } from "react";
 interface Node {
   x: number;
   y: number;
-  vx: number;
-  vy: number;
+  layer: number;
+}
+
+interface Edge {
+  from: Node;
+  to: Node;
 }
 
 const NeuralNetworkCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const nodesRef = useRef<Node[]>([]);
+  const networkRef = useRef<{ nodes: Node[], edges: Edge[] }>({ nodes: [], edges: [] });
+  const animationStateRef = useRef({
+    startTime: 0,
+    drawnLayers: -1,
+    drawnEdges: 0,
+    phase: 'nodes' // 'nodes' -> 'edges'
+  });
+
   const [themeColors, setThemeColors] = useState({
     primary: "hsl(240 5.9% 10%)",
     background: "hsl(240 10% 99%)",
+    accent: "hsl(240 4.8% 95.9%)",
   });
 
   // Set theme colors dynamically
   useEffect(() => {
+    // This function will run on the client after mount
     const style = getComputedStyle(document.body);
-    // HSL values are read from the CSS variables.
     const primaryHSL = style.getPropertyValue('--primary').trim();
     const backgroundHSL = style.getPropertyValue('--background').trim();
-    
-    // Construct HSL color strings.
-    const primaryColor = primaryHSL ? `hsl(${primaryHSL})` : "#000";
-    const backgroundColor = backgroundHSL ? `hsl(${backgroundHSL})` : "#fff";
+    const accentHSL = style.getPropertyValue('--accent').trim();
 
-    setThemeColors({ primary: primaryColor, background: backgroundColor });
+    setThemeColors({
+      primary: primaryHSL ? `hsl(${primaryHSL})` : "#000",
+      background: backgroundHSL ? `hsl(${backgroundHSL})` : "#fff",
+      accent: accentHSL ? `hsl(${accentHSL})` : "#f0f0f0",
+    });
   }, []);
 
   useEffect(() => {
@@ -38,93 +51,140 @@ const NeuralNetworkCanvas: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Responsive canvas
-    const setCanvasSize = () => {
+    const layerDefs = [4, 6, 6, 3]; // Nodes per layer
+
+    const initializeNetwork = () => {
       const parent = canvas.parentElement;
-      if (parent) {
-        canvas.width = parent.offsetWidth;
-        canvas.height = parent.offsetHeight;
-        // Re-initialize nodes on resize
-        initializeNodes();
-      }
-    };
-    
-    const initializeNodes = () => {
-        const numNodes = Math.floor(canvas.width / 40);
-        const newNodes: Node[] = [];
-        for (let i = 0; i < numNodes; i++) {
-          newNodes.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.6,
-            vy: (Math.random() - 0.5) * 0.6,
-          });
-        }
-        nodesRef.current = newNodes;
-    };
+      if (!parent) return;
+      
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
 
-    setCanvasSize();
-    window.addEventListener("resize", setCanvasSize);
+      const nodes: Node[] = [];
+      const edges: Edge[] = [];
+      const layerCount = layerDefs.length;
+      const layerSpacing = canvas.width / (layerCount + 1);
 
-
-    let animationFrameId: number;
-
-    const animate = () => {
-      if(!ctx || !canvas) return;
-
-      ctx.fillStyle = themeColors.background;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      nodesRef.current.forEach((node, i) => {
-        // Move nodes
-        node.x += node.vx;
-        node.y += node.vy;
-
-        // Bounce
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-
-        // Draw glowing node
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 4);
-        gradient.addColorStop(0, themeColors.primary);
-        gradient.addColorStop(1, "transparent");
-
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-
-        // Draw fading edges
-        for (let j = i + 1; j < nodesRef.current.length; j++) {
-          const otherNode = nodesRef.current[j];
-          const dx = node.x - otherNode.x;
-          const dy = node.y - otherNode.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(node.x, node.y);
-            ctx.lineTo(otherNode.x, otherNode.y);
-            // To create the line gradient, we need to know the primary color's HSL components
-            const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
-            if(primaryMatch) {
-              const [h, s, l] = [primaryMatch[1], primaryMatch[2], primaryMatch[3]];
-              ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, ${1 - dist / 120})`;
-            } else {
-               ctx.strokeStyle = `rgba(0, 0, 0, ${1 - dist / 120})`; // fallback
-            }
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+      layerDefs.forEach((nodeCount, layerIndex) => {
+        const x = layerSpacing * (layerIndex + 1);
+        const nodeSpacing = canvas.height / (nodeCount + 1);
+        for (let i = 0; i < nodeCount; i++) {
+          const y = nodeSpacing * (i + 1);
+          nodes.push({ x, y, layer: layerIndex });
         }
       });
 
-      animationFrameId = requestAnimationFrame(animate);
+      for (let i = 0; i < nodes.length; i++) {
+        const fromNode = nodes[i];
+        if (fromNode.layer < layerCount - 1) {
+          for (let j = 0; j < nodes.length; j++) {
+            const toNode = nodes[j];
+            if (toNode.layer === fromNode.layer + 1) {
+              edges.push({ from: fromNode, to: toNode });
+            }
+          }
+        }
+      }
+      networkRef.current = { nodes, edges };
+      animationStateRef.current = {
+        startTime: performance.now(),
+        drawnLayers: -1,
+        drawnEdges: 0,
+        phase: 'nodes'
+      };
     };
 
-    animate();
+    window.addEventListener("resize", initializeNetwork);
+    initializeNetwork();
+
+    let animationFrameId: number;
+
+    const draw = () => {
+      if (!ctx || !canvas) return;
+
+      const { nodes, edges } = networkRef.current;
+      const animState = animationStateRef.current;
+      const elapsedTime = performance.now() - animState.startTime;
+
+      ctx.fillStyle = themeColors.background;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      const nodeAnimationDuration = 500; // ms to draw all nodes
+      const edgeAnimationDuration = 1500; // ms to draw all edges
+      const layerDelay = nodeAnimationDuration / layerDefs.length;
+
+      // ---- Update animation state ----
+      if (animState.phase === 'nodes') {
+        const currentLayer = Math.floor(elapsedTime / layerDelay) -1;
+        if(currentLayer > animState.drawnLayers) {
+            animState.drawnLayers = currentLayer;
+        }
+        if (elapsedTime >= nodeAnimationDuration) {
+            animState.phase = 'edges';
+            animState.drawnLayers = layerDefs.length;
+            animState.startTime = performance.now(); // Reset start time for edge animation
+        }
+      } else if (animState.phase === 'edges') {
+        const progress = Math.min((performance.now() - animState.startTime) / edgeAnimationDuration, 1);
+        animState.drawnEdges = Math.floor(progress * edges.length);
+      }
+      
+      // ---- Drawing ----
+      const drawnNodes = nodes.filter(n => n.layer <= animState.drawnLayers);
+      
+      // Draw edges first
+      ctx.lineWidth = 0.7;
+      for(let i = 0; i < animState.drawnEdges; i++) {
+          const edge = edges[i];
+          const opacity = Math.max(0, Math.min(1, (i - (animState.drawnEdges - 50)) / 50)); // Fade in last few edges
+          
+          const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
+          if(primaryMatch) {
+            const [h, s, l] = [primaryMatch[1], primaryMatch[2], primaryMatch[3]];
+            ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, ${0.2 * opacity})`;
+          } else {
+             ctx.strokeStyle = `rgba(0,0,0, ${0.2 * opacity})`;
+          }
+          
+          ctx.beginPath();
+          ctx.moveTo(edge.from.x, edge.from.y);
+          ctx.lineTo(edge.to.x, edge.to.y);
+          ctx.stroke();
+      }
+
+      // Draw nodes
+      drawnNodes.forEach(node => {
+        const isLastLayerNode = node.layer === animState.drawnLayers;
+        const timeSinceLayerStart = elapsedTime - (node.layer * layerDelay);
+        const fadeInProgress = isLastLayerNode ? Math.min(timeSinceLayerStart / (layerDelay * 0.8), 1) : 1;
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 4 * fadeInProgress, 0, Math.PI * 2);
+        
+        // Gradient for glow
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8 * fadeInProgress);
+        gradient.addColorStop(0, themeColors.primary);
+        gradient.addColorStop(1, "transparent");
+
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Solid core
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 2 * fadeInProgress, 0, Math.PI * 2);
+        ctx.fillStyle = themeColors.primary;
+        ctx.globalAlpha = fadeInProgress;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      });
+
+      animationFrameId = requestAnimationFrame(draw);
+    };
+
+    draw();
 
     return () => {
-      window.removeEventListener("resize", setCanvasSize);
+      window.removeEventListener("resize", initializeNetwork);
       cancelAnimationFrame(animationFrameId);
     };
   }, [themeColors]);
