@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from "next/image";
@@ -315,7 +316,7 @@ function ExperienceSection() {
                   </DialogTrigger>
                 </div>
               </div>
-              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} />
+              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Contributions" />
             </Dialog>
           ))}
         </div>
@@ -371,7 +372,7 @@ function EducationSection() {
                   </DialogTrigger>
                 </div>
               </div>
-              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} />
+              <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Coursework & Activities" />
             </Dialog>
           ))}
         </div>
@@ -452,6 +453,7 @@ function ProjectsSection() {
               images={project.images} 
               details={project.details}
               githubUrl={project.githubUrl}
+              detailsHeading="Key Features"
             />
           </Dialog>
         ))}

@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from "next/image";
@@ -25,9 +26,10 @@ interface ExperienceModalProps {
   images?: string[];
   details: string[];
   githubUrl?: string;
+  detailsHeading?: string;
 }
 
-export function ExperienceModal({ title, subtitle, images, details, githubUrl }: ExperienceModalProps) {
+export function ExperienceModal({ title, subtitle, images, details, githubUrl, detailsHeading }: ExperienceModalProps) {
   return (
     <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
       <DialogHeader className="flex-shrink-0">
@@ -62,7 +64,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl }:
           </Carousel>
         )}
         <div>
-          <h4 className="font-semibold text-foreground text-xl mb-4">Key Contributions</h4>
+          {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
           <ul className="space-y-3">
             {details.map((point, index) => (
               <li key={index} className="flex items-start gap-3">
