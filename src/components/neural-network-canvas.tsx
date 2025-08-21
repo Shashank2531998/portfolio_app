@@ -170,7 +170,7 @@ const NeuralNetworkCanvas: React.FC = () => {
               y: edge.from.y,
               progress: 0,
               edge: edge,
-              speed: (0.000005 + Math.random() * 0.000005),
+              speed: (0.0001 + Math.random() * 0.0001),
               isComplete: false,
             });
         }
@@ -196,7 +196,7 @@ const NeuralNetworkCanvas: React.FC = () => {
 
         gradient.addColorStop(Math.max(0, Math.min(1, lightPosition - lightWidth)), `hsla(${h}, ${s}%, ${l}%, 0)`);
         gradient.addColorStop(lightPosition, `hsla(${h}, ${s}%, 90%, ${opacity})`);
-        gradient.addColorStop(Math.min(1, lightPosition + lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
+        gradient.addColorStop(Math.min(1, Math.max(0, lightPosition + lightWidth)), `hsla(${h}, ${s}%, ${l}%, 0)`);
 
         ctx.beginPath();
         ctx.moveTo(p.edge.from.x, p.edge.from.y);
