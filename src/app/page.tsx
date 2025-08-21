@@ -563,8 +563,7 @@ function ExtracurricularSection() {
                             <Dialog key={index}>
                                 <DialogTrigger asChild>
                                     <div className="p-4 rounded-md transition-all duration-200 hover:bg-muted/50 cursor-pointer">
-                                        <h3 className="font-semibold text-foreground">{activity.title}</h3>
-                                        <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
+                                        <p className="text-muted-foreground text-sm mt-1 font-semibold">{activity.description}</p>
                                     </div>
                                 </DialogTrigger>
                                 <ExperienceModal
