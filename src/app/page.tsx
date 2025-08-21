@@ -509,24 +509,25 @@ function ExtracurricularSection() {
                     My involvement in activities outside of work and academics. Click on an entry to see more.
                 </p>
             </div>
-            <div className="space-y-4">
-                {extracurricularData.map((activity, index) => (
-                    <Dialog key={index}>
-                        <DialogTrigger asChild>
-                            <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
-                                <CardContent className="p-4">
-                                    <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
-                                </CardContent>
-                            </Card>
-                        </DialogTrigger>
-                         <ExperienceModal
-                            title={activity.title}
-                            subtitle="Extracurricular Activity"
-                            details={activity.details}
-                        />
-                    </Dialog>
-                ))}
-            </div>
+            <Card>
+                <CardContent className="p-2">
+                    {extracurricularData.map((activity, index) => (
+                        <Dialog key={index}>
+                            <DialogTrigger asChild>
+                                <div className="p-4 rounded-md transition-all duration-200 hover:bg-secondary cursor-pointer">
+                                    <p className="text-muted-foreground text-sm">{activity.description}</p>
+                                </div>
+                            </DialogTrigger>
+                            <ExperienceModal
+                                title={activity.title}
+                                subtitle="Extracurricular Activity"
+                                details={activity.details}
+                            />
+                            {index < extracurricularData.length - 1 && <Separator />}
+                        </Dialog>
+                    ))}
+                </CardContent>
+            </Card>
         </section>
     );
 }
@@ -574,5 +575,7 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
