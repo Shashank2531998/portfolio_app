@@ -1,6 +1,7 @@
+
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -193,7 +194,9 @@ function SkillsSection() {
   return (
     <section id="skills">
       <div className="space-y-4 mb-12">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Skills</h2>
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <Layers /> Skills
+        </h2>
         <p className="text-muted-foreground md:text-lg">
           Technologies and tools I work with.
         </p>
@@ -222,7 +225,9 @@ function ProjectsSection() {
   return (
     <section id="projects">
       <div className="space-y-4 mb-12">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Projects</h2>
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+            <FolderKanban /> Projects
+        </h2>
         <p className="text-muted-foreground md:text-lg">
           A selection of projects that showcase my skills.
         </p>
@@ -265,17 +270,15 @@ function ContactSection() {
   return (
     <section id="contact">
       <div className="space-y-4 mb-12">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Contact</h2>
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <Mail /> Contact
+        </h2>
         <p className="text-muted-foreground md:text-lg">
-          Have a project in mind, or just want to say hello?
+          Have a project in mind, or just want to say hello? Reach out via email, find me on social media, or send me a message using the form.
         </p>
       </div>
       <div className="max-w-4xl grid md:grid-cols-2 gap-8 items-start">
         <div className="space-y-6">
-          <h3 className="text-2xl font-semibold font-headline text-primary">Get In Touch</h3>
-          <p className="text-muted-foreground">
-            You can reach me via email or find me on social media. I'm looking forward to hearing from you!
-          </p>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <Mail className="w-5 h-5 text-primary" />
@@ -296,3 +299,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
