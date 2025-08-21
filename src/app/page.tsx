@@ -515,7 +515,6 @@ function ExtracurricularSection() {
                         <DialogTrigger asChild>
                             <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                 <CardContent className="p-4">
-                                    <h3 className="font-semibold text-foreground">{activity.title}</h3>
                                     <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
                                 </CardContent>
                             </Card>
