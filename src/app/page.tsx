@@ -282,8 +282,8 @@ function AboutSection() {
                             data-ai-hint="professional portrait"
                         />
                     </div>
-                    <div className="md:col-span-2 space-y-4 text-center md:text-left">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center md:justify-start gap-3">
+                    <div className="md:col-span-2 space-y-4">
+                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
                             <User /> About Me
                         </h2>
                         <p className="text-muted-foreground md:text-lg leading-relaxed">
