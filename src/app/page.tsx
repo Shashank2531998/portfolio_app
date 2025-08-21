@@ -96,7 +96,7 @@ function HeroSection() {
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
              <NeuralNetworkCanvas />
-            <div className="absolute inset-0 bg-background/60"></div>
+            <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
         </div>
         <div className="relative z-10 space-y-4 px-4">
             <div className="mx-auto mb-8">
