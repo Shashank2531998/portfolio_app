@@ -4,7 +4,7 @@ import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationC
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Header } from "@/components/header";
+import { Sidebar } from "@/components/sidebar";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
 
@@ -74,42 +74,45 @@ const skillsData = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-dvh bg-background">
-      <Header />
-      <main className="flex-1">
-        <HeroSection />
-        <ExperienceSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
-      <Footer />
+    <div className="flex min-h-screen bg-background text-foreground">
+      <Sidebar />
+      <div className="flex-1 md:ml-64"> 
+        <main className="flex-1 px-4 sm:px-6 lg:px-8">
+          <HeroSection />
+          <ExperienceSection />
+          <SkillsSection />
+          <ProjectsSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
 
 function HeroSection() {
   return (
-    <section id="home" className="bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-16 items-center">
+    <section id="home" className="min-h-screen flex items-center">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-16 items-center w-full">
           <div className="space-y-4">
-            <Badge variant="outline" className="text-sm border-primary/50 text-primary-foreground bg-primary">Shashank - Software Engineer</Badge>
-            <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
-              Crafting Digital Experiences
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground font-headline">
+              Shashank
             </h1>
+            <h2 className="text-2xl font-semibold text-primary font-code">
+              Software Engineer
+            </h2>
             <p className="max-w-[600px] text-muted-foreground md:text-xl">
-              I'm a passionate software engineer specializing in building modern, responsive, and scalable web applications. Let's create something amazing together.
+              I'm a passionate software engineer specializing in building modern, responsive, and scalable web applications.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button asChild size="lg">
                 <a href="#contact">
-                  Contact Me <Mail className="ml-2 h-5 w-5" />
+                  Contact Me <Mail className="ml-2" />
                 </a>
               </Button>
               <Button asChild variant="secondary" size="lg">
                 <a href="/shashank-resume.pdf" download>
-                  Download CV <Download className="ml-2 h-5 w-5" />
+                  Download CV <Download className="ml-2" />
                 </a>
               </Button>
             </div>
@@ -118,14 +121,13 @@ function HeroSection() {
             <Image
               src="https://placehold.co/500x500.png"
               alt="Shashank's Portrait"
-              width={450}
-              height={450}
-              className="rounded-full aspect-square object-cover border-8 border-primary/20 shadow-lg"
+              width={400}
+              height={400}
+              className="rounded-full aspect-square object-cover border-4 border-secondary shadow-lg"
               data-ai-hint="professional portrait"
             />
           </div>
         </div>
-      </div>
     </section>
   );
 }
@@ -133,45 +135,43 @@ function HeroSection() {
 function ExperienceSection() {
   return (
     <section id="experience">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">My Journey</h2>
-          <p className="text-muted-foreground md:text-xl">
-            A timeline of my professional experience and educational background.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-16">
-          <div>
-            <h3 className="text-2xl font-semibold font-headline flex items-center gap-3 mb-8">
-              <Briefcase className="w-8 h-8 text-primary" /> Work Experience
-            </h3>
-            <div className="relative border-l-2 border-primary/30 ml-4 pl-8 space-y-12">
-              {experienceData.map((item, index) => (
-                <div key={index} className="relative">
-                  <div className="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-primary" />
-                  <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-                  <h4 className="text-xl font-bold font-headline text-foreground">{item.role}</h4>
-                  <p className="font-medium text-primary-foreground bg-primary/90 px-2 py-1 rounded-md inline-block">{item.company}</p>
-                  <p className="mt-2 text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </div>
+      <div className="space-y-4 mb-12">
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Experience</h2>
+        <p className="text-muted-foreground md:text-lg">
+          My professional journey and educational background.
+        </p>
+      </div>
+      <div className="grid gap-16">
+        <div>
+          <h3 className="text-2xl font-semibold font-headline flex items-center gap-3 mb-8 text-primary">
+            <Briefcase /> Work Experience
+          </h3>
+          <div className="relative border-l-2 border-secondary ml-3 pl-8 space-y-12">
+            {experienceData.map((item, index) => (
+              <div key={index} className="relative">
+                <div className="absolute -left-[38px] top-1 h-3 w-3 rounded-full bg-primary" />
+                <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
+                <h4 className="text-xl font-bold text-foreground">{item.role}</h4>
+                <p className="font-medium text-primary">{item.company}</p>
+                <p className="mt-2 text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
           </div>
-          <div>
-            <h3 className="text-2xl font-semibold font-headline flex items-center gap-3 mb-8">
-              <GraduationCap className="w-8 h-8 text-primary" /> Education
-            </h3>
-            <div className="relative border-l-2 border-primary/30 ml-4 pl-8 space-y-12">
-              {educationData.map((item, index) => (
-                <div key={index} className="relative">
-                  <div className="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-primary" />
-                  <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-                  <h4 className="text-xl font-bold font-headline text-foreground">{item.degree}</h4>
-                  <p className="font-medium text-primary-foreground bg-primary/90 px-2 py-1 rounded-md inline-block">{item.institution}</p>
-                  <p className="mt-2 text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </div>
+        </div>
+        <div>
+          <h3 className="text-2xl font-semibold font-headline flex items-center gap-3 mb-8 text-primary">
+            <GraduationCap /> Education
+          </h3>
+          <div className="relative border-l-2 border-secondary ml-3 pl-8 space-y-12">
+            {educationData.map((item, index) => (
+              <div key={index} className="relative">
+                <div className="absolute -left-[38px] top-1 h-3 w-3 rounded-full bg-primary" />
+                <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
+                <h4 className="text-xl font-bold text-foreground">{item.degree}</h4>
+                <p className="font-medium text-primary">{item.institution}</p>
+                <p className="mt-2 text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -181,30 +181,28 @@ function ExperienceSection() {
 
 function SkillsSection() {
   return (
-    <section id="skills" className="bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">Skills & Expertise</h2>
-          <p className="text-muted-foreground md:text-xl">
-            Here's a look at the technologies I work with. I'm always eager to learn more.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {Object.entries(skillsData).map(([category, skills]) => (
-            <Card key={category} className="bg-background/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-primary flex items-center gap-2 font-headline"><Code className="w-6 h-6"/> {category}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="text-sm font-medium font-code">{skill}</Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <section id="skills">
+      <div className="space-y-4 mb-12">
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Skills</h2>
+        <p className="text-muted-foreground md:text-lg">
+          Technologies and tools I work with.
+        </p>
+      </div>
+      <div className="grid gap-8 md:grid-cols-3">
+        {Object.entries(skillsData).map(([category, skills]) => (
+          <Card key={category}>
+            <CardHeader>
+              <CardTitle className="text-primary flex items-center gap-3 font-headline"><Code /> {category}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <Badge key={skill} variant="secondary" className="font-code">{skill}</Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </section>
   );
@@ -213,22 +211,21 @@ function SkillsSection() {
 function ProjectsSection() {
   return (
     <section id="projects">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">Featured Projects</h2>
-          <p className="text-muted-foreground md:text-xl">
-            A selection of projects that showcase my skills and passion for development.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projectsData.map((project) => (
-            <Card key={project.title} className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card">
+      <div className="space-y-4 mb-12">
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Projects</h2>
+        <p className="text-muted-foreground md:text-lg">
+          A selection of projects that showcase my skills.
+        </p>
+      </div>
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+        {projectsData.map((project) => (
+            <Card key={project.title} className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               <CardHeader className="p-0">
                 <Image
                   src={project.imageUrl}
                   alt={project.title}
                   width={600}
-                  height={400}
+                  height={340}
                   className="w-full h-auto aspect-video object-cover"
                   data-ai-hint={project.imageHint}
                 />
@@ -243,13 +240,12 @@ function ProjectsSection() {
               <CardFooter className="p-6 pt-0">
                 <Button asChild variant="outline" className="w-full">
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" /> View Code
+                    <Github className="mr-2" /> View Code
                   </a>
                 </Button>
               </CardFooter>
             </Card>
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   );
@@ -257,46 +253,27 @@ function ProjectsSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground bg-primary px-4 py-2 rounded-md inline-block">Get In Touch</h2>
-          <p className="text-muted-foreground md:text-xl">
-            Have a project in mind, or just want to say hello? Feel free to reach out.
+    <section id="contact">
+      <div className="space-y-4 mb-12">
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Contact</h2>
+        <p className="text-muted-foreground md:text-lg">
+          Have a project in mind, or just want to say hello?
+        </p>
+      </div>
+      <div className="max-w-4xl grid md:grid-cols-2 gap-8 items-start">
+        <div className="space-y-6">
+          <h3 className="text-2xl font-semibold font-headline text-primary">Get In Touch</h3>
+          <p className="text-muted-foreground">
+            You can reach me via email or find me on social media. I'm looking forward to hearing from you!
           </p>
-        </div>
-        <div className="mt-12 max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-start">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold font-headline">Contact Information</h3>
-            <p className="text-muted-foreground">
-              You can reach me via email or find me on social media. I'm looking forward to hearing from you!
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Mail className="w-6 h-6 text-primary" />
-                <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
-              </div>
-            </div>
-            <div className="flex space-x-4">
-              <Button asChild variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                  <Github className="w-6 h-6" />
-                </a>
-              </Button>
-              <Button asChild variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <Linkedin className="w-6 h-6" />
-                </a>
-              </Button>
-              <Button asChild variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                  <Twitter className="w-6 h-6" />
-                </a>
-              </Button>
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <Mail className="w-5 h-5 text-primary" />
+              <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
             </div>
           </div>
-          <ContactForm />
         </div>
+        <ContactForm />
       </div>
     </section>
   );
