@@ -222,7 +222,7 @@ export default function Home() {
 }
 
 function HeroSection() {
-    const taglines = ["Engineer", "Researcher", "Innovator"];
+    const taglines = ["Software Developer", "AI Researcher", "Innovator"];
 
     return (
     <section id="home" className="relative group min-h-screen flex items-center justify-center text-center overflow-hidden py-20 md:py-32">
