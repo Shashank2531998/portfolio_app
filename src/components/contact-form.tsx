@@ -63,9 +63,9 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="bg-background/80 backdrop-blur-sm">
+    <Card className="bg-background/80 backdrop-blur-sm border-primary/20">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2"><Mail className="w-6 h-6 text-primary"/> Send me a message</CardTitle>
+        <CardTitle className="flex items-center gap-2 font-headline"><Mail className="w-6 h-6 text-primary"/> Send a message</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -109,7 +109,7 @@ export function ContactForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={form.formState.isSubmitting}>
+            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={form.formState.isSubmitting}>
               {form.formState.isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>

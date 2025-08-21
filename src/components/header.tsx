@@ -32,11 +32,11 @@ export function Header() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-card/80 backdrop-blur-sm border-b border-primary/20 shadow-md' : 'bg-card'}`}>
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-accent">
+        <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-primary">
           <Code className="h-6 w-6" />
-          <span>Shashank's Portfolio</span>
+          <span className="font-headline">Shashank's Portfolio</span>
         </Link>
         <nav className="hidden md:flex gap-6">
           {navLinks.map((link) => (
@@ -53,12 +53,12 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" className="bg-card">
               <div className="flex flex-col p-6">
                 <div className="flex items-center justify-between">
-                   <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-accent" onClick={closeMenu}>
+                   <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-primary" onClick={closeMenu}>
                     <Code className="h-6 w-6" />
-                    <span>Shashank's Portfolio</span>
+                    <span className="font-headline">Shashank's Portfolio</span>
                   </Link>
                   <Button variant="ghost" size="icon" onClick={closeMenu}>
                     <X className="h-6 w-6" />
