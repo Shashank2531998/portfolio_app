@@ -313,43 +313,35 @@ function ExperienceSection() {
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-4xl mx-auto">
-          <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-10">
+        <div className="relative max-w-3xl mx-auto">
+          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-12">
             {experienceData.map((item, index) => (
               <Dialog key={index}>
-                <div className="relative group flex items-start gap-x-8">
-                   <div className="absolute left-6 top-6 size-12 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
-                      <Image
-                        src={item.logoUrl}
-                        alt={`${item.company} logo`}
-                        width={48}
-                        height={48}
-                        className="rounded-full transition-all duration-300 group-hover:scale-110"
-                        data-ai-hint="company logo"
-                      />
-                  </div>
-                  <div className="flex-grow pl-16">
-                    <DialogTrigger asChild>
-                      <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
-                        <CardHeader>
-                          <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                            <div>
-                              <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                              <p className="font-medium text-primary mt-1">{item.company}</p>
-                              <p className="font-semibold text-sm text-muted-foreground mt-1">
-                                {item.date} <span className="font-normal">{getDuration(item.date)}</span>
-                              </p>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-                        </CardContent>
-                      </Card>
-                    </DialogTrigger>
-                  </div>
-                </div>
+                <DialogTrigger asChild>
+                  <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer max-w-2xl mx-auto">
+                    <CardHeader className="text-center">
+                       <div className="mx-auto bg-secondary p-2 rounded-full ring-8 ring-background mb-4">
+                          <Image
+                            src={item.logoUrl}
+                            alt={`${item.company} logo`}
+                            width={48}
+                            height={48}
+                            className="rounded-full"
+                            data-ai-hint="company logo"
+                          />
+                      </div>
+                      <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                      <p className="font-medium text-primary mt-1">{item.company}</p>
+                      <p className="font-semibold text-sm text-muted-foreground mt-1">
+                        {item.date} <span className="font-normal">{getDuration(item.date)}</span>
+                      </p>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </DialogTrigger>
                 <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Contributions" />
               </Dialog>
             ))}
@@ -373,41 +365,33 @@ function EducationSection() {
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-4xl mx-auto">
-          <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-10">
+        <div className="relative max-w-3xl mx-auto">
+           <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-12">
             {educationData.map((item, index) => (
               <Dialog key={index}>
-                <div className="relative group flex items-start gap-x-8">
-                  <div className="absolute left-6 top-6 size-12 rounded-full bg-background flex items-center justify-center ring-8 ring-background -translate-x-1/2 transition-all duration-300 group-hover:ring-primary/20 group-hover:bg-primary/10">
-                     <Image
-                        src={item.logoUrl}
-                        alt={`${item.company} logo`}
-                        width={48}
-                        height={48}
-                        className="rounded-full transition-all duration-300 group-hover:scale-110"
-                        data-ai-hint="university building"
-                      />
-                  </div>
-                  <div className="flex-grow pl-16">
-                    <DialogTrigger asChild>
-                      <Card className="transition-all duration-300 group-hover:shadow-lg cursor-pointer">
-                        <CardHeader>
-                          <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                            <div>
-                              <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                              <p className="font-medium text-primary mt-1">{item.company}</p>
-                              <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
-                            </div>
+                  <DialogTrigger asChild>
+                      <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer max-w-2xl mx-auto">
+                        <CardHeader className="text-center">
+                           <div className="mx-auto bg-secondary p-2 rounded-full ring-8 ring-background mb-4">
+                              <Image
+                                src={item.logoUrl}
+                                alt={`${item.company} logo`}
+                                width={48}
+                                height={48}
+                                className="rounded-full"
+                                data-ai-hint="university building"
+                              />
                           </div>
+                          <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                          <p className="font-medium text-primary mt-1">{item.company}</p>
+                          <p className="font-semibold text-sm text-muted-foreground mt-1">{item.date}</p>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="text-center">
                           <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
                         </CardContent>
                       </Card>
                     </DialogTrigger>
-                  </div>
-                </div>
                 <ExperienceModal title={item.role} subtitle={item.company} images={item.images} details={item.details} detailsHeading="Key Coursework & Activities" />
               </Dialog>
             ))}
