@@ -20,8 +20,8 @@ import { CheckCircle2, Github } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface ExperienceModalProps {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
   images?: string[];
   details: string[];
   githubUrl?: string;
@@ -30,12 +30,16 @@ interface ExperienceModalProps {
 export function ExperienceModal({ title, subtitle, images, details, githubUrl }: ExperienceModalProps) {
   return (
     <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
-      <DialogHeader className="flex-shrink-0">
-        <DialogTitle className="text-2xl font-headline">{title}</DialogTitle>
-        <DialogDescription className="text-lg font-medium text-primary">
-          {subtitle}
-        </DialogDescription>
-      </DialogHeader>
+      {title && (
+        <DialogHeader className="flex-shrink-0">
+          <DialogTitle className="text-2xl font-headline">{title}</DialogTitle>
+          {subtitle && (
+            <DialogDescription className="text-lg font-medium text-primary">
+              {subtitle}
+            </DialogDescription>
+          )}
+        </DialogHeader>
+      )}
       <div className="flex-grow overflow-y-auto pr-4 -mr-4 space-y-6">
         {images && images.length > 0 && (
           <Carousel

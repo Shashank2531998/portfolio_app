@@ -519,8 +519,6 @@ function ExtracurricularSection() {
                                 </div>
                             </DialogTrigger>
                             <ExperienceModal
-                                title={activity.title}
-                                subtitle="Extracurricular Activity"
                                 details={activity.details}
                             />
                             {index < extracurricularData.length - 1 && <Separator />}
@@ -575,7 +573,5 @@ function ContactSection() {
     </section>
   );
 }
-
-    
 
     
