@@ -148,10 +148,10 @@ function ExperienceSection() {
           My professional journey.
         </p>
       </div>
-      <div className="relative border-l-2 border-secondary/50 ml-3 space-y-12">
+      <div className="relative border-l border-secondary/50 ml-3 space-y-12">
         {experienceData.map((item, index) => (
           <div key={index} className="relative group pl-8">
-            <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
             <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
             <h3 className="text-lg font-semibold text-foreground mt-1">{item.role}</h3>
             <p className="font-medium text-primary">{item.company}</p>
@@ -174,10 +174,10 @@ function EducationSection() {
           My academic background.
         </p>
       </div>
-      <div className="relative border-l-2 border-secondary/50 ml-3 space-y-12">
+      <div className="relative border-l border-secondary/50 ml-3 space-y-12">
         {educationData.map((item, index) => (
           <div key={index} className="relative group pl-8">
-            <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
             <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
             <h3 className="text-lg font-semibold text-foreground mt-1">{item.degree}</h3>
             <p className="font-medium text-primary">{item.institution}</p>
