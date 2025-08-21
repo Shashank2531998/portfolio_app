@@ -70,18 +70,22 @@ export function Header() {
       isScrolled ? "border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "border-transparent bg-background"
     )}>
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Left Aligned */}
         <div className="flex items-center gap-6">
           <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
             <Code className="h-6 w-6 text-primary" />
             <span className="font-headline">Shashank</span>
           </Link>
-          
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-              <NavContent />
-          </nav>
         </div>
         
+        {/* Centered */}
+        <div className="hidden md:flex flex-1 justify-center">
+            <nav className="flex items-center gap-6 text-sm font-medium">
+                <NavContent />
+            </nav>
+        </div>
+        
+        {/* Right Aligned */}
         <div className="flex items-center gap-4">
             <div className="hidden md:flex">
                 <SocialLinks />
