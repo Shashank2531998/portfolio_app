@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Building } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
@@ -152,14 +152,21 @@ function ExperienceSection() {
         </p>
       </div>
       <div className="relative">
-        <div className="absolute left-3.5 top-2 h-full w-0.5 bg-border -translate-x-1/2" />
+        <div className="absolute left-5 top-2 h-full w-0.5 bg-border -translate-x-1/2" />
         <div className="space-y-12">
           {experienceData.map((item, index) => (
             <div key={index} className="relative group flex items-start gap-x-6">
-              <div className="absolute left-3.5 top-2 h-8 w-8 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2">
-                <Building className="w-4 h-4 text-muted-foreground" />
+              <div className="absolute left-5 top-2 h-10 w-10 rounded-full bg-secondary flex items-center justify-center ring-8 ring-background -translate-x-1/2">
+                 <Image
+                    src="https://placehold.co/40x40.png"
+                    alt={`${item.company} logo`}
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                    data-ai-hint="company logo"
+                  />
               </div>
-              <div className="flex-grow ml-12">
+              <div className="flex-grow ml-16">
                 <Card className="transition-all duration-300 group-hover:shadow-lg">
                   <CardHeader>
                     <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
@@ -183,6 +190,7 @@ function ExperienceSection() {
   );
 }
 
+
 function EducationSection() {
   return (
     <section id="education">
@@ -197,7 +205,7 @@ function EducationSection() {
       <div className="relative border-l border-secondary/50 ml-3 space-y-12">
         {educationData.map((item, index) => (
           <div key={index} className="relative group pl-8">
-            <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125 ring-4 ring-background" />
+            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125 ring-4 ring-background" />
             <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
             <h3 className="text-lg font-semibold text-foreground mt-1">{item.degree}</h3>
             <p className="font-medium text-primary">{item.institution}</p>
@@ -271,13 +279,13 @@ function ProjectsSection() {
                   {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
                 </div>
               </CardContent>
-              <CardContent className="p-4 pt-0">
+              <CardFooter className="p-4 pt-0">
                 <Button asChild variant="outline" size="sm" className="w-full">
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2" /> View Code
                   </a>
                 </Button>
-              </CardContent>
+              </CardFooter>
             </Card>
         ))}
       </div>
