@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
+import NeuralNetworkCanvas from "@/components/neural-network-canvas";
 
 const experienceData = [
   {
@@ -94,13 +95,7 @@ function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-             <Image
-              src="https://placehold.co/1920x1080.png"
-              alt="Background"
-              fill
-              className="object-cover"
-              data-ai-hint="abstract geometric background"
-            />
+             <NeuralNetworkCanvas />
             <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
         </div>
         <div className="relative z-10 space-y-4 px-4">
