@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from "next/image";
@@ -14,6 +15,7 @@ import NeuralNetworkCanvas from "@/components/neural-network-canvas";
 import { InteractiveBlurOverlay } from "@/components/interactive-blur-overlay";
 import { ExperienceModal } from "@/components/experience-modal";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Separator } from "@/components/ui/separator";
 
 const experienceData = [
   {
@@ -409,34 +411,43 @@ function ProjectsSection() {
 function ContactSection() {
   return (
     <section id="contact">
-      <div className="space-y-4 mb-8">
-        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+      <div className="space-y-4 mb-8 text-center">
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
           <Mail /> Contact
         </h2>
-        <p className="text-muted-foreground md:text-lg">
+        <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
           Have a project in mind, or just want to say hello? Reach out via email, find me on social media, or send me a message using the form.
         </p>
       </div>
-      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-start">
-        <div className="space-y-6">
-          <h3 className="text-xl font-semibold font-headline text-primary">Get in Touch</h3>
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <Mail className="w-5 h-5 text-primary" />
-              <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
+      <Card className="max-w-4xl mx-auto">
+        <CardContent className="p-0">
+          <div className="grid md:grid-cols-2">
+            <div className="p-8 space-y-6">
+               <h3 className="text-xl font-semibold font-headline text-primary">Get in Touch</h3>
+               <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <Mail className="w-5 h-5 text-primary" />
+                    <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Github className="w-5 h-5 text-primary" />
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">github.com</a>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Linkedin className="w-5 h-5 text-primary" />
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">linkedin.com</a>
+                  </div>
+                </div>
             </div>
-            <div className="flex items-center gap-4">
-              <Github className="w-5 h-5 text-primary" />
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">github.com</a>
-            </div>
-            <div className="flex items-center gap-4">
-              <Linkedin className="w-5 h-5 text-primary" />
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">linkedin.com</a>
+             <div className="relative">
+                <Separator orientation="vertical" className="absolute left-0 top-0 h-full hidden md:block" />
+                <div className="p-8">
+                    <ContactForm />
+                </div>
             </div>
           </div>
-        </div>
-        <ContactForm />
-      </div>
+        </CardContent>
+      </Card>
     </section>
   );
 }

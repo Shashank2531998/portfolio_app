@@ -63,11 +63,8 @@ export function ContactForm() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-3 font-headline text-primary"><Mail /> Send a message</CardTitle>
-      </CardHeader>
-      <CardContent>
+    <div>
+        <h3 className="text-xl font-semibold font-headline text-primary mb-6">Send a Message</h3>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -114,7 +111,6 @@ export function ContactForm() {
             </Button>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+    </div>
   );
 }
