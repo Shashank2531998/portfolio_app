@@ -4,7 +4,7 @@ import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationC
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sidebar } from "@/components/sidebar";
+import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
 
@@ -74,18 +74,16 @@ const skillsData = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
-      <Sidebar />
-      <div className="flex-1 md:ml-64"> 
-        <main className="flex-1 px-4 sm:px-6 lg:px-8">
-          <HeroSection />
-          <ExperienceSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <ContactSection />
-        </main>
-        <Footer />
-      </div>
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <Header />
+      <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8">
+        <HeroSection />
+        <ExperienceSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+      <Footer />
     </div>
   );
 }
@@ -217,7 +215,7 @@ function ProjectsSection() {
           A selection of projects that showcase my skills.
         </p>
       </div>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectsData.map((project) => (
             <Card key={project.title} className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               <CardHeader className="p-0">
@@ -230,15 +228,15 @@ function ProjectsSection() {
                   data-ai-hint={project.imageHint}
                 />
               </CardHeader>
-              <CardContent className="p-6 flex-1">
-                <h3 className="text-xl font-bold font-headline">{project.title}</h3>
-                <p className="mt-2 text-muted-foreground">{project.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code">{tag}</Badge>)}
+              <CardContent className="p-4 flex-1">
+                <h3 className="text-lg font-bold font-headline">{project.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
                 </div>
               </CardContent>
-              <CardFooter className="p-6 pt-0">
-                <Button asChild variant="outline" className="w-full">
+              <CardFooter className="p-4 pt-0">
+                <Button asChild variant="outline" size="sm" className="w-full">
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2" /> View Code
                   </a>
@@ -270,6 +268,14 @@ function ContactSection() {
             <div className="flex items-center gap-4">
               <Mail className="w-5 h-5 text-primary" />
               <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
+            </div>
+            <div className="flex items-center gap-4">
+              <Github className="w-5 h-5 text-primary" />
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">github.com</a>
+            </div>
+            <div className="flex items-center gap-4">
+              <Linkedin className="w-5 h-5 text-primary" />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">linkedin.com</a>
             </div>
           </div>
         </div>
