@@ -206,7 +206,6 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <AboutSection />
-        
         <ExperienceSection />
         <EducationSection />
         <SkillsSection />
@@ -215,7 +214,6 @@ export default function Home() {
         <ExtracurricularSection />
         <HobbiesSection />
         <ContactSection />
-
       </main>
       <Footer />
     </div>
@@ -224,7 +222,7 @@ export default function Home() {
 
 function HeroSection() {
     return (
-    <section id="home" className="relative group min-h-screen flex items-center justify-center text-center overflow-hidden">
+    <section id="home" className="relative group min-h-screen flex items-center justify-center text-center overflow-hidden py-20 md:py-32">
         <div className="absolute inset-0 z-0">
              <NeuralNetworkCanvas />
              <InteractiveBlurOverlay />
@@ -315,7 +313,7 @@ function ExperienceSection() {
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
           <div className="space-y-10">
             {experienceData.map((item, index) => (
@@ -375,7 +373,7 @@ function EducationSection() {
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-6 top-6 h-full w-0.5 bg-border -translate-x-1/2" />
           <div className="space-y-10">
             {educationData.map((item, index) => (
@@ -439,7 +437,7 @@ function SkillsSection() {
             Technologies and tools I work with.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
           {Object.entries(skillsData).map(([category, skills]) => {
             const Icon = skillIcons[category] || Code;
             return (
@@ -475,7 +473,7 @@ function ProjectsSection() {
             A selection of projects that showcase my skills.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {projectsData.map((project) => (
             <Dialog key={project.title}>
               <DialogTrigger asChild>
@@ -519,7 +517,7 @@ function AchievementsSection() {
                         My key accomplishments and recognitions.
                     </p>
                 </div>
-                <div className="space-y-4 max-w-3xl mx-auto">
+                <div className="space-y-4 max-w-4xl mx-auto">
                     {achievementsData.map((achievement, index) => (
                         <Dialog key={index}>
                             <DialogTrigger asChild>
@@ -559,7 +557,7 @@ function ExtracurricularSection() {
                         My involvement in activities outside of work and academics. Click on an entry to see more.
                     </p>
                 </div>
-                <Card className="max-w-3xl mx-auto">
+                <Card className="max-w-4xl mx-auto">
                     <CardContent className="p-2">
                         {extracurricularData.map((activity, index) => (
                             <Dialog key={index}>
@@ -600,11 +598,11 @@ function HobbiesSection() {
             const Icon = hobby.icon;
             return (
               <Card key={hobby.title}>
-                <CardHeader className="flex flex-row items-center gap-4">
+                <CardHeader className="flex flex-row items-center gap-4 p-6">
                   <Icon className="w-8 h-8 text-primary" />
                   <CardTitle className="font-headline">{hobby.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-6 pt-0">
                   <p className="text-muted-foreground">{hobby.description}</p>
                 </CardContent>
               </Card>
