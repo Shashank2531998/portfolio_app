@@ -3,7 +3,7 @@
 "use client";
 
 import Link from "next/link";
-import { Code, Github, Linkedin, Menu, Twitter } from "lucide-react";
+import { Code, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import * as React from "react";
@@ -42,7 +42,7 @@ export function Header() {
         <Link
           key={link.href}
           href={link.href}
-          className="text-muted-foreground transition-colors hover:text-foreground"
+          className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           onClick={closeMenu}
         >
           {link.label}
@@ -51,52 +51,21 @@ export function Header() {
     </>
   );
 
-  const SocialLinks = () => (
-     <div className="flex items-center gap-2">
-        <Button asChild variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <Github />
-          </a>
-        </Button>
-        <Button asChild variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <Linkedin />
-          </a>
-        </Button>
-        <Button asChild variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <Twitter />
-          </a>
-        </Button>
-      </div>
-  );
-
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full border-b transition-colors",
       isScrolled ? "border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "border-transparent bg-background"
     )}>
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Left Aligned */}
-        <div className="flex items-center gap-6">
-          <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
-            <Code className="h-6 w-6 text-primary" />
-            <span className="font-headline">Shashank</span>
-          </Link>
-        </div>
+        <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
+          <Code className="h-6 w-6 text-primary" />
+          <span className="font-headline">Shashank</span>
+        </Link>
         
-        {/* Centered */}
-        <div className="hidden md:flex flex-1 justify-center">
-            <nav className="flex items-center gap-6 text-sm font-medium">
+        <div className="flex items-center gap-4">
+            <nav className="hidden md:flex items-center gap-6">
                 <NavContent />
             </nav>
-        </div>
-        
-        {/* Right Aligned */}
-        <div className="flex items-center gap-4">
-            <div className="hidden md:flex">
-                <SocialLinks />
-            </div>
 
             {/* Mobile Nav */}
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -116,9 +85,6 @@ export function Header() {
                 <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
                     <NavContent />
                 </nav>
-                <div className="p-6 pt-0">
-                    <SocialLinks />
-                </div>
               </SheetContent>
             </Sheet>
         </div>

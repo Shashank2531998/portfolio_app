@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity, List, User, Heart, Gamepad2, Mountain, BookOpen } from 'lucide-react';
+import { Github, Linkedin, Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -165,17 +165,14 @@ const achievementsData = [
 
 const extracurricularData = [
     {
-        title: "Coding Club President",
         description: "Organized weekly workshops, coding competitions, and guest speaker events.",
         details: ["Led a team of 10 students to manage club activities for over 100 members.", "Increased club membership by 40% through targeted outreach and engaging events."],
     },
     {
-        title: "Hackathon Volunteer",
         description: "Mentored participants and assisted with logistics at the annual university hackathon.",
         details: ["Provided technical guidance to 5+ teams on topics ranging from web development to machine learning.", "Assisted event organizers with setup, registration, and troubleshooting to ensure a smooth experience."],
     },
     {
-        title: "Open Source Contributor",
         description: "Contributed to several open-source projects on GitHub, focusing on documentation and bug fixes.",
         details: ["Submitted pull requests to popular libraries like `react` and `tailwindcss`.", "Improved documentation clarity by adding code examples and tutorials."]
     },
