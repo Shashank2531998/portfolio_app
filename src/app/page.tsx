@@ -81,7 +81,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <div className="space-y-20 md:space-y-24 lg:space-y-28">
             <ExperienceSection />
             <EducationSection />
@@ -152,30 +152,29 @@ function ExperienceSection() {
         </p>
       </div>
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-secondary/50 ml-6" />
+        <div className="absolute left-3.5 top-0 h-full w-0.5 bg-secondary/50" />
         <div className="space-y-12">
           {experienceData.map((item, index) => (
-            <div key={index} className="relative group grid md:grid-cols-[1fr_2fr] gap-x-8">
-              <div className="md:text-right md:pr-8">
-                  <div className="flex items-center gap-4">
-                      <div className="hidden md:block w-12 h-12 rounded-full bg-secondary flex-shrink-0 flex items-center justify-center">
-                           <Building className="w-6 h-6 text-muted-foreground" />
-                      </div>
-                      <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
-                  </div>
+            <div key={index} className="relative group flex gap-x-6 items-start">
+              <div className="flex-shrink-0 flex flex-col items-center">
+                <div className="absolute left-0 top-1 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+                <div className="w-24 text-right pr-6">
+                  <p className="font-semibold text-sm text-muted-foreground">{item.date}</p>
+                </div>
               </div>
-              <div>
-                <div className="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
-                <Card className="transition-all duration-300 hover:shadow-lg">
-                  <CardHeader>
+              <Card className="transition-all duration-300 hover:shadow-lg flex-grow">
+                <CardHeader>
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
+                    <div>
                       <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
                       <p className="font-medium text-primary">{item.company}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-                  </CardContent>
-                </Card>
-              </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+                </CardContent>
+              </Card>
             </div>
           ))}
         </div>
