@@ -140,14 +140,12 @@ const NeuralNetworkCanvas: React.FC = () => {
       ctx.lineWidth = 0.7;
       for(let i = 0; i < animState.drawnEdges; i++) {
           const edge = edges[i];
-          const opacity = Math.max(0, Math.min(1, (i - (animState.drawnEdges - 50)) / 50)); // Fade in last few edges
-          
           const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
           if(primaryMatch) {
             const [h, s, l] = [primaryMatch[1], primaryMatch[2], primaryMatch[3]];
-            ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, ${0.2 * opacity})`;
+            ctx.strokeStyle = `hsla(${h}, ${s}%, ${l}%, 0.2)`;
           } else {
-             ctx.strokeStyle = `rgba(0,0,0, ${0.2 * opacity})`;
+             ctx.strokeStyle = `rgba(0,0,0, 0.2)`;
           }
           
           ctx.beginPath();
@@ -167,7 +165,13 @@ const NeuralNetworkCanvas: React.FC = () => {
         
         // Gradient for glow
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8 * fadeInProgress);
-        gradient.addColorStop(0, themeColors.primary);
+        const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
+        let colorForGradient = themeColors.primary;
+        if (primaryMatch) {
+            const [h, s, l] = [primaryMatch[1], primaryMatch[2], primaryMatch[3]];
+            colorForGradient = `hsla(${h}, ${s}%, ${l}%, 0.8)`;
+        }
+        gradient.addColorStop(0, colorForGradient);
         gradient.addColorStop(1, "transparent");
 
         ctx.fillStyle = gradient;
