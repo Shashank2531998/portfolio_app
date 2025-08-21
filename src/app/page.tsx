@@ -352,9 +352,9 @@ function TimelineGraphic({ item }: { item: any }) {
             <Image
                 src={item.logoUrl}
                 alt={`${item.company} logo`}
-                width={48}
-                height={48}
-                className="rounded-full absolute top-1/2 -translate-y-1/2"
+                width={40}
+                height={40}
+                className="rounded-full absolute top-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-110"
                 data-ai-hint="company logo"
             />
         </div>
