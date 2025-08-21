@@ -151,22 +151,25 @@ function ExperienceSection() {
           My professional journey.
         </p>
       </div>
-      <div className="space-y-6">
+      <div className="relative border-l border-secondary/50 ml-3 space-y-12">
         {experienceData.map((item, index) => (
-          <Card key={index} className="transition-all duration-300 hover:shadow-lg">
-            <CardHeader>
-              <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
-                  <p className="font-medium text-primary">{item.company}</p>
+          <div key={index} className="relative group pl-8">
+            <div className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-secondary transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+            <Card className="transition-all duration-300 hover:shadow-lg">
+              <CardHeader>
+                <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2">
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                    <p className="font-medium text-primary">{item.company}</p>
+                  </div>
+                  <p className="font-semibold text-sm text-muted-foreground sm:text-right">{item.date}</p>
                 </div>
-                <p className="font-semibold text-sm text-muted-foreground sm:text-right">{item.date}</p>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+              </CardContent>
+            </Card>
+          </div>
         ))}
       </div>
     </section>
