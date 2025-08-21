@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Link from "next/link";
@@ -17,6 +18,7 @@ const navLinks = [
   { href: "#projects", label: "Projects" },
   { href: "#achievements", label: "Achievements" },
   { href: "#extracurricular", label: "Extracurricular" },
+  { href: "#hobbies", label: "Hobbies" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -124,7 +126,3 @@ export function Header() {
     </header>
   );
 }
-
-    
-
-    

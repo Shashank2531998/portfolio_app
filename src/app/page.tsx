@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity, List, User } from 'lucide-react';
+import { Github, Linkedin, Twitter, Download, ArrowRight, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, Activity, List, User, Heart, Gamepad2, Mountain, BookOpen } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -181,6 +181,25 @@ const extracurricularData = [
     },
 ];
 
+const hobbiesData = [
+  {
+    icon: Gamepad2,
+    title: "Gaming",
+    description: "I enjoy playing competitive and story-driven video games in my free time."
+  },
+  {
+    icon: Mountain,
+    title: "Hiking",
+    description: "Exploring new trails and enjoying nature helps me relax and recharge."
+  },
+  {
+    icon: BookOpen,
+    title: "Reading",
+    description: "I'm an avid reader of science fiction and fantasy novels."
+  },
+];
+
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -196,6 +215,7 @@ export default function Home() {
             <ProjectsSection />
             <AchievementsSection />
             <ExtracurricularSection />
+            <HobbiesSection />
             <ContactSection />
           </div>
         </div>
@@ -548,6 +568,38 @@ function ExtracurricularSection() {
     );
 }
 
+function HobbiesSection() {
+  return (
+    <section id="hobbies">
+      <div className="space-y-4 mb-8">
+        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <Heart /> Hobbies
+        </h2>
+        <p className="text-muted-foreground md:text-lg">
+          A few things I enjoy doing in my free time.
+        </p>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {hobbiesData.map((hobby) => {
+          const Icon = hobby.icon;
+          return (
+            <Card key={hobby.title}>
+              <CardHeader className="flex flex-row items-center gap-4">
+                <Icon className="w-8 h-8 text-primary" />
+                <CardTitle className="font-headline">{hobby.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{hobby.description}</p>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+
 function ContactSection() {
   return (
     <section id="contact">
@@ -591,7 +643,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
-
-    
