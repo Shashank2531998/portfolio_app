@@ -181,6 +181,15 @@ const skillsData = {
 
 const achievementsData = [
     {
+        title: "Digital Tech Fellows",
+        date: "Apr 2025 - Jul 2025",
+        description: "Selected as 1 of 20 students university-wide for FAU’s elite 12-week entrepreneurship and innovation program at Digital Tech Academy, FAU, Erlangen, Germany.",
+        details: [
+            "Collaborated in an interdisciplinary team to analyze markets, design business models, prototype solutions, validate ideas, and pitch innovations under expert mentorship.",
+        ],
+        images: ["https://placehold.co/1200x800.png"]
+    },
+    {
         title: "First Place, National Hackathon",
         date: "2023",
         description: "Led a team to victory by developing an innovative solution for urban mobility.",
