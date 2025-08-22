@@ -464,8 +464,8 @@ function SkillsSection() {
             return (
               <Card key={category}>
                 <CardHeader>
-                  <CardTitle className="text-primary flex items-center gap-3 font-headline">
-                    <Icon className="w-6 h-6" /> {category}
+                  <CardTitle className="text-primary flex items-center gap-3 font-headline text-xl">
+                    <Icon className="w-7 h-7" /> {category}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
