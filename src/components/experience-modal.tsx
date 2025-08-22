@@ -76,18 +76,12 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
           </ul>
         </div>
       </div>
-       {isProjectModal && (
+       {isProjectModal && githubUrl && (
         <DialogFooter className="flex-shrink-0 pt-4">
-          <Button asChild={!!githubUrl} disabled={!githubUrl}>
-            {githubUrl ? (
-              <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2" /> View Code
-              </a>
-            ) : (
-              <span>
-                <Github className="mr-2" /> Code Unavailable
-              </span>
-            )}
+          <Button asChild>
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+              <Github className="mr-2" /> View Code
+            </a>
           </Button>
         </DialogFooter>
       )}

@@ -440,12 +440,10 @@ function ExperienceGroupCard({ item }: { item: any }) {
                             <Dialog key={index}>
                                 <DialogTrigger asChild>
                                     <div className="relative group cursor-pointer">
-                                        <div className="absolute top-1 -left-0 h-10 w-10 flex items-center justify-center">
-                                          <div className="absolute left-5 top-1 h-10 w-10 flex items-center justify-center -translate-x-1/2">
+                                        <div className="absolute top-1 left-5 h-10 w-10 flex items-center justify-center -translate-x-1/2">
                                             <div className="h-4 w-4 rounded-full bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                                                 <div className="h-2 w-2 rounded-full bg-primary"></div>
                                             </div>
-                                          </div>
                                         </div>
                                         <div className="ml-12 p-4 rounded-md transition-all duration-200 hover:bg-accent">
                                             <div className="flex justify-between items-start">
@@ -602,21 +600,17 @@ function ProjectsSection() {
                     </CardContent>
                   </div>
                 </DialogTrigger>
-                <CardFooter className="pt-4">
-                    <div onClick={(e) => e.stopPropagation()}>
-                        <Button asChild={!!project.githubUrl} disabled={!project.githubUrl} size="sm">
-                            {project.githubUrl ? (
-                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                    <Github /> View Code
-                                </a>
-                            ) : (
-                                <span className="flex items-center gap-2 px-4">
-                                    <Github /> Code Unavailable
-                                </span>
-                            )}
-                        </Button>
-                    </div>
-                </CardFooter>
+                {project.githubUrl && (
+                  <CardFooter className="pt-4">
+                      <div onClick={(e) => e.stopPropagation()}>
+                          <Button asChild size="sm">
+                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                  <Github /> View Code
+                              </a>
+                          </Button>
+                      </div>
+                  </CardFooter>
+                )}
               </Card>
 
               <ExperienceModal 
