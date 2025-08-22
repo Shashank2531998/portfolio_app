@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ContactForm } from "@/components/contact-form";
@@ -588,19 +588,37 @@ function ProjectsSection() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projectsData.map((project: any) => (
             <Dialog key={project.title}>
-              <DialogTrigger asChild>
-                <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
-                  <CardHeader>
-                    <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
-                    <CardDescription className="pt-1">{project.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+              <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <DialogTrigger asChild>
+                  <div className="flex-grow cursor-pointer">
+                    <CardHeader>
+                      <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
+                      <CardDescription className="pt-1">{project.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+                      </div>
+                    </CardContent>
+                  </div>
+                </DialogTrigger>
+                <CardFooter className="pt-4">
+                    <div onClick={(e) => e.stopPropagation()}>
+                        <Button asChild={!!project.githubUrl} disabled={!project.githubUrl} size="sm">
+                            {project.githubUrl ? (
+                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                                    <Github /> View Code
+                                </a>
+                            ) : (
+                                <span>
+                                    <Github /> Code Unavailable
+                                </span>
+                            )}
+                        </Button>
                     </div>
-                  </CardContent>
-                </Card>
-              </DialogTrigger>
+                </CardFooter>
+              </Card>
+
               <ExperienceModal 
                 title={project.title} 
                 subtitle={project.subtitle}
