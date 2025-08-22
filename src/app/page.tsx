@@ -17,8 +17,7 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { TypewriterEffect } from "@/components/typewriter-effect";
 import React, { useState, useEffect } from 'react';
-import { StickySidebar } from "@/components/sticky-sidebar";
-import { cn } from "@/lib/utils";
+import { LeftSidebar } from "@/components/left-sidebar";
 
 const experienceData = [
   {
@@ -204,90 +203,27 @@ const hobbiesData = [
 
 
 export default function Home() {
-  const [showStickySidebar, setShowStickySidebar] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show sidebar when user scrolls past the hero section
-      if (window.scrollY > window.innerHeight) {
-        setShowStickySidebar(true);
-      } else {
-        setShowStickySidebar(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <div className={cn("container mx-auto px-4 sm:px-6 lg:px-8", showStickySidebar && "lg:grid lg:grid-cols-[280px_1fr] lg:gap-12")}>
-        <StickySidebar show={showStickySidebar} />
-        <main className="flex-1">
-          <HeroSection />
-          <AboutSection />
-          <ExperienceSection />
-          <EducationSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <AchievementsSection />
-          <ExtracurricularSection />
-          <HobbiesSection />
-          <ContactSection />
-        </main>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-[400px_1fr] lg:gap-12">
+          <LeftSidebar />
+          <main className="flex-1 py-12 md:py-20">
+            <AboutSection />
+            <ExperienceSection />
+            <EducationSection />
+            <SkillsSection />
+            <ProjectsSection />
+            <AchievementsSection />
+            <ExtracurricularSection />
+            <HobbiesSection />
+            <ContactSection />
+          </main>
+        </div>
       </div>
       <Footer />
     </div>
-  );
-}
-
-function HeroSection() {
-    const taglines = ["AI Enthusiast", "Full-Stack Developer", "Problem Solver"];
-
-    return (
-    <section id="home" className="relative group min-h-screen flex items-center justify-center text-center overflow-hidden py-20 md:py-32">
-        <div className="absolute inset-0 z-0">
-             <NeuralNetworkCanvas />
-             <InteractiveBlurOverlay />
-        </div>
-        <div className="relative z-10 space-y-4 px-4">
-            <div className="mx-auto mb-8">
-                <Image
-                    src="/assets/my_photo.jpg"
-                    alt="Shashank's Portrait"
-                    width={180}
-                    height={180}
-                    className="rounded-full aspect-square object-cover border-4 border-secondary shadow-lg mx-auto"
-                    data-ai-hint="professional portrait"
-                />
-            </div>
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground font-headline">
-              Shashank
-            </h1>
-            <div className="h-10">
-                <TypewriterEffect taglines={taglines} />
-            </div>
-            <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
-                I design and build intelligent software and AI systems that solve real-world problems.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button asChild size="lg">
-                <a href="#contact">
-                  Contact Me <Mail className="ml-2" />
-                </a>
-              </Button>
-              <Button asChild variant="secondary" size="lg">
-                <a href="/shashank-resume.pdf" download>
-                  Download CV <Download className="ml-2" />
-                </a>
-              </Button>
-            </div>
-        </div>
-    </section>
   );
 }
 
@@ -664,3 +600,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
