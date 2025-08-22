@@ -204,6 +204,7 @@ const extracurricularData = [
             "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
             "Gained hands-on experience in rapid prototyping, teamwork, and applying AI to solve real-world organizational challenges."
         ],
+        logoUrl: "https://placehold.co/100x100.png",
     },
 ];
 
@@ -674,25 +675,40 @@ function ExtracurricularSection() {
                         My involvement in activities outside of work and academics. Click on an entry to see more.
                     </p>
                 </div>
-                <Card>
-                    <CardContent className="p-2">
-                        {extracurricularData.map((activity, index) => (
-                            <Dialog key={index}>
-                                <DialogTrigger asChild>
-                                    <div className="p-4 rounded-md transition-all duration-200 hover:bg-accent cursor-pointer">
+                 <div className="space-y-4">
+                    {extracurricularData.map((activity: any, index) => (
+                        <Dialog key={index}>
+                            <DialogTrigger asChild>
+                                <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
+                                  <CardContent className="p-6">
+                                    <div className="flex items-start gap-6">
+                                      {activity.logoUrl && (
+                                        <div className="flex-shrink-0">
+                                          <Image
+                                            src={activity.logoUrl}
+                                            alt={`${activity.title} logo`}
+                                            width={56}
+                                            height={56}
+                                            className="rounded-md object-contain aspect-square"
+                                            data-ai-hint="organization logo"
+                                          />
+                                        </div>
+                                      )}
+                                      <div className="flex-grow">
                                         <h3 className="font-semibold font-headline text-foreground">{activity.title}</h3>
                                         <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
+                                      </div>
                                     </div>
-                                </DialogTrigger>
-                                <ExperienceModal
-                                    title={activity.title}
-                                    details={activity.details}
-                                />
-                                {index < extracurricularData.length - 1 && <Separator />}
-                            </Dialog>
-                        ))}
-                    </CardContent>
-                </Card>
+                                  </CardContent>
+                                </Card>
+                            </DialogTrigger>
+                            <ExperienceModal
+                                title={activity.title}
+                                details={activity.details}
+                            />
+                        </Dialog>
+                    ))}
+                </div>
             </div>
         </section>
     );
@@ -774,3 +790,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
