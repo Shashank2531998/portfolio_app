@@ -248,7 +248,7 @@ function HeroSection() {
                 <TypewriterEffect taglines={taglines} />
             </div>
             <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
-              I'm a passionate software engineer specializing in building modern, responsive, and scalable web applications.
+                I design and build intelligent software and AI systems that solve real-world problems.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg">
