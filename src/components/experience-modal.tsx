@@ -25,12 +25,12 @@ interface ExperienceModalProps {
   subtitle?: string;
   images?: string[];
   details: string[];
-  githubUrl?: string;
+  githubUrl?: string | null;
   detailsHeading?: string;
 }
 
 export function ExperienceModal({ title, subtitle, images, details, githubUrl, detailsHeading }: ExperienceModalProps) {
-  const isProjectModal = !!githubUrl;
+  const isProjectModal = githubUrl !== undefined;
   return (
     <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
       <DialogHeader className="flex-shrink-0">
@@ -76,12 +76,18 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
           </ul>
         </div>
       </div>
-       {githubUrl && (
+       {isProjectModal && (
         <DialogFooter className="flex-shrink-0 pt-4">
-          <Button asChild>
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2" /> View Code
-            </a>
+          <Button asChild={!!githubUrl} disabled={!githubUrl}>
+            {githubUrl ? (
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                <Github className="mr-2" /> View Code
+              </a>
+            ) : (
+              <span>
+                <Github className="mr-2" /> Code Unavailable
+              </span>
+            )}
           </Button>
         </DialogFooter>
       )}

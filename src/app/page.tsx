@@ -138,6 +138,7 @@ const projectsData = [
     images: [
       "https://placehold.co/1200x800.png",
     ],
+    githubUrl: "https://github.com"
   },
   {
     title: "Tool Action Recognition",
@@ -151,6 +152,7 @@ const projectsData = [
     images: [
       "https://placehold.co/1200x800.png",
     ],
+    githubUrl: "https://github.com"
   },
   {
     title: "High-Precision 3D Surface Reconstruction",
@@ -165,6 +167,7 @@ const projectsData = [
     images: [
       "https://placehold.co/1200x800.png",
     ],
+    githubUrl: null
   },
 ];
 
