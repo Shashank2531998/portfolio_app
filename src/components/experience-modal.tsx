@@ -46,6 +46,15 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             {subtitle}
           </DialogDescription>
         )}
+        {link && (
+            <div className="pt-2">
+                <Button asChild variant="link" className="p-0 h-auto">
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        <LinkIcon className="mr-2" /> {link.text}
+                    </a>
+                </Button>
+            </div>
+        )}
       </DialogHeader>
       <div className="flex-grow overflow-y-auto pr-4 -mr-4 space-y-6">
         {images && images.length > 0 && (
@@ -80,7 +89,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
           </ul>
         </div>
       </div>
-       {(githubUrl || link) && (
+       {githubUrl && (
         <DialogFooter className="flex-shrink-0 pt-4 flex-wrap gap-2">
             {githubUrl && (
                 <Button asChild>
@@ -89,17 +98,8 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
                     </a>
                 </Button>
             )}
-            {link && (
-                 <Button asChild variant="secondary">
-                    <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    <LinkIcon className="mr-2" /> {link.text}
-                    </a>
-                </Button>
-            )}
         </DialogFooter>
       )}
     </DialogContent>
   );
 }
-
-    
