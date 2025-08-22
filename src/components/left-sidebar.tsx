@@ -74,7 +74,7 @@ export function LeftSidebar() {
                 {/* CTA Buttons */}
                 <div className="flex flex-col gap-3 pt-2">
                   <Button asChild className="w-full">
-                    <a href="/shashank-resume.pdf" download>
+                    <a href="https://drive.google.com/file/d/1JLOYdlHGgyzGBDIhr4bWAVkBPPfVdSoc/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                       Download CV <Download className="ml-2" />
                     </a>
                   </Button>

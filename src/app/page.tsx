@@ -377,7 +377,7 @@ const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                     </a>
                   </Button>
                   <Button asChild variant="secondary" size="lg">
-                    <a href="/shashank-resume.pdf" download>
+                    <a href="https://drive.google.com/file/d/1JLOYdlHGgyzGBDIhr4bWAVkBPPfVdSoc/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                       Download CV <Download className="ml-2" />
                     </a>
                   </Button>
