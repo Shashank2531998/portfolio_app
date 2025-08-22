@@ -206,6 +206,15 @@ const extracurricularData = [
         ],
         logoUrl: "https://placehold.co/100x100.png",
     },
+    {
+        title: "Cybersecurity Summer School @ Politehnica University of Timișoara",
+        description: "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania. Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies.",
+        details: [
+            "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania.",
+            "Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies."
+        ],
+        logoUrl: "https://placehold.co/100x100.png",
+    }
 ];
 
 const hobbiesData = [
@@ -790,5 +799,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
