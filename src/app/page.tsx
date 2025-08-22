@@ -192,7 +192,7 @@ const achievementsData = [
           "/assets/dta_fime.jpeg",
           "/assets/dta_waichsenfeld_2.jpeg",
         ],
-        logoUrl: "/assets/dta_logo.png"
+        logoUrl: "/assets/dta_logo.jpg"
     }
 ];
 
