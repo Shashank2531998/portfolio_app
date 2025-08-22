@@ -619,13 +619,11 @@ function ProjectsSection() {
                 </DialogTrigger>
                 {project.githubUrl && (
                   <CardFooter className="pt-4">
-                      <div onClick={(e) => e.stopPropagation()}>
-                          <Button asChild size="sm">
-                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                  <Github /> View Code
-                              </a>
-                          </Button>
-                      </div>
+                      <Button asChild size="sm">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                            <Github /> View Code
+                        </a>
+                      </Button>
                   </CardFooter>
                 )}
               </Card>
@@ -748,6 +746,7 @@ function ExtracurricularSection() {
                             <ExperienceModal
                                 title={activity.title}
                                 details={activity.details}
+                                images={activity.images}
                                 link={activity.link}
                             />
                         </Dialog>
@@ -835,3 +834,5 @@ function ContactSection() {
   );
 }
 
+
+    
