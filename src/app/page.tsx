@@ -233,7 +233,7 @@ function HeroSection() {
         <div className="relative z-10 space-y-4 px-4">
             <div className="mx-auto mb-8">
                 <Image
-                    src="https://placehold.co/180x180.png"
+                    src="/assets/my_photo.jpg"
                     alt="Shashank's Portrait"
                     width={180}
                     height={180}
