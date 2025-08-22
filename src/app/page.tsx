@@ -21,48 +21,59 @@ import { LeftSidebar } from "@/components/left-sidebar";
 
 const experienceData = [
   {
-    role: "Senior Software Engineer",
-    company: "FutureTech Solutions",
-    date: "2021 - Present",
-    description: "Leading the development of scalable web applications using Next.js and TypeScript. Mentoring junior developers and improving code quality across the team.",
-    logoUrl: "https://placehold.co/40x40.png",
-    images: [
-      "https://placehold.co/1200x800.png",
-      "https://placehold.co/1200x800.png",
-      "https://placehold.co/1200x800.png",
-    ],
+    role: "Working Student - Generative AI Services",
+    company: "Siemens Healthineers AG, Erlangen, Germany",
+    date: "Dec 2024 - Present",
+    description: "Enhancing and optimizing the internal RAG platform to improve performance and scalability. Developing Angular-based web applications and writing end-to-end (e2e) test cases to ensure robust and reliable software.",
+    logoUrl: "https://placehold.co/56x56.png",
     details: [
-      "Architected and led the development of a multi-tenant SaaS platform from scratch, resulting in a 40% increase in developer productivity.",
-      "Implemented a comprehensive CI/CD pipeline using GitHub Actions, reducing deployment time by 75%.",
-      "Mentored a team of 5 junior developers, fostering a culture of collaboration and continuous learning.",
-      "Optimized application performance by implementing server-side rendering and code-splitting, improving load times by 60%.",
+      "Enhancing and optimizing the internal RAG platform to improve performance and scalability",
+      "Developing Angular-based web applications and writing end-to-end (e2e) test cases to ensure robust and reliable software",
+    ]
+  },
+  {
+    role: "Working Student - Full Stack Web Developer",
+    company: "heatbeat engineering GmbH, Nürnberg, Germany",
+    date: "Jan 2024 - Nov 2024",
+    description: "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights. Optimized website code, reducing home page loading time by 30%.",
+    logoUrl: "https://placehold.co/56x56.png",
+    details: [
+      "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights",
+      "Optimized website code, reducing home page loading time by 30%",
+    ]
+  },
+  {
+    role: "Senior Software Developer",
+    company: "Josh Technology Group, Gurugram, India",
+    date: "Oct 2021 - Sep 2023",
+    description: "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros).",
+    logoUrl: "https://placehold.co/56x56.png",
+    details: [
+      "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros)",
+      "Planned and executed projects exceeding 1,200 hours, collaborating with the Product team to refine requirements and deliver scalable solutions",
     ]
   },
   {
     role: "Software Developer",
-    company: "Innovate Co.",
-    date: "2019 - 2021",
-    description: "Developed and maintained client-side features for various projects using React and Redux. Collaborated with designers to create responsive user interfaces.",
-    logoUrl: "https://placehold.co/40x40.png",
+    company: "Josh Technology Group, Gurugram, India",
+    date: "Jan 2019 - Oct 2021",
+    description: "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%. Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients.",
+    logoUrl: "https://placehold.co/56x56.png",
     details: [
-      "Developed responsive user interfaces for a high-traffic e-commerce website using React and Redux.",
-      "Collaborated with the design team to implement pixel-perfect UIs, improving user engagement by 25%.",
-      "Wrote and maintained unit tests using Jest and React Testing Library, ensuring code quality and stability."
+      "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%",
+      "Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients",
+      "Managed sprint releases, deployments, hotfixes, and performance monitoring",
+      "Improved security with AWS GuardDuty and cut costs by automating SSL certificate renewal",
     ]
   },
-  {
-    role: "Junior Web Developer",
-    company: "WebCrafters Inc.",
-    date: "2018 - 2019",
-    description: "Assisted in building and testing websites for small to medium-sized businesses. Gained foundational experience in HTML, CSS, and JavaScript.",
-    logoUrl: "https://placehold.co/40x40.png",
-    images: [
-      "https://placehold.co/1200x800.png"
-    ],
+   {
+    role: "Software Developer - Summer Intern",
+    company: "Josh Technology Group, Gurugram, India",
+    date: "Jun 2018 - Jul 2018",
+    description: "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images.",
+    logoUrl: "https://placehold.co/56x56.png",
     details: [
-      "Built and styled web pages using HTML, CSS, and JavaScript for various client projects.",
-      "Conducted cross-browser compatibility testing to ensure a consistent user experience.",
-      "Gained hands-on experience with version control using Git."
+        "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images"
     ]
   },
 ];
@@ -73,7 +84,7 @@ const educationData = [
     company: "University of Technology",
     date: "2014 - 2018",
     description: "Graduated with honors, focusing on software development and artificial intelligence.",
-    logoUrl: "https://placehold.co/40x40.png",
+    logoUrl: "https://placehold.co/56x56.png",
     details: [
         "Specialized in Software Engineering and Artificial Intelligence tracks.",
         "Key coursework: Data Structures, Algorithms, Machine Learning, Web Development.",
@@ -231,7 +242,7 @@ export default function Home() {
       <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
-          <div className={`hidden lg:block lg:sticky lg:top-20 pb-12 self-start transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`lg:sticky lg:top-20 pb-12 self-start transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
               <LeftSidebar />
           </div>
           <main className="flex-1 py-12">
@@ -659,5 +670,7 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
