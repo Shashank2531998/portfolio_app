@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from "next/image";
@@ -97,13 +98,13 @@ const educationData = [
     company: "Friedrich-Alexander Universität, Erlangen, Germany",
     date: "Oct 2023 - Oct 2026",
     description: "Focusing on advanced topics in machine learning, computer vision, and natural language processing.",
-    logoUrl: "https://placehold.co/56x56.png",
+    logoUrl: "/assets/fau_logo_2.jpg",
     details: [
         "Key coursework: Deep Learning, Reinforcement Learning, Medical Image Analysis, NLP.",
         "Member of the university AI research group, contributing to ongoing projects.",
     ],
     images: [
-      "https://placehold.co/1200x800.png",
+      "https://placehold.co/56x56.png",
     ],
     dataAiHint: "university campus"
   },
@@ -112,7 +113,7 @@ const educationData = [
     company: "J.C. Bose University of Science & Technology, YMCA, Faridabad, India",
     date: "Aug 2015 - Jul 2019",
     description: "Graduated with a comprehensive foundation in computer science and information technology.",
-    logoUrl: "https://placehold.co/56x56.png",
+    logoUrl: "/assets/ymca_logo.png",
     details: [
         "Excelled in Data Structures, Algorithms, Database Management, and Web Technologies.",
         "Final year project on a machine learning-based recommendation system.",
@@ -424,16 +425,16 @@ function ExperienceGroupCard({ item }: { item: any }) {
                     </div>
                 </div>
 
-                <div className="relative pl-8">
-                     <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-border -translate-x-1/2"></div>
+                <div className="relative pl-6">
+                     <div className="absolute left-[1.625rem] top-2 bottom-2 w-0.5 bg-border"></div>
                     {item.roles.map((role: any, index: number) => (
                         <Dialog key={index}>
                             <DialogTrigger asChild>
-                                <div className="relative pl-8 py-4 group cursor-pointer">
-                                     <div className="absolute left-4 top-7 h-4 w-4 rounded-full bg-background border-2 border-primary group-hover:scale-110 transition-transform -translate-x-1/2 flex items-center justify-center">
-                                       <div className="h-2 w-2 rounded-full bg-primary/20 group-hover:bg-primary/40 transition-colors"></div>
-                                     </div>
-                                     <div className="p-4 rounded-md transition-all duration-200 hover:bg-accent ml-4">
+                                <div className="relative py-4 group cursor-pointer">
+                                    <div className="absolute left-0 top-7 h-4 w-4 rounded-full bg-background border-2 border-primary group-hover:scale-110 transition-transform flex items-center justify-center">
+                                       <div className="h-1.5 w-1.5 rounded-full bg-primary transition-colors"></div>
+                                    </div>
+                                     <div className="p-4 rounded-md transition-all duration-200 hover:bg-accent pl-12">
                                         <div className="flex justify-between items-start">
                                             <div>
                                                 <h4 className="font-semibold font-headline text-foreground">{role.role}</h4>
