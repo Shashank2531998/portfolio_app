@@ -10,11 +10,8 @@ export function LeftSidebar() {
     const taglines = ["AI Enthusiast", "Full-Stack Developer", "Problem Solver"];
 
     return (
-        <aside className="lg:sticky lg:top-0 lg:h-screen lg:py-16">
-            <div className="relative h-full flex flex-col justify-center text-center lg:text-left items-center lg:items-start space-y-6">
-                 <div className="absolute inset-0 z-0 lg:-ml-12">
-                     {/* The background canvas can be re-added here if desired */}
-                 </div>
+        <aside className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)]">
+            <div className="relative h-full flex flex-col justify-start text-center lg:text-left items-center lg:items-start space-y-6 pt-12 animate-hero-to-sidebar">
                  <div className="relative z-10 space-y-4">
                     <div className="mx-auto lg:mx-0">
                         <Image
@@ -52,5 +49,3 @@ export function LeftSidebar() {
         </aside>
     );
 }
-
-    
