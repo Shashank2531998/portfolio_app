@@ -71,7 +71,7 @@ const experienceData = [
           "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%",
           "Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients",
           "Managed sprint releases, deployments, hotfixes, and performance monitoring",
-          "Improved security with AWS GuardDuty and cut costs by automating SSL certificate renewal",
+          "Improved security with AWS GuardDuty and cut costs by automating an SSL certificate renewal",
         ]
       },
       {
@@ -191,7 +191,8 @@ const achievementsData = [
           "/assets/dta_complete_group.jpeg",
           "/assets/dta_fime.jpeg",
           "/assets/dta_waichsenfeld_2.jpeg",
-        ]
+        ],
+        logoUrl: "/assets/dta_logo.png"
     }
 ];
 
@@ -625,17 +626,33 @@ function AchievementsSection() {
                     </p>
                 </div>
                 <div className="space-y-4">
-                    {achievementsData.map((achievement, index) => (
+                    {achievementsData.map((achievement: any, index) => (
                         <Dialog key={index}>
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
-                                    <CardHeader>
+                                  <CardContent className="p-6">
+                                    <div className="flex items-start gap-6">
+                                      {achievement.logoUrl && (
+                                        <div className="flex-shrink-0">
+                                          <Image
+                                            src={achievement.logoUrl}
+                                            alt={`${achievement.title} logo`}
+                                            width={56}
+                                            height={56}
+                                            className="rounded-md object-contain aspect-square"
+                                            data-ai-hint="organization logo"
+                                          />
+                                        </div>
+                                      )}
+                                      <div className="flex-grow">
                                         <div className="flex justify-between items-start gap-4">
                                             <CardTitle className="text-lg font-headline">{achievement.title}</CardTitle>
                                             <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{achievement.date}</span>
                                         </div>
-                                        <CardDescription className="pt-1">{achievement.description}</CardDescription>
-                                    </CardHeader>
+                                        <CardDescription className="pt-2">{achievement.description}</CardDescription>
+                                      </div>
+                                    </div>
+                                  </CardContent>
                                 </Card>
                             </DialogTrigger>
                             <ExperienceModal
