@@ -585,7 +585,7 @@ function ProjectsSection() {
             A selection of projects that showcase my skills.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projectsData.map((project: any) => (
             <Dialog key={project.title}>
               <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
