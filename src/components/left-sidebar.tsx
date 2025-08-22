@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { Download, Mail, Briefcase, GraduationCap, Github, Linkedin, BookOpen, MapPin } from 'lucide-react';
+import { Download, Mail, Briefcase, GraduationCap, Github, Linkedin, MapPin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
@@ -54,12 +54,6 @@ export function LeftSidebar() {
 
                     {/* Contact & Links */}
                     <div className="space-y-3">
-                         <div className="flex items-center gap-3">
-                            <Mail className="w-4 h-4 text-primary" />
-                            <a href="mailto:shashank@example.com" className="text-sm font-code hover:text-primary truncate">
-                                shashank@example.com
-                            </a>
-                        </div>
                         <div className="flex justify-around pt-2">
                              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                                 <Linkedin className="w-5 h-5" />
@@ -69,9 +63,9 @@ export function LeftSidebar() {
                                 <Github className="w-5 h-5" />
                                 <span className="sr-only">GitHub</span>
                             </a>
-                            <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                                <BookOpen className="w-5 h-5" />
-                                <span className="sr-only">Google Scholar</span>
+                            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
+                                <Mail className="w-5 h-5" />
+                                <span className="sr-only">Contact</span>
                             </a>
                         </div>
                     </div>
@@ -80,11 +74,6 @@ export function LeftSidebar() {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col gap-3 pt-2">
-                      <Button asChild className="w-full">
-                        <a href="#contact">
-                          Contact Me <Mail className="ml-2" />
-                        </a>
-                      </Button>
                       <Button asChild variant="secondary" className="w-full">
                         <a href="/shashank-resume.pdf" download>
                           Download CV <Download className="ml-2" />
@@ -96,5 +85,3 @@ export function LeftSidebar() {
         </aside>
     );
 }
-
-    
