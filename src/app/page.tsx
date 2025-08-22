@@ -25,7 +25,7 @@ const experienceData = [
     company: "Siemens Healthineers AG, Erlangen, Germany",
     date: "Dec 2024 - Present",
     description: "Enhancing and optimizing the internal RAG platform to improve performance and scalability. Developing Angular-based web applications and writing end-to-end (e2e) test cases to ensure robust and reliable software.",
-    logoUrl: "https://placehold.co/56x56.png",
+    logoUrl: "/assets/Siemens_Healthineers_logo.svg.png",
     details: [
       "Enhancing and optimizing the internal RAG platform to improve performance and scalability",
       "Developing Angular-based web applications and writing end-to-end (e2e) test cases to ensure robust and reliable software",
@@ -36,7 +36,7 @@ const experienceData = [
     company: "heatbeat engineering GmbH, Nürnberg, Germany",
     date: "Jan 2024 - Nov 2024",
     description: "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights. Optimized website code, reducing home page loading time by 30%.",
-    logoUrl: "https://placehold.co/56x56.png",
+    logoUrl: "/assets/heatbeat-logo-header.svg",
     details: [
       "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights",
       "Optimized website code, reducing home page loading time by 30%",
@@ -44,7 +44,7 @@ const experienceData = [
   },
   {
     company: "Josh Technology Group, Gurugram, India",
-    logoUrl: "https://placehold.co/56x56.png",
+    logoUrl: "/assets/jtg_logo.png",
     roles: [
       {
         role: "Senior Software Developer",
