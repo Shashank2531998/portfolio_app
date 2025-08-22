@@ -2,14 +2,14 @@
 "use client";
 
 import Image from "next/image";
-import { Download, Mail, Briefcase, GraduationCap, Github, Linkedin, MapPin } from 'lucide-react';
+import { Download, Mail, Briefcase, GraduationCap, Github, Linkedin, MapPin, BookOpen } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 export function LeftSidebar() {
     return (
         <aside className="lg:sticky lg:top-20">
-            <div className="relative h-full flex flex-col justify-start py-12 animate-hero-to-sidebar">
+            <div className="relative h-full flex flex-col justify-start animate-hero-to-sidebar">
                 <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm space-y-6">
 
                     {/* Profile Section */}
@@ -17,12 +17,12 @@ export function LeftSidebar() {
                         <Image
                             src="/assets/my_photo.jpg"
                             alt="Shashank's Portrait"
-                            width={120}
-                            height={120}
+                            width={140}
+                            height={140}
                             className="rounded-full aspect-square object-cover border-4 border-secondary shadow-lg mb-4"
                             data-ai-hint="professional portrait"
                         />
-                        <h1 className="text-2xl font-bold font-headline text-foreground">
+                        <h1 className="text-xl font-bold font-headline text-foreground">
                           Shashank
                         </h1>
                         <p className="text-sm text-muted-foreground font-medium">Software Developer · AI Researcher</p>
@@ -74,7 +74,7 @@ export function LeftSidebar() {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col gap-3 pt-2">
-                      <Button asChild variant="secondary" className="w-full">
+                      <Button asChild className="w-full">
                         <a href="/shashank-resume.pdf" download>
                           Download CV <Download className="ml-2" />
                         </a>
