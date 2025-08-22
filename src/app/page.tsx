@@ -199,6 +199,7 @@ const achievementsData = [
 const extracurricularData = [
     {
         title: "AI Agent Hackathon @ Microsoft, Munich",
+        date: "Aug 2024",
         description: "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
         details: [
             "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
@@ -208,6 +209,7 @@ const extracurricularData = [
     },
     {
         title: "Cybersecurity Summer School @ Politehnica University of Timișoara",
+        date: "Jul 2024",
         description: "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania. Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies.",
         details: [
             "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania.",
@@ -217,6 +219,7 @@ const extracurricularData = [
     },
     {
         title: "Healthcare Hackathon Bavaria 2024",
+        date: "Jun 2024",
         description: "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform. Developed algorithms to assess patient risk factors, reducing diagnostic delays by 30%, in a 48-hour sprint with an interdisciplinary team.",
         details: [
             "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform.",
@@ -226,6 +229,7 @@ const extracurricularData = [
     },
     {
         title: "Tensor Tournament 2024",
+        date: "May 2024",
         description: "Secured a Top-10 rank in a prestigious AI competition. Demonstrated expertise in Generative AI, Machine Learning, and advanced algorithms by solving cutting-edge research challenges.",
         details: [
             "Secured a Top-10 rank in a prestigious AI competition.",
@@ -722,7 +726,10 @@ function ExtracurricularSection() {
                                         </div>
                                       )}
                                       <div className="flex-grow">
-                                        <h3 className="font-semibold font-headline text-foreground">{activity.title}</h3>
+                                        <div className="flex justify-between items-start gap-4">
+                                            <h3 className="font-semibold font-headline text-foreground">{activity.title}</h3>
+                                            {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{activity.date}</span>}
+                                        </div>
                                         <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
                                       </div>
                                     </div>
