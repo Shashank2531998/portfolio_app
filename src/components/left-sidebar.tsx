@@ -17,28 +17,28 @@ export function LeftSidebar() {
                         <Image
                             src="/assets/my_photo.jpg"
                             alt="Shashank's Portrait"
-                            width={180}
-                            height={180}
+                            width={140}
+                            height={140}
                             className="rounded-full aspect-square object-cover border-4 border-secondary shadow-lg"
                             data-ai-hint="professional portrait"
                         />
                     </div>
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground font-headline">
+                    <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl text-foreground font-headline">
                       Shashank
                     </h1>
                     <div className="h-10">
                         <TypewriterEffect taglines={taglines} />
                     </div>
-                    <p className="max-w-[600px] mx-auto lg:mx-0 text-muted-foreground md:text-xl">
+                    <p className="max-w-[600px] mx-auto lg:mx-0 text-muted-foreground md:text-lg">
                         I design and build intelligent software and AI systems that solve real-world problems.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                      <Button asChild size="lg">
+                      <Button asChild>
                         <a href="#contact">
                           Contact Me <Mail className="ml-2" />
                         </a>
                       </Button>
-                      <Button asChild variant="secondary" size="lg">
+                      <Button asChild variant="secondary">
                         <a href="/shashank-resume.pdf" download>
                           Download CV <Download className="ml-2" />
                         </a>
