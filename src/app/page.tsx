@@ -198,19 +198,12 @@ const achievementsData = [
 
 const extracurricularData = [
     {
-        title: "President, University Coding Club",
-        description: "Organized weekly workshops, coding competitions, and guest speaker events.",
-        details: ["Led a team of 10 students to manage club activities for over 100 members.", "Increased club membership by 40% through targeted outreach and engaging events."],
-    },
-    {
-        title: "Hackathon Volunteer & Mentor",
-        description: "Mentored participants and assisted with logistics at the annual university hackathon.",
-        details: ["Provided technical guidance to 5+ teams on topics ranging from web development to machine learning.", "Assisted event organizers with setup, registration, and troubleshooting to ensure a smooth experience."],
-    },
-    {
-        title: "Open Source Contributor",
-        description: "Contributed to several open-source projects on GitHub, focusing on documentation and bug fixes.",
-        details: ["Submitted pull requests to popular libraries like `react` and `tailwindcss`.", "Improved documentation clarity by adding code examples and tutorials."]
+        title: "AI Agent Hackathon @ Microsoft, Munich",
+        description: "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
+        details: [
+            "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
+            "Gained hands-on experience in rapid prototyping, teamwork, and applying AI to solve real-world organizational challenges."
+        ],
     },
 ];
 
