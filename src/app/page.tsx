@@ -42,7 +42,10 @@ const experienceData = [
       "Optimized website code, reducing home page loading time by 30%",
     ],
     images: [
-      "/assets/heatbeat-onsite-meeting.jpg"
+      "/assets/heatbeat_enerpipe.jpeg",
+      "/assets/heatbeat_onsite_meeting_3.png",
+      "/assets/heatbeat_glasswall.jpeg"
+      
     ],
   },
   {
@@ -77,6 +80,11 @@ const experienceData = [
           "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images"
         ]
       },
+    ],
+    images: [
+      "/assets/mentorcloud_team.webp",
+      "/assets/mentorcloud_2.webp",
+      "/assets/mentorcloud_group.webp"
     ]
   },
 ];
