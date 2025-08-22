@@ -49,8 +49,8 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
         {link && (
             <div className="pt-2">
                 <Button asChild variant="link" className="p-0 h-auto">
-                    <a href={link.url} target="_blank" rel="noopener noreferrer">
-                        <LinkIcon className="mr-2" /> {link.text}
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <LinkIcon /> {link.text}
                     </a>
                 </Button>
             </div>
@@ -89,7 +89,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
           </ul>
         </div>
       </div>
-       {githubUrl && (
+       {(githubUrl) && (
         <DialogFooter className="flex-shrink-0 pt-4 flex-wrap gap-2">
             {githubUrl && (
                 <Button asChild>

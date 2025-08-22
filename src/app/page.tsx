@@ -4,13 +4,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy, Link as LinkIcon } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ContactForm } from "@/components/contact-form";
+import { CalendlyEmbed } from "@/components/calendly-embed";
 import NeuralNetworkCanvas from "@/components/neural-network-canvas";
 import { InteractiveBlurOverlay } from "@/components/interactive-blur-overlay";
 import { ExperienceModal } from "@/components/experience-modal";
@@ -56,7 +56,7 @@ const experienceData = [
     roles: [
       {
         role: "Senior Software Developer",
-        date: "Oct 2021 - Sep 2023",
+        date: "Oct 2019 - Sep 2021",
         description: "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros).",
         details: [
           "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros)",
@@ -813,41 +813,25 @@ function HobbiesSection() {
 function ContactSection() {
   return (
     <section id="contact" className="py-12">
-       <div className="max-w-4xl">
+       <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-4 mb-12">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
-            <Mail /> Contact
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3 justify-center">
+            <Mail /> Let's Connect
           </h2>
-          <p className="text-muted-foreground md:text-lg">
-            Have a project in mind, or just want to say hello? Reach out via email, find me on social media, or send me a message using the form.
+          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+            Interested in discussing AI, software development, or potential collaborations? Book a time directly on my calendar below.
           </p>
         </div>
-        <Card>
-          <CardContent className="p-0">
-            <div className="grid md:grid-cols-2">
-              <div className="p-8 space-y-6">
-                 <h3 className="text-xl font-semibold font-headline text-primary">Get in Touch</h3>
-                 <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <Mail className="w-5 h-5 text-primary" />
-                      <a href="mailto:shashank@example.com" className="hover:text-primary font-body">shashank@example.com</a>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <Github className="w-5 h-5 text-primary" />
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-body">github.com</a>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <Linkedin className="w-5 h-5 text-primary" />
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-body">linkedin.com</a>
-                    </div>
-                  </div>
-              </div>
-               <div className="p-8 md:border-l">
-                  <ContactForm />
-              </div>
-            </div>
+        <Card className="overflow-hidden">
+          <CardContent className="p-2 sm:p-4 md:p-6">
+            <CalendlyEmbed />
           </CardContent>
         </Card>
+         <div className="mt-6 text-center">
+            <p className="text-sm text-muted-foreground">
+                Prefer to email? <a href="mailto:shashank2531998@gmail.com" className="font-medium text-primary hover:underline">Send me an email</a>
+            </p>
+        </div>
       </div>
     </section>
   );
