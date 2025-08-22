@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -464,7 +464,9 @@ function SkillsSection() {
             return (
               <Card key={category}>
                 <CardHeader>
-                  <CardTitle className="text-primary flex items-center gap-3 font-headline"><Icon /> {category}</CardTitle>
+                  <CardTitle className="text-primary flex items-center gap-3 font-headline">
+                    <Icon className="w-6 h-6" /> {category}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
@@ -678,5 +680,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
