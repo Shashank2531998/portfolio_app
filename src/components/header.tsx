@@ -58,8 +58,12 @@ export function Header() {
     )}>
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center px-4 sm:px-6 lg:px-8">
         <div className="flex items-center flex-1">
-            <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
-              <span className="font-headline tracking-tighter">&lt; Shashank /&gt;</span>
+            <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
+              <span className="font-headline tracking-tighter">
+                <span className="text-muted-foreground">&lt;</span>
+                <span className="text-foreground">Shashank</span>
+                <span className="text-muted-foreground"> /&gt;</span>
+              </span>
             </Link>
         </div>
         
@@ -78,8 +82,12 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="left">
                 <div className="p-6">
-                     <Link href="#home" className="flex items-center gap-2 font-bold text-xl text-foreground" onClick={closeMenu}>
-                        <span className="font-headline tracking-tighter">&lt; Shashank /&gt;</span>
+                     <Link href="#home" className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
+                        <span className="font-headline tracking-tighter">
+                          <span className="text-muted-foreground">&lt;</span>
+                          <span className="text-foreground">Shashank</span>
+                          <span className="text-muted-foreground"> /&gt;</span>
+                        </span>
                     </Link>
                 </div>
                 <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
