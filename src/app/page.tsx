@@ -203,12 +203,35 @@ const hobbiesData = [
 
 
 export default function Home() {
+  const [showSidebar, setShowSidebar] = useState(false);
+  const heroRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowSidebar(!entry.isIntersecting);
+      },
+      { rootMargin: "-100px 0px 0px 0px" }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => {
+      if (heroRef.current) {
+        observer.unobserve(heroRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
+      <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-[400px_1fr] lg:gap-12">
-          <LeftSidebar />
+        <div className={showSidebar ? "lg:grid lg:grid-cols-[400px_1fr] lg:gap-12" : ""}>
+          {showSidebar && <LeftSidebar />}
           <main className="flex-1 py-12 md:py-20">
             <AboutSection />
             <ExperienceSection />
@@ -226,6 +249,51 @@ export default function Home() {
     </div>
   );
 }
+
+const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
+    const taglines = ["AI Enthusiast", "Full-Stack Developer", "Problem Solver"];
+    return (
+        <section id="home" className="relative h-[80vh] flex items-center justify-center text-center" ref={ref}>
+            <div className="absolute inset-0 z-0">
+                <NeuralNetworkCanvas />
+                <InteractiveBlurOverlay />
+            </div>
+            <div className="relative z-10 space-y-6 px-4">
+                <Image
+                    src="/assets/my_photo.jpg"
+                    alt="Shashank's Portrait"
+                    width={180}
+                    height={180}
+                    className="rounded-full mx-auto aspect-square object-cover border-4 border-secondary shadow-lg"
+                    data-ai-hint="professional portrait"
+                />
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl text-foreground font-headline">
+                  Shashank
+                </h1>
+                 <div className="h-10">
+                    <TypewriterEffect taglines={taglines} />
+                </div>
+                <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
+                    I design and build intelligent software and AI systems that solve real-world problems.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                  <Button asChild size="lg">
+                    <a href="#contact">
+                      Contact Me <Mail className="ml-2" />
+                    </a>
+                  </Button>
+                  <Button asChild variant="secondary" size="lg">
+                    <a href="/shashank-resume.pdf" download>
+                      Download CV <Download className="ml-2" />
+                    </a>
+                  </Button>
+                </div>
+            </div>
+        </section>
+    );
+});
+HeroSection.displayName = 'HeroSection';
+
 
 function AboutSection() {
     return (
