@@ -373,7 +373,7 @@ const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Button asChild size="lg">
                     <a href="#contact">
-                      Contact Me <Mail className="ml-2" />
+                      Let's Connect <Mail className="ml-2" />
                     </a>
                   </Button>
                   <Button asChild variant="secondary" size="lg">
@@ -860,4 +860,3 @@ function ContactSection() {
   );
 }
     
-
