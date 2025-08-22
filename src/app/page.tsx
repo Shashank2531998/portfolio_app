@@ -187,39 +187,12 @@ const achievementsData = [
         details: [
             "Collaborated in an interdisciplinary team to analyze markets, design business models, prototype solutions, validate ideas, and pitch innovations under expert mentorship.",
         ],
-        images: ["https://placehold.co/1200x800.png"]
-    },
-    {
-        title: "First Place, National Hackathon",
-        date: "2023",
-        description: "Led a team to victory by developing an innovative solution for urban mobility.",
-        details: [
-            "Developed a real-time transit tracking application using React Native and Firebase.",
-            "Designed and presented the winning pitch to a panel of industry judges.",
-            "Awarded for outstanding innovation, technical execution, and user experience.",
-        ],
-        images: ["https://placehold.co/1200x800.png"]
-    },
-    {
-        title: "Published Research Paper on AI Ethics",
-        date: "2022",
-        description: "Co-authored a paper on the ethical implications of autonomous decision-making systems.",
-        details: [
-            "Conducted extensive literature reviews on AI ethics and algorithmic bias.",
-            "Collaborated with university professors to analyze and synthesize research findings.",
-            "Paper was accepted and published in the Journal of AI and Society.",
-        ],
-    },
-     {
-        title: "Top-Rated Mentor at Innovate Co.",
-        date: "2021",
-        description: "Recognized for providing exceptional guidance and support to junior developers.",
-        details: [
-            "Mentored three junior developers, helping them onboard and grow their technical skills.",
-            "Received the 'Mentor of the Year' award based on peer nominations and feedback.",
-            "Led workshops on clean code practices and an effective debugging techniques.",
-        ],
-    },
+        images: [
+          "/assets/dta_complete_group.jpeg",
+          "/assets/dta_fime.jpeg",
+          "/assets/dta_waichsenfeld_2.jpeg",
+        ]
+    }
 ];
 
 const extracurricularData = [
