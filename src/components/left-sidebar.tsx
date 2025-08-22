@@ -11,8 +11,8 @@ export function LeftSidebar() {
 
     return (
         <aside className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)]">
-            <div className="relative h-full flex flex-col justify-start text-center lg:text-left items-center lg:items-start space-y-6 pt-12 animate-hero-to-sidebar">
-                 <div className="relative z-10 space-y-4">
+            <div className="relative h-full flex flex-col justify-start text-center lg:text-left items-center lg:items-start pt-12">
+                 <div className="relative z-10 space-y-4 animate-hero-to-sidebar">
                     <div className="mx-auto lg:mx-0">
                         <Image
                             src="/assets/my_photo.jpg"
