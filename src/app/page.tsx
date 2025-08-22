@@ -192,7 +192,11 @@ const achievementsData = [
           "/assets/dta_fime.jpeg",
           "/assets/dta_waichsenfeld_2.jpeg",
         ],
-        logoUrl: "/assets/dta_logo.jpg"
+        logoUrl: "/assets/dta_logo.jpg",
+        link: {
+            url: "https://www.dta.fau.de/",
+            text: "Learn More"
+        }
     }
 ];
 
@@ -206,6 +210,10 @@ const extracurricularData = [
             "Gained hands-on experience in rapid prototyping, teamwork, and applying AI to solve real-world organizational challenges."
         ],
         logoUrl: "https://placehold.co/100x100.png",
+        link: {
+            url: "https://www.microsoft.com/en-us/ai",
+            text: "Visit Microsoft AI"
+        }
     },
     {
         title: "Cybersecurity Summer School @ Politehnica University of Timișoara",
@@ -685,6 +693,7 @@ function AchievementsSection() {
                                 subtitle="Achievement"
                                 images={achievement.images}
                                 details={achievement.details}
+                                link={achievement.link}
                             />
                         </Dialog>
                     ))}
@@ -739,6 +748,7 @@ function ExtracurricularSection() {
                             <ExperienceModal
                                 title={activity.title}
                                 details={activity.details}
+                                link={activity.link}
                             />
                         </Dialog>
                     ))}
@@ -824,3 +834,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    

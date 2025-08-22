@@ -17,7 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CheckCircle2, Github } from "lucide-react";
+import { CheckCircle2, Github, Link as LinkIcon } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface ExperienceModalProps {
@@ -26,10 +26,14 @@ interface ExperienceModalProps {
   images?: string[];
   details: string[];
   githubUrl?: string | null;
+  link?: {
+    url: string;
+    text: string;
+  } | null;
   detailsHeading?: string;
 }
 
-export function ExperienceModal({ title, subtitle, images, details, githubUrl, detailsHeading }: ExperienceModalProps) {
+export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
   return (
     <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
@@ -76,15 +80,26 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
           </ul>
         </div>
       </div>
-       {isProjectModal && githubUrl && (
-        <DialogFooter className="flex-shrink-0 pt-4">
-          <Button asChild>
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2" /> View Code
-            </a>
-          </Button>
+       {(githubUrl || link) && (
+        <DialogFooter className="flex-shrink-0 pt-4 flex-wrap gap-2">
+            {githubUrl && (
+                <Button asChild>
+                    <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2" /> View Code
+                    </a>
+                </Button>
+            )}
+            {link && (
+                 <Button asChild variant="secondary">
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    <LinkIcon className="mr-2" /> {link.text}
+                    </a>
+                </Button>
+            )}
         </DialogFooter>
       )}
     </DialogContent>
   );
 }
+
+    
