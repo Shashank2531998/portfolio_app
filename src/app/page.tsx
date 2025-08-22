@@ -281,7 +281,7 @@ const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                     className="rounded-full mx-auto aspect-square object-cover border-4 border-secondary shadow-lg"
                     data-ai-hint="professional portrait"
                 />
-                <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl text-foreground font-headline">
+                <h1 className="text-5xl font-bold tracking-tight sm:text-6xl text-foreground font-headline">
                   Shashank
                 </h1>
                  <div className="h-10">
