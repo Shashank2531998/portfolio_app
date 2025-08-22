@@ -606,11 +606,11 @@ function ProjectsSection() {
                     <div onClick={(e) => e.stopPropagation()}>
                         <Button asChild={!!project.githubUrl} disabled={!project.githubUrl} size="sm">
                             {project.githubUrl ? (
-                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                                     <Github /> View Code
                                 </a>
                             ) : (
-                                <span>
+                                <span className="flex items-center gap-2 px-4">
                                     <Github /> Code Unavailable
                                 </span>
                             )}
