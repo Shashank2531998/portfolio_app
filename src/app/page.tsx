@@ -104,7 +104,7 @@ const educationData = [
         "Member of the university AI research group, contributing to ongoing projects.",
     ],
     images: [
-      "https://placehold.co/56x56.png",
+      "/assets/fau_firstday_final.jpg",
     ],
     dataAiHint: "university campus"
   },
@@ -119,7 +119,7 @@ const educationData = [
         "Final year project on a machine learning-based recommendation system.",
     ],
     images: [
-      "https://placehold.co/1200x800.png",
+      "/assets/ymca_farewell.jpg",
     ],
     dataAiHint: "university building"
   }
