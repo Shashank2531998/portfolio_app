@@ -49,7 +49,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
             opts={{
               loop: true,
             }}
-            className="w-full"
+            className="w-full max-w-3xl mx-auto"
           >
             <CarouselContent>
               {images.map((src, index) => (
