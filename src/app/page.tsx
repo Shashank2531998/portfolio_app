@@ -194,7 +194,7 @@ const achievementsData = [
         ],
         logoUrl: "/assets/dta_logo.jpg",
         link: {
-            url: "https://www.dta.fau.de/",
+            url: "https://www.dta.fau.de/student-program/",
             text: "Learn More"
         }
     }
@@ -209,11 +209,11 @@ const extracurricularData = [
             "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
             "Gained hands-on experience in rapid prototyping, teamwork, and applying AI to solve real-world organizational challenges."
         ],
-        logoUrl: "https://placehold.co/100x100.png",
-        link: {
-            url: "https://www.microsoft.com/en-us/ai",
-            text: "Visit Microsoft AI"
-        }
+        logoUrl: "/assets/ms_logo.png",
+        images: [
+          "/assets/ms_agent_hackathon.jpeg",
+          "/assets/microsoft_hackathon.jpeg"
+        ],
     },
     {
         title: "Cybersecurity Summer School @ Politehnica University of Timișoara",
