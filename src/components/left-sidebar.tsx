@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function LeftSidebar() {
     return (
-        <aside className="lg:sticky lg:top-20">
+        <aside>
             <div className="relative h-full flex flex-col justify-start animate-hero-to-sidebar">
                 <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm space-y-6">
 
