@@ -234,7 +234,7 @@ export default function Home() {
           <div className="hidden lg:block">
             {showSidebar && <LeftSidebar />}
           </div>
-          <main className="flex-1 py-12 md:py-20">
+          <main className="flex-1">
             <AboutSection />
             <ExperienceSection />
             <EducationSection />
@@ -299,7 +299,7 @@ HeroSection.displayName = 'HeroSection';
 
 function AboutSection() {
     return (
-        <section id="about" className="py-20 md:py-32">
+        <section id="about" className="py-12 md:py-20">
             <div className="max-w-4xl">
                 <div className="space-y-4">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -440,7 +440,7 @@ const skillIcons: { [key: string]: React.ElementType } = {
 
 function SkillsSection() {
   return (
-    <section id="skills" className="py-20 md:py-32 bg-secondary">
+    <section id="skills" className="py-12 md:py-20 bg-secondary">
       <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -476,7 +476,7 @@ function SkillsSection() {
 
 function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 md:py-32">
+    <section id="projects" className="py-12 md:py-20">
        <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -520,7 +520,7 @@ function ProjectsSection() {
 
 function AchievementsSection() {
     return (
-        <section id="achievements" className="py-20 md:py-32 bg-secondary">
+        <section id="achievements" className="py-12 md:py-20 bg-secondary">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -560,7 +560,7 @@ function AchievementsSection() {
 
 function ExtracurricularSection() {
     return (
-        <section id="extracurricular" className="py-20 md:py-32">
+        <section id="extracurricular" className="py-12 md:py-20">
              <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -596,7 +596,7 @@ function ExtracurricularSection() {
 
 function HobbiesSection() {
   return (
-    <section id="hobbies" className="py-20 md:py-32 bg-secondary">
+    <section id="hobbies" className="py-12 md:py-20 bg-secondary">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -630,7 +630,7 @@ function HobbiesSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="py-20 md:py-32">
+    <section id="contact" className="py-12 md:py-20">
        <div className="max-w-4xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
