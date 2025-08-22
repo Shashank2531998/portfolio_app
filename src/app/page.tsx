@@ -40,7 +40,10 @@ const experienceData = [
     details: [
       "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights",
       "Optimized website code, reducing home page loading time by 30%",
-    ]
+    ],
+    images: [
+      "/assets/heatbeat-onsite-meeting.jpg"
+    ],
   },
   {
     company: "Josh Technology Group, Gurugram, India",
@@ -380,7 +383,7 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
 
 function ExperienceGroupCard({ item }: { item: any }) {
     return (
-        <Card className="transition-all duration-300 hover:shadow-lg w-full">
+        <Card className="w-full">
             <CardContent className="p-6">
                 <div className="flex items-start gap-6 mb-6">
                     <div className="flex-shrink-0">
@@ -724,9 +727,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
-
-    
-
-    
