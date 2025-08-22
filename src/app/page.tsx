@@ -236,21 +236,21 @@ export default function Home() {
           </div>
           <main className="flex-1 py-12 md:py-20">
             <AboutSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <ExperienceSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <EducationSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <SkillsSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <ProjectsSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <AchievementsSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <ExtracurricularSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <HobbiesSection />
-            <Separator className="my-12 md:my-20" />
+            <Separator className="my-12" />
             <ContactSection />
           </main>
         </div>
@@ -678,5 +678,7 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
