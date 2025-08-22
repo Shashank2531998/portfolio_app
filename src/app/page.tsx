@@ -430,6 +430,7 @@ function ExperienceGroupCard({ item }: { item: any }) {
                                 title={role.role}
                                 subtitle={item.company}
                                 details={role.details}
+                                images={item.images}
                                 detailsHeading="Key Contributions"
                             />
                         </Dialog>
