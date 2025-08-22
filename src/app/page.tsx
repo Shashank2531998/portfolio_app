@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { CalendlyEmbed } from "@/components/calendly-embed";
+import { PopupButton } from "react-calendly";
+import { useToast } from "@/hooks/use-toast";
 import NeuralNetworkCanvas from "@/components/neural-network-canvas";
 import { InteractiveBlurOverlay } from "@/components/interactive-blur-overlay";
 import { ExperienceModal } from "@/components/experience-modal";
@@ -811,31 +812,52 @@ function HobbiesSection() {
 
 
 function ContactSection() {
+  const { toast } = useToast();
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  
+  const handleEventScheduled = () => {
+    toast({
+      title: "✅ Your meeting is booked.",
+      description: "Check your email for details!",
+    });
+  };
+  
   return (
     <section id="contact" className="py-12">
        <div className="max-w-4xl mx-auto text-center">
-        <div className="space-y-4 mb-12">
+        <div className="space-y-4 mb-8">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3 justify-center">
             <Mail /> Let's Connect
           </h2>
           <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-            Interested in discussing AI, software development, or potential collaborations? Book a time directly on my calendar below.
+            Interested in discussing AI, software development, or collaborations? Pick a time that works best for you.
           </p>
         </div>
-        <Card className="overflow-hidden">
-          <CardContent className="p-2 sm:p-4 md:p-6">
-            <CalendlyEmbed />
-          </CardContent>
-        </Card>
-         <div className="mt-6 text-center">
+        
+        <div className="flex justify-center">
+            {isClient && (
+                <PopupButton
+                    url="https://calendly.com/shashank2531998/30min"
+                    rootElement={document.body}
+                    text="📅 Schedule a Meeting"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8"
+                    onEventScheduled={handleEventScheduled}
+                />
+            )}
+        </div>
+
+        <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
-                Prefer to email? <a href="mailto:shashank2531998@gmail.com" className="font-medium text-primary hover:underline">Send me an email</a>
+                Prefer email? <a href="mailto:shashank2531998@gmail.com" className="font-medium text-primary hover:underline">Contact me at shashank2531998@gmail.com</a>
             </p>
         </div>
       </div>
     </section>
   );
 }
-
-
     
+
