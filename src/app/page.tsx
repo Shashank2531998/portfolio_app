@@ -222,7 +222,7 @@ export default function Home() {
 }
 
 function HeroSection() {
-    const taglines = ["Software Developer", "AI Researcher", "Innovator"];
+    const taglines = ["AI Enthusiast", "Full-Stack Developer", "Problem Solver"];
 
     return (
     <section id="home" className="relative group min-h-screen flex items-center justify-center text-center overflow-hidden py-20 md:py-32">
@@ -276,7 +276,7 @@ function AboutSection() {
                         <User /> About Me
                     </h2>
                     <p className="text-muted-foreground md:text-lg leading-relaxed">
-                        I am a results-driven Software Engineer with a passion for developing innovative software solutions. With a strong foundation in computer science principles and a keen eye for detail, I specialize in building scalable, high-performance web applications. I thrive in collaborative environments and am dedicated to continuous learning and improvement. My goal is to leverage my skills to create technology that makes a meaningful impact.
+                        I’m Shashank — a Software Developer and AI Researcher passionate about building intelligent systems that create real-world impact. With 5+ years of experience across startups and global companies, I’ve worked on everything from scalable web platforms to generative AI solutions at Siemens Healthineers. Currently pursuing my Master’s in AI at FAU Erlangen, I focus on medical AI, computer vision, and time-series forecasting, while also exploring innovation through FAU’s Digital Tech Fellows program.
                     </p>
                 </div>
             </div>
@@ -667,5 +667,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
