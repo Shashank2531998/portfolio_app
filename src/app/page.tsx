@@ -129,43 +129,34 @@ const projectsData = [
   {
     title: "Medical Time Series Classification using Mamba",
     description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset to evaluate forecasting performance.",
-    tags: ["Mamba", "LSTM", "PyTorch", "Medical AI"],
+    tags: ["Mamba", "LSTM", "PyTorch"],
     subtitle: "Apr 2025 - Present | Pattern Recognition Lab, FAU",
     details: [
       "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset.",
       "Evaluated forecasting performance to determine the more effective model for medical time series analysis."
     ],
-    images: [
-      "https://placehold.co/1200x800.png",
-    ],
-    githubUrl: "https://github.com"
+    githubUrl: "https://github.com/techie-shashank/mamba_ts_forecasting"
   },
   {
     title: "Tool Action Recognition",
     description: "Evaluated semi-supervised learning strategies using LSTM and TCN models for tool action recognition on an industrial tool tracking dataset.",
-    tags: ["Semi-Supervised Learning", "LSTM", "TCN", "Computer Vision"],
+    tags: ["Semi-Supervised Learning", "LSTM", "TCN", "PyTorch"],
     subtitle: "Apr 2025 - Jul 2025 | Machine Learning and Data Analytics Lab, FAU",
     details: [
       "Evaluated semi-supervised learning strategies for tool action recognition.",
       "Utilized LSTM and TCN models on an industrial tool tracking dataset to improve recognition accuracy with limited labeled data."
     ],
-    images: [
-      "https://placehold.co/1200x800.png",
-    ],
-    githubUrl: "https://github.com"
+    githubUrl: "https://github.com/techie-shashank/Tool_Action_Recognition"
   },
   {
     title: "High-Precision 3D Surface Reconstruction",
     description: "Built a 3D reconstruction pipeline using phase-shifting algorithms and researched deep learning methods to improve accuracy.",
-    tags: ["3D Reconstruction", "Computer Vision", "Deep Learning", "Python"],
+    tags: ["3D Reconstruction", "Computer Vision", "Deep Learning", "PyTorch"],
     subtitle: "Oct 2024 - Present | Institute for Factory Automation and Production Systems",
     details: [
       "Built a 3D reconstruction pipeline using phase-shifting algorithms for high-precision results.",
       "Researched and integrated deep learning methods to improve accuracy for 6DoF pose estimation.",
       "Focused on creating robust and accurate 3D models from structured light patterns."
-    ],
-    images: [
-      "https://placehold.co/1200x800.png",
     ],
     githubUrl: null
   },
