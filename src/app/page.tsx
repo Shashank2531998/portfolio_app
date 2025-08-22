@@ -25,7 +25,7 @@ const experienceData = [
     company: "FutureTech Solutions",
     date: "2021 - Present",
     description: "Leading the development of scalable web applications using Next.js and TypeScript. Mentoring junior developers and improving code quality across the team.",
-    logoUrl: "https://placehold.co/48x48.png",
+    logoUrl: "https://placehold.co/40x40.png",
     images: [
       "https://placehold.co/1200x800.png",
       "https://placehold.co/1200x800.png",
@@ -43,7 +43,7 @@ const experienceData = [
     company: "Innovate Co.",
     date: "2019 - 2021",
     description: "Developed and maintained client-side features for various projects using React and Redux. Collaborated with designers to create responsive user interfaces.",
-    logoUrl: "https://placehold.co/48x48.png",
+    logoUrl: "https://placehold.co/40x40.png",
     details: [
       "Developed responsive user interfaces for a high-traffic e-commerce website using React and Redux.",
       "Collaborated with the design team to implement pixel-perfect UIs, improving user engagement by 25%.",
@@ -55,7 +55,7 @@ const experienceData = [
     company: "WebCrafters Inc.",
     date: "2018 - 2019",
     description: "Assisted in building and testing websites for small to medium-sized businesses. Gained foundational experience in HTML, CSS, and JavaScript.",
-    logoUrl: "https://placehold.co/48x48.png",
+    logoUrl: "https://placehold.co/40x40.png",
     images: [
       "https://placehold.co/1200x800.png"
     ],
@@ -73,7 +73,7 @@ const educationData = [
     company: "University of Technology",
     date: "2014 - 2018",
     description: "Graduated with honors, focusing on software development and artificial intelligence.",
-    logoUrl: "https://placehold.co/48x48.png",
+    logoUrl: "https://placehold.co/40x40.png",
     details: [
         "Specialized in Software Engineering and Artificial Intelligence tracks.",
         "Key coursework: Data Structures, Algorithms, Machine Learning, Web Development.",
@@ -230,8 +230,10 @@ export default function Home() {
       <Header />
       <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={showSidebar ? "lg:grid lg:grid-cols-[400px_1fr] lg:gap-12" : ""}>
-          {showSidebar && <LeftSidebar />}
+        <div className="lg:grid lg:grid-cols-[400px_1fr] lg:gap-12">
+          <div className="hidden lg:block">
+            {showSidebar && <LeftSidebar />}
+          </div>
           <main className="flex-1 py-12 md:py-20">
             <AboutSection />
             <ExperienceSection />
