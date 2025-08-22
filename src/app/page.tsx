@@ -284,41 +284,19 @@ function AboutSection() {
     );
 }
 
-function TimelineItem({ item, index, type, detailsHeading, isEducation = false }: { item: any; index: number; type: string; detailsHeading: string, isEducation?: boolean }) {
-  const isLeft = index % 2 === 0;
-
+function TimelineItem({ item, detailsHeading }: { item: any, detailsHeading: string }) {
   return (
-    <div className="flex items-center w-full">
-      {/* ---DESKTOP VIEW--- */}
-      <div className="hidden md:flex w-full items-center">
-        {isLeft ? (
-          <>
-            <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation} />
-            <TimelineGraphic item={item} />
-            <div className="w-1/2" />
-          </>
-        ) : (
-          <>
-            <div className="w-1/2" />
-            <TimelineGraphic item={item} />
-            <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation} />
-          </>
-        )}
-      </div>
-
-      {/* ---MOBILE VIEW--- */}
-      <div className="flex md:hidden w-full items-center">
-         <TimelineGraphic item={item} />
-         <div className="w-8 flex-shrink-0" />
-         <TimelineCard item={item} detailsHeading={detailsHeading} isEducation={isEducation}/>
-      </div>
+    <div className="flex items-start w-full">
+      <TimelineGraphic item={item} />
+      <div className="w-8 flex-shrink-0" />
+      <TimelineCard item={item} detailsHeading={detailsHeading} />
     </div>
   );
 }
 
-function TimelineCard({ item, detailsHeading, isEducation }: { item: any, detailsHeading: string, isEducation: boolean }) {
+function TimelineCard({ item, detailsHeading }: { item: any, detailsHeading: string }) {
     return (
-        <div className="w-full md:w-1/2 px-4">
+        <div className="w-full">
             <Dialog>
                 <DialogTrigger asChild>
                     <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full">
@@ -357,7 +335,7 @@ function TimelineGraphic({ item }: { item: any }) {
                 alt={`${item.company} logo`}
                 width={40}
                 height={40}
-                className="rounded-full absolute top-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-110"
+                className="rounded-full absolute top-0 transition-transform duration-300 hover:scale-110"
                 data-ai-hint="company logo"
             />
         </div>
@@ -377,15 +355,13 @@ function ExperienceSection() {
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
-          <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-4">
+        <div className="relative max-w-3xl mx-auto">
+          <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-8">
             {experienceData.map((item, index) => (
               <TimelineItem 
                 key={index} 
                 item={item} 
-                index={index} 
-                type="experience"
                 detailsHeading="Key Contributions" 
               />
             ))}
@@ -408,16 +384,13 @@ function EducationSection() {
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
-           <div className="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-4">
+        <div className="relative max-w-3xl mx-auto">
+           <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
+          <div className="space-y-8">
             {educationData.map((item, index) => (
                <TimelineItem 
                 key={index} 
                 item={item} 
-                index={index} 
-                type="education"
-                isEducation={true}
                 detailsHeading="Key Coursework & Activities" 
               />
             ))}
@@ -667,3 +640,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
