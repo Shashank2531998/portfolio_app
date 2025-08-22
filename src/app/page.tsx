@@ -326,17 +326,7 @@ function AboutSection() {
     );
 }
 
-function TimelineItem({ item, detailsHeading }: { item: any, detailsHeading: string }) {
-  return (
-    <div className="flex items-start w-full">
-      <TimelineGraphic item={item} />
-      <div className="w-8 flex-shrink-0" />
-      <TimelineCard item={item} detailsHeading={detailsHeading} />
-    </div>
-  );
-}
-
-function TimelineCard({ item, detailsHeading }: { item: any, detailsHeading: string }) {
+function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: string }) {
     return (
         <div className="w-full">
             <Dialog>
@@ -368,23 +358,6 @@ function TimelineCard({ item, detailsHeading }: { item: any, detailsHeading: str
     )
 }
 
-function TimelineGraphic({ item }: { item: any }) {
-    return (
-        <div className="relative w-16 flex-shrink-0 flex justify-center">
-            <div className="w-0.5 h-full bg-border" />
-            <Image
-                src={item.logoUrl}
-                alt={`${item.company} logo`}
-                width={40}
-                height={40}
-                className="rounded-full absolute top-6 transition-transform duration-300 hover:scale-110"
-                data-ai-hint="company logo"
-            />
-        </div>
-    )
-}
-
-
 function ExperienceSection() {
   return (
     <section id="experience" className="py-12 md:py-20">
@@ -397,17 +370,14 @@ function ExperienceSection() {
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
-          <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-4">
-            {experienceData.map((item, index) => (
-              <TimelineItem 
-                key={index} 
-                item={item} 
-                detailsHeading="Key Contributions" 
-              />
-            ))}
-          </div>
+        <div className="space-y-8">
+          {experienceData.map((item, index) => (
+            <ExperienceCard 
+              key={index} 
+              item={item} 
+              detailsHeading="Key Contributions" 
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -426,17 +396,14 @@ function EducationSection() {
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
-           <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-8">
-            {educationData.map((item, index) => (
-               <TimelineItem 
-                key={index} 
-                item={item} 
-                detailsHeading="Key Coursework & Activities" 
-              />
-            ))}
-          </div>
+        <div className="space-y-8">
+          {educationData.map((item, index) => (
+            <ExperienceCard 
+              key={index} 
+              item={item} 
+              detailsHeading="Key Coursework & Activities" 
+            />
+          ))}
         </div>
       </div>
     </section>
