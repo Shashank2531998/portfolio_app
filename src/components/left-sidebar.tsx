@@ -8,8 +8,8 @@ import { Separator } from "@/components/ui/separator";
 
 export function LeftSidebar() {
     return (
-        <aside className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)]">
-            <div className="relative h-full flex flex-col justify-start pt-12 animate-hero-to-sidebar">
+        <aside className="lg:sticky lg:top-20">
+            <div className="relative h-full flex flex-col justify-start py-12 animate-hero-to-sidebar">
                 <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm space-y-6">
 
                     {/* Profile Section */}
@@ -96,3 +96,5 @@ export function LeftSidebar() {
         </aside>
     );
 }
+
+    

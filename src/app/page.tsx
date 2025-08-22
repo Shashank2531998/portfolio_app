@@ -230,7 +230,7 @@ export default function Home() {
       <Header />
       <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-8">
+        <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
           <div className="hidden lg:block">
             {showSidebar && <LeftSidebar />}
           </div>
@@ -307,7 +307,7 @@ HeroSection.displayName = 'HeroSection';
 
 function AboutSection() {
     return (
-        <section id="about">
+        <section id="about" className="py-12 md:py-20">
             <div className="max-w-4xl">
                 <div className="space-y-4">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -383,7 +383,7 @@ function TimelineGraphic({ item }: { item: any }) {
 
 function ExperienceSection() {
   return (
-    <section id="experience">
+    <section id="experience" className="py-12 md:py-20">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-8">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -412,7 +412,7 @@ function ExperienceSection() {
 
 function EducationSection() {
   return (
-    <section id="education">
+    <section id="education" className="py-12 md:py-20">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-8">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -448,7 +448,7 @@ const skillIcons: { [key: string]: React.ElementType } = {
 
 function SkillsSection() {
   return (
-    <section id="skills">
+    <section id="skills" className="py-12 md:py-20">
       <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -484,7 +484,7 @@ function SkillsSection() {
 
 function ProjectsSection() {
   return (
-    <section id="projects">
+    <section id="projects" className="py-12 md:py-20">
        <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -528,7 +528,7 @@ function ProjectsSection() {
 
 function AchievementsSection() {
     return (
-        <section id="achievements">
+        <section id="achievements" className="py-12 md:py-20">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -568,7 +568,7 @@ function AchievementsSection() {
 
 function ExtracurricularSection() {
     return (
-        <section id="extracurricular">
+        <section id="extracurricular" className="py-12 md:py-20">
              <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -604,7 +604,7 @@ function ExtracurricularSection() {
 
 function HobbiesSection() {
   return (
-    <section id="hobbies">
+    <section id="hobbies" className="py-12 md:py-20">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -638,7 +638,7 @@ function HobbiesSection() {
 
 function ContactSection() {
   return (
-    <section id="contact">
+    <section id="contact" className="py-12 md:py-20">
        <div className="max-w-4xl">
         <div className="space-y-4 mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
@@ -678,3 +678,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
