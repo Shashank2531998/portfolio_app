@@ -203,7 +203,7 @@ const achievementsData = [
 const extracurricularData = [
     {
         title: "AI Agent Hackathon @ Microsoft, Munich",
-        date: "Aug 2024",
+        date: "Aug 2025",
         description: "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
         details: [
             "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
@@ -216,34 +216,53 @@ const extracurricularData = [
         ],
     },
     {
-        title: "Cybersecurity Summer School @ Politehnica University of Timișoara",
-        date: "Jul 2024",
-        description: "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania. Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies.",
-        details: [
-            "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania.",
-            "Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies."
-        ],
-        logoUrl: "https://placehold.co/100x100.png",
-    },
-    {
-        title: "Healthcare Hackathon Bavaria 2024",
-        date: "Jun 2024",
+        title: "Healthcare Hackathon Bavaria",
+        date: "Oct 2024",
         description: "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform. Developed algorithms to assess patient risk factors, reducing diagnostic delays by 30%, in a 48-hour sprint with an interdisciplinary team.",
         details: [
             "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform.",
             "Developed algorithms to assess patient risk factors, reducing diagnostic delays by 30%, in a 48-hour sprint with an interdisciplinary team."
         ],
-        logoUrl: "https://placehold.co/100x100.png",
+        logoUrl: "/assets/healthcare_hackathon_logo.svg",
+        images: [
+          "/assets/healthcare-hackathon-bayern-keyvisual.jpg",
+        ],
+        link: {
+          url: "https://www.bayern-innovativ.de/detail/de/veranstaltung/healthcare-hackathon-bayern-2024",
+          text: "Learn More"
+        },
     },
     {
-        title: "Tensor Tournament 2024",
+      title: "Cybersecurity Summer School @ Politehnica University of Timișoara",
+      date: "Jul 2024",
+      description: "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania. Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies.",
+      details: [
+          "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania.",
+          "Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies."
+      ],
+      logoUrl: "/assets/best_logo.svg",
+      images: [
+        "/assets/timisoara_group.jpeg",
+        "/assets/timisoara.jpeg"
+      ],
+      link: {
+        url: "https://www.best.eu.org/event/details.jsp?activity=o1nrq9v",
+        text: "Learn More"
+      },
+    },
+    {
+        title: "Tensor Tournament",
         date: "May 2024",
         description: "Secured a Top-10 rank in a prestigious AI competition. Demonstrated expertise in Generative AI, Machine Learning, and advanced algorithms by solving cutting-edge research challenges.",
         details: [
             "Secured a Top-10 rank in a prestigious AI competition.",
             "Demonstrated expertise in Generative AI, Machine Learning, and advanced algorithms by solving cutting-edge research challenges."
         ],
-        logoUrl: "https://placehold.co/100x100.png",
+        logoUrl: "/assets/tensor_tournament_logo.png",
+        link: {
+          url: "https://www.mad.tf.fau.de/2024/04/02/the-tensor-tournament-t3-2024-is-here/",
+          text: "Learn More"
+        },
     }
 ];
 
