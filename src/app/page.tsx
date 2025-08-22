@@ -231,7 +231,7 @@ export default function Home() {
       <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
-          <div className="hidden lg:block">
+          <div className="hidden lg:block self-start">
             {showSidebar && <LeftSidebar />}
           </div>
           <main className="flex-1 py-12 md:py-20">
@@ -680,3 +680,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
