@@ -301,8 +301,8 @@ function AboutSection() {
     return (
         <section id="about" className="py-20 md:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center space-y-4 max-w-4xl mx-auto">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+                <div className="space-y-4 max-w-4xl">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
                         <User /> About Me
                     </h2>
                     <p className="text-muted-foreground md:text-lg leading-relaxed">
@@ -377,15 +377,15 @@ function ExperienceSection() {
   return (
     <section id="experience" className="py-12 md:py-20 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+        <div className="space-y-4 mb-8">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
             <Briefcase /> Work Experience
           </h2>
-          <p className="text-muted-foreground md:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-muted-foreground md:text-lg leading-relaxed max-w-2xl">
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-4xl">
           <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
           <div className="space-y-4">
             {experienceData.map((item, index) => (
@@ -406,15 +406,15 @@ function EducationSection() {
   return (
     <section id="education" className="py-12 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-8 text-center">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+        <div className="space-y-4 mb-8">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
             <GraduationCap /> Education
           </h2>
-          <p className="text-muted-foreground md:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-muted-foreground md:text-lg leading-relaxed max-w-2xl">
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-4xl">
            <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
           <div className="space-y-8">
             {educationData.map((item, index) => (
@@ -442,15 +442,15 @@ function SkillsSection() {
   return (
     <section id="skills" className="py-20 md:py-32 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-12 text-center">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+        <div className="space-y-4 mb-12">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
             <Layers /> Skills
           </h2>
-          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground md:text-lg max-w-2xl">
             Technologies and tools I work with.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-7xl">
           {Object.entries(skillsData).map(([category, skills]) => {
             const Icon = skillIcons[category] || Code;
             return (
@@ -478,15 +478,15 @@ function ProjectsSection() {
   return (
     <section id="projects" className="py-20 md:py-32">
        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-12 text-center">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+        <div className="space-y-4 mb-12">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
               <FolderKanban /> Projects
           </h2>
-          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground md:text-lg max-w-2xl">
             A selection of projects that showcase my skills.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl">
           {projectsData.map((project) => (
             <Dialog key={project.title}>
               <DialogTrigger asChild>
@@ -522,15 +522,15 @@ function AchievementsSection() {
     return (
         <section id="achievements" className="py-20 md:py-32 bg-secondary">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="space-y-4 mb-12 text-center">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+                <div className="space-y-4 mb-12">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
                         <Award /> Achievements
                     </h2>
-                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground md:text-lg max-w-2xl">
                         My key accomplishments and recognitions.
                     </p>
                 </div>
-                <div className="space-y-4 max-w-4xl mx-auto">
+                <div className="space-y-4 max-w-4xl">
                     {achievementsData.map((achievement, index) => (
                         <Dialog key={index}>
                             <DialogTrigger asChild>
@@ -562,15 +562,15 @@ function ExtracurricularSection() {
     return (
         <section id="extracurricular" className="py-20 md:py-32">
              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="space-y-4 mb-12 text-center">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+                <div className="space-y-4 mb-12">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
                         <List /> Extracurricular Activities
                     </h2>
-                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground md:text-lg max-w-2xl">
                         My involvement in activities outside of work and academics. Click on an entry to see more.
                     </p>
                 </div>
-                <Card className="max-w-4xl mx-auto">
+                <Card className="max-w-4xl">
                     <CardContent className="p-2">
                         {extracurricularData.map((activity, index) => (
                             <Dialog key={index}>
@@ -598,15 +598,15 @@ function HobbiesSection() {
   return (
     <section id="hobbies" className="py-20 md:py-32 bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-12 text-center">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+        <div className="space-y-4 mb-12">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
             <Heart /> Hobbies
           </h2>
-          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground md:text-lg max-w-2xl">
             A few things I enjoy doing in my free time.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-4xl">
           {hobbiesData.map((hobby) => {
             const Icon = hobby.icon;
             return (
@@ -632,15 +632,15 @@ function ContactSection() {
   return (
     <section id="contact" className="py-20 md:py-32">
        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4 mb-12 text-center">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center justify-center gap-3">
+        <div className="space-y-4 mb-12">
+          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
             <Mail /> Contact
           </h2>
-          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground md:text-lg max-w-2xl">
             Have a project in mind, or just want to say hello? Reach out via email, find me on social media, or send me a message using the form.
           </p>
         </div>
-        <Card className="max-w-4xl mx-auto">
+        <Card className="max-w-4xl">
           <CardContent className="p-0">
             <div className="grid md:grid-cols-2">
               <div className="p-8 space-y-6">
@@ -671,5 +671,4 @@ function ContactSection() {
   );
 }
 
-    
     
