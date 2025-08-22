@@ -18,6 +18,7 @@ import { Separator } from "@/components/ui/separator";
 import { TypewriterEffect } from "@/components/typewriter-effect";
 import React, { useState, useEffect } from 'react';
 import { StickySidebar } from "@/components/sticky-sidebar";
+import { cn } from "@/lib/utils";
 
 const experienceData = [
   {
@@ -207,8 +208,8 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show sidebar when user scrolls past 90% of the viewport height
-      if (window.scrollY > window.innerHeight * 0.9) {
+      // Show sidebar when user scrolls past the hero section
+      if (window.scrollY > window.innerHeight) {
         setShowStickySidebar(true);
       } else {
         setShowStickySidebar(false);
@@ -224,19 +225,21 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <StickySidebar show={showStickySidebar} />
-      <main className="flex-1">
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <EducationSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <AchievementsSection />
-        <ExtracurricularSection />
-        <HobbiesSection />
-        <ContactSection />
-      </main>
+      <div className={cn("container mx-auto px-4 sm:px-6 lg:px-8", showStickySidebar && "lg:grid lg:grid-cols-[280px_1fr] lg:gap-12")}>
+        <StickySidebar show={showStickySidebar} />
+        <main className="flex-1">
+          <HeroSection />
+          <AboutSection />
+          <ExperienceSection />
+          <EducationSection />
+          <SkillsSection />
+          <ProjectsSection />
+          <AchievementsSection />
+          <ExtracurricularSection />
+          <HobbiesSection />
+          <ContactSection />
+        </main>
+      </div>
       <Footer />
     </div>
   );
@@ -307,7 +310,7 @@ function AboutSection() {
 
 function TimelineItem({ item, detailsHeading }: { item: any, detailsHeading: string }) {
   return (
-    <div className="flex items-center w-full">
+    <div className="flex items-start w-full">
       <TimelineGraphic item={item} />
       <div className="w-8 flex-shrink-0" />
       <TimelineCard item={item} detailsHeading={detailsHeading} />
@@ -356,7 +359,7 @@ function TimelineGraphic({ item }: { item: any }) {
                 alt={`${item.company} logo`}
                 width={40}
                 height={40}
-                className="rounded-full absolute top-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-110"
+                className="rounded-full absolute top-6 transition-transform duration-300 hover:scale-110"
                 data-ai-hint="company logo"
             />
         </div>
