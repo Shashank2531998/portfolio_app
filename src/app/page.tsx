@@ -231,13 +231,12 @@ export default function Home() {
       <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
-          <div className="hidden lg:block">
-            {showSidebar && (
-              <div className="lg:sticky lg:top-20 pb-12">
+          {showSidebar && (
+              <div className="hidden lg:block lg:sticky lg:top-20 pb-12">
                 <LeftSidebar />
               </div>
-            )}
-          </div>
+          )}
+          {!showSidebar && <div className="hidden lg:block"></div>}
           <main className="flex-1 py-12 md:py-20">
             <AboutSection />
             <Separator className="my-12" />
@@ -332,17 +331,29 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
             <Dialog>
                 <DialogTrigger asChild>
                     <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full">
-                        <CardHeader className="p-4">
-                            <div className="flex justify-between items-start">
-                                <div className="flex-grow">
-                                    <h3 className="text-lg font-semibold font-headline text-foreground">{item.role}</h3>
-                                    <p className="font-medium text-primary mt-1">{item.company}</p>
+                        <CardContent className="p-6">
+                            <div className="flex items-start gap-6">
+                                <div className="flex-shrink-0">
+                                     <Image
+                                        src={item.logoUrl}
+                                        alt={`${item.company} logo`}
+                                        width={56}
+                                        height={56}
+                                        className="rounded-md object-contain aspect-square"
+                                        data-ai-hint="company logo"
+                                    />
                                 </div>
-                                <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{item.date}</p>
+                                <div className="flex-grow">
+                                    <div className="flex justify-between items-start">
+                                        <div>
+                                            <h3 className="text-lg font-semibold font-headline text-foreground">{item.role}</h3>
+                                            <p className="font-medium text-primary mt-1">{item.company}</p>
+                                        </div>
+                                        <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{item.date}</p>
+                                    </div>
+                                    <p className="text-base text-muted-foreground leading-relaxed mt-3">{item.description}</p>
+                                </div>
                             </div>
-                        </CardHeader>
-                        <CardContent className="p-4 pt-0">
-                            <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
                         </CardContent>
                     </Card>
                 </DialogTrigger>
@@ -651,3 +662,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
