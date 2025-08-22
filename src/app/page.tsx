@@ -355,7 +355,7 @@ function ExperienceSection() {
             My professional journey. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
+        <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
           <div className="space-y-8">
             {experienceData.map((item, index) => (
@@ -384,7 +384,7 @@ function EducationSection() {
             My academic background. Click on an entry to see more details.
           </p>
         </div>
-        <div className="relative">
+        <div className="relative max-w-4xl mx-auto">
            <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
           <div className="space-y-8">
             {educationData.map((item, index) => (
