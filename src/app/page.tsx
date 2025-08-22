@@ -214,6 +214,24 @@ const extracurricularData = [
             "Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies."
         ],
         logoUrl: "https://placehold.co/100x100.png",
+    },
+    {
+        title: "Healthcare Hackathon Bavaria 2024",
+        description: "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform. Developed algorithms to assess patient risk factors, reducing diagnostic delays by 30%, in a 48-hour sprint with an interdisciplinary team.",
+        details: [
+            "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform.",
+            "Developed algorithms to assess patient risk factors, reducing diagnostic delays by 30%, in a 48-hour sprint with an interdisciplinary team."
+        ],
+        logoUrl: "https://placehold.co/100x100.png",
+    },
+    {
+        title: "Tensor Tournament 2024",
+        description: "Secured a Top-10 rank in a prestigious AI competition. Demonstrated expertise in Generative AI, Machine Learning, and advanced algorithms by solving cutting-edge research challenges.",
+        details: [
+            "Secured a Top-10 rank in a prestigious AI competition.",
+            "Demonstrated expertise in Generative AI, Machine Learning, and advanced algorithms by solving cutting-edge research challenges."
+        ],
+        logoUrl: "https://placehold.co/100x100.png",
     }
 ];
 
