@@ -231,8 +231,12 @@ export default function Home() {
       <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
-          <div className="hidden lg:block lg:sticky lg:top-20 self-start pb-12">
-            {showSidebar && <LeftSidebar />}
+          <div className="hidden lg:block">
+            {showSidebar && (
+              <div className="lg:sticky lg:top-20 pb-12">
+                <LeftSidebar />
+              </div>
+            )}
           </div>
           <main className="flex-1 py-12 md:py-20">
             <AboutSection />
@@ -277,13 +281,13 @@ const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                     className="rounded-full mx-auto aspect-square object-cover border-4 border-secondary shadow-lg"
                     data-ai-hint="professional portrait"
                 />
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl text-foreground font-headline">
+                <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl text-foreground font-headline">
                   Shashank
                 </h1>
                  <div className="h-10">
                     <TypewriterEffect taglines={taglines} />
                 </div>
-                <p className="max-w-[600px] mx-auto text-muted-foreground md:text-xl">
+                <p className="max-w-[600px] mx-auto text-muted-foreground md:text-lg">
                     I design and build intelligent software and AI systems that solve real-world problems.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -341,7 +345,7 @@ function TimelineCard({ item, detailsHeading }: { item: any, detailsHeading: str
                         <CardHeader className="p-4">
                             <div className="flex justify-between items-start">
                                 <div className="flex-grow">
-                                    <h3 className="text-lg font-semibold text-foreground">{item.role}</h3>
+                                    <h3 className="text-lg font-semibold font-headline text-foreground">{item.role}</h3>
                                     <p className="font-medium text-primary mt-1">{item.company}</p>
                                 </div>
                                 <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{item.date}</p>
@@ -471,7 +475,7 @@ function SkillsSection() {
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="font-code">{skill}</Badge>
+                      <Badge key={skill} variant="secondary" className="font-body">{skill}</Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -507,7 +511,7 @@ function ProjectsSection() {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-code text-xs">{tag}</Badge>)}
+                      {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
                     </div>
                   </CardContent>
                 </Card>
@@ -547,7 +551,7 @@ function AchievementsSection() {
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                     <CardHeader>
                                         <div className="flex justify-between items-start gap-4">
-                                            <CardTitle className="text-lg">{achievement.title}</CardTitle>
+                                            <CardTitle className="text-lg font-headline">{achievement.title}</CardTitle>
                                             <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{achievement.date}</span>
                                         </div>
                                         <CardDescription className="pt-1">{achievement.description}</CardDescription>
@@ -586,7 +590,7 @@ function ExtracurricularSection() {
                             <Dialog key={index}>
                                 <DialogTrigger asChild>
                                     <div className="p-4 rounded-md transition-all duration-200 hover:bg-accent cursor-pointer">
-                                        <h3 className="font-semibold text-foreground">{activity.title}</h3>
+                                        <h3 className="font-semibold font-headline text-foreground">{activity.title}</h3>
                                         <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
                                     </div>
                                 </DialogTrigger>
@@ -658,15 +662,15 @@ function ContactSection() {
                  <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <Mail className="w-5 h-5 text-primary" />
-                      <a href="mailto:shashank@example.com" className="hover:text-primary font-code">shashank@example.com</a>
+                      <a href="mailto:shashank@example.com" className="hover:text-primary font-body">shashank@example.com</a>
                     </div>
                     <div className="flex items-center gap-4">
                       <Github className="w-5 h-5 text-primary" />
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">github.com</a>
+                      <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-body">github.com</a>
                     </div>
                     <div className="flex items-center gap-4">
                       <Linkedin className="w-5 h-5 text-primary" />
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-code">linkedin.com</a>
+                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary font-body">linkedin.com</a>
                     </div>
                   </div>
               </div>

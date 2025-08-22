@@ -115,5 +115,3 @@ export function ContactForm() {
     </div>
   );
 }
-
-    
