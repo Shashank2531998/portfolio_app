@@ -127,38 +127,43 @@ const educationData = [
 
 const projectsData = [
   {
-    title: "Project Nova",
-    description: "A comprehensive project management tool designed to streamline team workflows. Features include task tracking, real-time collaboration, and reporting.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase"],
-    githubUrl: "https://github.com",
+    title: "Medical Time Series Classification using Mamba",
+    description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset to evaluate forecasting performance.",
+    tags: ["Mamba", "LSTM", "PyTorch", "Medical AI"],
+    subtitle: "Apr 2025 - Present | Pattern Recognition Lab, FAU",
     details: [
-        "Developed a real-time collaborative text editor using WebSockets.",
-        "Integrated with Firebase for authentication and database services.",
-        "Implemented a drag-and-drop interface for task management."
+      "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset.",
+      "Evaluated forecasting performance to determine the more effective model for medical time series analysis."
     ],
     images: [
-        "https://placehold.co/1200x800.png",
+      "https://placehold.co/1200x800.png",
     ],
   },
   {
-    title: "E-commerce Platform",
-    description: "A fully-featured e-commerce site with a custom CMS for product management. Integrated with Stripe for secure payments.",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
-    githubUrl: "https://github.com",
+    title: "Tool Action Recognition",
+    description: "Evaluated semi-supervised learning strategies using LSTM and TCN models for tool action recognition on an industrial tool tracking dataset.",
+    tags: ["Semi-Supervised Learning", "LSTM", "TCN", "Computer Vision"],
+    subtitle: "Apr 2025 - Jul 2025 | Machine Learning and Data Analytics Lab, FAU",
     details: [
-        "Built a RESTful API with Node.js and Express for the backend.",
-        "Designed and implemented a MongoDB schema for products and users.",
-        "Integrated Stripe for secure payment processing."
+      "Evaluated semi-supervised learning strategies for tool action recognition.",
+      "Utilized LSTM and TCN models on an industrial tool tracking dataset to improve recognition accuracy with limited labeled data."
+    ],
+    images: [
+      "https://placehold.co/1200x800.png",
     ],
   },
   {
-    title: "AI Content Generator",
-    description: "A web application that leverages generative AI to create marketing copy and blog posts. Built with Python, Flask, and the OpenAI API.",
-    tags: ["Python", "Flask", "AI", "React"],
+    title: "High-Precision 3D Surface Reconstruction",
+    description: "Built a 3D reconstruction pipeline using phase-shifting algorithms and researched deep learning methods to improve accuracy.",
+    tags: ["3D Reconstruction", "Computer Vision", "Deep Learning", "Python"],
+    subtitle: "Oct 2024 - Present | Institute for Factory Automation and Production Systems",
     details: [
-        "Developed a Flask backend to handle AI content generation requests.",
-        "Utilized the OpenAI API to generate high-quality text content.",
-        "Created a user-friendly React interface for interacting with the AI."
+      "Built a 3D reconstruction pipeline using phase-shifting algorithms for high-precision results.",
+      "Researched and integrated deep learning methods to improve accuracy for 6DoF pose estimation.",
+      "Focused on creating robust and accurate 3D models from structured light patterns."
+    ],
+    images: [
+      "https://placehold.co/1200x800.png",
     ],
   },
 ];
@@ -578,7 +583,7 @@ function ProjectsSection() {
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projectsData.map((project) => (
+          {projectsData.map((project: any) => (
             <Dialog key={project.title}>
               <DialogTrigger asChild>
                 <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
@@ -588,14 +593,14 @@ function ProjectsSection() {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map(tag => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+                      {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
                     </div>
                   </CardContent>
                 </Card>
               </DialogTrigger>
               <ExperienceModal 
                 title={project.title} 
-                subtitle={project.tags.join(' • ')} 
+                subtitle={project.subtitle}
                 images={project.images} 
                 details={project.details}
                 githubUrl={project.githubUrl}
