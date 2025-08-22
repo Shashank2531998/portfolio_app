@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -43,40 +43,41 @@ const experienceData = [
     ]
   },
   {
-    role: "Senior Software Developer",
     company: "Josh Technology Group, Gurugram, India",
-    date: "Oct 2021 - Sep 2023",
-    description: "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros).",
     logoUrl: "https://placehold.co/56x56.png",
-    details: [
-      "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros)",
-      "Planned and executed projects exceeding 1,200 hours, collaborating with the Product team to refine requirements and deliver scalable solutions",
-    ]
-  },
-  {
-    role: "Software Developer",
-    company: "Josh Technology Group, Gurugram, India",
-    date: "Jan 2019 - Oct 2021",
-    description: "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%. Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients.",
-    logoUrl: "https://placehold.co/56x56.png",
-    details: [
-      "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%",
-      "Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients",
-      "Managed sprint releases, deployments, hotfixes, and performance monitoring",
-      "Improved security with AWS GuardDuty and cut costs by automating SSL certificate renewal",
-    ]
-  },
-   {
-    role: "Software Developer - Summer Intern",
-    company: "Josh Technology Group, Gurugram, India",
-    date: "Jun 2018 - Jul 2018",
-    description: "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images.",
-    logoUrl: "https://placehold.co/56x56.png",
-    details: [
-        "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images"
+    roles: [
+      {
+        role: "Senior Software Developer",
+        date: "Oct 2021 - Sep 2023",
+        description: "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros).",
+        details: [
+          "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros)",
+          "Planned and executed projects exceeding 1,200 hours, collaborating with the Product team to refine requirements and deliver scalable solutions",
+        ]
+      },
+      {
+        role: "Software Developer",
+        date: "Jan 2019 - Oct 2021",
+        description: "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%. Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients.",
+        details: [
+          "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%",
+          "Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients",
+          "Managed sprint releases, deployments, hotfixes, and performance monitoring",
+          "Improved security with AWS GuardDuty and cut costs by automating SSL certificate renewal",
+        ]
+      },
+      {
+        role: "Software Developer - Summer Intern",
+        date: "Jun 2018 - Jul 2018",
+        description: "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images.",
+        details: [
+          "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images"
+        ]
+      },
     ]
   },
 ];
+
 
 const educationData = [
   {
@@ -377,6 +378,57 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
     )
 }
 
+function ExperienceGroupCard({ item }: { item: any }) {
+    return (
+        <Card className="transition-all duration-300 hover:shadow-lg w-full">
+            <CardContent className="p-6">
+                <div className="flex items-start gap-6 mb-6">
+                    <div className="flex-shrink-0">
+                        <Image
+                            src={item.logoUrl}
+                            alt={`${item.company} logo`}
+                            width={56}
+                            height={56}
+                            className="rounded-md object-contain aspect-square"
+                            data-ai-hint="company logo"
+                        />
+                    </div>
+                    <div className="flex-grow">
+                        <h3 className="text-xl font-bold font-headline text-foreground">{item.company}</h3>
+                    </div>
+                </div>
+
+                <div className="space-y-4">
+                    {item.roles.map((role: any, index: number) => (
+                        <Dialog key={index}>
+                            <DialogTrigger asChild>
+                                <div className="pl-4 border-l-2 border-border ml-2 relative group cursor-pointer">
+                                     <div className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-background border-2 border-primary group-hover:scale-110 transition-transform"></div>
+                                     <div className="p-4 rounded-md transition-all duration-200 hover:bg-accent ml-4">
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h4 className="font-semibold font-headline text-foreground">{role.role}</h4>
+                                            </div>
+                                            <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{role.date}</p>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground leading-relaxed mt-2">{role.description}</p>
+                                    </div>
+                                </div>
+                            </DialogTrigger>
+                            <ExperienceModal
+                                title={role.role}
+                                subtitle={item.company}
+                                details={role.details}
+                                detailsHeading="Key Contributions"
+                            />
+                        </Dialog>
+                    ))}
+                </div>
+            </CardContent>
+        </Card>
+    );
+}
+
 function ExperienceSection() {
   return (
     <section id="experience" className="py-12">
@@ -390,12 +442,14 @@ function ExperienceSection() {
           </p>
         </div>
         <div className="space-y-8">
-          {experienceData.map((item, index) => (
-            <ExperienceCard 
-              key={index} 
-              item={item} 
-              detailsHeading="Key Contributions" 
-            />
+          {experienceData.map((item: any, index) => (
+            item.roles ? 
+              <ExperienceGroupCard key={index} item={item} /> :
+              <ExperienceCard 
+                key={index} 
+                item={item} 
+                detailsHeading="Key Contributions" 
+              />
           ))}
         </div>
       </div>
@@ -670,6 +724,8 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
 
