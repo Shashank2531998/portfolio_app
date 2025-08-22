@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -268,19 +268,19 @@ const extracurricularData = [
 
 const hobbiesData = [
   {
-    icon: Gamepad2,
-    title: "Gaming",
-    description: "I enjoy playing competitive and story-driven video games in my free time."
+    icon: Music,
+    title: "Music",
+    description: "I'm passionate about playing musical instruments like guitar and piano, and I also like singing very much."
+  },
+  {
+    icon: Trophy,
+    title: "Racquet Sports",
+    description: "I enjoy playing badminton and table tennis in my free time."
   },
   {
     icon: Mountain,
     title: "Hiking",
     description: "Exploring new trails and enjoying nature helps me relax and recharge."
-  },
-  {
-    icon: BookOpen,
-    title: "Reading",
-    description: "I'm an avid reader of science fiction and fantasy novels."
   },
 ];
 
