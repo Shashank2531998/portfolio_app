@@ -160,6 +160,16 @@ const projectsData = [
     ],
     githubUrl: null
   },
+  {
+    title: "Marksheet Parser",
+    description: "Designed and implemented Machine learning algorithms to extract structural features from high school marksheet images with 90% accuracy.",
+    tags: ["Tesseract OCR", "OpenCV", "Machine Learning", "Python"],
+    subtitle: "Jun 2018 - Jul 2018",
+    details: [
+      "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images."
+    ],
+    githubUrl: "https://github.com/techie-shashank/Marksheet-parser"
+  }
 ];
 
 const skillsData = {
