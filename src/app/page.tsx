@@ -16,6 +16,8 @@ import { ExperienceModal } from "@/components/experience-modal";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { TypewriterEffect } from "@/components/typewriter-effect";
+import React, { useState, useEffect } from 'react';
+import { StickySidebar } from "@/components/sticky-sidebar";
 
 const experienceData = [
   {
@@ -201,9 +203,28 @@ const hobbiesData = [
 
 
 export default function Home() {
+  const [showStickySidebar, setShowStickySidebar] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show sidebar when user scrolls past 90% of the viewport height
+      if (window.scrollY > window.innerHeight * 0.9) {
+        setShowStickySidebar(true);
+      } else {
+        setShowStickySidebar(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
+      <StickySidebar show={showStickySidebar} />
       <main className="flex-1">
         <HeroSection />
         <AboutSection />
@@ -286,7 +307,7 @@ function AboutSection() {
 
 function TimelineItem({ item, detailsHeading }: { item: any, detailsHeading: string }) {
   return (
-    <div className="flex items-start w-full">
+    <div className="flex items-center w-full">
       <TimelineGraphic item={item} />
       <div className="w-8 flex-shrink-0" />
       <TimelineCard item={item} detailsHeading={detailsHeading} />
@@ -335,7 +356,7 @@ function TimelineGraphic({ item }: { item: any }) {
                 alt={`${item.company} logo`}
                 width={40}
                 height={40}
-                className="rounded-full absolute top-0 transition-transform duration-300 hover:scale-110"
+                className="rounded-full absolute top-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-110"
                 data-ai-hint="company logo"
             />
         </div>
@@ -357,7 +378,7 @@ function ExperienceSection() {
         </div>
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-8 top-0 h-full w-0.5 bg-border -translate-x-1/2" />
-          <div className="space-y-8">
+          <div className="space-y-4">
             {experienceData.map((item, index) => (
               <TimelineItem 
                 key={index} 
@@ -640,5 +661,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
