@@ -211,7 +211,7 @@ export default function Home() {
       ([entry]) => {
         setShowSidebar(!entry.isIntersecting);
       },
-      { rootMargin: "-100px 0px 0px 0px" }
+      { rootMargin: "0px 0px -100px 0px" }
     );
 
     if (heroRef.current) {
