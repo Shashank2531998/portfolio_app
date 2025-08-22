@@ -59,8 +59,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center px-4 sm:px-6 lg:px-8">
         <div className="flex items-center flex-1">
             <Link href="#home" className="flex items-center gap-2 font-bold text-lg text-foreground">
-              <Code className="h-6 w-6 text-primary" />
-              <span className="font-headline">Shashank</span>
+              <span className="font-headline tracking-tighter">&lt; Shashank /&gt;</span>
             </Link>
         </div>
         
@@ -80,8 +79,7 @@ export function Header() {
               <SheetContent side="left">
                 <div className="p-6">
                      <Link href="#home" className="flex items-center gap-2 font-bold text-xl text-foreground" onClick={closeMenu}>
-                        <Code className="h-7 w-7 text-primary" />
-                        <span className="font-headline">Shashank</span>
+                        <span className="font-headline tracking-tighter">&lt; Shashank /&gt;</span>
                     </Link>
                 </div>
                 <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
