@@ -29,7 +29,8 @@ const navLinks = [
 ];
 
 const moreLinks = [
-    { href: "/activities", label: "Activities" },
+    { href: "/activities#extracurricular", label: "Extracurricular" },
+    { href: "/activities#hobbies", label: "Hobbies" },
 ]
 
 export function Header() {
