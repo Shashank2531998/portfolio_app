@@ -12,6 +12,9 @@ export function Footer() {
         <p className="text-sm text-muted-foreground">
           &copy; {currentYear} Shashank. All rights reserved.
         </p>
+         <div className="text-sm text-muted-foreground">
+            <Link href="/activities" className="hover:text-primary transition-colors">Extracurricular & Hobbies</Link>
+          </div>
          <p className="text-xs text-muted-foreground">
           Built with Next.js and Tailwind CSS.
         </p>
