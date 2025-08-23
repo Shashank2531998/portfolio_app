@@ -28,14 +28,12 @@ export function AnnouncementBanner() {
     <div className="relative bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-x-6 py-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-left">
-            <p className="text-sm leading-6">
-              <strong className="font-semibold">📢 Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)</strong>
-              <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx={1} cy={1} r={1} /></svg>
-              I am seeking a thesis host in Schengen countries + Switzerland, focusing on representation learning, self-supervised learning, and multimodal AI with applications in healthcare and robotics.
-            </p>
-          </div>
-           <div className="flex-none flex items-center gap-4 mt-2 sm:mt-0">
+          <p className="text-sm leading-6 flex-grow">
+            <strong className="font-semibold">📢 Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)</strong>
+            <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx={1} cy={1} r={1} /></svg>
+            I am seeking a thesis host in Schengen countries + Switzerland, focusing on representation learning, self-supervised learning, and multimodal AI with applications in healthcare and robotics.
+          </p>
+           <div className="flex-none flex items-center gap-4">
               <Button asChild variant="link" size="sm" className="text-secondary-foreground">
                 <a href="https://drive.google.com/file/d/1JLOYdlHGgyzGBDIhr4bWAVkBPPfVdSoc/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                   Download CV <Download className="ml-1.5" />
@@ -47,7 +45,7 @@ export function AnnouncementBanner() {
                 </a>
               </Button>
             </div>
-          <div className="flex flex-1 justify-end">
+          <div className="flex flex-shrink-0 justify-end ml-4">
             <Button type="button" size="icon" variant="ghost" className="-m-3 h-6 w-6 p-0" onClick={handleDismiss}>
               <span className="sr-only">Dismiss</span>
               <X className="h-5 w-5" aria-hidden="true" />
