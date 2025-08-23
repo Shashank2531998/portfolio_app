@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Code, Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import * as React from "react";
@@ -13,16 +13,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#education", label: "Education" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#achievements", label: "Achievements" },
-  { href: "#contact", label: "Contact" },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "achievements", label: "Achievements" },
+  { id: "contact", label: "Contact" },
 ];
 
 const moreLinks = [
@@ -32,6 +33,7 @@ const moreLinks = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -43,40 +45,46 @@ export function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  const NavContent = ({ mobile = false }: { mobile?: boolean }) => (
-    <>
-      {navLinks.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={cn(
-            "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
-            mobile && "text-base"
-          )}
-          onClick={closeMenu}
-        >
-          {link.label}
-        </Link>
-      ))}
-      <div className="relative">
-          <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-0 h-auto hover:bg-transparent", mobile && "text-base justify-start p-0")}>
-                      More
-                      <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
-                  </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
-                  {moreLinks.map(link => (
-                    <DropdownMenuItem key={link.href} asChild>
-                      <Link href={link.href} onClick={closeMenu}>{link.label}</Link>
-                    </DropdownMenuItem>
-                  ))}
-              </DropdownMenuContent>
-          </DropdownMenu>
-      </div>
-    </>
-  );
+  const NavContent = ({ mobile = false }: { mobile?: boolean }) => {
+    const isHomePage = pathname === '/';
+
+    return (
+        <>
+          {navLinks.map((link) => (
+            <Link
+              key={link.id}
+              href={isHomePage ? `#${link.id}` : `/#${link.id}`}
+              className={cn(
+                "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
+                mobile && "text-base"
+              )}
+              onClick={closeMenu}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="relative">
+              <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-0 h-auto hover:bg-transparent", mobile && "text-base justify-start p-0")}>
+                          More
+                          <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                      </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-56">
+                      {moreLinks.map(link => (
+                        <DropdownMenuItem key={link.href} asChild>
+                          <Link href={link.href} onClick={closeMenu}>{link.label}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                  </DropdownMenuContent>
+              </DropdownMenu>
+          </div>
+        </>
+    );
+  };
+
+  const isHomePage = pathname === '/';
 
   return (
     <header className={cn(
@@ -85,7 +93,7 @@ export function Header() {
     )}>
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center px-4 sm:px-6 lg:px-8">
         <div className="flex items-center flex-1">
-            <Link href="#home" className="flex items-center gap-2 font-bold text-lg">
+            <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-lg">
               <span className="font-headline tracking-tighter">
                 <span className="text-muted-foreground">&lt;</span>
                 <span className="text-foreground">Shashank</span>
@@ -109,7 +117,7 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="left" className="p-0">
                 <div className="p-6">
-                     <Link href="#home" className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
+                     <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
                         <span className="font-headline tracking-tighter">
                           <span className="text-muted-foreground">&lt;</span>
                           <span className="text-foreground">Shashank</span>
