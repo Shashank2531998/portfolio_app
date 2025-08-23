@@ -32,9 +32,10 @@ interface ExperienceModalProps {
     text: string;
   } | null;
   detailsHeading?: string;
+  youtubeVideoId?: string;
 }
 
-export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading }: ExperienceModalProps) {
+export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading, youtubeVideoId }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
   const [showGallery, setShowGallery] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -78,6 +79,20 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
       </DialogHeader>
       <div ref={scrollContainerRef} className="flex-grow overflow-y-auto">
         <div className="p-6 space-y-6">
+            {youtubeVideoId && (
+              <div className="aspect-w-16 aspect-h-9 w-full">
+                 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+                    <iframe
+                        src={`https://www.youtube.com/embed/${youtubeVideoId}`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                    ></iframe>
+                </div>
+              </div>
+            )}
             <div>
               {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
               <ul className="space-y-3">

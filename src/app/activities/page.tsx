@@ -88,7 +88,8 @@ const hobbiesData = [
     details: [
         "I find joy in expressing myself through music, whether it's strumming my guitar, playing melodies on the piano, or singing.",
         "It's a wonderful way to unwind and connect with my creative side."
-    ]
+    ],
+    youtubeVideoId: "-lFVIAGA1Cw"
   },
   {
     icon: Trophy,
@@ -196,7 +197,7 @@ function HobbiesSection() {
           </p>
         </div>
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {hobbiesData.map((hobby) => {
+          {hobbiesData.map((hobby: any) => {
             const Icon = hobby.icon;
             return (
               <Dialog key={hobby.title}>
@@ -211,7 +212,7 @@ function HobbiesSection() {
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <ExperienceModal title={hobby.title} details={hobby.details} />
+                <ExperienceModal title={hobby.title} details={hobby.details} youtubeVideoId={hobby.youtubeVideoId} />
               </Dialog>
             );
           })}
