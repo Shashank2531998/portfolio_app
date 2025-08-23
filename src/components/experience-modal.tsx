@@ -17,7 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CheckCircle2, Github, Link as LinkIcon, Images } from "lucide-react";
+import { CheckCircle2, Github, Link as LinkIcon, Images, X } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface ExperienceModalProps {
@@ -80,21 +80,29 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             </div>
             {images && images.length > 0 && (
               <div ref={galleryRef}>
-                {!showGallery ? (
                   <Button
                     variant="outline"
-                    onClick={() => setShowGallery(true)}
+                    onClick={() => setShowGallery(!showGallery)}
                     className="flex items-center gap-2"
                   >
-                    <Images className="w-5 h-5" />
-                    <span>View Gallery</span>
+                    {showGallery ? (
+                        <>
+                            <X className="w-5 h-5" />
+                            <span>Hide Gallery</span>
+                        </>
+                    ) : (
+                        <>
+                            <Images className="w-5 h-5" />
+                            <span>View Gallery</span>
+                        </>
+                    )}
                   </Button>
-                ) : (
+                {showGallery && (
                   <Carousel
                     opts={{
                       loop: true,
                     }}
-                    className="w-full max-w-3xl mx-auto pt-4"
+                    className="w-full max-w-3xl mx-auto pt-4 mt-4"
                   >
                     <CarouselContent>
                       {images.map((src, index) => (
