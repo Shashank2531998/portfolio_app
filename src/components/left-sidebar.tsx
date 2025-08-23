@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function LeftSidebar() {
     return (
-        <aside className="h-full flex flex-col justify-start animate-hero-to-sidebar">
+        <aside className="h-full flex-col justify-start animate-hero-to-sidebar hidden lg:flex">
             <div className="p-6 rounded-lg border bg-card text-card-foreground shadow-sm space-y-6">
 
                 {/* Profile Section */}

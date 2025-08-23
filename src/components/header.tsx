@@ -36,13 +36,16 @@ export function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  const NavContent = () => (
+  const NavContent = ({ mobile = false }: { mobile?: boolean }) => (
     <>
       {navLinks.map((link) => (
         <Link
           key={link.href}
           href={link.href}
-          className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className={cn(
+            "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
+            mobile && "text-base"
+          )}
           onClick={closeMenu}
         >
           {link.label}
@@ -80,7 +83,7 @@ export function Header() {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left">
+              <SheetContent side="left" className="p-0">
                 <div className="p-6">
                      <Link href="#home" className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
                         <span className="font-headline tracking-tighter">
@@ -91,7 +94,7 @@ export function Header() {
                     </Link>
                 </div>
                 <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
-                    <NavContent />
+                    <NavContent mobile />
                 </nav>
               </SheetContent>
             </Sheet>

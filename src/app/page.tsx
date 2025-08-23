@@ -314,7 +314,7 @@ export default function Home() {
       <HeroSection ref={heroRef} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
-          <div className={`lg:sticky lg:top-20 pb-12 self-start transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`hidden lg:block lg:sticky lg:top-20 pb-12 self-start transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
               <LeftSidebar />
           </div>
           <main className="flex-1 py-12">
@@ -360,7 +360,7 @@ const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                     className="rounded-full mx-auto aspect-square object-cover border-4 border-secondary shadow-lg"
                     data-ai-hint="professional portrait"
                 />
-                <h1 className="text-5xl font-bold tracking-tight sm:text-6xl text-foreground font-headline">
+                <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-foreground font-headline">
                   Shashank
                 </h1>
                  <div className="h-10">
