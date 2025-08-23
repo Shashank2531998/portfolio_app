@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter,
+  DialogClose,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -139,17 +140,22 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             )}
         </div>
       </div>
-       {(githubUrl) && (
-        <DialogFooter className="flex-shrink-0 p-6 border-t">
-            {githubUrl && (
-                <Button asChild>
-                    <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2" /> View Code
-                    </a>
-                </Button>
-            )}
-        </DialogFooter>
-      )}
+       <DialogFooter className="flex-shrink-0 p-6 border-t sm:justify-between">
+          <DialogClose asChild>
+            <Button type="button" variant="secondary">
+              Close
+            </Button>
+          </DialogClose>
+          {githubUrl && (
+              <Button asChild>
+                  <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-2" /> View Code
+                  </a>
+              </Button>
+          )}
+      </DialogFooter>
     </DialogContent>
   );
 }
+
+    

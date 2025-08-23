@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { PopupButton } from "react-calendly";
 import { useToast } from "@/hooks/use-toast";
 import NeuralNetworkCanvas from "@/components/neural-network-canvas";
 import { InteractiveBlurOverlay } from "@/components/interactive-blur-overlay";
@@ -596,60 +595,53 @@ function ProjectsSection() {
   const visibleProjects = showAll ? projectsData : projectsData.slice(0, 3);
   const hiddenProjectsCount = projectsData.length - 3;
 
-  const ProjectCard = ({ project }: { project: any }) => (
-    <Dialog>
-        <DialogTrigger asChild>
-            <Card className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
-              <div className="flex-grow">
-                <CardHeader>
-                  <CardTitle className="text-lg">{project.title}</CardTitle>
-                  <CardDescription className="pt-1">{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
-                  </div>
-                </CardContent>
-              </div>
-              {project.githubUrl && (
-                <CardFooter className="pt-4">
-                    <Button asChild size="sm">
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                          <Github /> View Code
-                      </a>
-                    </Button>
-                </CardFooter>
-              )}
-            </Card>
-        </DialogTrigger>
-        <ExperienceModal 
-          title={project.title} 
-          subtitle={project.subtitle}
-          images={project.images} 
-          details={project.details}
-          githubUrl={project.githubUrl}
-          detailsHeading="Key Features"
-        />
-    </Dialog>
-  );
-
   return (
     <section id="projects" className="py-12">
-       <div className="max-w-7xl">
+      <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
           <h2 className="flex items-center gap-3">
-              <FolderKanban /> Projects
+            <FolderKanban /> Projects
           </h2>
           <p className="text-muted-foreground md:text-lg">
             A selection of projects that showcase my skills.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleProjects.map((project: any) => (
-            <ProjectCard key={project.title} project={project} />
+            <Dialog key={project.title}>
+              <DialogTrigger asChild>
+                <Card className="flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
+                  <CardHeader>
+                    <CardTitle className="text-lg font-headline">{project.title}</CardTitle>
+                    <CardDescription className="pt-1">{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+                    </div>
+                  </CardContent>
+                  {project.githubUrl && (
+                    <CardFooter>
+                      <Button asChild size="sm" variant="secondary" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                          <Github /> View Code
+                        </a>
+                      </Button>
+                    </CardFooter>
+                  )}
+                </Card>
+              </DialogTrigger>
+              <ExperienceModal 
+                title={project.title} 
+                subtitle={project.subtitle}
+                images={project.images} 
+                details={project.details}
+                githubUrl={project.githubUrl}
+                detailsHeading="Key Features"
+              />
+            </Dialog>
           ))}
         </div>
-
         {projectsData.length > 3 && (
           <div className="mt-8 text-center">
             <Button
@@ -666,6 +658,7 @@ function ProjectsSection() {
     </section>
   );
 }
+
 
 function PublicationsSection() {
     return (
@@ -786,13 +779,12 @@ function ContactSection() {
         
         <div className="flex justify-center">
             {isClient && (
-                <PopupButton
-                    url="https://calendly.com/shashank2531998/30min"
-                    rootElement={document.body}
-                    text="📅 Schedule a Meeting"
+                <button
+                    onClick={() => (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/shashank2531998/30min' })}
                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8"
-                    onEventScheduled={handleEventScheduled}
-                />
+                >
+                    📅 Schedule a Meeting
+                </button>
             )}
         </div>
 
@@ -814,3 +806,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    

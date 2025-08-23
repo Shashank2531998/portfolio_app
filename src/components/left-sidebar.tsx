@@ -50,12 +50,28 @@ export function LeftSidebar() {
                 </div>
                 
                 <Separator />
+                
+                 {/* Social Links */}
+                <div className="flex justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/shashank2598/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                        <Linkedin className="w-5 h-5" />
+                        <span className="sr-only">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/techie-shashank" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                        <Github className="w-5 h-5" />
+                        <span className="sr-only">GitHub</span>
+                    </a>
+                    <a href="mailto:shashank2531998@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        <Mail className="w-5 h-5" />
+                        <span className="sr-only">Email</span>
+                    </a>
+                </div>
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col gap-3 pt-2">
                   <Button asChild className="w-full">
                     <a href="#contact">
-                      Let's Connect <Mail className="ml-2" />
+                      Let's Connect
                     </a>
                   </Button>
                 </div>
@@ -63,3 +79,5 @@ export function LeftSidebar() {
         </aside>
     );
 }
+
+    

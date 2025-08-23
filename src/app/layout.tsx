@@ -34,6 +34,10 @@ export default function RootLayout({
             gtag('config', 'G-V52571H7YQ');
           `}
         </Script>
+        <Script 
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="lazyOnload"
+        />
       </head>
       <body className={cn("font-body antialiased", bodyFont.variable, headlineFont.variable, codeFont.variable)}>
         <Suspense>
@@ -52,3 +56,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    
