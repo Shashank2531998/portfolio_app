@@ -412,7 +412,7 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
                 <DialogTrigger asChild>
                     <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full">
                         <CardContent className="p-6">
-                            <div className="flex items-start gap-6">
+                            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                                 <div className="flex-shrink-0">
                                      <Image
                                         src={item.logoUrl}
@@ -423,13 +423,13 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
                                         data-ai-hint="company logo"
                                     />
                                 </div>
-                                <div className="flex-grow">
-                                    <div className="flex justify-between items-start">
-                                        <div>
+                                <div className="flex-grow w-full">
+                                    <div className="flex flex-col sm:flex-row justify-between items-start">
+                                        <div className="mb-2 sm:mb-0">
                                             <h3 className="text-lg font-semibold font-headline text-foreground">{item.role}</h3>
                                             <p className="font-medium text-primary mt-1">{item.company}</p>
                                         </div>
-                                        <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{item.date}</p>
+                                        <p className="font-semibold text-sm text-muted-foreground text-left sm:text-right flex-shrink-0 sm:ml-4">{item.date}</p>
                                     </div>
                                     <p className="text-base text-muted-foreground leading-relaxed mt-3">{item.description}</p>
                                 </div>
@@ -453,7 +453,7 @@ function ExperienceGroupCard({ item }: { item: any }) {
     return (
         <Card className="w-full">
             <CardContent className="p-6">
-                <div className="flex items-start gap-6 mb-6">
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-6">
                     <div className="flex-shrink-0">
                         <Image
                             src={item.logoUrl}
@@ -482,11 +482,11 @@ function ExperienceGroupCard({ item }: { item: any }) {
                                             </div>
                                         </div>
                                         <div className="ml-12 p-4 rounded-md transition-all duration-200 hover:bg-accent">
-                                            <div className="flex justify-between items-start">
+                                            <div className="flex flex-col sm:flex-row justify-between items-start">
                                                 <div>
                                                     <h4 className="font-semibold font-headline text-foreground">{role.role}</h4>
                                                 </div>
-                                                <p className="font-semibold text-sm text-muted-foreground text-right flex-shrink-0 ml-4">{role.date}</p>
+                                                <p className="font-semibold text-sm text-muted-foreground text-left sm:text-right flex-shrink-0 sm:ml-4 mt-1 sm:mt-0">{role.date}</p>
                                             </div>
                                             <p className="text-sm text-muted-foreground leading-relaxed mt-2">{role.description}</p>
                                         </div>
