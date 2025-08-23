@@ -26,7 +26,7 @@ const experienceData = [
     role: "Working Student - Generative AI Services",
     company: "Siemens Healthineers AG, Erlangen, Germany",
     date: "Dec 2024 - Present",
-    description: "Enhancing and optimizing the internal RAG platform to improve performance and scalability. Developing Angular-based web applications and writing end-to-end (e2e) test cases to ensure robust and reliable software.",
+    description: "Enhancing an internal RAG platform and developing Angular applications.",
     logoUrl: "/assets/Siemens_Healthineers_logo.svg.png",
     details: [
       "Enhancing and optimizing the internal RAG platform to improve performance and scalability",
@@ -37,7 +37,7 @@ const experienceData = [
     role: "Working Student - Full Stack Web Developer",
     company: "heatbeat engineering GmbH, Nürnberg, Germany",
     date: "Jan 2024 - Nov 2024",
-    description: "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights. Optimized website code, reducing home page loading time by 30%.",
+    description: "Developed data visualizations for a digital twin and optimized website performance.",
     logoUrl: "/assets/heatbeat-logo-header.svg",
     details: [
       "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights",
@@ -58,7 +58,7 @@ const experienceData = [
       {
         role: "Senior Software Developer",
         date: "Oct 2019 - Sep 2021",
-        description: "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros).",
+        description: "Led a team of 6 developers, mentored junior engineers, and managed agile ceremonies.",
         details: [
           "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros)",
           "Planned and executed projects exceeding 1,200 hours, collaborating with the Product team to refine requirements and deliver scalable solutions",
@@ -67,7 +67,7 @@ const experienceData = [
       {
         role: "Software Developer",
         date: "Jan 2019 - Oct 2021",
-        description: "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%. Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients.",
+        description: "Delivered 5+ major modules using Python/Django, boosting revenue by 20%.",
         details: [
           "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%",
           "Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients",
@@ -78,7 +78,7 @@ const experienceData = [
       {
         role: "Software Developer - Summer Intern",
         date: "Jun 2018 - Jul 2018",
-        description: "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images.",
+        description: "Developed a Marksheet Parser using ML, achieving 90% accuracy.",
         details: [
           "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images"
         ]
@@ -776,6 +776,8 @@ function ContactSection() {
     </section>
   );
 }
+    
+
     
 
     
