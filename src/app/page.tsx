@@ -537,7 +537,7 @@ function SkillsSection() {
             Technologies and tools I work with.
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {Object.entries(skillsData).map(([category, skills]) => {
             const Icon = skillIcons[category] || Code;
             return (
@@ -814,5 +814,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
