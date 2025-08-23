@@ -351,7 +351,7 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
                 <DialogTrigger asChild>
                     <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full hover:border-primary/50">
                         <CardContent className="p-6">
-                            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+                            <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-start sm:text-left sm:gap-6">
                                 <div className="flex-shrink-0">
                                      <Image
                                         src={item.logoUrl}
@@ -364,11 +364,11 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
                                 </div>
                                 <div className="flex-grow w-full">
                                     <div className="flex flex-col sm:flex-row justify-between items-start">
-                                        <div className="mb-2 sm:mb-0">
+                                        <div className="mb-2 sm:mb-0 w-full">
                                             <h4 className="text-foreground">{item.role}</h4>
                                             <p className="font-medium text-muted-foreground mt-1">{item.company}</p>
                                         </div>
-                                        <p className="font-semibold text-sm text-muted-foreground text-left sm:text-right flex-shrink-0 sm:ml-4">{item.date}</p>
+                                        <p className="font-semibold text-sm text-muted-foreground text-center sm:text-right flex-shrink-0 sm:ml-4 w-full sm:w-auto">{item.date}</p>
                                     </div>
                                     <p className="text-base text-muted-foreground leading-relaxed mt-3">{item.description}</p>
                                 </div>
@@ -711,7 +711,7 @@ function AchievementsSection() {
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                   <CardContent className="p-6">
-                                    <div className="flex flex-col sm:flex-row items-start gap-6">
+                                    <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-start sm:text-left sm:gap-6">
                                       {achievement.logoUrl && (
                                         <div className="flex-shrink-0">
                                           <Image
@@ -726,8 +726,8 @@ function AchievementsSection() {
                                       )}
                                       <div className="flex-grow">
                                         <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-                                            <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                                            <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right">{achievement.date}</span>
+                                            <CardTitle className="text-lg w-full">{achievement.title}</CardTitle>
+                                            <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-center sm:text-right w-full sm:w-auto">{achievement.date}</span>
                                         </div>
                                         <CardDescription className="pt-2">{achievement.description}</CardDescription>
                                       </div>
@@ -768,7 +768,7 @@ function ContactSection() {
   return (
     <section id="contact" className="py-12">
        <div className="max-w-4xl mx-auto text-center">
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4 mb-4 sm:mb-8">
           <h2 className="flex items-center gap-3 justify-center">
             <Mail /> Let's Connect
           </h2>

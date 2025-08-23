@@ -161,30 +161,27 @@ export function Header() {
 
         {/* Mobile Header */}
         <div className="flex md:hidden items-center justify-between w-full">
-            <div className="flex-1 flex justify-start">
-                <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-                  <SheetTrigger asChild>
-                    <Button variant="outline" size="icon" className="shrink-0">
-                      <Menu className="h-5 w-5" />
-                      <span className="sr-only">Toggle navigation menu</span>
-                    </Button>
-                  </SheetTrigger>
-                  <SheetContent side="left" className="flex flex-col p-0 w-[80vw]">
-                    <div className="p-6 border-b">
-                        <Logo />
-                    </div>
-                    <nav className="flex-1 flex flex-col items-stretch gap-6 p-6 text-base font-medium overflow-y-auto">
-                        <NavContent mobile />
-                    </nav>
-                  </SheetContent>
-                </Sheet>
-            </div>
-            
-            <div className="flex-1 flex justify-center">
-                <Logo />
-            </div>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="shrink-0">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="flex flex-col p-0 w-[80vw]">
+              <div className="p-6 border-b">
+                  <Logo />
+              </div>
+              <nav className="flex-1 flex flex-col items-stretch gap-6 p-6 text-base font-medium overflow-y-auto">
+                  <NavContent mobile />
+              </nav>
+            </SheetContent>
+          </Sheet>
+          
+          <div className="absolute left-1/2 -translate-x-1/2">
+              <Logo />
+          </div>
 
-            <div className="flex-1 flex justify-end" />
         </div>
       </div>
     </header>

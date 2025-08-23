@@ -120,7 +120,7 @@ function ExtracurricularSection() {
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                   <CardContent className="p-6">
-                                    <div className="flex flex-col sm:flex-row items-start gap-6">
+                                    <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-start sm:text-left sm:gap-6">
                                       {activity.logoUrl && (
                                         <div className="flex-shrink-0">
                                           <Image
@@ -135,8 +135,8 @@ function ExtracurricularSection() {
                                       )}
                                       <div className="flex-grow">
                                         <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-                                            <h4 className="text-foreground">{activity.title}</h4>
-                                            {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right">{activity.date}</span>}
+                                            <h4 className="text-foreground w-full">{activity.title}</h4>
+                                            {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right w-full sm:w-auto">{activity.date}</span>}
                                         </div>
                                         <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
                                       </div>
