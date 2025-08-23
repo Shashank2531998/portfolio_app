@@ -28,8 +28,8 @@ export function AnnouncementBanner() {
     <div className="relative bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-start justify-between gap-x-6 py-3 sm:items-center">
-          <div className="flex-1 text-center sm:text-left sm:pr-16">
-            <p className="text-sm font-semibold flex items-center justify-center sm:justify-start gap-2">
+          <div className="flex-1 text-center sm:pr-16">
+            <p className="text-sm font-semibold flex items-center justify-center gap-2">
               <GraduationCap className="h-5 w-5 flex-shrink-0" />
               <span>Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)</span>
             </p>
