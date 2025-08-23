@@ -681,7 +681,7 @@ function AchievementsSection() {
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                   <CardContent className="p-6">
-                                    <div className="flex items-start gap-6">
+                                    <div className="flex flex-col sm:flex-row items-start gap-6">
                                       {achievement.logoUrl && (
                                         <div className="flex-shrink-0">
                                           <Image
@@ -695,9 +695,9 @@ function AchievementsSection() {
                                         </div>
                                       )}
                                       <div className="flex-grow">
-                                        <div className="flex justify-between items-start gap-4">
+                                        <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                                             <CardTitle className="text-lg font-headline">{achievement.title}</CardTitle>
-                                            <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{achievement.date}</span>
+                                            <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right">{achievement.date}</span>
                                         </div>
                                         <CardDescription className="pt-2">{achievement.description}</CardDescription>
                                       </div>
@@ -738,7 +738,7 @@ function ExtracurricularSection() {
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
                                   <CardContent className="p-6">
-                                    <div className="flex items-start gap-6">
+                                    <div className="flex flex-col sm:flex-row items-start gap-6">
                                       {activity.logoUrl && (
                                         <div className="flex-shrink-0">
                                           <Image
@@ -752,9 +752,9 @@ function ExtracurricularSection() {
                                         </div>
                                       )}
                                       <div className="flex-grow">
-                                        <div className="flex justify-between items-start gap-4">
+                                        <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                                             <h3 className="font-semibold font-headline text-foreground">{activity.title}</h3>
-                                            {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0">{activity.date}</span>}
+                                            {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right">{activity.date}</span>}
                                         </div>
                                         <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
                                       </div>
@@ -867,6 +867,8 @@ function ContactSection() {
     </section>
   );
 }
+    
+
     
 
     
