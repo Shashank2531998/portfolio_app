@@ -106,7 +106,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
                       showGallery ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
                     )}
                   >
-                    <div className={cn(showGallery && "animate-gallery-in")}>
+                    <div className={cn("px-12", showGallery && "animate-gallery-in")}>
                       <Carousel
                         opts={{
                           loop: true,
