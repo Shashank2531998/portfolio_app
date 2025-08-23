@@ -27,8 +27,8 @@ export function AnnouncementBanner() {
   return (
     <div className="relative bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-x-6 py-3">
-          <div className="flex-grow">
+        <div className="relative flex items-center justify-center gap-x-6 py-3">
+          <div className="flex-grow text-center">
             <p className="text-sm font-semibold">
               📢 Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)
             </p>
@@ -49,7 +49,7 @@ export function AnnouncementBanner() {
               </a>
             </p>
           </div>
-          <div className="flex flex-shrink-0 justify-end self-start">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-shrink-0 justify-end self-center">
             <Button type="button" size="icon" variant="ghost" className="-m-1 h-6 w-6 p-0" onClick={handleDismiss}>
               <span className="sr-only">Dismiss</span>
               <X className="h-5 w-5" aria-hidden="true" />
