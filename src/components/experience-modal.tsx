@@ -79,13 +79,13 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
               {images.map((src, index) => (
                 <CarouselItem key={index}>
                   <div className="aspect-video relative rounded-lg overflow-hidden">
-                    <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} layout="fill" objectFit="cover" data-ai-hint="office workspace" />
+                    <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         )}
       </div>
