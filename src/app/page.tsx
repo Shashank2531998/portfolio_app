@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy, Link as LinkIcon } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy, Link as LinkIcon, Lightbulb } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -180,6 +180,25 @@ const skillsData = {
   "Dev Tools": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
 };
 
+const researchInterestsData = [
+    {
+        title: "Representation Learning",
+        description: "Designing robust feature spaces for heterogeneous data."
+    },
+    {
+        title: "Self-Supervised Learning",
+        description: "Contrastive, masked, and generative approaches for unlabeled medical data."
+    },
+    {
+        title: "Multimodal Fusion",
+        description: "Combining signals (e.g., ECG/EEG), images (radiology, microscopy), and text (reports)."
+    },
+    {
+        title: "Sequence Modeling",
+        description: "Applying state-space models (e.g., Mamba) and Transformers for clinical time series."
+    }
+];
+
 const achievementsData = [
     {
         title: "Digital Tech Fellows",
@@ -243,6 +262,8 @@ export default function Home() {
               <EducationSection />
               <Separator className="my-12" />
               <SkillsSection />
+              <Separator className="my-12" />
+              <ResearchInterestsSection />
               <Separator className="my-12" />
               <ProjectsSection />
               <Separator className="my-12" />
@@ -520,6 +541,34 @@ function SkillsSection() {
       </div>
     </section>
   );
+}
+
+function ResearchInterestsSection() {
+    return (
+        <section id="research" className="py-12">
+            <div className="max-w-4xl">
+                <div className="space-y-4 mb-12">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                        <BrainCircuit /> Research Interests
+                    </h2>
+                     <p className="text-muted-foreground md:text-lg">
+                        My primary areas of focus in AI research.
+                    </p>
+                </div>
+                <div className="space-y-6">
+                    {researchInterestsData.map((interest, index) => (
+                        <div key={index}>
+                            <h3 className="font-semibold text-lg text-foreground font-headline flex items-center gap-2">
+                                <Lightbulb className="w-5 h-5 text-primary" />
+                                {interest.title}
+                            </h3>
+                            <p className="text-muted-foreground mt-1 ml-7">{interest.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }
 
 function ProjectsSection() {
