@@ -63,6 +63,18 @@
   section {
     @apply w-full;
   }
+  h1 {
+    @apply text-4xl font-extrabold sm:text-5xl font-headline;
+  }
+  h2 {
+    @apply text-2xl font-semibold sm:text-3xl font-headline;
+  }
+  h3 {
+    @apply text-xl font-semibold font-headline;
+  }
+  h4 {
+     @apply text-lg font-semibold font-headline;
+  }
 }
 
 @layer utilities {

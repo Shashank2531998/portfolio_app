@@ -333,7 +333,7 @@ function AboutSection() {
         <section id="about" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="flex items-center gap-3">
                         <User /> About Me
                     </h2>
                     <p className="text-muted-foreground md:text-lg leading-relaxed">
@@ -366,7 +366,7 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
                                 <div className="flex-grow w-full">
                                     <div className="flex flex-col sm:flex-row justify-between items-start">
                                         <div className="mb-2 sm:mb-0">
-                                            <h3 className="text-lg font-semibold font-headline text-foreground">{item.role}</h3>
+                                            <h4 className="text-foreground">{item.role}</h4>
                                             <p className="font-medium text-muted-foreground mt-1">{item.company}</p>
                                         </div>
                                         <p className="font-semibold text-sm text-muted-foreground text-left sm:text-right flex-shrink-0 sm:ml-4">{item.date}</p>
@@ -409,7 +409,7 @@ function ExperienceGroupCard({ item }: { item: any }) {
                         />
                     </div>
                     <div className="flex-grow">
-                        <h3 className="text-xl font-bold font-headline text-foreground">{item.company}</h3>
+                        <h3 className="text-foreground">{item.company}</h3>
                     </div>
                 </div>
 
@@ -428,7 +428,7 @@ function ExperienceGroupCard({ item }: { item: any }) {
                                         <div className="ml-12 p-4 rounded-md transition-all duration-200 hover:bg-accent">
                                             <div className="flex flex-col sm:flex-row justify-between items-start">
                                                 <div>
-                                                    <h4 className="font-semibold font-headline text-foreground">{role.role}</h4>
+                                                    <h4 className="text-foreground">{role.role}</h4>
                                                 </div>
                                                 <p className="font-semibold text-sm text-muted-foreground text-left sm:text-right flex-shrink-0 sm:ml-4 mt-1 sm:mt-0">{role.date}</p>
                                             </div>
@@ -469,7 +469,7 @@ function ExperienceSection() {
     <section id="experience" className="py-12">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="flex items-center gap-3">
             <Briefcase /> Work Experience
           </h2>
           <p className="text-muted-foreground md:text-lg leading-relaxed">
@@ -497,7 +497,7 @@ function EducationSection() {
     <section id="education" className="py-12">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="flex items-center gap-3">
             <GraduationCap /> Education
           </h2>
           <p className="text-muted-foreground md:text-lg leading-relaxed">
@@ -530,7 +530,7 @@ function SkillsSection() {
     <section id="skills" className="py-12">
       <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
-          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="flex items-center gap-3">
             <Layers /> Skills
           </h2>
           <p className="text-muted-foreground md:text-lg">
@@ -543,7 +543,7 @@ function SkillsSection() {
             return (
               <Card key={category}>
                 <CardHeader>
-                  <CardTitle className="text-foreground flex items-center gap-3 font-headline text-xl">
+                  <CardTitle className="text-foreground flex items-center gap-3 text-xl">
                     <Icon className="w-7 h-7" /> {category}
                   </CardTitle>
                 </CardHeader>
@@ -568,7 +568,7 @@ function ResearchInterestsSection() {
         <section id="research" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="flex items-center gap-3">
                         <BrainCircuit /> Research Interests
                     </h2>
                      <p className="text-muted-foreground md:text-lg">
@@ -578,10 +578,10 @@ function ResearchInterestsSection() {
                 <div className="space-y-6">
                     {researchInterestsData.map((interest, index) => (
                         <div key={index}>
-                            <h3 className="font-semibold text-lg text-foreground font-headline flex items-center gap-2">
+                            <h4 className="flex items-center gap-2">
                                 <Lightbulb className="w-5 h-5 text-muted-foreground" />
                                 {interest.title}
-                            </h3>
+                            </h4>
                             <p className="text-muted-foreground mt-1 ml-7">{interest.description}</p>
                         </div>
                     ))}
@@ -602,7 +602,7 @@ function ProjectsSection() {
             <Card className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
               <div className="flex-grow">
                 <CardHeader>
-                  <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
+                  <CardTitle className="text-lg">{project.title}</CardTitle>
                   <CardDescription className="pt-1">{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -637,7 +637,7 @@ function ProjectsSection() {
     <section id="projects" className="py-12">
        <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
-          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="flex items-center gap-3">
               <FolderKanban /> Projects
           </h2>
           <p className="text-muted-foreground md:text-lg">
@@ -672,7 +672,7 @@ function PublicationsSection() {
         <section id="publications" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="flex items-center gap-3">
                         <BookOpen /> Publications
                     </h2>
                      <p className="text-muted-foreground md:text-lg">
@@ -681,7 +681,7 @@ function PublicationsSection() {
                 </div>
                 <Card>
                     <CardHeader>
-                        <CardTitle className="flex items-center gap-3 font-headline">
+                        <CardTitle className="flex items-center gap-3">
                             <Lightbulb className="text-muted-foreground"/>
                             Future Publications in Progress
                         </CardTitle>
@@ -705,7 +705,7 @@ function AchievementsSection() {
         <section id="achievements" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="flex items-center gap-3">
                         <Award /> Achievements
                     </h2>
                     <p className="text-muted-foreground md:text-lg">
@@ -733,7 +733,7 @@ function AchievementsSection() {
                                       )}
                                       <div className="flex-grow">
                                         <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-                                            <CardTitle className="text-lg font-headline">{achievement.title}</CardTitle>
+                                            <CardTitle className="text-lg">{achievement.title}</CardTitle>
                                             <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right">{achievement.date}</span>
                                         </div>
                                         <CardDescription className="pt-2">{achievement.description}</CardDescription>
@@ -776,7 +776,7 @@ function ContactSection() {
     <section id="contact" className="py-12">
        <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3 justify-center">
+          <h2 className="flex items-center gap-3 justify-center">
             <Mail /> Let's Connect
           </h2>
           <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">

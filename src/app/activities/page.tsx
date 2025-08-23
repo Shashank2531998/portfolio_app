@@ -107,7 +107,7 @@ function ExtracurricularSection() {
         <section id="extracurricular" className="py-12">
              <div className="max-w-4xl mx-auto">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="flex items-center gap-3">
                         <List /> Extracurricular Activities
                     </h2>
                     <p className="text-muted-foreground md:text-lg">
@@ -135,7 +135,7 @@ function ExtracurricularSection() {
                                       )}
                                       <div className="flex-grow">
                                         <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-                                            <h3 className="font-semibold font-headline text-foreground">{activity.title}</h3>
+                                            <h4 className="text-foreground">{activity.title}</h4>
                                             {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right">{activity.date}</span>}
                                         </div>
                                         <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
@@ -176,7 +176,7 @@ function HobbiesSection() {
     <section id="hobbies" className="py-12">
       <div className="max-w-4xl mx-auto">
         <div className="space-y-4 mb-12">
-          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="flex items-center gap-3">
             <Heart /> Hobbies
           </h2>
           <p className="text-muted-foreground md:text-lg">
@@ -190,7 +190,7 @@ function HobbiesSection() {
               <Card key={hobby.title}>
                 <CardHeader className="flex flex-row items-center gap-4 p-6">
                   <Icon className="w-8 h-8 text-muted-foreground" />
-                  <CardTitle className="font-headline">{hobby.title}</CardTitle>
+                  <CardTitle>{hobby.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">
                   <p className="text-muted-foreground">{hobby.description}</p>
