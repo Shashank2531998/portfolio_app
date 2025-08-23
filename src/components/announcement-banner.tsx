@@ -27,13 +27,13 @@ export function AnnouncementBanner() {
   return (
     <div className="relative bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between gap-x-6 py-3">
-          <div className="flex-1 text-center sm:text-left">
+        <div className="flex items-start justify-between gap-x-6 py-3 sm:items-center">
+          <div className="flex-1 text-center sm:text-left sm:pr-16">
             <p className="text-sm font-semibold flex items-center justify-center sm:justify-start gap-2">
               <GraduationCap className="h-5 w-5 flex-shrink-0" />
               <span>Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)</span>
             </p>
-            <div className="mt-1 sm:pr-16">
+            <div className="mt-1">
               <p className="text-sm">
                 I am seeking a thesis host in Schengen countries + Switzerland, focusing on representation learning, self-supervised learning, and multimodal AI with applications in healthcare and robotics.
               </p>
@@ -48,7 +48,7 @@ export function AnnouncementBanner() {
               </p>
             </div>
           </div>
-          <div className="absolute top-2 right-4 sm:relative sm:top-auto sm:right-auto flex-shrink-0">
+          <div className="flex-shrink-0">
             <Button type="button" size="icon" variant="ghost" className="-m-1.5 h-6 w-6 p-0" onClick={handleDismiss}>
               <span className="sr-only">Dismiss</span>
               <X className="h-5 w-5" aria-hidden="true" />
