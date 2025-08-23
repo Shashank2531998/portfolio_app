@@ -25,7 +25,7 @@ const navLinks = [
   { id: "projects", label: "Projects", href: "/#projects" },
   { id: "publications", label: "Publications", href: "/#publications" },
   { id: "achievements", label: "Achievements", href: "/#achievements" },
-  { id: "extracurricular", label: "Extracurricular", href: "/activities#extracurricular" },
+  { id: "extracurricular", label: "Extracurricular", href: "/activities" },
   { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
@@ -131,7 +131,7 @@ export function Header() {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="p-0">
+              <SheetContent side="right" className="p-0">
                 <div className="p-6">
                      <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
                         <span className="font-headline tracking-tighter">
