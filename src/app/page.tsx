@@ -653,7 +653,7 @@ function PublicationsSection() {
                             I am currently working on several projects in representation learning, multimodal AI, and healthcare applications, which I plan to develop into preprints and publications during my Master’s. Updates will be shared here soon.
                         </p>
                         <p className="text-muted-foreground">
-                            In the meantime, please see my <a href="#projects" className="text-primary underline hover:no-underline font-medium">Projects</a> for detailed technical work.
+                            In the meantime, please see my <a href="#projects" className="text-foreground underline hover:no-underline font-medium">Projects</a> for detailed technical work.
                         </p>
                     </CardContent>
                 </Card>
@@ -790,3 +790,6 @@ function ContactSection() {
 
 
 
+
+
+    
