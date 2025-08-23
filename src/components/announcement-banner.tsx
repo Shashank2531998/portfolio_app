@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { GraduationCap, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function AnnouncementBanner() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ export function AnnouncementBanner() {
   }
 
   return (
-    <div className="relative bg-secondary text-secondary-foreground">
+    <div className={cn("relative bg-secondary text-secondary-foreground", isOpen && "animate-slide-in-from-top")}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-start justify-between gap-x-6 py-3 sm:items-center">
           <div className="flex-1 text-center sm:pr-16">
