@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
+import { GraduationCap, X } from 'lucide-react';
 
 export function AnnouncementBanner() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +29,9 @@ export function AnnouncementBanner() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-center gap-x-6 py-3">
           <div className="flex-grow text-center">
-            <p className="text-sm font-semibold">
-              📢 Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)
+            <p className="text-sm font-semibold flex items-center justify-center gap-2">
+              <GraduationCap className="h-5 w-5" />
+              Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)
             </p>
             <p className="text-sm mt-1">
               I am seeking a thesis host in Schengen countries + Switzerland, focusing on representation learning, self-supervised learning, and multimodal AI with applications in healthcare and robotics.
