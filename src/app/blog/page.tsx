@@ -4,7 +4,7 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Lightbulb } from 'lucide-react';
+import { Feather, Lightbulb } from 'lucide-react';
 
 export default function BlogPage() {
     return (
@@ -14,7 +14,7 @@ export default function BlogPage() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <div className="space-y-4 mb-12 text-center">
                         <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl text-foreground flex items-center justify-center gap-3">
-                            <BookOpen className="w-10 h-10" /> Blog
+                            <Feather className="w-10 h-10" /> Blog
                         </h1>
                         <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
                             Thoughts and findings on AI, software development, and technology.
