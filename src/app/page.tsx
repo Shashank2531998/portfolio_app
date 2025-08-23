@@ -390,6 +390,10 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
 }
 
 function ExperienceGroupCard({ item }: { item: any }) {
+    const [showAll, setShowAll] = useState(false);
+    const visibleRoles = showAll ? item.roles : item.roles.slice(0, 2);
+    const hiddenRolesCount = item.roles.length - 2;
+
     return (
         <Card className="w-full">
             <CardContent className="p-6">
@@ -412,7 +416,7 @@ function ExperienceGroupCard({ item }: { item: any }) {
                 <div className="relative">
                     <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
                     <div className="space-y-8">
-                        {item.roles.map((role: any, index: number) => (
+                        {visibleRoles.map((role: any, index: number) => (
                             <Dialog key={index}>
                                 <DialogTrigger asChild>
                                     <div className="relative group cursor-pointer">
@@ -443,6 +447,18 @@ function ExperienceGroupCard({ item }: { item: any }) {
                         ))}
                     </div>
                 </div>
+                {item.roles.length > 2 && (
+                    <div className="mt-6 ml-12">
+                        <Button
+                            variant="ghost"
+                            onClick={() => setShowAll(!showAll)}
+                            className="text-foreground hover:no-underline text-sm font-semibold flex items-center gap-2 px-4 py-2"
+                        >
+                            {showAll ? 'Show Less' : `Show ${hiddenRolesCount} More Roles`}
+                            <ChevronDown className={cn("transform transition-transform", showAll && "rotate-180")} />
+                        </Button>
+                    </div>
+                )}
             </CardContent>
         </Card>
     );
@@ -798,3 +814,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
