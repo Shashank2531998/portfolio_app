@@ -2,6 +2,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import {
   DialogContent,
   DialogHeader,
@@ -18,12 +19,6 @@ import {
 } from "@/components/ui/carousel";
 import { CheckCircle2, Github, Link as LinkIcon, Images } from "lucide-react";
 import { Button } from "./ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 interface ExperienceModalProps {
   title?: string;
@@ -40,6 +35,8 @@ interface ExperienceModalProps {
 
 export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
+  const [showGallery, setShowGallery] = useState(false);
+
   return (
     <DialogContent className="max-w-4xl w-full max-h-[90vh] flex flex-col p-0">
       <DialogHeader className="flex-shrink-0 p-6 pb-4 border-b">
@@ -75,36 +72,37 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
               </ul>
             </div>
             {images && images.length > 0 && (
-               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1" className="border-b-0">
-                  <AccordionTrigger className="hover:no-underline py-2">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-primary">
-                        <Images className="w-5 h-5" />
-                        <span>View Gallery</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <Carousel
-                      opts={{
-                        loop: true,
-                      }}
-                      className="w-full max-w-3xl mx-auto pt-4"
-                    >
-                      <CarouselContent>
-                        {images.map((src, index) => (
-                          <CarouselItem key={index}>
-                            <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
-                              <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      <CarouselPrevious />
-                      <CarouselNext />
-                    </Carousel>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <div>
+                {!showGallery ? (
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowGallery(true)}
+                    className="flex items-center gap-2"
+                  >
+                    <Images className="w-5 h-5" />
+                    <span>View Gallery</span>
+                  </Button>
+                ) : (
+                  <Carousel
+                    opts={{
+                      loop: true,
+                    }}
+                    className="w-full max-w-3xl mx-auto pt-4"
+                  >
+                    <CarouselContent>
+                      {images.map((src, index) => (
+                        <CarouselItem key={index}>
+                          <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
+                            <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                )}
+              </div>
             )}
         </div>
       </div>
