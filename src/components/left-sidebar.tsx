@@ -48,26 +48,6 @@ export function LeftSidebar() {
                         <p className="text-muted-foreground">Erlangen, Germany</p>
                     </div>
                 </div>
-
-                <Separator />
-
-                {/* Contact & Links */}
-                <div className="space-y-3">
-                    <div className="flex justify-around pt-2">
-                         <a href="https://www.linkedin.com/in/shashank2598/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Linkedin className="w-5 h-5" />
-                            <span className="sr-only">LinkedIn</span>
-                        </a>
-                         <a href="https://github.com/techie-shashank" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Github className="w-5 h-5" />
-                            <span className="sr-only">GitHub</span>
-                        </a>
-                        <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Mail className="w-5 h-5" />
-                            <span className="sr-only">Contact</span>
-                        </a>
-                    </div>
-                </div>
                 
                 <Separator />
 

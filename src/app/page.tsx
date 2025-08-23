@@ -849,10 +849,19 @@ function ContactSection() {
             )}
         </div>
 
-        <div className="mt-6 text-center">
-            <p className="text-sm text-muted-foreground">
-                Prefer email? <a href="mailto:shashank2531998@gmail.com" className="font-medium text-primary hover:underline">Contact me at shashank2531998@gmail.com</a>
-            </p>
+        <div className="mt-8 flex justify-center gap-6">
+            <a href="https://www.linkedin.com/in/shashank2598/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                <Linkedin className="w-6 h-6" />
+                <span className="sr-only">LinkedIn</span>
+            </a>
+            <a href="https://github.com/techie-shashank" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                <Github className="w-6 h-6" />
+                <span className="sr-only">GitHub</span>
+            </a>
+            <a href="mailto:shashank2531998@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <Mail className="w-6 h-6" />
+                <span className="sr-only">Email</span>
+            </a>
         </div>
       </div>
     </section>
