@@ -622,7 +622,7 @@ function ProjectsSection() {
                   </CardContent>
                   {project.githubUrl && (
                     <CardFooter>
-                      <Button asChild size="sm" variant="secondary" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Button asChild size="sm" variant="default" className="group-hover:bg-primary/90 transition-colors">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                           <Github /> View Code
                         </a>
@@ -806,5 +806,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
