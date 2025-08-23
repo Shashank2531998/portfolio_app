@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   DialogContent,
   DialogHeader,
@@ -36,6 +36,13 @@ interface ExperienceModalProps {
 export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
   const [showGallery, setShowGallery] = useState(false);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showGallery && galleryRef.current) {
+      galleryRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [showGallery]);
 
   return (
     <DialogContent className="max-w-4xl w-full max-h-[90vh] flex flex-col p-0">
@@ -44,7 +51,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             {title || 'Details'}
         </DialogTitle>
         {subtitle && (
-          <DialogDescription className={isProjectModal ? "text-sm text-muted-foreground" : "text-lg font-medium text-foreground"}>
+          <DialogDescription className="text-lg font-medium text-foreground">
             {subtitle}
           </DialogDescription>
         )}
@@ -72,7 +79,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
               </ul>
             </div>
             {images && images.length > 0 && (
-              <div>
+              <div ref={galleryRef}>
                 {!showGallery ? (
                   <Button
                     variant="outline"
