@@ -267,6 +267,8 @@ export default function Home() {
               <Separator className="my-12" />
               <ProjectsSection />
               <Separator className="my-12" />
+              <PublicationsSection />
+              <Separator className="my-12" />
               <AchievementsSection />
               <Separator className="my-12" />
               <ContactSection />
@@ -627,6 +629,28 @@ function ProjectsSection() {
   );
 }
 
+function PublicationsSection() {
+    return (
+        <section id="publications" className="py-12">
+            <div className="max-w-4xl">
+                <div className="space-y-4">
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                        <BookOpen /> Publications
+                    </h2>
+                    <div className="bg-secondary/50 p-6 rounded-lg border">
+                        <p className="text-muted-foreground md:text-lg leading-relaxed">
+                            I am currently working on several projects in representation learning, multimodal AI, and healthcare applications, which I plan to develop into preprints and publications during my Master’s.
+                            <br />
+                            Updates will be shared here soon.
+                        </p>
+                        <p className="mt-4 text-muted-foreground">In the meantime, please see my <a href="#projects" className="text-primary underline hover:no-underline">Projects</a> for detailed technical work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 function AchievementsSection() {
     return (
         <section id="achievements" className="py-12">
@@ -741,6 +765,8 @@ function ContactSection() {
     </section>
   );
 }
+    
+
     
 
     

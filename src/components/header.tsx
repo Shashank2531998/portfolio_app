@@ -23,6 +23,7 @@ const navLinks = [
   { id: "skills", label: "Skills" },
   { id: "research", label: "Research" },
   { id: "projects", label: "Projects" },
+  { id: "publications", label: "Publications" },
   { id: "achievements", label: "Achievements" },
   { id: "contact", label: "Contact" },
 ];
@@ -136,3 +137,5 @@ export function Header() {
     </header>
   );
 }
+
+    
