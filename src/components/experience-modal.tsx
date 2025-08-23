@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from "next/image";
@@ -36,8 +35,8 @@ interface ExperienceModalProps {
 export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
   return (
-    <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
-      <DialogHeader className="flex-shrink-0">
+    <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col p-0">
+      <DialogHeader className="flex-shrink-0 p-6 pb-4">
         <DialogTitle className={!title ? 'sr-only' : 'text-2xl font-headline'}>
             {title || 'Details'}
         </DialogTitle>
@@ -56,7 +55,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             </div>
         )}
       </DialogHeader>
-      <div className="flex-grow overflow-y-auto pr-4 -mr-4 space-y-6">
+      <div className="flex-grow overflow-y-auto space-y-6 px-6">
         <div>
           {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
           <ul className="space-y-3">
@@ -90,7 +89,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
         )}
       </div>
        {(githubUrl) && (
-        <DialogFooter className="flex-shrink-0 pt-4 flex-wrap gap-2">
+        <DialogFooter className="flex-shrink-0 p-6 pt-4 flex-wrap gap-2 border-t">
             {githubUrl && (
                 <Button asChild>
                     <a href={githubUrl} target="_blank" rel="noopener noreferrer">
