@@ -20,6 +20,7 @@ import React, { useState, useEffect } from 'react';
 import { LeftSidebar } from "@/components/left-sidebar";
 import { AnnouncementBanner } from "@/components/announcement-banner";
 import { cn } from "@/lib/utils";
+import { CalendlyButton } from "@/components/calendly-button";
 
 
 const experienceData = [
@@ -751,20 +752,6 @@ function AchievementsSection() {
 }
 
 function ContactSection() {
-  const { toast } = useToast();
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  
-  const handleEventScheduled = () => {
-    toast({
-      title: "✅ Your meeting is booked.",
-      description: "Check your email for details!",
-    });
-  };
-  
   return (
     <section id="contact" className="py-12">
        <div className="max-w-4xl mx-auto text-center">
@@ -778,14 +765,7 @@ function ContactSection() {
         </div>
         
         <div className="flex justify-center">
-            {isClient && (
-                <button
-                    onClick={() => (window as any).Calendly.initPopupWidget({ url: 'https://calendly.com/shashank2531998/30min' })}
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8"
-                >
-                    📅 Schedule a Meeting
-                </button>
-            )}
+            <CalendlyButton />
         </div>
 
         <div className="mt-8 flex justify-center gap-6">
@@ -806,3 +786,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
