@@ -53,9 +53,6 @@ export function Header() {
     const isHomePage = pathname === '/';
 
     const getLinkHref = (link: typeof navLinks[0]) => {
-        // For multi-page navigation, we need to decide whether to just use the hash or the full path.
-        // If we are on the home page, we can use the simple hash links.
-        // If we are on another page, we need to link back to the home page with the hash.
         if (link.href.startsWith('/#')) {
             return isHomePage ? `#${link.id}` : link.href;
         }
@@ -107,23 +104,9 @@ export function Header() {
       "sticky top-0 z-50 w-full border-b transition-colors",
       isScrolled ? "border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "border-transparent bg-background"
     )}>
-      <div className="container mx-auto flex h-16 max-w-screen-2xl items-center px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center flex-1">
-            <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-lg">
-              <span className="font-headline tracking-tighter">
-                <span className="text-muted-foreground">&lt;</span>
-                <span className="text-foreground">Shashank</span>
-                <span className="text-muted-foreground"> /&gt;</span>
-              </span>
-            </Link>
-        </div>
-        
-        <nav className="hidden md:flex items-center justify-center gap-6 flex-1">
-            <NavContent />
-        </nav>
-        
-        <div className="flex items-center justify-end flex-1">
-            {/* Mobile Nav */}
+      <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-4">
+             {/* Mobile Nav */}
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="shrink-0 md:hidden">
@@ -131,7 +114,7 @@ export function Header() {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="p-0">
+              <SheetContent side="left" className="p-0">
                 <div className="p-6">
                      <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
                         <span className="font-headline tracking-tighter">
@@ -146,6 +129,33 @@ export function Header() {
                 </nav>
               </SheetContent>
             </Sheet>
+            <Link href={isHomePage ? "#home" : "/"} className="hidden sm:flex items-center gap-2 font-bold text-lg">
+              <span className="font-headline tracking-tighter">
+                <span className="text-muted-foreground">&lt;</span>
+                <span className="text-foreground">Shashank</span>
+                <span className="text-muted-foreground"> /&gt;</span>
+              </span>
+            </Link>
+        </div>
+        
+        <div className="flex-1 flex justify-center">
+            <nav className="hidden md:flex items-center justify-center gap-6">
+                <NavContent />
+            </nav>
+        </div>
+
+        <div className="flex sm:hidden flex-1 justify-center">
+            <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-lg">
+              <span className="font-headline tracking-tighter">
+                <span className="text-muted-foreground">&lt;</span>
+                <span className="text-foreground">Shashank</span>
+                <span className="text-muted-foreground"> /&gt;</span>
+              </span>
+            </Link>
+        </div>
+        
+        <div className="hidden sm:flex items-center justify-end" style={{minWidth: '60px'}}>
+          {/* Placeholder for potential right-side elements on desktop */}
         </div>
       </div>
     </header>
