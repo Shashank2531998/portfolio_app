@@ -22,7 +22,7 @@ export default function BlogPage() {
                     </div>
 
                     <div className="max-w-4xl mx-auto">
-                        <Card className="bg-secondary/30 border-dashed">
+                        <Card>
                             <CardHeader>
                                 <CardTitle className="flex items-center gap-3 font-headline">
                                     <Lightbulb className="text-muted-foreground"/>
@@ -42,3 +42,5 @@ export default function BlogPage() {
         </div>
     );
 }
+
+    

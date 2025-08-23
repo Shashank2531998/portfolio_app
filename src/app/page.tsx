@@ -561,7 +561,7 @@ function ResearchInterestsSection() {
                     {researchInterestsData.map((interest, index) => (
                         <div key={index}>
                             <h3 className="font-semibold text-lg text-foreground font-headline flex items-center gap-2">
-                                <Lightbulb className="w-5 h-5" />
+                                <Lightbulb className="w-5 h-5 text-muted-foreground" />
                                 {interest.title}
                             </h3>
                             <p className="text-muted-foreground mt-1 ml-7">{interest.description}</p>
@@ -641,7 +641,7 @@ function PublicationsSection() {
                         My active research and future publication goals.
                     </p>
                 </div>
-                <Card className="bg-secondary/30 border-dashed">
+                <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-3 font-headline">
                             <Lightbulb className="text-muted-foreground"/>
@@ -791,5 +791,7 @@ function ContactSection() {
 
 
 
+
+    
 
     
