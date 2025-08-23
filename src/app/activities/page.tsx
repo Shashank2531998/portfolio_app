@@ -9,12 +9,9 @@ import { Footer } from "@/components/footer";
 import { ExperienceModal } from "@/components/experience-modal";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 
 const extracurricularData = [
@@ -102,8 +99,9 @@ const hobbiesData = [
 ];
 
 function ExtracurricularSection() {
-    const visibleActivities = extracurricularData.slice(0, 3);
-    const hiddenActivities = extracurricularData.slice(3);
+    const [showAll, setShowAll] = useState(false);
+    const visibleActivities = showAll ? extracurricularData : extracurricularData.slice(0, 3);
+    const hiddenActivitiesCount = extracurricularData.length - 3;
 
     return (
         <section id="extracurricular" className="py-12">
@@ -156,55 +154,17 @@ function ExtracurricularSection() {
                     ))}
                 </div>
 
-                {hiddenActivities.length > 0 && (
-                  <Accordion type="single" collapsible className="w-full mt-4">
-                    <AccordionItem value="item-1" className="border-none">
-                      <AccordionTrigger className="text-foreground hover:no-underline justify-center text-sm font-semibold flex items-center gap-2">
-                          Show More
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <div className="space-y-4 pt-4">
-                           {hiddenActivities.map((activity: any, index) => (
-                              <Dialog key={index}>
-                                  <DialogTrigger asChild>
-                                      <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
-                                        <CardContent className="p-6">
-                                          <div className="flex flex-col sm:flex-row items-start gap-6">
-                                            {activity.logoUrl && (
-                                              <div className="flex-shrink-0">
-                                                <Image
-                                                  src={activity.logoUrl}
-                                                  alt={`${activity.title} logo`}
-                                                  width={56}
-                                                  height={56}
-                                                  className="rounded-md object-contain aspect-square"
-                                                  data-ai-hint="organization logo"
-                                                />
-                                              </div>
-                                            )}
-                                            <div className="flex-grow">
-                                              <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-                                                  <h3 className="font-semibold font-headline text-foreground">{activity.title}</h3>
-                                                  {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right">{activity.date}</span>}
-                                              </div>
-                                              <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
-                                            </div>
-                                          </div>
-                                        </CardContent>
-                                      </Card>
-                                  </DialogTrigger>
-                                  <ExperienceModal
-                                      title={activity.title}
-                                      details={activity.details}
-                                      images={activity.images}
-                                      link={activity.link}
-                                  />
-                              </Dialog>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
+                {extracurricularData.length > 3 && (
+                    <div className="mt-8 text-center">
+                        <Button
+                            variant="ghost"
+                            onClick={() => setShowAll(!showAll)}
+                            className="text-foreground hover:no-underline text-sm font-semibold flex items-center gap-2"
+                        >
+                            {showAll ? 'Show Less' : `Show ${hiddenActivitiesCount} More`}
+                            <ChevronDown className={cn("transform transition-transform", showAll && "rotate-180")} />
+                        </Button>
+                    </div>
                 )}
             </div>
         </section>

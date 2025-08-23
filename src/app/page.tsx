@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy, Link as LinkIcon, Lightbulb } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy, Link as LinkIcon, Lightbulb, ChevronDown } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -20,12 +20,7 @@ import { TypewriterEffect } from "@/components/typewriter-effect";
 import React, { useState, useEffect } from 'react';
 import { LeftSidebar } from "@/components/left-sidebar";
 import { AnnouncementBanner } from "@/components/announcement-banner";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
 
 const experienceData = [
@@ -581,8 +576,9 @@ function ResearchInterestsSection() {
 }
 
 function ProjectsSection() {
-  const visibleProjects = projectsData.slice(0, 3);
-  const hiddenProjects = projectsData.slice(3);
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projectsData : projectsData.slice(0, 3);
+  const hiddenProjectsCount = projectsData.length - 3;
 
   const ProjectCard = ({ project }: { project: any }) => (
     <Dialog>
@@ -638,21 +634,17 @@ function ProjectsSection() {
           ))}
         </div>
 
-        {hiddenProjects.length > 0 && (
-          <Accordion type="single" collapsible className="w-full mt-8">
-            <AccordionItem value="item-1" className="border-none">
-              <AccordionTrigger className="w-full text-foreground hover:no-underline justify-center text-sm font-semibold flex items-center gap-2">
-                  Show More
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 pt-8">
-                  {hiddenProjects.map((project: any) => (
-                    <ProjectCard key={project.title} project={project} />
-                  ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+        {projectsData.length > 3 && (
+          <div className="mt-8 text-center">
+            <Button
+              variant="ghost"
+              onClick={() => setShowAll(!showAll)}
+              className="text-foreground hover:no-underline text-sm font-semibold flex items-center gap-2"
+            >
+              {showAll ? 'Show Less' : `Show ${hiddenProjectsCount} More`}
+              <ChevronDown className={cn("transform transition-transform", showAll && "rotate-180")} />
+            </Button>
+          </div>
         )}
       </div>
     </section>
