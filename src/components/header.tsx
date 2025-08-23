@@ -16,20 +16,20 @@ import {
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "skills", label: "Skills" },
-  { id: "research", label: "Research" },
-  { id: "projects", label: "Projects" },
-  { id: "publications", label: "Publications" },
-  { id: "achievements", label: "Achievements" },
-  { id: "contact", label: "Contact" },
+  { id: "home", label: "Home", href: "/#home" },
+  { id: "about", label: "About", href: "/#about" },
+  { id: "experience", label: "Experience", href: "/#experience" },
+  { id: "education", label: "Education", href: "/#education" },
+  { id: "skills", label: "Skills", href: "/#skills" },
+  { id: "research", label: "Research", href: "/#research" },
+  { id: "projects", label: "Projects", href: "/#projects" },
+  { id: "publications", label: "Publications", href: "/#publications" },
+  { id: "achievements", label: "Achievements", href: "/#achievements" },
+  { id: "extracurricular", label: "Extracurricular", href: "/activities#extracurricular" },
+  { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
 const moreLinks = [
-    { href: "/activities#extracurricular", label: "Extracurricular" },
     { href: "/activities#hobbies", label: "Hobbies" },
     { href: "/blog", label: "Blog" },
 ]
@@ -52,12 +52,22 @@ export function Header() {
   const NavContent = ({ mobile = false }: { mobile?: boolean }) => {
     const isHomePage = pathname === '/';
 
+    const getLinkHref = (link: typeof navLinks[0]) => {
+        // For multi-page navigation, we need to decide whether to just use the hash or the full path.
+        // If we are on the home page, we can use the simple hash links.
+        // If we are on another page, we need to link back to the home page with the hash.
+        if (link.href.startsWith('/#')) {
+            return isHomePage ? `#${link.id}` : link.href;
+        }
+        return link.href;
+    }
+
     return (
         <>
           {navLinks.map((link) => (
             <Link
               key={link.id}
-              href={isHomePage ? `#${link.id}` : `/#${link.id}`}
+              href={getLinkHref(link)}
               className={cn(
                 "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
                 mobile && "text-base"
@@ -67,23 +77,25 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <div className="relative">
-              <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-0 h-auto hover:bg-transparent", mobile && "text-base justify-start p-0")}>
-                          More
-                          <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
-                      </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-56">
-                      {moreLinks.map(link => (
-                        <DropdownMenuItem key={link.href} asChild>
-                          <Link href={link.href} onClick={closeMenu}>{link.label}</Link>
-                        </DropdownMenuItem>
-                      ))}
-                  </DropdownMenuContent>
-              </DropdownMenu>
-          </div>
+          {moreLinks.length > 0 && (
+            <div className="relative">
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-0 h-auto hover:bg-transparent", mobile && "text-base justify-start p-0")}>
+                            More
+                            <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="w-56">
+                        {moreLinks.map(link => (
+                          <DropdownMenuItem key={link.href} asChild>
+                            <Link href={link.href} onClick={closeMenu}>{link.label}</Link>
+                          </DropdownMenuItem>
+                        ))}
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            </div>
+          )}
         </>
     );
   };
