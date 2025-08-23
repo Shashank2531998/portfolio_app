@@ -633,19 +633,30 @@ function PublicationsSection() {
     return (
         <section id="publications" className="py-12">
             <div className="max-w-4xl">
-                <div className="space-y-4">
+                <div className="space-y-4 mb-12">
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
                         <BookOpen /> Publications
                     </h2>
-                    <div className="bg-secondary/50 p-6 rounded-lg border">
-                        <p className="text-muted-foreground md:text-lg leading-relaxed">
-                            I am currently working on several projects in representation learning, multimodal AI, and healthcare applications, which I plan to develop into preprints and publications during my Master’s.
-                            <br />
-                            Updates will be shared here soon.
-                        </p>
-                        <p className="mt-4 text-muted-foreground">In the meantime, please see my <a href="#projects" className="text-primary underline hover:no-underline">Projects</a> for detailed technical work.</p>
-                    </div>
+                     <p className="text-muted-foreground md:text-lg">
+                        My active research and future publication goals.
+                    </p>
                 </div>
+                <Card className="bg-secondary/30 border-dashed">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-3 font-headline">
+                            <Lightbulb className="text-primary"/>
+                            Future Publications in Progress
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <p className="text-muted-foreground leading-relaxed">
+                            I am currently working on several projects in representation learning, multimodal AI, and healthcare applications, which I plan to develop into preprints and publications during my Master’s. Updates will be shared here soon.
+                        </p>
+                        <p className="text-muted-foreground">
+                            In the meantime, please see my <a href="#projects" className="text-primary underline hover:no-underline font-medium">Projects</a> for detailed technical work.
+                        </p>
+                    </CardContent>
+                </Card>
             </div>
         </section>
     );
