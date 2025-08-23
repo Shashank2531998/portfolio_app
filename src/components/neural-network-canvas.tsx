@@ -37,10 +37,10 @@ const NeuralNetworkCanvas: React.FC = () => {
   const activeEdges = useRef(new Set<string>());
 
   const [themeColors, setThemeColors] = useState({
-    primary: "hsl(142.1 76.2% 36.3%)",
-    background: "hsl(40 50% 98%)",
+    primary: "hsl(108 44% 19%)",
+    background: "hsl(40 33% 96%)",
     foreground: "hsl(240 10% 3.9%)",
-    accent: "hsl(240 4.8% 95.9%)",
+    mutedForeground: "hsl(240 3.8% 46.1%)",
   });
   
   const getThemeColors = useCallback(() => {
@@ -48,14 +48,14 @@ const NeuralNetworkCanvas: React.FC = () => {
     const style = getComputedStyle(document.documentElement);
     const primaryHSL = style.getPropertyValue('--primary').trim();
     const backgroundHSL = style.getPropertyValue('--background').trim();
-    const foregroundHSL = style.getPropertyValue('--foreground').trim();
-    const accentHSL = style.getPropertyValue('--accent').trim();
+    const foregroundHSL = 'var(--foreground)'; // Not used in canvas
+    const mutedForegroundHSL = style.getPropertyValue('--muted-foreground').trim();
     
     setThemeColors({
       primary: `hsl(${primaryHSL})`,
       background: `hsl(${backgroundHSL})`,
       foreground: `hsl(${foregroundHSL})`,
-      accent: `hsl(${accentHSL})`,
+      mutedForeground: `hsl(${mutedForegroundHSL})`,
     });
   }, []);
 
@@ -163,8 +163,8 @@ const NeuralNetworkCanvas: React.FC = () => {
 
       const { nodes, edges } = networkRef.current;
       
-      const primaryMatch = themeColors.primary.match(/(\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%/);
-      const [h, s, l] = primaryMatch ? [primaryMatch[1], primaryMatch[2], primaryMatch[3]] : [240, 5.9, 10];
+      const mutedForegroundMatch = themeColors.mutedForeground.match(/(\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%/);
+      const [h, s, l] = mutedForegroundMatch ? [mutedForegroundMatch[1], mutedForegroundMatch[2], mutedForegroundMatch[3]] : [240, 3.8, 46.1];
       
       edges.forEach(edge => {
         const distToMouse = Math.min(
@@ -213,9 +213,9 @@ const NeuralNetworkCanvas: React.FC = () => {
         const gradient = ctx.createLinearGradient(p.edge.from.x, p.edge.from.y, p.edge.to.x, p.edge.to.y);
         const lightWidth = 0.1;
 
-        gradient.addColorStop(Math.max(0, lightPosition - lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
-        gradient.addColorStop(lightPosition, `hsla(${h}, ${s}%, 90%, ${opacity})`);
-        gradient.addColorStop(Math.min(1, lightPosition + lightWidth), `hsla(${h}, ${s}%, ${l}%, 0)`);
+        gradient.addColorStop(Math.max(0, lightPosition - lightWidth), `hsla(${h}, ${s}%, ${parseFloat(l) + 40}%, 0)`);
+        gradient.addColorStop(lightPosition, `hsla(${h}, ${s}%, ${parseFloat(l) + 40}%, ${opacity})`);
+        gradient.addColorStop(Math.min(1, lightPosition + lightWidth), `hsla(${h}, ${s}%, ${parseFloat(l) + 40}%, 0)`);
 
         ctx.beginPath();
         ctx.moveTo(p.edge.from.x, p.edge.from.y);
@@ -226,7 +226,7 @@ const NeuralNetworkCanvas: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${h}, ${s}%, 90%, ${opacity * 0.8})`;
+        ctx.fillStyle = `hsla(${h}, ${s}%, ${parseFloat(l) + 40}%, ${opacity * 0.8})`;
         ctx.fill();
       });
       
@@ -248,7 +248,7 @@ const NeuralNetworkCanvas: React.FC = () => {
         ctx.arc(node.x, node.y, node.radius * 3, 0, Math.PI * 2);
         ctx.fill();
 
-        ctx.fillStyle = themeColors.primary;
+        ctx.fillStyle = themeColors.mutedForeground;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();
