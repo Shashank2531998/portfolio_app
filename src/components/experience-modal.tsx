@@ -35,8 +35,8 @@ interface ExperienceModalProps {
 export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
   return (
-    <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col p-0">
-      <DialogHeader className="flex-shrink-0 p-6 pb-4">
+    <DialogContent className="max-w-4xl w-full max-h-[90vh] flex flex-col p-0">
+      <DialogHeader className="flex-shrink-0 p-6 pb-4 border-b">
         <DialogTitle className={!title ? 'sr-only' : 'text-2xl font-headline'}>
             {title || 'Details'}
         </DialogTitle>
@@ -55,41 +55,43 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             </div>
         )}
       </DialogHeader>
-      <div className="flex-grow overflow-y-auto space-y-6 px-6">
-        <div>
-          {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
-          <ul className="space-y-3">
-            {details.map((point, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <span className="text-muted-foreground">{point}</span>
-              </li>
-            ))}
-          </ul>
+      <div className="flex-grow overflow-y-auto">
+        <div className="p-6 space-y-6">
+            <div>
+              {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
+              <ul className="space-y-3">
+                {details.map((point, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                    <span className="text-muted-foreground">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {images && images.length > 0 && (
+              <Carousel
+                opts={{
+                  loop: true,
+                }}
+                className="w-full max-w-3xl mx-auto"
+              >
+                <CarouselContent>
+                  {images.map((src, index) => (
+                    <CarouselItem key={index}>
+                      <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
+                        <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            )}
         </div>
-        {images && images.length > 0 && (
-          <Carousel
-            opts={{
-              loop: true,
-            }}
-            className="w-full max-w-3xl mx-auto pt-6"
-          >
-            <CarouselContent>
-              {images.map((src, index) => (
-                <CarouselItem key={index}>
-                  <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
-                    <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        )}
       </div>
        {(githubUrl) && (
-        <DialogFooter className="flex-shrink-0 p-6 pt-4 flex-wrap gap-2 border-t">
+        <DialogFooter className="flex-shrink-0 p-6 border-t">
             {githubUrl && (
                 <Button asChild>
                     <a href={githubUrl} target="_blank" rel="noopener noreferrer">
