@@ -168,7 +168,7 @@ function HobbiesSection() {
             return (
               <Card key={hobby.title}>
                 <CardHeader className="flex flex-row items-center gap-4 p-6">
-                  <Icon className="w-8 h-8 text-primary" />
+                  <Icon className="w-8 h-8 text-muted-foreground" />
                   <CardTitle className="font-headline">{hobby.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 pt-0">

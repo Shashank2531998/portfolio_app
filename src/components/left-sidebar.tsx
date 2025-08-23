@@ -32,19 +32,19 @@ export function LeftSidebar() {
                 {/* Quick Stats */}
                 <div className="space-y-3 text-sm">
                     <div className="flex items-start gap-3">
-                        <Briefcase className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                        <Briefcase className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
                         <p className="text-muted-foreground">6+ Years in Software Development</p>
                     </div>
                      <div className="flex items-start gap-3">
-                        <Briefcase className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                        <Briefcase className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
                         <p className="text-muted-foreground">Working Student @ Siemens Healthineers</p>
                     </div>
                     <div className="flex items-start gap-3">
-                        <GraduationCap className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                        <GraduationCap className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
                         <p className="text-muted-foreground">MSc AI @ FAU · Generative AI</p>
                     </div>
                     <div className="flex items-start gap-3">
-                        <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                        <MapPin className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
                         <p className="text-muted-foreground">Erlangen, Germany</p>
                     </div>
                 </div>

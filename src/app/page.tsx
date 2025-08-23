@@ -415,8 +415,8 @@ function ExperienceGroupCard({ item }: { item: any }) {
                                 <DialogTrigger asChild>
                                     <div className="relative group cursor-pointer">
                                         <div className="absolute top-1 left-5 h-10 w-10 flex items-center justify-center -translate-x-1/2">
-                                            <div className="h-4 w-4 rounded-full bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                                <div className="h-2 w-2 rounded-full bg-primary"></div>
+                                            <div className="h-4 w-4 rounded-full bg-border flex items-center justify-center group-hover:scale-110 transition-transform">
+                                                <div className="h-2 w-2 rounded-full bg-muted-foreground"></div>
                                             </div>
                                         </div>
                                         <div className="ml-12 p-4 rounded-md transition-all duration-200 hover:bg-accent">

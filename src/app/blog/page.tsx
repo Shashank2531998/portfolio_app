@@ -25,7 +25,7 @@ export default function BlogPage() {
                         <Card className="bg-secondary/30 border-dashed">
                             <CardHeader>
                                 <CardTitle className="flex items-center gap-3 font-headline">
-                                    <Lightbulb className="text-primary"/>
+                                    <Lightbulb className="text-muted-foreground"/>
                                     Coming Soon
                                 </CardTitle>
                             </CardHeader>
