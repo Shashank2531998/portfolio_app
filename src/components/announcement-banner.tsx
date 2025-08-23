@@ -36,10 +36,6 @@ export function AnnouncementBanner() {
               I am seeking a thesis host in Schengen countries + Switzerland, focusing on representation learning, self-supervised learning, and multimodal AI with applications in healthcare and robotics.
             </p>
             <p className="text-sm mt-2">
-              <a href="https://drive.google.com/file/d/1JLOYdlHGgyzGBDIhr4bWAVkBPPfVdSoc/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="underline font-medium hover:text-primary">
-                Download CV
-              </a>
-              <span className="mx-2">|</span>
               <a href="#" target="_blank" rel="noopener noreferrer" className="underline font-medium hover:text-primary">
                 Research Statement
               </a>
