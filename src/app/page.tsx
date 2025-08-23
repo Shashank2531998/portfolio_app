@@ -589,7 +589,7 @@ function ProjectsSection() {
           {projectsData.map((project: any) => (
             <Dialog key={project.title}>
               <DialogTrigger asChild>
-                  <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
+                  <Card className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
                     <div className="flex-grow">
                       <CardHeader>
                         <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
@@ -776,24 +776,3 @@ function ContactSection() {
     </section>
   );
 }
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-
-
-    
-
-    
-
-    

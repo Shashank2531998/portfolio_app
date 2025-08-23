@@ -4,6 +4,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "next-themes"
 import Script from 'next/script';
+import { bodyFont, headlineFont, codeFont } from './fonts';
+import { cn } from '@/lib/utils';
 
 
 export const metadata: Metadata = {
@@ -20,9 +22,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/png" href="/icon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-V52571H7YQ"></Script>
         <Script id="google-analytics">
           {`
@@ -34,7 +33,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-body antialiased">
+      <body className={cn("font-body antialiased", bodyFont.variable, headlineFont.variable, codeFont.variable)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
