@@ -3,11 +3,17 @@
 "use client";
 
 import Link from "next/link";
-import { Code, Menu } from "lucide-react";
+import { Code, Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -19,6 +25,10 @@ const navLinks = [
   { href: "#achievements", label: "Achievements" },
   { href: "#contact", label: "Contact" },
 ];
+
+const moreLinks = [
+    { href: "/activities", label: "Extracurricular & Hobbies" },
+]
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -49,6 +59,23 @@ export function Header() {
           {link.label}
         </Link>
       ))}
+      <div className="relative">
+          <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-0 h-auto hover:bg-transparent", mobile && "text-base justify-start p-0")}>
+                      More
+                      <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                  </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                  {moreLinks.map(link => (
+                    <DropdownMenuItem key={link.href} asChild>
+                      <Link href={link.href} onClick={closeMenu}>{link.label}</Link>
+                    </DropdownMenuItem>
+                  ))}
+              </DropdownMenuContent>
+          </DropdownMenu>
+      </div>
     </>
   );
 
