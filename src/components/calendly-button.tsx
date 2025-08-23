@@ -1,12 +1,13 @@
 
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 
 export function CalendlyButton() {
   const { toast } = useToast();
+  const [isCalendlyReady, setIsCalendlyReady] = useState(false);
 
   useEffect(() => {
     const handleEventScheduled = (e: any) => {
@@ -20,8 +21,24 @@ export function CalendlyButton() {
 
     window.addEventListener('message', handleEventScheduled);
 
+    // Check for Calendly script
+    let attempts = 0;
+    const interval = setInterval(() => {
+      if (window.Calendly) {
+        setIsCalendlyReady(true);
+        clearInterval(interval);
+      } else if (attempts > 10) { // Stop checking after ~5 seconds
+        clearInterval(interval);
+      }
+      attempts++;
+    }, 500);
+
+
     return () => {
       window.removeEventListener('message', handleEventScheduled);
+      if (interval) {
+        clearInterval(interval);
+      }
     };
   }, [toast]);
 
@@ -33,6 +50,14 @@ export function CalendlyButton() {
     }
   };
 
+  if (!isCalendlyReady) {
+    return (
+        <Button size="lg" disabled>
+            Loading...
+        </Button>
+    )
+  }
+
   return (
     <Button
       onClick={openCalendly}
@@ -42,5 +67,3 @@ export function CalendlyButton() {
     </Button>
   );
 }
-
-    
