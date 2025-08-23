@@ -1,12 +1,24 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { X, Download, Mail } from 'lucide-react';
 
 export function AnnouncementBanner() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const isDismissed = sessionStorage.getItem('announcementBannerDismissed');
+    if (isDismissed !== 'true') {
+      setIsOpen(true);
+    }
+  }, []);
+
+  const handleDismiss = () => {
+    sessionStorage.setItem('announcementBannerDismissed', 'true');
+    setIsOpen(false);
+  };
 
   if (!isOpen) {
     return null;
@@ -36,7 +48,7 @@ export function AnnouncementBanner() {
             </div>
           </div>
           <div className="flex flex-1 justify-end">
-            <Button type="button" size="icon" variant="ghost" className="-m-3 h-6 w-6 p-0" onClick={() => setIsOpen(false)}>
+            <Button type="button" size="icon" variant="ghost" className="-m-3 h-6 w-6 p-0" onClick={handleDismiss}>
               <span className="sr-only">Dismiss</span>
               <X className="h-5 w-5" aria-hidden="true" />
             </Button>
