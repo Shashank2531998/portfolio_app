@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export function CalendlyButton() {
   const { toast } = useToast();
-  const [isCalendlyReady, setIsCalendlyReady] = useState(false);
+  const [isScriptLoading, setIsScriptLoading] = useState(false);
 
   useEffect(() => {
     const handleEventScheduled = (e: any) => {
@@ -20,50 +20,61 @@ export function CalendlyButton() {
     };
 
     window.addEventListener('message', handleEventScheduled);
-
-    // Check for Calendly script
-    let attempts = 0;
-    const interval = setInterval(() => {
-      if (window.Calendly) {
-        setIsCalendlyReady(true);
-        clearInterval(interval);
-      } else if (attempts > 10) { // Stop checking after ~5 seconds
-        clearInterval(interval);
-      }
-      attempts++;
-    }, 500);
-
+    
+    // Add the Calendly CSS to the head
+    const link = document.createElement('link');
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
 
     return () => {
       window.removeEventListener('message', handleEventScheduled);
-      if (interval) {
-        clearInterval(interval);
-      }
     };
   }, [toast]);
 
   const openCalendly = () => {
+    // If the script is already loaded, open the widget
     if (window.Calendly) {
       window.Calendly.initPopupWidget({
         url: 'https://calendly.com/shashank2531998/30min'
       });
+      return;
     }
-  };
 
-  if (!isCalendlyReady) {
-    return (
-        <Button size="lg" disabled>
-            Loading...
-        </Button>
-    )
-  }
+    // If the script is not loaded, load it
+    setIsScriptLoading(true);
+    const script = document.createElement('script');
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    
+    script.onload = () => {
+      setIsScriptLoading(false);
+      if (window.Calendly) {
+        window.Calendly.initPopupWidget({
+            url: 'https://calendly.com/shashank2531998/30min'
+        });
+      }
+    };
+    
+    script.onerror = () => {
+      setIsScriptLoading(false);
+      toast({
+        title: "Error loading scheduler",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    };
+
+    document.body.appendChild(script);
+  };
 
   return (
     <Button
       onClick={openCalendly}
       size="lg"
+      disabled={isScriptLoading}
     >
-      📅 Schedule a Meeting
+      {isScriptLoading ? 'Loading...' : '📅 Schedule a Meeting'}
     </Button>
   );
 }
