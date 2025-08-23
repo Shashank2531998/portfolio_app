@@ -19,6 +19,7 @@ import { Separator } from "@/components/ui/separator";
 import { TypewriterEffect } from "@/components/typewriter-effect";
 import React, { useState, useEffect } from 'react';
 import { LeftSidebar } from "@/components/left-sidebar";
+import { AnnouncementBanner } from "@/components/announcement-banner";
 
 const experienceData = [
   {
@@ -311,33 +312,36 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <HeroSection ref={heroRef} />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
-          <div className={`hidden lg:block lg:sticky lg:top-20 pb-12 self-start transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
-              <LeftSidebar />
+      <AnnouncementBanner />
+      <main>
+        <HeroSection ref={heroRef} />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
+            <div className={`hidden lg:block lg:sticky lg:top-20 pb-12 self-start transition-opacity duration-300 ${showSidebar ? 'opacity-100' : 'opacity-0'}`}>
+                <LeftSidebar />
+            </div>
+            <div className="flex-1 py-12">
+              <AboutSection />
+              <Separator className="my-12" />
+              <ExperienceSection />
+              <Separator className="my-12" />
+              <EducationSection />
+              <Separator className="my-12" />
+              <SkillsSection />
+              <Separator className="my-12" />
+              <ProjectsSection />
+              <Separator className="my-12" />
+              <AchievementsSection />
+              <Separator className="my-12" />
+              <ExtracurricularSection />
+              <Separator className="my-12" />
+              <HobbiesSection />
+              <Separator className="my-12" />
+              <ContactSection />
+            </div>
           </div>
-          <main className="flex-1 py-12">
-            <AboutSection />
-            <Separator className="my-12" />
-            <ExperienceSection />
-            <Separator className="my-12" />
-            <EducationSection />
-            <Separator className="my-12" />
-            <SkillsSection />
-            <Separator className="my-12" />
-            <ProjectsSection />
-            <Separator className="my-12" />
-            <AchievementsSection />
-            <Separator className="my-12" />
-            <ExtracurricularSection />
-            <Separator className="my-12" />
-            <HobbiesSection />
-            <Separator className="my-12" />
-            <ContactSection />
-          </main>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );
