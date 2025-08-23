@@ -33,7 +33,7 @@ export function LeftSidebar() {
                 <div className="space-y-3 text-sm">
                     <div className="flex items-start gap-3">
                         <Briefcase className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-                        <p className="text-muted-foreground">6+ Years in Software Development</p>
+                        <p className="text-muted-foreground">5+ Years in Software Development</p>
                     </div>
                      <div className="flex items-start gap-3">
                         <Briefcase className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
@@ -41,7 +41,7 @@ export function LeftSidebar() {
                     </div>
                     <div className="flex items-start gap-3">
                         <GraduationCap className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-                        <p className="text-muted-foreground">MSc AI @ FAU · Generative AI</p>
+                        <p className="text-muted-foreground">MSc AI @ FAU</p>
                     </div>
                     <div className="flex items-start gap-3">
                         <MapPin className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />

@@ -59,7 +59,7 @@ const experienceData = [
     roles: [
       {
         role: "Senior Software Developer",
-        date: "Oct 2019 - Sep 2021",
+        date: "Oct 2021 - Sep 2023",
         description: "Led a team of 6 developers, mentored junior engineers, and managed agile ceremonies.",
         details: [
           "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros)",
