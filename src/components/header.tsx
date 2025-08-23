@@ -23,12 +23,12 @@ import { usePathname } from 'next/navigation';
 const navLinks = [
   { id: "home", label: "Home", href: "/#home" },
   { id: "about", label: "About", href: "/#about" },
-  { id: "skills", label: "Skills", href: "/#skills" },
   { id: "research", label: "Research", href: "/#research" },
   { id: "projects", label: "Projects", href: "/#projects" },
   { id: "publications", label: "Publications", href: "/#publications" },
   { id: "experience", label: "Experience", href: "/#experience" },
   { id: "education", label: "Education", href: "/#education" },
+  { id: "skills", label: "Skills", href: "/#skills" },
   { id: "achievements", label: "Achievements", href: "/#achievements" },
   { id: "extracurricular", label: "Extracurricular", href: "/activities" },
   { id: "contact", label: "Contact", href: "/#contact" },
