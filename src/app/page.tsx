@@ -365,7 +365,7 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
                                     <div className="flex flex-col sm:flex-row justify-between items-start">
                                         <div className="mb-2 sm:mb-0">
                                             <h3 className="text-lg font-semibold font-headline text-foreground">{item.role}</h3>
-                                            <p className="font-medium text-primary mt-1">{item.company}</p>
+                                            <p className="font-medium text-muted-foreground mt-1">{item.company}</p>
                                         </div>
                                         <p className="font-semibold text-sm text-muted-foreground text-left sm:text-right flex-shrink-0 sm:ml-4">{item.date}</p>
                                     </div>
@@ -787,3 +787,4 @@ function ContactSection() {
     
 
     
+
