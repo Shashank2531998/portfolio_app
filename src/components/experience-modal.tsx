@@ -57,12 +57,23 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
         )}
       </DialogHeader>
       <div className="flex-grow overflow-y-auto pr-4 -mr-4 space-y-6">
+        <div>
+          {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
+          <ul className="space-y-3">
+            {details.map((point, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                <span className="text-muted-foreground">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
         {images && images.length > 0 && (
           <Carousel
             opts={{
               loop: true,
             }}
-            className="w-full max-w-3xl mx-auto"
+            className="w-full max-w-3xl mx-auto pt-6"
           >
             <CarouselContent>
               {images.map((src, index) => (
@@ -77,17 +88,6 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
           </Carousel>
         )}
-        <div>
-          {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
-          <ul className="space-y-3">
-            {details.map((point, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <span className="text-muted-foreground">{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
        {(githubUrl) && (
         <DialogFooter className="flex-shrink-0 pt-4 flex-wrap gap-2">
