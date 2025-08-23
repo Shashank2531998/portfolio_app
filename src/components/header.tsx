@@ -13,6 +13,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
@@ -59,6 +64,47 @@ export function Header() {
         return link.href;
     }
 
+    const MoreMenu = () => {
+      const [isOpen, setIsOpen] = React.useState(false);
+      
+      if (mobile) {
+        return (
+          <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+            <CollapsibleTrigger asChild>
+              <button className="flex items-center justify-between w-full text-base font-medium text-muted-foreground transition-colors hover:text-foreground">
+                More
+                <ChevronDown className={cn("relative top-[1px] ml-1 h-4 w-4 transition duration-200", isOpen && "rotate-180")} />
+              </button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden">
+                <div className="flex flex-col gap-4 pl-4 pt-4">
+                  {moreLinks.map(link => (
+                    <Link key={link.href} href={link.href} onClick={closeMenu} className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground">{link.label}</Link>
+                  ))}
+                </div>
+            </CollapsibleContent>
+          </Collapsible>
+        )
+      }
+      return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-0 h-auto hover:bg-transparent">
+                    More
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56">
+                {moreLinks.map(link => (
+                  <DropdownMenuItem key={link.href} asChild>
+                    <Link href={link.href} onClick={closeMenu}>{link.label}</Link>
+                  </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    }
+
     return (
         <>
           {navLinks.map((link) => (
@@ -75,22 +121,8 @@ export function Header() {
             </Link>
           ))}
           {moreLinks.length > 0 && (
-            <div className="relative">
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className={cn("text-sm font-medium text-muted-foreground transition-colors hover:text-foreground p-0 h-auto hover:bg-transparent", mobile && "text-base justify-start p-0")}>
-                            More
-                            <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="w-56">
-                        {moreLinks.map(link => (
-                          <DropdownMenuItem key={link.href} asChild>
-                            <Link href={link.href} onClick={closeMenu}>{link.label}</Link>
-                          </DropdownMenuItem>
-                        ))}
-                    </DropdownMenuContent>
-                </DropdownMenu>
+            <div className={cn(!mobile && "relative")}>
+              <MoreMenu />
             </div>
           )}
         </>
@@ -137,11 +169,11 @@ export function Header() {
                       <span className="sr-only">Toggle navigation menu</span>
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="left" className="p-0">
+                  <SheetContent side="left" className="p-0 w-[80vw]">
                     <div className="p-6">
                         <Logo />
                     </div>
-                    <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
+                    <nav className="flex flex-col items-stretch gap-6 p-6 pt-0 text-base font-medium">
                         <NavContent mobile />
                     </nav>
                   </SheetContent>
