@@ -38,12 +38,20 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
   const isProjectModal = githubUrl !== undefined;
   const [showGallery, setShowGallery] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (showGallery && galleryRef.current) {
+    if (showGallery && galleryRef.current && scrollContainerRef.current) {
+      const scrollContainer = scrollContainerRef.current;
+      const galleryElement = galleryRef.current;
+
       setTimeout(() => {
-        galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }, 100); 
+          const topPosition = galleryElement.offsetTop;
+          scrollContainer.scrollTo({
+              top: topPosition,
+              behavior: 'smooth'
+          });
+      }, 150); // A slight delay to allow for the animation to start
     }
   }, [showGallery]);
 
@@ -68,7 +76,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             </div>
         )}
       </DialogHeader>
-      <div className="flex-grow overflow-y-auto">
+      <div ref={scrollContainerRef} className="flex-grow overflow-y-auto">
         <div className="p-6 space-y-6">
             <div>
               {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
