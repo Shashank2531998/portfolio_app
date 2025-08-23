@@ -525,7 +525,7 @@ function SkillsSection() {
             return (
               <Card key={category}>
                 <CardHeader>
-                  <CardTitle className="text-primary flex items-center gap-3 font-headline text-xl">
+                  <CardTitle className="text-foreground flex items-center gap-3 font-headline text-xl">
                     <Icon className="w-7 h-7" /> {category}
                   </CardTitle>
                 </CardHeader>
@@ -644,7 +644,7 @@ function PublicationsSection() {
                 <Card className="bg-secondary/30 border-dashed">
                     <CardHeader>
                         <CardTitle className="flex items-center gap-3 font-headline">
-                            <Lightbulb className="text-primary"/>
+                            <Lightbulb className="text-muted-foreground"/>
                             Future Publications in Progress
                         </CardTitle>
                     </CardHeader>
@@ -787,4 +787,5 @@ function ContactSection() {
     
 
     
+
 
