@@ -44,7 +44,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             {title || 'Details'}
         </DialogTitle>
         {subtitle && (
-          <DialogDescription className={isProjectModal ? "text-sm text-muted-foreground" : "text-lg font-medium text-primary"}>
+          <DialogDescription className={isProjectModal ? "text-sm text-muted-foreground" : "text-lg font-medium text-foreground"}>
             {subtitle}
           </DialogDescription>
         )}
@@ -65,7 +65,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
               <ul className="space-y-3">
                 {details.map((point, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
                     <span className="text-muted-foreground">{point}</span>
                   </li>
                 ))}
