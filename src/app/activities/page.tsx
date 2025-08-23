@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { List, Heart, Music, Trophy, Mountain, Link as LinkIcon, ChevronDown } from 'lucide-react';
+import { List, Heart, Music, Trophy, Mountain, Link as LinkIcon, ChevronDown, Globe } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -101,18 +101,18 @@ const hobbiesData = [
     ]
   },
   {
-    icon: Mountain,
-    title: "Hiking",
-    description: "Exploring new trails and enjoying nature helps me relax and recharge.",
+    icon: Globe,
+    title: "Travelling",
+    description: "Exploring new countries, cultures, and cuisines is a passion of mine.",
     details: [
-        "Hiking is my go-to activity for clearing my mind and connecting with nature.",
-        "I love the sense of accomplishment that comes with reaching a summit and taking in the breathtaking views."
+        "I love the thrill of discovering new places and immersing myself in different cultures.",
+        "Whether it's wandering through historic cities or trying local food, I find travel to be an incredibly enriching experience."
     ],
     images: [
         "https://placehold.co/800x400.png",
         "https://placehold.co/800x400.png",
     ],
-    dataAiHint: "hiking landscape"
+    dataAiHint: "travel landscape"
   },
 ];
 
