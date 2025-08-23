@@ -98,6 +98,16 @@ export function Header() {
   };
 
   const isHomePage = pathname === '/';
+  
+  const Logo = () => (
+    <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-lg" onClick={closeMenu}>
+        <span className="font-headline tracking-tighter">
+            <span className="text-muted-foreground">&lt;</span>
+            <span className="text-foreground">Shashank</span>
+            <span className="text-muted-foreground"> /&gt;</span>
+        </span>
+    </Link>
+  );
 
   return (
     <header className={cn(
@@ -105,57 +115,44 @@ export function Header() {
       isScrolled ? "border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "border-transparent bg-background"
     )}>
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4">
-             {/* Mobile Nav */}
-            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="p-0">
-                <div className="p-6">
-                     <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-xl" onClick={closeMenu}>
-                        <span className="font-headline tracking-tighter">
-                          <span className="text-muted-foreground">&lt;</span>
-                          <span className="text-foreground">Shashank</span>
-                          <span className="text-muted-foreground"> /&gt;</span>
-                        </span>
-                    </Link>
-                </div>
-                <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
-                    <NavContent mobile />
-                </nav>
-              </SheetContent>
-            </Sheet>
-            <Link href={isHomePage ? "#home" : "/"} className="hidden sm:flex items-center gap-2 font-bold text-lg">
-              <span className="font-headline tracking-tighter">
-                <span className="text-muted-foreground">&lt;</span>
-                <span className="text-foreground">Shashank</span>
-                <span className="text-muted-foreground"> /&gt;</span>
-              </span>
-            </Link>
-        </div>
         
-        <div className="flex-1 flex justify-center">
-            <nav className="hidden md:flex items-center justify-center gap-6">
-                <NavContent />
-            </nav>
+        {/* Desktop Header */}
+        <div className="hidden md:flex items-center gap-4">
+            <Logo />
+        </div>
+        <nav className="hidden md:flex flex-1 items-center justify-center gap-6">
+            <NavContent />
+        </nav>
+        <div className="hidden md:flex items-center justify-end" style={{minWidth: '60px'}}>
+            {/* Placeholder for potential right-side elements on desktop */}
         </div>
 
-        <div className="flex sm:hidden flex-1 justify-center">
-            <Link href={isHomePage ? "#home" : "/"} className="flex items-center gap-2 font-bold text-lg">
-              <span className="font-headline tracking-tighter">
-                <span className="text-muted-foreground">&lt;</span>
-                <span className="text-foreground">Shashank</span>
-                <span className="text-muted-foreground"> /&gt;</span>
-              </span>
-            </Link>
-        </div>
-        
-        <div className="hidden sm:flex items-center justify-end" style={{minWidth: '60px'}}>
-          {/* Placeholder for potential right-side elements on desktop */}
+        {/* Mobile Header */}
+        <div className="flex md:hidden items-center justify-between w-full">
+            <div className="flex-1 flex justify-start">
+                <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+                  <SheetTrigger asChild>
+                    <Button variant="outline" size="icon" className="shrink-0">
+                      <Menu className="h-5 w-5" />
+                      <span className="sr-only">Toggle navigation menu</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="left" className="p-0">
+                    <div className="p-6">
+                        <Logo />
+                    </div>
+                    <nav className="flex flex-col items-start gap-6 p-6 pt-0 text-base font-medium">
+                        <NavContent mobile />
+                    </nav>
+                  </SheetContent>
+                </Sheet>
+            </div>
+            
+            <div className="flex-1 flex justify-center">
+                <Logo />
+            </div>
+
+            <div className="flex-1 flex justify-end" />
         </div>
       </div>
     </header>
