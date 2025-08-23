@@ -6,6 +6,8 @@ import { ThemeProvider } from "next-themes"
 import Script from 'next/script';
 import { bodyFont, headlineFont, codeFont } from './fonts';
 import { cn } from '@/lib/utils';
+import { GoogleAnalytics } from '@/components/google-analytics';
+import { Suspense } from 'react';
 
 
 export const metadata: Metadata = {
@@ -34,6 +36,9 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={cn("font-body antialiased", bodyFont.variable, headlineFont.variable, codeFont.variable)}>
+        <Suspense>
+            <GoogleAnalytics />
+        </Suspense>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
