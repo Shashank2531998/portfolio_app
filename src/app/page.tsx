@@ -20,6 +20,13 @@ import { TypewriterEffect } from "@/components/typewriter-effect";
 import React, { useState, useEffect } from 'react';
 import { LeftSidebar } from "@/components/left-sidebar";
 import { AnnouncementBanner } from "@/components/announcement-banner";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 
 const experienceData = [
   {
@@ -574,6 +581,46 @@ function ResearchInterestsSection() {
 }
 
 function ProjectsSection() {
+  const visibleProjects = projectsData.slice(0, 3);
+  const hiddenProjects = projectsData.slice(3);
+
+  const ProjectCard = ({ project }: { project: any }) => (
+    <Dialog>
+        <DialogTrigger asChild>
+            <Card className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
+              <div className="flex-grow">
+                <CardHeader>
+                  <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
+                  <CardDescription className="pt-1">{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+                  </div>
+                </CardContent>
+              </div>
+              {project.githubUrl && (
+                <CardFooter className="pt-4">
+                    <Button asChild size="sm">
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                          <Github /> View Code
+                      </a>
+                    </Button>
+                </CardFooter>
+              )}
+            </Card>
+        </DialogTrigger>
+        <ExperienceModal 
+          title={project.title} 
+          subtitle={project.subtitle}
+          images={project.images} 
+          details={project.details}
+          githubUrl={project.githubUrl}
+          detailsHeading="Key Features"
+        />
+    </Dialog>
+  );
+
   return (
     <section id="projects" className="py-12">
        <div className="max-w-7xl">
@@ -586,44 +633,27 @@ function ProjectsSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projectsData.map((project: any) => (
-            <Dialog key={project.title}>
-              <DialogTrigger asChild>
-                  <Card className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
-                    <div className="flex-grow">
-                      <CardHeader>
-                        <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
-                        <CardDescription className="pt-1">{project.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
-                        </div>
-                      </CardContent>
-                    </div>
-                    {project.githubUrl && (
-                      <CardFooter className="pt-4">
-                          <Button asChild size="sm">
-                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                <Github /> View Code
-                            </a>
-                          </Button>
-                      </CardFooter>
-                    )}
-                  </Card>
-              </DialogTrigger>
-
-              <ExperienceModal 
-                title={project.title} 
-                subtitle={project.subtitle}
-                images={project.images} 
-                details={project.details}
-                githubUrl={project.githubUrl}
-                detailsHeading="Key Features"
-              />
-            </Dialog>
+          {visibleProjects.map((project: any) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
+
+        {hiddenProjects.length > 0 && (
+          <Accordion type="single" collapsible className="w-full mt-8">
+            <AccordionItem value="item-1" className="border-none">
+              <AccordionTrigger className="w-full text-foreground hover:no-underline justify-center text-sm font-semibold flex items-center gap-2">
+                  Show More
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 pt-8">
+                  {hiddenProjects.map((project: any) => (
+                    <ProjectCard key={project.title} project={project} />
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
       </div>
     </section>
   );
