@@ -3,35 +3,8 @@
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import Link from 'next/link';
-import { BookOpen, Calendar, Tag } from 'lucide-react';
-import { format } from 'date-fns';
-
-const blogPosts = [
-  {
-    slug: "exploring-mamba-for-time-series",
-    title: "Exploring Mamba for Time-Series Forecasting in Healthcare",
-    date: "2024-08-15",
-    tags: ["AI", "Time-Series", "Mamba", "Healthcare"],
-    excerpt: "A deep dive into how State-Space Models like Mamba are revolutionizing time-series analysis in the medical field, and a comparison with traditional Transformer and LSTM models.",
-  },
-  {
-    slug: "self-supervised-learning-in-medical-imaging",
-    title: "The Power of Self-Supervised Learning in Medical Imaging",
-    date: "2024-07-22",
-    tags: ["AI", "Medical Imaging", "Self-Supervised Learning"],
-    excerpt: "Discover how self-supervised learning techniques can leverage vast amounts of unlabeled data to improve diagnostic accuracy and model robustness in radiology.",
-  },
-  {
-    slug: "building-scalable-web-apps-with-django",
-    title: "Architecting Scalable Web Applications with Django and DRF",
-    date: "2024-06-30",
-    tags: ["Web Development", "Python", "Django", "Scalability"],
-    excerpt: "Best practices for building robust, scalable, and maintainable web applications using Django and Django Rest Framework, drawn from real-world project experience.",
-  },
-];
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BookOpen, Lightbulb } from 'lucide-react';
 
 export default function BlogPage() {
     return (
@@ -48,39 +21,20 @@ export default function BlogPage() {
                         </p>
                     </div>
 
-                    <div className="grid gap-8 max-w-4xl mx-auto">
-                        {blogPosts.map((post) => (
-                            <Link href={`/blog/${post.slug}`} key={post.slug} legacyBehavior>
-                                <a className="block group">
-                                    <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
-                                        <CardHeader>
-                                            <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors">
-                                                {post.title}
-                                            </CardTitle>
-                                             <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
-                                                <div className="flex items-center gap-2">
-                                                    <Calendar className="w-4 h-4" />
-                                                    <time dateTime={post.date}>
-                                                        {format(new Date(post.date), "MMMM d, yyyy")}
-                                                    </time>
-                                                </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <CardDescription>{post.excerpt}</CardDescription>
-                                            <div className="flex items-center gap-2 pt-4">
-                                                <Tag className="w-4 h-4 text-muted-foreground" />
-                                                <div className="flex flex-wrap gap-2">
-                                                    {post.tags.map((tag) => (
-                                                        <Badge key={tag} variant="secondary">{tag}</Badge>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </a>
-                            </Link>
-                        ))}
+                    <div className="max-w-4xl mx-auto">
+                        <Card className="bg-secondary/30 border-dashed">
+                            <CardHeader>
+                                <CardTitle className="flex items-center gap-3 font-headline">
+                                    <Lightbulb className="text-primary"/>
+                                    Coming Soon
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">
+                                    I'm currently working on some articles. Please check back later for my latest thoughts and findings!
+                                </p>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
             </main>
