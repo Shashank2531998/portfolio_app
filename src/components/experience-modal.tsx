@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/carousel";
 import { CheckCircle2, Github, Link as LinkIcon, Images, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 interface ExperienceModalProps {
   title?: string;
@@ -40,7 +41,9 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
 
   useEffect(() => {
     if (showGallery && galleryRef.current) {
-      galleryRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      setTimeout(() => {
+        galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 100); 
     }
   }, [showGallery]);
 
@@ -97,26 +100,33 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
                         </>
                     )}
                   </Button>
-                {showGallery && (
-                  <Carousel
-                    opts={{
-                      loop: true,
-                    }}
-                    className="w-full max-w-3xl mx-auto pt-4 mt-4"
+                  <div
+                    className={cn(
+                      "overflow-hidden transition-all duration-500 ease-in-out",
+                      showGallery ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+                    )}
                   >
-                    <CarouselContent>
-                      {images.map((src, index) => (
-                        <CarouselItem key={index}>
-                          <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
-                            <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
-                          </div>
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                  </Carousel>
-                )}
+                    <div className={cn(showGallery && "animate-gallery-in")}>
+                      <Carousel
+                        opts={{
+                          loop: true,
+                        }}
+                        className="w-full max-w-3xl mx-auto pt-4"
+                      >
+                        <CarouselContent>
+                          {images.map((src, index) => (
+                            <CarouselItem key={index}>
+                              <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
+                                <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
+                              </div>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                      </Carousel>
+                    </div>
+                  </div>
               </div>
             )}
         </div>
