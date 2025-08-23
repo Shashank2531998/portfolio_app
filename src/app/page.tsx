@@ -301,7 +301,7 @@ const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                 <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-foreground font-headline">
                   Shashank
                 </h1>
-                 <div className="h-10">
+                 <div className="h-10 text-foreground">
                     <TypewriterEffect taglines={taglines} />
                 </div>
                 <p className="max-w-[600px] mx-auto text-muted-foreground md:text-lg">
@@ -791,6 +791,8 @@ function ContactSection() {
 
 
 
+
+    
 
     
 

@@ -48,9 +48,11 @@ export function TypewriterEffect({
   }, [text, isDeleting, loopNum, taglines, typingSpeed, deletingSpeed, delay, typingTimeout]);
 
   return (
-    <h2 className="text-2xl font-semibold text-primary font-headline h-full flex items-center justify-center">
+    <h2 className="text-2xl font-semibold font-headline h-full flex items-center justify-center">
       {text}
       <span className="typewriter-cursor">|</span>
     </h2>
   );
 }
+
+    
