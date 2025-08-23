@@ -107,7 +107,7 @@ function ExtracurricularSection() {
         <section id="extracurricular" className="py-12">
              <div className="max-w-4xl mx-auto">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
                         <List /> Extracurricular Activities
                     </h2>
                     <p className="text-muted-foreground md:text-lg">
@@ -176,7 +176,7 @@ function HobbiesSection() {
     <section id="hobbies" className="py-12">
       <div className="max-w-4xl mx-auto">
         <div className="space-y-4 mb-12">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
             <Heart /> Hobbies
           </h2>
           <p className="text-muted-foreground md:text-lg">

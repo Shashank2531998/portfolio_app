@@ -333,7 +333,7 @@ function AboutSection() {
         <section id="about" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
                         <User /> About Me
                     </h2>
                     <p className="text-muted-foreground md:text-lg leading-relaxed">
@@ -469,7 +469,7 @@ function ExperienceSection() {
     <section id="experience" className="py-12">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
             <Briefcase /> Work Experience
           </h2>
           <p className="text-muted-foreground md:text-lg leading-relaxed">
@@ -497,7 +497,7 @@ function EducationSection() {
     <section id="education" className="py-12">
       <div className="max-w-4xl">
         <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
             <GraduationCap /> Education
           </h2>
           <p className="text-muted-foreground md:text-lg leading-relaxed">
@@ -530,7 +530,7 @@ function SkillsSection() {
     <section id="skills" className="py-12">
       <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
             <Layers /> Skills
           </h2>
           <p className="text-muted-foreground md:text-lg">
@@ -568,7 +568,7 @@ function ResearchInterestsSection() {
         <section id="research" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
                         <BrainCircuit /> Research Interests
                     </h2>
                      <p className="text-muted-foreground md:text-lg">
@@ -637,7 +637,7 @@ function ProjectsSection() {
     <section id="projects" className="py-12">
        <div className="max-w-7xl">
         <div className="space-y-4 mb-12">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
               <FolderKanban /> Projects
           </h2>
           <p className="text-muted-foreground md:text-lg">
@@ -672,7 +672,7 @@ function PublicationsSection() {
         <section id="publications" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
                         <BookOpen /> Publications
                     </h2>
                      <p className="text-muted-foreground md:text-lg">
@@ -705,7 +705,7 @@ function AchievementsSection() {
         <section id="achievements" className="py-12">
             <div className="max-w-4xl">
                 <div className="space-y-4 mb-12">
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3">
+                    <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3">
                         <Award /> Achievements
                     </h2>
                     <p className="text-muted-foreground md:text-lg">
@@ -776,7 +776,7 @@ function ContactSection() {
     <section id="contact" className="py-12">
        <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-4 mb-8">
-          <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground flex items-center gap-3 justify-center">
+          <h2 className="text-3xl font-bold font-headline sm:text-4xl text-foreground flex items-center gap-3 justify-center">
             <Mail /> Let's Connect
           </h2>
           <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
