@@ -31,6 +31,7 @@ const navLinks = [
 const moreLinks = [
     { href: "/activities#extracurricular", label: "Extracurricular" },
     { href: "/activities#hobbies", label: "Hobbies" },
+    { href: "/blog", label: "Blog" },
 ]
 
 export function Header() {
@@ -138,5 +139,3 @@ export function Header() {
     </header>
   );
 }
-
-    
