@@ -17,7 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CheckCircle2, Github, Link as LinkIcon, Images, X } from "lucide-react";
+import { CheckCircle2, Github, Link as LinkIcon, Images, X, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
@@ -41,6 +41,8 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
   const [showGallery, setShowGallery] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const hasGallery = (images && images.length > 0) || youtubeVideoId;
+
 
   useEffect(() => {
     if (showGallery && galleryRef.current && scrollContainerRef.current) {
@@ -80,20 +82,6 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
       </DialogHeader>
       <div ref={scrollContainerRef} className="flex-grow overflow-y-auto">
         <div className="p-6 space-y-6">
-            {youtubeVideoId && (
-              <div className="aspect-w-16 aspect-h-9 w-full">
-                 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
-                    <iframe
-                        src={`https://www.youtube.com/embed/${youtubeVideoId}`}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    ></iframe>
-                </div>
-              </div>
-            )}
             <div>
               {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
               <ul className="space-y-3">
@@ -105,7 +93,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
                 ))}
               </ul>
             </div>
-            {images && images.length > 0 && (
+            {hasGallery && (
               <div ref={galleryRef}>
                   <Button
                     variant="outline"
@@ -119,7 +107,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
                         </>
                     ) : (
                         <>
-                            <Images className="w-5 h-5" />
+                            {youtubeVideoId ? <Youtube className="w-5 h-5" /> : <Images className="w-5 h-5" />}
                             <span>View Gallery</span>
                         </>
                     )}
@@ -130,32 +118,50 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
                       showGallery ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
                     )}
                   >
-                    <div className={cn("px-12", showGallery && "animate-gallery-in")}>
-                      <Carousel
-                        opts={{
-                          loop: true,
-                        }}
-                        className="w-full max-w-3xl mx-auto pt-4"
-                      >
-                        <CarouselContent>
-                          {images.map((src, index) => (
-                            <CarouselItem key={index}>
-                              <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
-                                <Image src={src} alt={`${title} showcase ${index + 1}`} fill objectFit="cover" data-ai-hint={dataAiHint || 'showcase image'} />
-                              </div>
-                            </CarouselItem>
-                          ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                      </Carousel>
+                    <div className={cn(showGallery && "animate-gallery-in")}>
+                       {youtubeVideoId && (
+                          <div className="aspect-w-16 aspect-h-9 w-full">
+                            <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${youtubeVideoId}`}
+                                    title="YouTube video player"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                                ></iframe>
+                            </div>
+                          </div>
+                        )}
+                        {images && images.length > 0 && (
+                          <div className="px-12 pt-4">
+                            <Carousel
+                              opts={{
+                                loop: true,
+                              }}
+                              className="w-full max-w-3xl mx-auto"
+                            >
+                              <CarouselContent>
+                                {images.map((src, index) => (
+                                  <CarouselItem key={index}>
+                                    <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
+                                      <Image src={src} alt={`${title} showcase ${index + 1}`} fill objectFit="cover" data-ai-hint={dataAiHint || 'showcase image'} />
+                                    </div>
+                                  </CarouselItem>
+                                ))}
+                              </CarouselContent>
+                              <CarouselPrevious />
+                              <CarouselNext />
+                            </Carousel>
+                          </div>
+                        )}
                     </div>
                   </div>
               </div>
             )}
         </div>
       </div>
-       <DialogFooter className="flex-shrink-0 p-6 border-t sm:justify-end">
+       <DialogFooter className="flex-shrink-0 p-6 border-t sm:justify-start">
           {githubUrl && (
               <Button asChild>
                   <a href={githubUrl} target="_blank" rel="noopener noreferrer">
