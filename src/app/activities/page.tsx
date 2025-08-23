@@ -107,7 +107,12 @@ const hobbiesData = [
     details: [
         "Hiking is my go-to activity for clearing my mind and connecting with nature.",
         "I love the sense of accomplishment that comes with reaching a summit and taking in the breathtaking views."
-    ]
+    ],
+    images: [
+        "https://placehold.co/800x400.png",
+        "https://placehold.co/800x400.png",
+    ],
+    dataAiHint: "hiking landscape"
   },
 ];
 
@@ -212,7 +217,13 @@ function HobbiesSection() {
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <ExperienceModal title={hobby.title} details={hobby.details} youtubeVideoId={hobby.youtubeVideoId} />
+                <ExperienceModal 
+                    title={hobby.title} 
+                    details={hobby.details} 
+                    youtubeVideoId={hobby.youtubeVideoId}
+                    images={hobby.images}
+                    dataAiHint={hobby.dataAiHint}
+                />
               </Dialog>
             );
           })}

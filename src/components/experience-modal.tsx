@@ -33,9 +33,10 @@ interface ExperienceModalProps {
   } | null;
   detailsHeading?: string;
   youtubeVideoId?: string;
+  dataAiHint?: string;
 }
 
-export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading, youtubeVideoId }: ExperienceModalProps) {
+export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading, youtubeVideoId, dataAiHint }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
   const [showGallery, setShowGallery] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -140,7 +141,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
                           {images.map((src, index) => (
                             <CarouselItem key={index}>
                               <div className="aspect-[2/1] relative rounded-lg overflow-hidden">
-                                <Image src={src} alt={`${subtitle} work showcase ${index + 1}`} fill objectFit="cover" data-ai-hint="office workspace" />
+                                <Image src={src} alt={`${title} showcase ${index + 1}`} fill objectFit="cover" data-ai-hint={dataAiHint || 'showcase image'} />
                               </div>
                             </CarouselItem>
                           ))}
