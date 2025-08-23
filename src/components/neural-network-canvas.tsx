@@ -37,21 +37,24 @@ const NeuralNetworkCanvas: React.FC = () => {
   const activeEdges = useRef(new Set<string>());
 
   const [themeColors, setThemeColors] = useState({
-    primary: "hsl(240 5.9% 10%)",
-    background: "hsl(240 10% 99%)",
+    primary: "hsl(142.1 76.2% 36.3%)",
+    background: "hsl(40 50% 98%)",
+    foreground: "hsl(240 10% 3.9%)",
     accent: "hsl(240 4.8% 95.9%)",
   });
-
+  
   const getThemeColors = useCallback(() => {
     if (typeof window === 'undefined') return;
-    const style = getComputedStyle(document.body);
+    const style = getComputedStyle(document.documentElement);
     const primaryHSL = style.getPropertyValue('--primary').trim();
     const backgroundHSL = style.getPropertyValue('--background').trim();
+    const foregroundHSL = style.getPropertyValue('--foreground').trim();
     const accentHSL = style.getPropertyValue('--accent').trim();
-
+    
     setThemeColors({
       primary: `hsl(${primaryHSL})`,
       background: `hsl(${backgroundHSL})`,
+      foreground: `hsl(${foregroundHSL})`,
       accent: `hsl(${accentHSL})`,
     });
   }, []);
@@ -160,9 +163,9 @@ const NeuralNetworkCanvas: React.FC = () => {
 
       const { nodes, edges } = networkRef.current;
       
-      const primaryMatch = themeColors.primary.match(/hsl\((\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%\)/);
+      const primaryMatch = themeColors.primary.match(/(\d+\.?\d*)\s+(\d+\.?\d*)%\s+(\d+\.?\d*)%/);
       const [h, s, l] = primaryMatch ? [primaryMatch[1], primaryMatch[2], primaryMatch[3]] : [240, 5.9, 10];
-
+      
       edges.forEach(edge => {
         const distToMouse = Math.min(
             Math.hypot(mousePos.current.x - edge.from.x, mousePos.current.y - edge.from.y),
