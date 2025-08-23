@@ -610,13 +610,13 @@ function ProjectsSection() {
           {visibleProjects.map((project: any) => (
             <Dialog key={project.title}>
               <DialogTrigger asChild>
-                <Card className="flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
+                <Card className="flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50 items-center text-center sm:items-start sm:text-left">
                   <CardHeader>
                     <CardTitle className="text-lg font-headline">{project.title}</CardTitle>
                     <CardDescription className="pt-1">{project.description}</CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                       {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
                     </div>
                   </CardContent>
@@ -806,5 +806,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
