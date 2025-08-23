@@ -346,7 +346,7 @@ function ExperienceCard({ item, detailsHeading }: { item: any, detailsHeading: s
         <div className="w-full">
             <Dialog>
                 <DialogTrigger asChild>
-                    <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full">
+                    <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer w-full hover:border-primary/50">
                         <CardContent className="p-6">
                             <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                                 <div className="flex-shrink-0">
@@ -586,30 +586,30 @@ function ProjectsSection() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projectsData.map((project: any) => (
             <Dialog key={project.title}>
-              <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <DialogTrigger asChild>
-                  <div className="flex-grow cursor-pointer">
-                    <CardHeader>
-                      <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
-                      <CardDescription className="pt-1">{project.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
-                      </div>
-                    </CardContent>
-                  </div>
-                </DialogTrigger>
-                {project.githubUrl && (
-                  <CardFooter className="pt-4">
-                      <Button asChild size="sm">
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                            <Github /> View Code
-                        </a>
-                      </Button>
-                  </CardFooter>
-                )}
-              </Card>
+              <DialogTrigger asChild>
+                  <Card className="flex flex-col overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50">
+                    <div className="flex-grow">
+                      <CardHeader>
+                        <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
+                        <CardDescription className="pt-1">{project.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+                        </div>
+                      </CardContent>
+                    </div>
+                    {project.githubUrl && (
+                      <CardFooter className="pt-4">
+                          <Button asChild size="sm">
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                <Github /> View Code
+                            </a>
+                          </Button>
+                      </CardFooter>
+                    )}
+                  </Card>
+              </DialogTrigger>
 
               <ExperienceModal 
                 title={project.title} 
