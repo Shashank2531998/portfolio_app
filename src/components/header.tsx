@@ -169,11 +169,11 @@ export function Header() {
                       <span className="sr-only">Toggle navigation menu</span>
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="left" className="p-0 w-[80vw]">
-                    <div className="p-6">
+                  <SheetContent side="left" className="flex flex-col p-0 w-[80vw]">
+                    <div className="p-6 border-b">
                         <Logo />
                     </div>
-                    <nav className="flex flex-col items-stretch gap-6 p-6 pt-0 text-base font-medium">
+                    <nav className="flex-1 flex flex-col items-stretch gap-6 p-6 text-base font-medium overflow-y-auto">
                         <NavContent mobile />
                     </nav>
                   </SheetContent>
