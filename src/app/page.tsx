@@ -396,7 +396,7 @@ function ExperienceGroupCard({ item }: { item: any }) {
     return (
         <Card className="w-full">
             <CardContent className="p-6">
-                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-6">
+                <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-start sm:text-left sm:gap-6 mb-6">
                     <div className="flex-shrink-0">
                         <Image
                             src={item.logoUrl}
@@ -413,18 +413,18 @@ function ExperienceGroupCard({ item }: { item: any }) {
                 </div>
 
                 <div className="relative">
-                    <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+                    <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 sm:left-5"></div>
                     <div className="space-y-8">
                         {visibleRoles.map((role: any, index: number) => (
                             <Dialog key={index}>
                                 <DialogTrigger asChild>
                                     <div className="relative group cursor-pointer">
-                                        <div className="absolute top-1 left-5 h-10 w-10 flex items-center justify-center -translate-x-1/2">
+                                        <div className="absolute top-1 left-3 h-10 w-10 flex items-center justify-center -translate-x-1/2 sm:left-5">
                                             <div className="h-4 w-4 rounded-full bg-border flex items-center justify-center group-hover:scale-110 transition-transform">
                                                 <div className="h-2 w-2 rounded-full bg-muted-foreground"></div>
                                             </div>
                                         </div>
-                                        <div className="ml-12 p-4 rounded-md transition-all duration-200 hover:bg-accent">
+                                        <div className="ml-10 p-2 rounded-md transition-all duration-200 hover:bg-accent sm:ml-12 sm:p-4">
                                             <div className="flex flex-col sm:flex-row justify-between items-start">
                                                 <div>
                                                     <h4 className="text-foreground">{role.role}</h4>
@@ -447,7 +447,7 @@ function ExperienceGroupCard({ item }: { item: any }) {
                     </div>
                 </div>
                 {item.roles.length > 2 && (
-                    <div className="mt-6 ml-12">
+                    <div className="mt-6 ml-10 sm:ml-12">
                         <Button
                             variant="ghost"
                             onClick={() => setShowAll(!showAll)}
@@ -806,3 +806,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
