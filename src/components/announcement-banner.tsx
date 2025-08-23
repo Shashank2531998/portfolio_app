@@ -27,27 +27,29 @@ export function AnnouncementBanner() {
   return (
     <div className="relative bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-center gap-x-6 py-3">
-          <div className="flex-grow text-center">
-            <p className="text-sm font-semibold flex items-center justify-center gap-2">
-              <GraduationCap className="h-5 w-5" />
-              Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)
+        <div className="relative flex items-center justify-between gap-x-6 py-3">
+          <div className="flex-1 text-center sm:text-left">
+            <p className="text-sm font-semibold flex items-center justify-center sm:justify-start gap-2">
+              <GraduationCap className="h-5 w-5 flex-shrink-0" />
+              <span>Open to Master’s Thesis (Start: Oct 2026, Duration: ~6 months)</span>
             </p>
-            <p className="text-sm mt-1">
-              I am seeking a thesis host in Schengen countries + Switzerland, focusing on representation learning, self-supervised learning, and multimodal AI with applications in healthcare and robotics.
-            </p>
-            <p className="text-sm mt-2">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="underline font-medium hover:text-primary">
-                Research Statement
-              </a>
-              <span className="mx-2">|</span>
-              <a href="mailto:shashank2531998@gmail.com" className="underline font-medium hover:text-primary">
-                Email Me
-              </a>
-            </p>
+            <div className="mt-1 sm:pr-16">
+              <p className="text-sm">
+                I am seeking a thesis host in Schengen countries + Switzerland, focusing on representation learning, self-supervised learning, and multimodal AI with applications in healthcare and robotics.
+              </p>
+              <p className="text-sm mt-2">
+                <a href="#" target="_blank" rel="noopener noreferrer" className="underline font-medium hover:text-primary">
+                  Research Statement
+                </a>
+                <span className="mx-2">|</span>
+                <a href="mailto:shashank2531998@gmail.com" className="underline font-medium hover:text-primary">
+                  Email Me
+                </a>
+              </p>
+            </div>
           </div>
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-shrink-0 justify-end self-center">
-            <Button type="button" size="icon" variant="ghost" className="-m-1 h-6 w-6 p-0" onClick={handleDismiss}>
+          <div className="absolute top-2 right-4 sm:relative sm:top-auto sm:right-auto flex-shrink-0">
+            <Button type="button" size="icon" variant="ghost" className="-m-1.5 h-6 w-6 p-0" onClick={handleDismiss}>
               <span className="sr-only">Dismiss</span>
               <X className="h-5 w-5" aria-hidden="true" />
             </Button>
