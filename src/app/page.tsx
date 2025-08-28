@@ -144,6 +144,21 @@ const projectsData = [
     demoVideoUrl: "https://player.vimeo.com/video/1114075421?badge=0&autopause=0&player_id=0&app_id=58479"
   },
   {
+    title: "RAG Performance Comparison Tool",
+    description: "A Streamlit tool to compare Agentic vs. Basic RAG performance using Azure AI Search and OpenAI, with real-time metrics and quality scores.",
+    tags: ["RAG", "Streamlit", "Azure AI", "LLM Evaluation"],
+    subtitle: "Personal Project",
+    details: [
+        "Compare Agentic Retrieval vs. Basic RAG (hybrid search) side-by-side.",
+        "Supports document ingestion (PDFs, DOCX, TXT).",
+        "Evaluates relevance and groundedness via Azure AI Foundry.",
+        "Delivers real-time performance metrics like response time and quality scores.",
+        "Enables interactive testing and deep insight into trade-offs: Agentic Retrieval often yields up to 40% better relevance for complex queries, though it may take 2×–5× longer than hybrid search."
+    ],
+    githubUrl: "https://github.com/techie-shashank/RAG-Performance-Comparison-Tool",
+    demoVideoUrl: "https://player.vimeo.com/video/1114091962?badge=0&autopause=0&player_id=0&app_id=58479"
+  },
+  {
     title: "Medical Time Series Classification using Mamba",
     description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset to evaluate forecasting performance.",
     tags: ["Mamba", "LSTM", "PyTorch"],
@@ -831,5 +846,7 @@ function ContactSection() {
     </section>
   );
 }
+
+    
 
     
