@@ -35,14 +35,20 @@ interface ExperienceModalProps {
   detailsHeading?: string;
   youtubeVideoId?: string;
   dataAiHint?: string;
+  isInitiallyOpen?: boolean;
 }
 
-export function ExperienceModal({ title, subtitle, images, details, githubUrl, demoVideoUrl, link, detailsHeading, youtubeVideoId, dataAiHint }: ExperienceModalProps) {
+export function ExperienceModal({ title, subtitle, images, details, githubUrl, demoVideoUrl, link, detailsHeading, youtubeVideoId, dataAiHint, isInitiallyOpen = false }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
-  const [showGallery, setShowGallery] = useState(false);
+  const [showGallery, setShowGallery] = useState(isInitiallyOpen);
   const galleryRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const hasGallery = (images && images.length > 0) || youtubeVideoId || demoVideoUrl;
+
+
+  useEffect(() => {
+    setShowGallery(isInitiallyOpen);
+  }, [isInitiallyOpen]);
 
 
   useEffect(() => {
