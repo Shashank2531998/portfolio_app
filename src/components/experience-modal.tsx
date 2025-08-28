@@ -42,7 +42,7 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
   const [showGallery, setShowGallery] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const hasGallery = (images && images.length > 0) || youtubeVideoId;
+  const hasGallery = (images && images.length > 0) || youtubeVideoId || demoVideoUrl;
 
 
   useEffect(() => {
@@ -59,6 +59,20 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
       }, 150); // A slight delay to allow for the animation to start
     }
   }, [showGallery]);
+
+  const getGalleryButtonIcon = () => {
+    if (youtubeVideoId || demoVideoUrl) {
+        return <Video className="w-5 h-5" />;
+    }
+    return <Images className="w-5 h-5" />;
+  }
+  
+  const getGalleryButtonText = () => {
+    if (youtubeVideoId || demoVideoUrl) {
+        return "Watch Demo";
+    }
+    return "View Gallery";
+  }
 
   return (
     <DialogContent className="max-w-4xl w-full max-h-[90vh] flex flex-col p-0">
@@ -104,12 +118,12 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
                     {showGallery ? (
                         <>
                             <X className="w-5 h-5" />
-                            <span>Hide Gallery</span>
+                            <span>Hide Media</span>
                         </>
                     ) : (
                         <>
-                            {youtubeVideoId ? <Youtube className="w-5 h-5" /> : <Images className="w-5 h-5" />}
-                            <span>View Gallery</span>
+                            {getGalleryButtonIcon()}
+                            <span>{getGalleryButtonText()}</span>
                         </>
                     )}
                   </Button>
@@ -120,14 +134,14 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
                     )}
                   >
                     <div className={cn(showGallery && "animate-gallery-in")}>
-                       {youtubeVideoId && (
+                       {(youtubeVideoId || demoVideoUrl) && (
                           <div className="aspect-w-16 aspect-h-9 w-full">
                             <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
                                 <iframe
-                                    src={`https://www.youtube.com/embed/${youtubeVideoId}`}
-                                    title="YouTube video player"
+                                    src={youtubeVideoId ? `https://www.youtube.com/embed/${youtubeVideoId}`: demoVideoUrl!}
+                                    title="Video player"
                                     frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowFullScreen
                                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                                 ></iframe>
@@ -169,13 +183,6 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
                   <Github className="mr-2" /> View Code
                   </a>
               </Button>
-          )}
-          {demoVideoUrl && (
-            <Button asChild variant="secondary">
-                <a href={demoVideoUrl} target="_blank" rel="noopener noreferrer">
-                <Video className="mr-2" /> Watch Demo
-                </a>
-            </Button>
           )}
       </DialogFooter>
     </DialogContent>

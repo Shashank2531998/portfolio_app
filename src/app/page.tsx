@@ -273,17 +273,17 @@ export default function Home() {
             <div className="flex-1 py-12">
               <AboutSection />
               <Separator className="my-12" />
-              <ExperienceSection />
-              <Separator className="my-12" />
-              <EducationSection />
-              <Separator className="my-12" />
-              <SkillsSection />
-              <Separator className="my-12" />
               <ResearchInterestsSection />
               <Separator className="my-12" />
               <ProjectsSection />
               <Separator className="my-12" />
               <PublicationsSection />
+              <Separator className="my-12" />
+              <ExperienceSection />
+              <Separator className="my-12" />
+              <EducationSection />
+              <Separator className="my-12" />
+              <SkillsSection />
               <Separator className="my-12" />
               <AchievementsSection />
               <Separator className="my-12" />
@@ -640,13 +640,6 @@ function ProjectsSection() {
                       <Button asChild size="sm" variant="default" className="group-hover:bg-primary/90 transition-colors">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                           <Github /> View Code
-                        </a>
-                      </Button>
-                    )}
-                    {project.demoVideoUrl && (
-                       <Button asChild size="sm" variant="secondary">
-                        <a href={project.demoVideoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                            <Video /> Watch Demo
                         </a>
                       </Button>
                     )}
