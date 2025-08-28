@@ -140,7 +140,7 @@ const projectsData = [
       "It includes a Streamlit UI for human-in-the-loop interaction and an MCP server exposing the submission agent as a tool for interoperability with other agentic frameworks.",
       "While still an early prototype, it demonstrates the ability to design, integrate, and debug complex multi-agent workflows with real-world actions."
     ],
-    githubUrl: null,
+    githubUrl: "https://github.com/techie-shashank/ai_application_helper",
     demoVideoUrl: "https://player.vimeo.com/video/1114075421?badge=0&autopause=0&player_id=0&app_id=58479"
   },
   {
@@ -617,35 +617,46 @@ function ProjectsSection() {
           <h2 className="flex items-center gap-3">
             <FolderKanban /> Projects
           </h2>
-          <p className="text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground md-text-lg">
             A selection of projects that showcase my skills.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleProjects.map((project: any) => (
             <Dialog key={project.title}>
-              <DialogTrigger asChild>
-                <Card className="flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50 items-center text-center sm:items-start sm:text-left">
-                  <CardHeader>
-                    <CardTitle className="text-lg font-headline">{project.title}</CardTitle>
-                    <CardDescription className="pt-1">{project.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                      {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+              <div className="flex flex-col h-full">
+                <Card className="flex flex-col flex-grow group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer hover:border-primary/50 items-center text-center sm:items-start sm:text-left">
+                  <DialogTrigger asChild>
+                    <div className="flex-grow">
+                      <CardHeader>
+                        <CardTitle className="text-lg font-headline">{project.title}</CardTitle>
+                        <CardDescription className="pt-1">{project.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                          {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
+                        </div>
+                      </CardContent>
                     </div>
-                  </CardContent>
-                  <CardFooter className="flex items-center gap-4">
+                  </DialogTrigger>
+                  <CardFooter className="flex items-center gap-4 w-full">
                     {project.githubUrl && (
-                      <Button asChild size="sm" variant="default" className="group-hover:bg-primary/90 transition-colors">
+                      <Button asChild size="sm" variant="default" className="group-hover:bg-primary/90 transition-colors w-full sm:w-auto flex-1 sm:flex-initial">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                           <Github /> View Code
                         </a>
                       </Button>
                     )}
+                    {project.demoVideoUrl && (
+                       <DialogTrigger asChild>
+                         <Button size="sm" variant="secondary" className="w-full sm:w-auto flex-1 sm:flex-initial">
+                           <Video /> Watch Demo
+                         </Button>
+                       </DialogTrigger>
+                    )}
                   </CardFooter>
                 </Card>
-              </DialogTrigger>
+              </div>
               <ExperienceModal 
                 title={project.title} 
                 subtitle={project.subtitle}
@@ -801,3 +812,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
