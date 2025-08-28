@@ -17,7 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CheckCircle2, Github, Link as LinkIcon, Images, X, Youtube } from "lucide-react";
+import { CheckCircle2, Github, Link as LinkIcon, Images, X, Youtube, Video } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +27,7 @@ interface ExperienceModalProps {
   images?: string[];
   details: string[];
   githubUrl?: string | null;
+  demoVideoUrl?: string | null;
   link?: {
     url: string;
     text: string;
@@ -36,7 +37,7 @@ interface ExperienceModalProps {
   dataAiHint?: string;
 }
 
-export function ExperienceModal({ title, subtitle, images, details, githubUrl, link, detailsHeading, youtubeVideoId, dataAiHint }: ExperienceModalProps) {
+export function ExperienceModal({ title, subtitle, images, details, githubUrl, demoVideoUrl, link, detailsHeading, youtubeVideoId, dataAiHint }: ExperienceModalProps) {
   const isProjectModal = githubUrl !== undefined;
   const [showGallery, setShowGallery] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -161,13 +162,20 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, l
             )}
         </div>
       </div>
-       <DialogFooter className="flex-shrink-0 p-6 border-t sm:justify-start">
+       <DialogFooter className="flex-shrink-0 p-6 border-t sm:justify-start flex-wrap gap-2">
           {githubUrl && (
               <Button asChild>
                   <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2" /> View Code
                   </a>
               </Button>
+          )}
+          {demoVideoUrl && (
+            <Button asChild variant="secondary">
+                <a href={demoVideoUrl} target="_blank" rel="noopener noreferrer">
+                <Video className="mr-2" /> Watch Demo
+                </a>
+            </Button>
           )}
       </DialogFooter>
     </DialogContent>

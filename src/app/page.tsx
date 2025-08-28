@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy, Link as LinkIcon, Lightbulb, ChevronDown } from 'lucide-react';
+import { Download, Briefcase, GraduationCap, Code, Mail, Layers, FolderKanban, Database, BrainCircuit, Globe, Wrench, Award, List, User, Heart, Gamepad2, Mountain, BookOpen, CheckCircle2, Github, Linkedin, MapPin, Circle, Music, Trophy, Link as LinkIcon, Lightbulb, ChevronDown, Video } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -129,6 +129,20 @@ const educationData = [
 ];
 
 const projectsData = [
+   {
+    title: "AI Application Helper",
+    description: "A prototype multi-agent system that automates application drafting and submission using LangChain and LangGraph.",
+    tags: ["Multi-Agent Systems", "LangChain", "LangGraph", "Streamlit UI", "Python"],
+    subtitle: "Personal Project",
+    details: [
+      "Designed a multi-agent system that automates application drafting and submission.",
+      "The system orchestrates modular agents for data ingestion, profile summarization, content drafting, validation, and browser-based submission, coordinated through LangChain/LangGraph.",
+      "It includes a Streamlit UI for human-in-the-loop interaction and an MCP server exposing the submission agent as a tool for interoperability with other agentic frameworks.",
+      "While still an early prototype, it demonstrates the ability to design, integrate, and debug complex multi-agent workflows with real-world actions."
+    ],
+    githubUrl: null,
+    demoVideoUrl: "https://player.vimeo.com/video/1114075421?badge=0&autopause=0&player_id=0&app_id=58479"
+  },
   {
     title: "Medical Time Series Classification using Mamba",
     description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset to evaluate forecasting performance.",
@@ -259,17 +273,17 @@ export default function Home() {
             <div className="flex-1 py-12">
               <AboutSection />
               <Separator className="my-12" />
-              <ResearchInterestsSection />
-              <Separator className="my-12" />
-              <ProjectsSection />
-              <Separator className="my-12" />
-              <PublicationsSection />
-              <Separator className="my-12" />
               <ExperienceSection />
               <Separator className="my-12" />
               <EducationSection />
               <Separator className="my-12" />
               <SkillsSection />
+              <Separator className="my-12" />
+              <ResearchInterestsSection />
+              <Separator className="my-12" />
+              <ProjectsSection />
+              <Separator className="my-12" />
+              <PublicationsSection />
               <Separator className="my-12" />
               <AchievementsSection />
               <Separator className="my-12" />
@@ -621,15 +635,22 @@ function ProjectsSection() {
                       {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
                     </div>
                   </CardContent>
-                  {project.githubUrl && (
-                    <CardFooter>
+                  <CardFooter className="flex items-center gap-4">
+                    {project.githubUrl && (
                       <Button asChild size="sm" variant="default" className="group-hover:bg-primary/90 transition-colors">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                           <Github /> View Code
                         </a>
                       </Button>
-                    </CardFooter>
-                  )}
+                    )}
+                    {project.demoVideoUrl && (
+                       <Button asChild size="sm" variant="secondary">
+                        <a href={project.demoVideoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                            <Video /> Watch Demo
+                        </a>
+                      </Button>
+                    )}
+                  </CardFooter>
                 </Card>
               </DialogTrigger>
               <ExperienceModal 
@@ -638,6 +659,7 @@ function ProjectsSection() {
                 images={project.images} 
                 details={project.details}
                 githubUrl={project.githubUrl}
+                demoVideoUrl={project.demoVideoUrl}
                 detailsHeading="Key Features"
               />
             </Dialog>
@@ -786,5 +808,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
