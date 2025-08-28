@@ -103,17 +103,6 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
       </DialogHeader>
       <div ref={scrollContainerRef} className="flex-grow overflow-y-auto">
         <div className="p-6 space-y-6">
-            <div>
-              {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
-              <ul className="space-y-3">
-                {details.map((point, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
-                    <span className="text-muted-foreground">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
             {hasGallery && (
               <div ref={galleryRef}>
                   <Button
@@ -180,6 +169,17 @@ export function ExperienceModal({ title, subtitle, images, details, githubUrl, d
                   </div>
               </div>
             )}
+            <div>
+              {detailsHeading && <h4 className="font-semibold text-foreground text-xl mb-4">{detailsHeading}</h4>}
+              <ul className="space-y-3">
+                {details.map((point, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
+                    <span className="text-muted-foreground">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
         </div>
       </div>
        <DialogFooter className="flex-shrink-0 p-6 border-t sm:justify-start flex-wrap gap-2">
