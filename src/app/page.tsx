@@ -129,86 +129,86 @@ const educationData = [
 ];
 
 const projectsData = [
-   {
+  {
     title: "AI Application Helper",
-    description: "A prototype multi-agent system that automates application drafting and submission using LangChain and LangGraph.",
-    tags: ["Multi-Agent Systems", "LangChain", "LangGraph", "Streamlit UI", "Python"],
-    subtitle: "Personal Project",
+    description: "A prototype multi-agent system that automates application drafting and submission with LangChain / LangGraph and browser-use.",
+    tags: ["Multi-Agent Systems", "LangChain", "LangGraph", "browser-use", "MCP"],
+    subtitle: "Personal Project | Aug 2025 – Present",
     details: [
-      "Designed a multi-agent system that automates application drafting and submission.",
-      "The system orchestrates modular agents for data ingestion, profile summarization, content drafting, validation, and browser-based submission, coordinated through LangChain/LangGraph.",
-      "It includes a Streamlit UI for human-in-the-loop interaction and an MCP server exposing the submission agent as a tool for interoperability with other agentic frameworks.",
-      "While still an early prototype, it demonstrates the ability to design, integrate, and debug complex multi-agent workflows with real-world actions."
+      "Designed a multi-agent workflow for data ingestion, profile summarization, drafting, validation, and browser-based automated submission",
+      "Coordinated agents using LangChain/LangGraph and exposed interoperability via MCP server",
+      "Built a Streamlit UI for human-in-the-loop validation and debugging of real-world workflows",
     ],
     githubUrl: "https://github.com/techie-shashank/ai_application_helper",
     demoVideoUrl: "https://player.vimeo.com/video/1114075421?badge=0&autopause=0&player_id=0&app_id=58479"
   },
   {
     title: "RAG Performance Comparison Tool",
-    description: "A Streamlit tool to compare Agentic vs. Basic RAG performance using Azure AI Search and OpenAI, with real-time metrics and quality scores.",
-    tags: ["RAG", "Streamlit", "Azure AI", "LLM Evaluation"],
-    subtitle: "Personal Project",
+    description: "Tool to evaluate Agentic Retrieval vs. Hybrid Search using Azure AI Search and OpenAI, with real-time evaluation metrics.",
+    tags: ["RAG", "Agentic Retrieval", "Azure AI"],
+    subtitle: "Personal Project | Jul 2025 – Aug 2025",
     details: [
-        "Compare Agentic Retrieval vs. Basic RAG (hybrid search) side-by-side.",
-        "Supports document ingestion (PDFs, DOCX, TXT).",
-        "Evaluates relevance and groundedness via Azure AI Foundry.",
-        "Delivers real-time performance metrics like response time and quality scores.",
-        "Enables interactive testing and deep insight into trade-offs: Agentic Retrieval often yields up to 40% better relevance for complex queries, though it may take 2×–5× longer than hybrid search."
+      "Developed a framework to compare Agentic Retrieval vs. Hybrid Search (vector + keyword)",
+      "Supported ingestion of PDFs, DOCX, and TXT for side-by-side retrieval evaluation",
+      "Integrated Azure AI Services, including Search, Document Intelligence, Blob Storage, and OpenAI models",
+      "Found Agentic Retrieval improved relevance by ~40% for complex queries, at 2–5× higher latency"
     ],
     githubUrl: "https://github.com/techie-shashank/RAG-Performance-Comparison-Tool",
     demoVideoUrl: "https://player.vimeo.com/video/1114091962?badge=0&autopause=0&player_id=0&app_id=58479"
   },
   {
     title: "Medical Time Series Classification using Mamba",
-    description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset to evaluate forecasting performance.",
-    tags: ["Mamba", "LSTM", "PyTorch"],
-    subtitle: "Apr 2025 - Present | Pattern Recognition Lab, FAU",
+    description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical dataset.",
+    tags: ["Mamba", "LSTM", "PyTorch", "Time Series"],
+    subtitle: "Academic Project | Apr 2025 – Present | Pattern Recognition Lab, FAU",
     details: [
-      "Compared Mamba and LSTM models for binary classification on the PTB-XL medical time series dataset.",
-      "Evaluated forecasting performance to determine the more effective model for medical time series analysis."
+      "Benchmarked Mamba vs. LSTM models for binary classification on PTB-XL medical ECG dataset",
+      "Analyzed multi-label classification performance and identified architecture trade-offs for medical time series"
     ],
     githubUrl: "https://github.com/techie-shashank/mamba_ts_forecasting"
   },
   {
     title: "Tool Action Recognition",
-    description: "Evaluated semi-supervised learning strategies using LSTM and TCN models for tool action recognition on an industrial tool tracking dataset.",
+    description: "Evaluated semi-supervised learning strategies for tool action recognition on industrial datasets.",
     tags: ["Semi-Supervised Learning", "LSTM", "TCN", "PyTorch"],
-    subtitle: "Apr 2025 - Jul 2025 | Machine Learning and Data Analytics Lab, FAU",
+    subtitle: "Academic Project | Apr 2025 – Jul 2025 | Machine Learning & Data Analytics Lab, FAU",
     details: [
-      "Evaluated semi-supervised learning strategies for tool action recognition.",
-      "Utilized LSTM and TCN models on an industrial tool tracking dataset to improve recognition accuracy with limited labeled data."
+      "Tested semi-supervised approaches with LSTM and TCN models on an industrial tool-tracking dataset",
+      "Improved recognition accuracy with limited labeled data"
     ],
     githubUrl: "https://github.com/techie-shashank/Tool_Action_Recognition"
   },
   {
     title: "High-Precision 3D Surface Reconstruction",
-    description: "Built a 3D reconstruction pipeline using phase-shifting algorithms and researched deep learning methods to improve accuracy.",
-    tags: ["3D Reconstruction", "Computer Vision", "Deep Learning", "PyTorch"],
-    subtitle: "Oct 2024 - Present | Institute for Factory Automation and Production Systems",
+    description: "3D reconstruction pipeline using phase-shifting algorithms and deep learning for pose estimation.",
+    tags: ["3D Reconstruction", "Computer Vision", "Structured Light", "Deep Learning"],
+    subtitle: "Academic Project | Oct 2024 – Present | Institute for Factory Automation & Production Systems",
     details: [
-      "Built a 3D reconstruction pipeline using phase-shifting algorithms for high-precision results.",
-      "Researched and integrated deep learning methods to improve accuracy for 6DoF pose estimation.",
-      "Focused on creating robust and accurate 3D models from structured light patterns."
+      "Built a structured-light based 3D reconstruction pipeline using phase-shifting algorithms",
+      "Researched deep learning methods to improve accuracy for 6DoF pose estimation",
+      "Focused on generating robust, high-precision 3D surface models"
     ],
     githubUrl: null
   },
   {
     title: "Marksheet Parser",
-    description: "Designed and implemented Machine learning algorithms to extract structural features from high school marksheet images with 90% accuracy.",
-    tags: ["Tesseract OCR", "OpenCV", "Machine Learning", "Python"],
-    subtitle: "Jun 2018 - Jul 2018",
+    description: "Extracted structural features from high school marksheet images with ~90% accuracy using ML and OCR.",
+    tags: ["OCR", "OpenCV", "Machine Learning", "Python"],
+    subtitle: "Internship Project | Jun 2018 – Jul 2018",
     details: [
-      "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images."
+      "Designed and implemented ML algorithms for parsing marksheet images",
+      "Achieved ~90% accuracy in extracting structural and tabular features"
     ],
     githubUrl: "https://github.com/techie-shashank/Marksheet-parser"
   }
 ];
 
 const skillsData = {
-  "Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
-  "Machine Learning & AI": ["PyTorch", "OpenCV", "ROS2", "Agentic AI", "RAG"],
+  "Machine Learning & AI": ["RAG", "LangChain", "LangGraph", "Browser-Use", "Azure AI", "PyTorch", "OpenCV"],
+  "Programming Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
   "Web Development": ["Django/DRF (Proficient)", "React", "Redux", "Angular"],
-  "Dev Tools": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
+  "DevOps & Cloud": ["Docker", "AWS", "Azure", "Jenkins"],
+  "Tools & Monitoring": ["Git", "JIRA", "GitHub Copilot", "PyCharm", "VS Code"]
 };
 
 const achievementsData = [
@@ -381,7 +381,8 @@ const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                     <TypewriterEffect taglines={taglines} />
                 </div>
                 <p className="max-w-[600px] mx-auto text-muted-foreground md:text-lg">
-                    I design and build intelligent software and AI systems that solve real-world problems.
+                    I design and build intelligent software and AI systems that solve real-world problems. 
+                    From multi-agent workflows to Retrieval-Augmented Generation platforms, I thrive at the intersection of applied machine learning and scalable software engineering.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Button asChild size="lg">
@@ -411,7 +412,7 @@ function AboutSection() {
                         <User /> About Me
                     </h2>
                     <p className="text-muted-foreground md:text-lg leading-relaxed">
-                        I’m Shashank — a Software Developer and AI Researcher passionate about building intelligent systems that create real-world impact. With 5+ years of experience across startups and global companies, I’ve worked on everything from scalable web platforms to generative AI solutions at Siemens Healthineers. Currently pursuing my Master’s in AI at FAU Erlangen, I focus on medical AI, computer vision, and time-series forecasting, while also exploring innovation through FAU’s Digital Tech Fellows program.
+                    I’m a Master’s student in Artificial Intelligence at FAU Erlangen with a background in full-stack software engineering. I specialize in building and evaluating AI systems, particularly Retrieval-Augmented Generation and agentic workflows. My work spans industry projects, academic research, and personal projects that turn AI concepts into deployable software. I’m passionate about bridging the gap between research and application, and I thrive in fast-paced environments where ideas are prototyped, tested, and shipped.
                     </p>
                 </div>
             </div>
