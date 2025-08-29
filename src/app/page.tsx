@@ -288,11 +288,7 @@ export default function Home() {
             <div className="flex-1 py-12">
               <AboutSection />
               <Separator className="my-12" />
-              <ResearchInterestsSection />
-              <Separator className="my-12" />
               <ProjectsSection />
-              <Separator className="my-12" />
-              <PublicationsSection />
               <Separator className="my-12" />
               <ExperienceSection />
               <Separator className="my-12" />
