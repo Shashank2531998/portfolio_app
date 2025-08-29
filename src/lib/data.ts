@@ -132,7 +132,7 @@ export const projectsData = [
       "Found Agentic Retrieval improved relevance by ~40% for complex queries, at 2–5× higher latency"
     ],
     githubUrl: "https://github.com/techie-shashank/RAG-Performance-Comparison-Tool",
-    demoVideoUrl: "https://player.vimeo.com/video/1114091962?badge=0&autopause=0&player_id=0&app_id=58479"
+    demoVideoUrl: "https://player.vimeo.com/video/1114091962"
   },
   {
     title: "Medical Time Series Classification using Mamba",
