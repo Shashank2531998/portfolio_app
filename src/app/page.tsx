@@ -335,13 +335,13 @@ export default function Home() {
             <div className="flex-1 py-12">
               <AboutSection />
               <Separator className="my-12" />
-              <ProjectsSection />
-              <Separator className="my-12" />
               <ExperienceSection />
               <Separator className="my-12" />
               <EducationSection />
               <Separator className="my-12" />
               <SkillsSection />
+              <Separator className="my-12" />
+              <ProjectsSection />
               <Separator className="my-12" />
               <AchievementsSection />
               <Separator className="my-12" />
@@ -638,13 +638,9 @@ function SkillsSection() {
 }
 
 function ProjectsSection() {
-  const [showAll, setShowAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [initialGalleryOpen, setInitialGalleryOpen] = useState(false);
-
-  const visibleProjects = showAll ? projectsData : projectsData.slice(0, 3);
-  const hiddenProjectsCount = projectsData.length - 3;
   
   const openModal = (project: any, galleryOpen = false) => {
     setSelectedProject(project);
@@ -671,7 +667,7 @@ function ProjectsSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {visibleProjects.map((project: any) => (
+          {projectsData.map((project: any) => (
             <div key={project.title} className="flex flex-col h-full">
               <Card className="flex flex-col flex-grow group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 items-center text-center sm:items-start sm:text-left">
                 <div className="flex-grow w-full cursor-pointer" onClick={() => openModal(project, false)}>
@@ -718,20 +714,6 @@ function ProjectsSection() {
                 />
             )}
         </Dialog>
-
-
-        {projectsData.length > 3 && (
-          <div className="mt-8 text-center">
-            <Button
-              variant="ghost"
-              onClick={() => setShowAll(!showAll)}
-              className="text-foreground hover:no-underline text-sm font-semibold flex items-center gap-2"
-            >
-              {showAll ? 'Show Less' : `Show ${hiddenProjectsCount} More`}
-              <ChevronDown className={cn("transform transition-transform", showAll && "rotate-180")} />
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );
@@ -795,10 +777,6 @@ function AchievementsSection() {
 }
 
 function ExtracurricularSection() {
-    const [showAll, setShowAll] = useState(false);
-    const visibleActivities = showAll ? extracurricularData : extracurricularData.slice(0, 3);
-    const hiddenActivitiesCount = extracurricularData.length - 3;
-
     return (
         <section id="extracurricular" className="py-12">
              <div className="max-w-4xl">
@@ -811,7 +789,7 @@ function ExtracurricularSection() {
                     </p>
                 </div>
                  <div className="space-y-4">
-                    {visibleActivities.map((activity: any, index) => (
+                    {extracurricularData.map((activity: any, index) => (
                         <Dialog key={index}>
                             <DialogTrigger asChild>
                                 <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
@@ -849,19 +827,6 @@ function ExtracurricularSection() {
                         </Dialog>
                     ))}
                 </div>
-
-                {extracurricularData.length > 3 && (
-                    <div className="mt-8 text-center">
-                        <Button
-                            variant="ghost"
-                            onClick={() => setShowAll(!showAll)}
-                            className="text-foreground hover:no-underline text-sm font-semibold flex items-center gap-2"
-                        >
-                            {showAll ? 'Show Less' : `Show ${hiddenActivitiesCount} More`}
-                            <ChevronDown className={cn("transform transition-transform", showAll && "rotate-180")} />
-                        </Button>
-                    </div>
-                )}
             </div>
         </section>
     );
