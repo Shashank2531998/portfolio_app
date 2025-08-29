@@ -206,7 +206,7 @@ const projectsData = [
 
 const skillsData = {
   "Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
-  "Machine Learning & AI": ["PyTorch", "OpenCV", "ROS2"],
+  "Machine Learning & AI": ["PyTorch", "OpenCV", "ROS2", "Agentic AI", "RAG"],
   "Web Development": ["Django/DRF (Proficient)", "React", "Redux", "Angular"],
   "Dev Tools": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
 };
@@ -867,3 +867,5 @@ function ContactSection() {
     </section>
   );
 }
+
+    
