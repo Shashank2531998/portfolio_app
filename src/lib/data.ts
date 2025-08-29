@@ -3,21 +3,21 @@ import type { Code, BrainCircuit, Database, Globe, Wrench, Award, List, User, He
 
 export const experienceData = [
   {
-    role: "Working Student - Generative AI Services",
+    role: "Working Student - Generative AI Developer",
     company: "Siemens Healthineers AG, Erlangen, Germany",
     date: "Dec 2024 - Present",
-    description: "Enhancing an internal RAG platform and developing Angular applications.",
+    description: "Enhanced an internal RAG-based Template/Tender Assistant platform and improved backend reliability.",
     logoUrl: "/assets/Siemens_Healthineers_logo.svg.png",
     details: [
-      "Enhancing and optimizing the internal RAG platform to improve performance and scalability",
-      "Developing Angular-based web applications and writing end-to-end (e2e) test cases to ensure robust and reliable software",
+      "Enhanced and optimized the internal RAG-based Template/Tender Assistant platform to improve performance and retrieval workflows",
+      "Developed Angular-based web applications and wrote end-to-end (e2e) test cases to ensure robust and reliable software",
     ]
   },
   {
     role: "Working Student - Full Stack Web Developer",
     company: "heatbeat engineering GmbH, Nürnberg, Germany",
     date: "Jan 2024 - Nov 2024",
-    description: "Developed data visualizations for a digital twin and optimized website performance.",
+    description: "Created advanced data visualizations and optimized website performance.",
     logoUrl: "/assets/heatbeat-logo-header.svg",
     details: [
       "Created advanced data visualizations for the digital twin application using Python, React, and Plotly, enhancing user insights",
@@ -28,7 +28,6 @@ export const experienceData = [
       "/assets/heatbeat_onsite_meeting_3.png",
       "/assets/heatbeat_glasswall.jpeg",
       "/assets/heatbeat-onsite-meeting.jpg"
-      
     ],
   },
   {
@@ -38,7 +37,7 @@ export const experienceData = [
       {
         role: "Senior Software Developer",
         date: "Oct 2021 - Sep 2023",
-        description: "Led a team of 6 developers, mentored junior engineers, and managed agile ceremonies.",
+        description: "Coordinated a team of 6 developers and managed agile ceremonies.",
         details: [
           "Coordinated a team of 6 developers, serving 100k+ users, and mentored 4 junior developers through design/code reviews and SCRUM ceremonies (stand-ups, sprint planning, retros)",
           "Planned and executed projects exceeding 1,200 hours, collaborating with the Product team to refine requirements and deliver scalable solutions",
@@ -47,20 +46,20 @@ export const experienceData = [
       {
         role: "Software Developer",
         date: "Jan 2019 - Oct 2021",
-        description: "Delivered 5+ major modules using Python/Django, boosting revenue by 20%.",
+        description: "Managed HomeTool project and delivered multiple Python/Django modules, boosting revenue by 20%.",
         details: [
           "Solely managed the HomeTool project, integrating third-party tools (e.g., Stripe) and affiliate marketing software, boosting revenue by 20%",
           "Delivered 5+ major modules using Python and Django/DRF, expanding 2 marquee customers by 50% and acquiring 10+ new clients",
           "Managed sprint releases, deployments, hotfixes, and performance monitoring",
-          "Improved security with AWS GuardDuty and cut costs by automating an SSL certificate renewal",
+          "Improved security with AWS GuardDuty and reduced costs by automating SSL certificate renewal",
         ]
       },
       {
         role: "Software Developer - Summer Intern",
         date: "Jun 2018 - Jul 2018",
-        description: "Developed a Marksheet Parser using ML, achieving 90% accuracy.",
+        description: "Designed and implemented ML algorithms for Marksheet Parser with ~90% accuracy.",
         details: [
-          "Designed and Implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images"
+          "Designed and implemented ML algorithms for the Marksheet Parser project, achieving close to 90% accuracy in extracting structural features from high school marksheet images"
         ]
       },
     ],
@@ -78,11 +77,11 @@ export const educationData = [
     role: "Master of Science, Artificial Intelligence",
     company: "Friedrich-Alexander Universität, Erlangen, Germany",
     date: "Oct 2023 - Oct 2026",
-    description: "Focusing on advanced topics in machine learning, computer vision, and natural language processing.",
+    description: "Focusing on advanced topics in machine learning, computer vision, and time series.",
     logoUrl: "/assets/fau_logo_2.jpg",
     details: [
-        "Key coursework: Deep Learning, Reinforcement Learning, Medical Image Analysis, NLP.",
-        "Member of the university AI research group, contributing to ongoing projects.",
+        "Grade: 1.7",
+        "Key coursework: Deep Learning, Computer Vision, Advanced Deep learning for Time Series, and Human-Computer Interaction."
     ],
     images: [
       "/assets/fau_firstday_final.jpg",
@@ -96,6 +95,7 @@ export const educationData = [
     description: "Graduated with a comprehensive foundation in computer science and information technology.",
     logoUrl: "/assets/ymca_logo.png",
     details: [
+        "Grade: 1.8",
         "Excelled in Data Structures, Algorithms, Database Management, and Web Technologies.",
         "Final year project on a machine learning-based recommendation system.",
     ],
