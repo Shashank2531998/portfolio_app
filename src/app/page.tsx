@@ -615,7 +615,7 @@ function SkillsSection() {
         </div>
         <Card>
             <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                <div className="grid grid-cols-1 gap-y-10">
                     {Object.entries(skillsData).map(([category, skills]) => {
                         const Icon = skillIcons[category] || Code;
                         return (
@@ -672,14 +672,14 @@ function ProjectsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project: any) => (
             <div key={project.title} className="flex flex-col h-full">
-              <Card className="flex flex-col flex-grow group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 items-center text-center sm:items-start sm:text-left">
+              <Card className="flex flex-col flex-grow group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50">
                 <div className="flex-grow w-full cursor-pointer" onClick={() => openModal(project, false)}>
                   <CardHeader>
-                    <CardTitle className="text-lg font-headline">{project.title}</CardTitle>
+                    <CardTitle className="font-headline">{project.title}</CardTitle>
                     <CardDescription className="pt-1">{project.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                    <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag: string) => <Badge key={tag} variant="secondary" className="font-body text-xs">{tag}</Badge>)}
                     </div>
                   </CardContent>
