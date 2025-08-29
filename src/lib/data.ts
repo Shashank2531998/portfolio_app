@@ -118,7 +118,7 @@ export const projectsData = [
       "Built a Streamlit UI for human-in-the-loop validation and debugging of real-world workflows",
     ],
     githubUrl: "https://github.com/techie-shashank/ai_application_helper",
-    demoVideoUrl: "https://player.vimeo.com/video/1114075421?badge=0&autopause=0&player_id=0&app_id=58479"
+    demoVideoUrl: "https://player.vimeo.com/video/1114075421"
   },
   {
     title: "RAG Performance Comparison Tool",
