@@ -356,7 +356,7 @@ export default function Home() {
 }
 
 const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
-    const taglines = ["AI Researcher", "Software Developer", "Innovator"];
+    const taglines = ["AI Engineer", "Software Developer", "Innovator"];
     return (
         <section id="home" className="relative h-[80vh] flex items-center justify-center text-center" ref={ref}>
             <div className="absolute inset-0 z-0">
