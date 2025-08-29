@@ -6,9 +6,18 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 export default {
   darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/calendly-button.tsx',
+    './src/components/card.tsx',
+    './src/components/experience-modal.tsx',
+    './src/components/footer.tsx',
+    './src/components/google-analytics.tsx',
+    './src/components/header.tsx',
+    './src/components/interactive-blur-overlay.tsx',
+    './src/components/left-sidebar.tsx',
+    './src/components/neural-network-canvas.tsx',
+    './src/components/typewriter-effect.tsx',
+    './src/components/ui/**/*.tsx',
   ],
   theme: {
     container: {

@@ -18,7 +18,6 @@ import { Separator } from "@/components/ui/separator";
 import { TypewriterEffect } from "@/components/typewriter-effect";
 import React, { useState, useEffect } from 'react';
 import { LeftSidebar } from "@/components/left-sidebar";
-import { AnnouncementBanner } from "@/components/announcement-banner";
 import { cn } from "@/lib/utils";
 import { CalendlyButton } from "@/components/calendly-button";
 
@@ -324,7 +323,6 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <AnnouncementBanner />
       <main>
         <HeroSection ref={heroRef} />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
