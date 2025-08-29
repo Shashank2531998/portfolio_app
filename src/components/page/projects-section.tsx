@@ -41,8 +41,8 @@ export function ProjectsSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project: any) => (
-            <div key={project.title} className="flex flex-col h-full">
-              <Card className="flex flex-col flex-grow group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50">
+            <div key={project.title} className="flex">
+              <Card className="group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50">
                 <div className="flex-grow w-full cursor-pointer" onClick={() => openModal(project, false)}>
                   <CardHeader>
                     <CardTitle className="font-headline">{project.title}</CardTitle>
@@ -54,10 +54,10 @@ export function ProjectsSection() {
                     </div>
                   </CardContent>
                 </div>
-                <CardFooter className="flex items-center gap-4 w-full">
+                <CardFooter className="flex items-center gap-2 w-full">
                   {project.githubUrl && (
                     <Button asChild size="sm" variant="default" className="group-hover:bg-primary/90 transition-colors w-full sm:w-auto flex-1 sm:flex-initial">
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                         <Github /> View Code
                       </a>
                     </Button>
