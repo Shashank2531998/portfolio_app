@@ -28,12 +28,12 @@ const navLinks = [
   { id: "education", label: "Education", href: "/#education" },
   { id: "skills", label: "Skills", href: "/#skills" },
   { id: "achievements", label: "Achievements", href: "/#achievements" },
-  { id: "extracurricular", label: "Extracurricular", href: "/activities" },
+  { id: "extracurricular", label: "Extracurricular", href: "/#extracurricular" },
   { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
 const moreLinks = [
-    { href: "/activities#hobbies", label: "Hobbies" },
+    { href: "/activities", label: "Hobbies" },
     { href: "/blog", label: "Blog" },
 ]
 

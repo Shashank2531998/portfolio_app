@@ -211,25 +211,6 @@ const skillsData = {
   "Dev Tools": ["Git", "JIRA", "Azure DevOps", "InsightOps", "Sentry", "PyCharm", "VS Code"],
 };
 
-const researchInterestsData = [
-    {
-        title: "Representation Learning",
-        description: "Designing robust feature spaces for heterogeneous data."
-    },
-    {
-        title: "Self-Supervised Learning",
-        description: "Contrastive, masked, and generative approaches for unlabeled medical data."
-    },
-    {
-        title: "Multimodal Fusion",
-        description: "Combining signals (e.g., ECG/EEG), images (radiology, microscopy), and text (reports)."
-    },
-    {
-        title: "Sequence Modeling",
-        description: "Applying state-space models (e.g., Mamba) and Transformers for clinical time series."
-    }
-];
-
 const achievementsData = [
     {
         title: "Digital Tech Fellows",
@@ -248,6 +229,72 @@ const achievementsData = [
             url: "https://www.dta.fau.de/student-program/",
             text: "Learn More"
         }
+    }
+];
+
+const extracurricularData = [
+    {
+        title: "AI Agent Hackathon @ Microsoft, Munich",
+        date: "Aug 2025",
+        description: "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
+        details: [
+            "Collaborated in a team to design an agentic AI system that streamlines workplace issue resolution by connecting employees with the right experts using Azure AI Foundry.",
+            "Gained hands-on experience in rapid prototyping, teamwork, and applying AI to solve real-world organizational challenges."
+        ],
+        logoUrl: "/assets/ms_logo.png",
+        images: [
+          "/assets/ms_agent_hackathon.jpeg",
+          "/assets/microsoft_hackathon.jpeg"
+        ],
+    },
+    {
+        title: "Healthcare Hackathon Bavaria",
+        date: "Oct 2024",
+        description: "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform. Developed algorithms to assess patient risk factors, reducing diagnostic delays by 30%, in a 48-hour sprint with an interdisciplinary team.",
+        details: [
+            "Built an AI-driven prototype for electronic patient records (ePA) as a preventive health platform.",
+            "Developed algorithms to assess patient risk factors, reducing diagnostic delays by 30%, in a 48-hour sprint with an interdisciplinary team."
+        ],
+        logoUrl: "/assets/healthcare_hackathon_logo.svg",
+        images: [
+          "/assets/healthcare-hackathon-bayern-keyvisual.jpg",
+        ],
+        link: {
+          url: "https://www.bayern-innovativ.de/detail/de/veranstaltung/healthcare-hackathon-bayern-2024",
+          text: "Learn More"
+        },
+    },
+    {
+      title: "Cybersecurity Summer School @ Politehnica University of Timișoara",
+      date: "Jul 2024",
+      description: "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania. Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies.",
+      details: [
+          "Completed a summer school on cybersecurity at Politehnica University of Timișoara, Romania.",
+          "Learned about encryption, network security, and risk management, while exploring real-world cyberattacks and defense strategies."
+      ],
+      logoUrl: "/assets/best_logo.svg",
+      images: [
+        "/assets/timisoara_group.jpeg",
+        "/assets/timisoara.jpeg"
+      ],
+      link: {
+        url: "https://www.best.eu.org/event/details.jsp?activity=o1nrq9v",
+        text: "Learn More"
+      },
+    },
+    {
+        title: "Tensor Tournament",
+        date: "May 2024",
+        description: "Secured a Top-10 rank in a prestigious AI competition. Demonstrated expertise in Generative AI, Machine Learning, and advanced algorithms by solving cutting-edge research challenges.",
+        details: [
+            "Secured a Top-10 rank in a prestigious AI competition.",
+            "Demonstrated expertise in Generative AI, Machine Learning, and advanced algorithms by solving cutting-edge research challenges."
+        ],
+        logoUrl: "/assets/tensor_tournament_logo.png",
+        link: {
+          url: "https://www.mad.tf.fau.de/2024/04/02/the-tensor-tournament-t3-2024-is-here/",
+          text: "Learn More"
+        },
     }
 ];
 
@@ -297,6 +344,8 @@ export default function Home() {
               <SkillsSection />
               <Separator className="my-12" />
               <AchievementsSection />
+              <Separator className="my-12" />
+              <ExtracurricularSection />
               <Separator className="my-12" />
               <ContactSection />
             </div>
@@ -588,34 +637,6 @@ function SkillsSection() {
   );
 }
 
-function ResearchInterestsSection() {
-    return (
-        <section id="research" className="py-12">
-            <div className="max-w-4xl">
-                <div className="space-y-4 mb-12">
-                    <h2 className="flex items-center gap-3">
-                        <BrainCircuit /> Research Interests
-                    </h2>
-                     <p className="text-muted-foreground md:text-lg">
-                        My primary areas of focus in AI research.
-                    </p>
-                </div>
-                <div className="space-y-6">
-                    {researchInterestsData.map((interest, index) => (
-                        <div key={index}>
-                            <h4 className="flex items-center gap-2">
-                                <Lightbulb className="w-5 h-5 text-muted-foreground" />
-                                {interest.title}
-                            </h4>
-                            <p className="text-muted-foreground mt-1 ml-7">{interest.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
-
 function ProjectsSection() {
   const [showAll, setShowAll] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -716,40 +737,6 @@ function ProjectsSection() {
   );
 }
 
-
-function PublicationsSection() {
-    return (
-        <section id="publications" className="py-12">
-            <div className="max-w-4xl">
-                <div className="space-y-4 mb-12">
-                    <h2 className="flex items-center gap-3">
-                        <BookOpen /> Publications
-                    </h2>
-                     <p className="text-muted-foreground md:text-lg">
-                        My active research and future publication goals.
-                    </p>
-                </div>
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="flex items-center gap-3">
-                            <Lightbulb className="text-muted-foreground"/>
-                            Future Publications in Progress
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                        <p className="text-muted-foreground leading-relaxed">
-                            I am currently working on several projects in representation learning, multimodal AI, and healthcare applications, which I plan to develop into preprints and publications during my Master’s. Updates will be shared here soon.
-                        </p>
-                        <p className="text-muted-foreground">
-                            In the meantime, please see my <a href="#projects" className="text-foreground underline hover:no-underline font-medium">Projects</a> for detailed technical work.
-                        </p>
-                    </CardContent>
-                </Card>
-            </div>
-        </section>
-    );
-}
-
 function AchievementsSection() {
     return (
         <section id="achievements" className="py-12">
@@ -807,6 +794,79 @@ function AchievementsSection() {
     );
 }
 
+function ExtracurricularSection() {
+    const [showAll, setShowAll] = useState(false);
+    const visibleActivities = showAll ? extracurricularData : extracurricularData.slice(0, 3);
+    const hiddenActivitiesCount = extracurricularData.length - 3;
+
+    return (
+        <section id="extracurricular" className="py-12">
+             <div className="max-w-4xl">
+                <div className="space-y-4 mb-12">
+                    <h2 className="flex items-center gap-3">
+                        <List /> Extracurricular Activities
+                    </h2>
+                    <p className="text-muted-foreground md:text-lg">
+                        My involvement in activities outside of work and academics. Click on an entry to see more.
+                    </p>
+                </div>
+                 <div className="space-y-4">
+                    {visibleActivities.map((activity: any, index) => (
+                        <Dialog key={index}>
+                            <DialogTrigger asChild>
+                                <Card className="transition-all duration-300 hover:shadow-lg cursor-pointer hover:border-primary/50">
+                                  <CardContent className="p-6">
+                                    <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-start sm:text-left sm:gap-6">
+                                      {activity.logoUrl && (
+                                        <div className="flex-shrink-0">
+                                          <Image
+                                            src={activity.logoUrl}
+                                            alt={`${activity.title} logo`}
+                                            width={56}
+                                            height={56}
+                                            className="rounded-md object-contain aspect-square"
+                                            data-ai-hint="organization logo"
+                                          />
+                                        </div>
+                                      )}
+                                      <div className="flex-grow">
+                                        <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
+                                            <h4 className="text-foreground w-full">{activity.title}</h4>
+                                            {activity.date && <span className="text-sm text-muted-foreground font-semibold flex-shrink-0 text-left sm:text-right w-full sm:w-auto">{activity.date}</span>}
+                                        </div>
+                                        <p className="text-muted-foreground text-sm mt-1">{activity.description}</p>
+                                      </div>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                            </DialogTrigger>
+                            <ExperienceModal
+                                title={activity.title}
+                                details={activity.details}
+                                images={activity.images}
+                                link={activity.link}
+                            />
+                        </Dialog>
+                    ))}
+                </div>
+
+                {extracurricularData.length > 3 && (
+                    <div className="mt-8 text-center">
+                        <Button
+                            variant="ghost"
+                            onClick={() => setShowAll(!showAll)}
+                            className="text-foreground hover:no-underline text-sm font-semibold flex items-center gap-2"
+                        >
+                            {showAll ? 'Show Less' : `Show ${hiddenActivitiesCount} More`}
+                            <ChevronDown className={cn("transform transition-transform", showAll && "rotate-180")} />
+                        </Button>
+                    </div>
+                )}
+            </div>
+        </section>
+    );
+}
+
 function ContactSection() {
   return (
     <section id="contact" className="py-12">
@@ -842,7 +902,3 @@ function ContactSection() {
     </section>
   );
 }
-
-    
-
-    
