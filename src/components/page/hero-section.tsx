@@ -43,7 +43,7 @@ export const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                     </a>
                   </Button>
                   <Button asChild variant="secondary" size="lg">
-                    <a href="https://drive.google.com/file/d/1afI_K02Luqk0f8c2EYpasGwfj7IqJ85x/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://drive.google.com/uc?export=download&id=1afI_K02Luqk0f8c2EYpasGwfj7IqJ85x" target="_blank" rel="noopener noreferrer">
                       Download CV <Download className="ml-2" />
                     </a>
                   </Button>
