@@ -204,7 +204,7 @@ const projectsData = [
 ];
 
 const skillsData = {
-  "Machine Learning & AI": ["RAG", "LangChain", "LangGraph", "Browser-Use", "Azure AI", "PyTorch", "OpenCV"],
+  "Machine Learning & AI": ["RAG", "Agentic AI", "LangChain", "LangGraph", "Browser-Use", "Azure AI", "PyTorch", "OpenCV"],
   "Programming Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
   "Web Development": ["Django/DRF (Proficient)", "React", "Redux", "Angular"],
   "DevOps & Cloud": ["Docker", "AWS", "Azure", "Jenkins"],
@@ -594,45 +594,47 @@ function EducationSection() {
 }
 
 const skillIcons: { [key: string]: React.ElementType } = {
-  "Languages & Databases": Database,
   "Machine Learning & AI": BrainCircuit,
+  "Programming Languages & Databases": Database,
   "Web Development": Globe,
-  "Dev Tools": Wrench,
+  "DevOps & Cloud": Layers,
+  "Tools & Monitoring": Wrench,
 };
 
 function SkillsSection() {
   return (
     <section id="skills" className="py-12">
-      <div className="max-w-7xl">
+      <div className="max-w-4xl">
         <div className="space-y-4 mb-12">
           <h2 className="flex items-center gap-3">
-            <Layers /> Skills
+            <Code /> Skills & Expertise
           </h2>
           <p className="text-muted-foreground md:text-lg">
-            Technologies and tools I work with.
+            A summary of my technical capabilities.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {Object.entries(skillsData).map(([category, skills]) => {
-            const Icon = skillIcons[category] || Code;
-            return (
-              <Card key={category}>
-                <CardHeader>
-                  <CardTitle className="text-foreground flex items-center gap-3 text-xl">
-                    <Icon className="w-7 h-7" /> {category}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="font-body">{skill}</Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+        <Card>
+            <CardContent className="p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+                    {Object.entries(skillsData).map(([category, skills]) => {
+                        const Icon = skillIcons[category] || Code;
+                        return (
+                            <div key={category} className="space-y-3">
+                                <h3 className="text-lg font-semibold flex items-center gap-3">
+                                    <Icon className="w-6 h-6 text-muted-foreground" />
+                                    {category}
+                                </h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {skills.map((skill) => (
+                                        <Badge key={skill} variant="secondary" className="font-body text-sm">{skill}</Badge>
+                                    ))}
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </CardContent>
+        </Card>
       </div>
     </section>
   );
