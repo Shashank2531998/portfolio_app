@@ -24,7 +24,7 @@ export function LeftSidebar() {
                     <h1 className="text-xl font-bold font-headline text-foreground">
                       Shashank
                     </h1>
-                    <p className="text-sm text-muted-foreground font-medium">Software Developer · AI Engineer</p>
+                    <p className="text-sm text-muted-foreground font-medium">Software Developer · AI Researcher</p>
                 </div>
                 
                 <Separator />

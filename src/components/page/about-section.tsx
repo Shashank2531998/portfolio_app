@@ -12,7 +12,7 @@ export function AboutSection() {
                         <User /> About Me
                     </h2>
                     <p className="text-muted-foreground md:text-lg leading-relaxed">
-                    I’m a Master’s student in Artificial Intelligence at FAU Erlangen with a background in full-stack software engineering. I specialize in building and evaluating AI systems, particularly Retrieval-Augmented Generation and agentic workflows. My work spans industry projects, academic research, and personal projects that turn AI concepts into deployable software. I’m passionate about bridging the gap between research and application, and I thrive in fast-paced environments where ideas are prototyped, tested, and shipped.
+                    I’m a Master’s student in Artificial Intelligence at FAU Erlangen with a strong background in software development, deep learning, computer vision and time-series analysis. I build AI solutions that turn research into real-world impact, with experience in academic projects like ECG classification and multimodal action recognition, and industry applications at Siemens Healthineers.
                     </p>
                 </div>
             </div>

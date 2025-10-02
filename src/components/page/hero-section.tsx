@@ -33,8 +33,7 @@ export const HeroSection = React.forwardRef<HTMLDivElement>((props, ref) => {
                     <TypewriterEffect taglines={taglines} />
                 </div>
                 <p className="max-w-[600px] mx-auto text-muted-foreground md:text-lg">
-                    I design and build intelligent software and AI systems that solve real-world problems. 
-                    From multi-agent workflows to Retrieval-Augmented Generation platforms, I thrive at the intersection of applied machine learning and scalable software engineering.
+                    I design and build intelligent software and AI systems that solve real-world problems.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Button asChild size="lg">

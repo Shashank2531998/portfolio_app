@@ -9,8 +9,8 @@ export const experienceData = [
     description: "Enhanced an internal RAG-based Template/Tender Assistant platform and improved backend reliability.",
     logoUrl: "/assets/Siemens_Healthineers_logo.svg.png",
     details: [
-      "Enhanced and optimized the internal RAG-based Template/Tender Assistant platform to improve performance and retrieval workflows",
-      "Developed Angular-based web applications and wrote end-to-end (e2e) test cases to ensure robust and reliable software",
+      "Implemented and evaluated a POC demonstrating Agentic Retrieval, performing on par or better than hybrid (vector + text) search in an Azure AI Search-based RAG pipeline",
+      "Optimized index strategies in Azure AI Search, achieving storage and cost savings",
     ]
   },
   {
@@ -108,6 +108,38 @@ export const educationData = [
 
 export const projectsData = [
   {
+    title: "Medical Time Series Classification using Mamba",
+    description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical dataset.",
+    tags: ["Mamba", "LSTM", "PyTorch", "Time Series"],
+    subtitle: "Academic Project | Apr 2025 – Present | Pattern Recognition Lab, FAU",
+    details: [
+      "Developed a hybrid MAMBA + LSTM architecture for ECG signal classification, outperforming LSTM by 22% and MAMBA by 8%, demonstrating robust representation learning"
+    ],
+    githubUrl: "https://github.com/techie-shashank/mamba_ts_forecasting"
+  },
+  {
+    title: "Tool Action Recognition",
+    description: "Evaluated semi-supervised learning strategies for tool action recognition on industrial datasets.",
+    tags: ["Semi-Supervised Learning", "LSTM", "TCN", "PyTorch"],
+    subtitle: "Academic Project | Apr 2025 – Jul 2025 | Machine Learning & Data Analytics Lab, FAU",
+    details: [
+      "Achieved ~0.7 F1 score with only 10–25% labeled data, demonstrating strong generalization and potential for label-efficient training"
+    ],
+    githubUrl: "https://github.com/techie-shashank/Tool_Action_Recognition"
+  },
+  {
+    title: "High-Precision 3D Surface Reconstruction",
+    description: "3D reconstruction pipeline using phase-shifting algorithms and deep learning for pose estimation.",
+    tags: ["3D Reconstruction", "Computer Vision", "Structured Light", "Deep Learning"],
+    subtitle: "Academic Project | Oct 2024 – Present | Institute for Factory Automation & Production Systems",
+    details: [
+      "Built a structured-light based 3D reconstruction pipeline using phase-shifting algorithms",
+      "Researched deep learning methods to improve accuracy for 6DoF pose estimation",
+      "Focused on generating robust, high-precision 3D surface models"
+    ],
+    githubUrl: null
+  },
+  {
     title: "AI Application Helper",
     description: "A prototype multi-agent system that automates application drafting and submission with LangChain / LangGraph and browser-use.",
     tags: ["Multi-Agent Systems", "LangChain", "LangGraph", "browser-use", "MCP"],
@@ -135,40 +167,6 @@ export const projectsData = [
     demoVideoUrl: "https://player.vimeo.com/video/1114091962"
   },
   {
-    title: "Medical Time Series Classification using Mamba",
-    description: "Compared Mamba and LSTM models for binary classification on the PTB-XL medical dataset.",
-    tags: ["Mamba", "LSTM", "PyTorch", "Time Series"],
-    subtitle: "Academic Project | Apr 2025 – Present | Pattern Recognition Lab, FAU",
-    details: [
-      "Benchmarked Mamba vs. LSTM models for binary classification on PTB-XL medical ECG dataset",
-      "Analyzed multi-label classification performance and identified architecture trade-offs for medical time series"
-    ],
-    githubUrl: "https://github.com/techie-shashank/mamba_ts_forecasting"
-  },
-  {
-    title: "Tool Action Recognition",
-    description: "Evaluated semi-supervised learning strategies for tool action recognition on industrial datasets.",
-    tags: ["Semi-Supervised Learning", "LSTM", "TCN", "PyTorch"],
-    subtitle: "Academic Project | Apr 2025 – Jul 2025 | Machine Learning & Data Analytics Lab, FAU",
-    details: [
-      "Tested semi-supervised approaches with LSTM and TCN models on an industrial tool-tracking dataset",
-      "Improved recognition accuracy with limited labeled data"
-    ],
-    githubUrl: "https://github.com/techie-shashank/Tool_Action_Recognition"
-  },
-  {
-    title: "High-Precision 3D Surface Reconstruction",
-    description: "3D reconstruction pipeline using phase-shifting algorithms and deep learning for pose estimation.",
-    tags: ["3D Reconstruction", "Computer Vision", "Structured Light", "Deep Learning"],
-    subtitle: "Academic Project | Oct 2024 – Present | Institute for Factory Automation & Production Systems",
-    details: [
-      "Built a structured-light based 3D reconstruction pipeline using phase-shifting algorithms",
-      "Researched deep learning methods to improve accuracy for 6DoF pose estimation",
-      "Focused on generating robust, high-precision 3D surface models"
-    ],
-    githubUrl: null
-  },
-  {
     title: "Marksheet Parser",
     description: "Extracted structural features from high school marksheet images with ~90% accuracy using ML and OCR.",
     tags: ["OCR", "OpenCV", "Machine Learning", "Python"],
@@ -182,7 +180,7 @@ export const projectsData = [
 ];
 
 export const skillsData = {
-  "Machine Learning & AI": ["RAG", "Agentic AI", "LangChain", "LangGraph", "Browser-Use", "Azure AI", "PyTorch", "OpenCV"],
+  "Machine Learning & AI": ["PyTorch", "OpenCV", "RAG", "Agentic AI", "LangChain", "Azure AI"],
   "Programming Languages & Databases": ["Python (Proficient)", "C++", "JavaScript", "PostgreSQL"],
   "Web Development": ["Django/DRF (Proficient)", "React", "Redux", "Angular"],
   "DevOps & Cloud": ["Docker", "AWS", "Azure", "Jenkins"],
